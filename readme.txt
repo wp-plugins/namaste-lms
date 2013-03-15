@@ -1,4 +1,4 @@
-=== Namaste LMS ===
+=== Namaste! LMS ===
 Contributors: Bob Handzhiev, Kiboko Labs
 Tags: LMS, learning, courses, lessons, ILE
 Requires at least: 3.0
