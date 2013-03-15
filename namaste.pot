@@ -1,0 +1,713 @@
+# Copyright (C) 2013 Namaste! LMS
+# This file is distributed under the same license as the Namaste! LMS package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Namaste! LMS 0.6.4\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
+"POT-Creation-Date: 2013-03-11 15:36:53+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: controllers/courses.php:23
+msgid "You enrolled in \"%s\""
+msgstr ""
+
+#: controllers/courses.php:24
+msgid ""
+"Thank you for your interest in enrolling this course. A manager will review "
+"your application."
+msgstr ""
+
+#: controllers/courses.php:26
+msgid "You have already enrolled in this course"
+msgstr ""
+
+#: controllers/homeworks.php:10
+msgid "You are not enrolled in this course!"
+msgstr ""
+
+#: controllers/homeworks.php:15
+msgid "You cannot submit an empty solution"
+msgstr ""
+
+#: controllers/homeworks.php:38
+msgid "You are not allowed to see these solutions"
+msgstr ""
+
+#: controllers/homeworks.php:45
+msgid "You are not allowed to do this"
+msgstr ""
+
+#: models/course-model.php:7
+msgid "Namaste! Courses"
+msgstr ""
+
+#: models/course-model.php:10
+msgid "Courses"
+msgstr ""
+
+#: models/course-model.php:11
+msgid "Course"
+msgstr ""
+
+#: models/course-model.php:12
+msgid "Add New Course"
+msgstr ""
+
+#: models/course-model.php:18
+msgid "This will create a new course in your Namaste! LMS."
+msgstr ""
+
+#: models/course-model.php:48 models/lesson-model.php:28
+#: models/namaste-model.php:111
+msgid "Namaste! Settings"
+msgstr ""
+
+#: models/course-model.php:109
+msgid ""
+"You are enrolled in this course. Check \"My courses\" link in your dashboard "
+"to see the lessons and to-do list"
+msgstr ""
+
+#: models/course-model.php:110
+msgid ""
+"You can enroll in this course from your student dashboard. You need to be "
+"logged in."
+msgstr ""
+
+#: models/homework-model.php:22
+msgid "Homework added"
+msgstr ""
+
+#: models/homework-model.php:33
+msgid "Homework deleted"
+msgstr ""
+
+#: models/homework-model.php:44
+msgid "Homework saved"
+msgstr ""
+
+#: models/homework-model.php:79
+msgid "You are not allowed to see this page"
+msgstr ""
+
+#: models/lesson-model.php:6
+msgid "Namaste! Lessons"
+msgstr ""
+
+#: models/lesson-model.php:9 views/my_courses.php:15
+msgid "Lessons"
+msgstr ""
+
+#: models/lesson-model.php:10 views/student-lessons.php:15
+msgid "Lesson"
+msgstr ""
+
+#: models/lesson-model.php:11
+msgid "Add New Lesson"
+msgstr ""
+
+#: models/lesson-model.php:17
+msgid "This will create a new lesson in your Namaste! LMS."
+msgstr ""
+
+#: models/lesson-model.php:153
+msgid "You must enroll in the course first before you can see the lessons"
+msgstr ""
+
+#: models/lesson-model.php:161
+msgid ""
+"The lesson cannot be completed because there are unsatisfied requirements"
+msgstr ""
+
+#: models/lesson-model.php:208 views/manage-students.php:51
+#: views/student-lessons.php:37
+msgid "Not started"
+msgstr ""
+
+#: models/lesson-model.php:213
+msgid "Completed on"
+msgstr ""
+
+#: models/lesson-model.php:218 views/manage-students.php:50
+#: views/student-lessons.php:38
+msgid "In progress"
+msgstr ""
+
+#: models/lesson-model.php:233
+msgid "You need to be logged in to access this lesson."
+msgstr ""
+
+#: models/lesson-model.php:241
+msgid "In order to see this lesson you first have to be enrolled in the course"
+msgstr ""
+
+#: models/lesson-model.php:259
+msgid "Before accessing this lesson you must complete the following lessons:"
+msgstr ""
+
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.6.4)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: models/namaste-model.php:107
+msgid "Namaste! LMS"
+msgstr ""
+
+#: models/namaste-model.php:109
+msgid "Assignments"
+msgstr ""
+
+#: models/namaste-model.php:110
+msgid "Students"
+msgstr ""
+
+#: models/namaste-model.php:111
+msgid "Settings"
+msgstr ""
+
+#: models/namaste-model.php:114
+msgid "Student Lessons"
+msgstr ""
+
+#: models/namaste-model.php:115 views/student-lessons.php:16
+msgid "Homeworks"
+msgstr ""
+
+#: models/namaste-model.php:116 views/add-note.php:15
+msgid "Send note"
+msgstr ""
+
+#: models/namaste-model.php:117 views/lesson-homeworks.php:26
+msgid "Submit solution"
+msgstr ""
+
+#: models/namaste-model.php:118
+msgid "View solutions"
+msgstr ""
+
+#: models/namaste-model.php:121 views/my_courses.php:1
+msgid "My Courses"
+msgstr ""
+
+#: models/student-model.php:23
+msgid "Sorry, I cannot find user with this email."
+msgstr ""
+
+#: models/student-model.php:27
+msgid ""
+"This user's role does not allow them to use Namaste! LMS. You'll have either "
+"to change their role or allow the role work with the LMS from the Settings "
+"page"
+msgstr ""
+
+#: models/student-model.php:34
+msgid "This user is already enrolled in the course"
+msgstr ""
+
+#: models/student-model.php:43
+msgid "User successfully enrolled in the course"
+msgstr ""
+
+#: models/student-model.php:94
+msgid "You cannot change someone else's status"
+msgstr ""
+
+#: views/add-note.php:1
+msgid "Send Note"
+msgstr ""
+
+#: views/add-note.php:4
+msgid "Use this page to send a note about assignments"
+msgstr ""
+
+#: views/add-note.php:4
+msgid "for student"
+msgstr ""
+
+#: views/add-note.php:7 views/view-solutions.php:5
+msgid "Course:"
+msgstr ""
+
+#: views/add-note.php:8 views/view-solutions.php:4
+msgid "Lesson:"
+msgstr ""
+
+#: views/add-note.php:10
+msgid "Back to assignments for the student on this lesson"
+msgstr ""
+
+#: views/course-meta-box.php:1
+msgid "Enrollment mode:"
+msgstr ""
+
+#: views/course-meta-box.php:3
+msgid "Logged in users can enroll this course themselves."
+msgstr ""
+
+#: views/course-meta-box.php:5
+msgid "Admin manually approves/enrolls students in courses"
+msgstr ""
+
+#: views/course-meta-box.php:7
+msgid "Course completeness"
+msgstr ""
+
+#: views/course-meta-box.php:10
+msgid ""
+"This course has no lessons assigned so it can never be completed. Please "
+"create and assign some lessons to this course."
+msgstr ""
+
+#: views/course-meta-box.php:12
+msgid ""
+"The following lessons must be completed in order to complete this course. "
+"Please select at least one."
+msgstr ""
+
+#: views/homework-notes.php:1
+msgid "Admin notes for assignment"
+msgstr ""
+
+#: views/homework-notes.php:3
+msgid "There aren't any notes yet."
+msgstr ""
+
+#: views/homework.php:1
+msgid "Manage Assignment in"
+msgstr ""
+
+#: views/homework.php:5
+msgid "Title:"
+msgstr ""
+
+#: views/homework.php:6
+msgid "Description/Requirements:"
+msgstr ""
+
+#: views/homework.php:8
+msgid "Accept file upload as solution"
+msgstr ""
+
+#: views/homework.php:11
+msgid "Create Assignment"
+msgstr ""
+
+#: views/homework.php:13
+msgid "Save Assignment"
+msgstr ""
+
+#: views/homework.php:14
+msgid "Delete Assignment"
+msgstr ""
+
+#: views/homework.php:14 views/manage-students.php:63
+msgid "Are you sure?"
+msgstr ""
+
+#: views/homework.php:24
+msgid "Please enter at least title for the assignment"
+msgstr ""
+
+#: views/homeworks.php:1
+msgid "Assignments / Homeworks"
+msgstr ""
+
+#: views/homeworks.php:5 views/lesson-meta-box.php:4
+#: views/manage-students.php:15
+msgid "Select course:"
+msgstr ""
+
+#: views/homeworks.php:6 views/homeworks.php:46
+msgid "- please select -"
+msgstr ""
+
+#: views/homeworks.php:14 views/homeworks.php:45
+msgid "Select lesson:"
+msgstr ""
+
+#: views/homeworks.php:25
+msgid "Click here to create new assignment"
+msgstr ""
+
+#: views/homeworks.php:28
+msgid "Title"
+msgstr ""
+
+#: views/homeworks.php:28 views/homeworks.php:30
+msgid "Edit"
+msgstr ""
+
+#: views/homeworks.php:34
+msgid "You have to select course and lesson before you can create assignments"
+msgstr ""
+
+#: views/lesson-homeworks.php:1
+msgid "Assignments for lesson"
+msgstr ""
+
+#: views/lesson-homeworks.php:4
+msgid "Showing assignments of"
+msgstr ""
+
+#: views/lesson-homeworks.php:7
+msgid "Back to the lessons page in this course"
+msgstr ""
+
+#: views/lesson-homeworks.php:10
+msgid "There are no homeworks in this lesson"
+msgstr ""
+
+#: views/lesson-homeworks.php:15
+msgid "Assignment title and description"
+msgstr ""
+
+#: views/lesson-homeworks.php:15
+msgid "Solutions"
+msgstr ""
+
+#: views/lesson-homeworks.php:16
+msgid "Notes"
+msgstr ""
+
+#: views/lesson-homeworks.php:20 views/lesson-homeworks.php:29
+msgid "None yet."
+msgstr ""
+
+#: views/lesson-homeworks.php:21
+msgid "%d solutions"
+msgstr ""
+
+#: views/lesson-homeworks.php:24
+msgid "A solution has been accepted and the assignment is completed."
+msgstr ""
+
+#: views/lesson-homeworks.php:33
+msgid "Add note"
+msgstr ""
+
+#: views/lesson-meta-box.php:1
+msgid "Assign to Courses:"
+msgstr ""
+
+#: views/lesson-meta-box.php:3
+msgid "No courses have been created yet!"
+msgstr ""
+
+#: views/lesson-meta-box.php:11
+msgid "Lesson Access"
+msgstr ""
+
+#: views/lesson-meta-box.php:14
+msgid ""
+"There are no other lessons in this course. So this lesson will be accessible "
+"to anyone who enrolled the course."
+msgstr ""
+
+#: views/lesson-meta-box.php:16
+msgid ""
+"This lesson will be accessible only after the following lessons are "
+"completed:"
+msgstr ""
+
+#: views/lesson-meta-box.php:22
+msgid "Lesson Completeness"
+msgstr ""
+
+#: views/lesson-meta-box.php:24
+msgid ""
+"The minimum requirement for a lesson to be completed is to be visited by the "
+"student. However you can add some extra requirements here:"
+msgstr ""
+
+#: views/lesson-meta-box.php:26
+msgid ""
+"Lesson completion will be manually verified and approved by the admin for "
+"every student."
+msgstr ""
+
+#: views/lesson-meta-box.php:29
+msgid "The following assignments/homeworks must be completed:"
+msgstr ""
+
+#: views/lesson-meta-box.php:38
+msgid "The following quiz must be completed:"
+msgstr ""
+
+#: views/lesson-meta-box.php:40
+msgid "- No quiz required -"
+msgstr ""
+
+#: views/lesson-meta-box.php:46
+msgid "with the following grade achieved:"
+msgstr ""
+
+#: views/lesson-meta-box.php:50 views/lesson-meta-box.php:72
+msgid "- Any grade -"
+msgstr ""
+
+#: views/manage-students.php:1
+msgid "Student Enrollments"
+msgstr ""
+
+#: views/manage-students.php:4
+msgid "Nothing to do here as you have not created any courses yet!"
+msgstr ""
+
+#: views/manage-students.php:23
+msgid "Enroll student in the course:"
+msgstr ""
+
+#: views/manage-students.php:24
+msgid "Enter email"
+msgstr ""
+
+#: views/manage-students.php:25
+msgid "Enroll"
+msgstr ""
+
+#: views/manage-students.php:32
+msgid "There are no students enrolled in this course yet."
+msgstr ""
+
+#: views/manage-students.php:36
+msgid ""
+"The below table shows all students enrolled in this course allow with the "
+"status for every lesson in it"
+msgstr ""
+
+#: views/manage-students.php:38
+msgid "Student"
+msgstr ""
+
+#: views/manage-students.php:42 views/my_courses.php:16
+#: views/student-lessons.php:20 views/view-solutions.php:23
+msgid "Status"
+msgstr ""
+
+#: views/manage-students.php:49 views/student-lessons.php:39
+msgid "Completed"
+msgstr ""
+
+#: views/manage-students.php:55
+msgid "approve"
+msgstr ""
+
+#: views/manage-students.php:55
+msgid "reject"
+msgstr ""
+
+#: views/my_courses.php:4
+msgid "No courses are available at this time."
+msgstr ""
+
+#: views/my_courses.php:14
+msgid "Course title &amp; description"
+msgstr ""
+
+#: views/my_courses.php:21
+msgid "Enroll to get access to the lessons"
+msgstr ""
+
+#: views/my_courses.php:23
+msgid "View lessons"
+msgstr ""
+
+#: views/my_courses.php:28
+msgid "Click to Enroll"
+msgstr ""
+
+#: views/my_courses.php:33
+msgid "Pending enrollment"
+msgstr ""
+
+#: views/my_courses.php:34
+msgid "Application rejected"
+msgstr ""
+
+#: views/my_courses.php:35
+msgid "Enrolled on %s"
+msgstr ""
+
+#: views/my_courses.php:37
+msgid "Completed on %s"
+msgstr ""
+
+#: views/options.php:1
+msgid "Namaste! LMS Options"
+msgstr ""
+
+#: views/options.php:5
+msgid "Wordpress roles with access to the learning material"
+msgstr ""
+
+#: views/options.php:7
+msgid ""
+"By default Namaste! LMS creates a role \"student\" which is the only role "
+"allowed to work with the learning material. The idea behind this is to allow "
+"the admin have better control over which users can access it. However, you "
+"can enable the other existing user roles here. Note that this setting is "
+"regarding consuming content, and not creating it."
+msgstr ""
+
+#: views/options.php:15
+msgid "Wordpress roles that can administrate the LMS"
+msgstr ""
+
+#: views/options.php:17
+msgid ""
+"By default this is only the blog administrator. Here you can enable any of "
+"the other roles as well"
+msgstr ""
+
+#: views/options.php:26
+msgid "Save Options"
+msgstr ""
+
+#: views/options.php:33
+msgid "Exam/Test Related Settings"
+msgstr ""
+
+#: views/options.php:35
+msgid ""
+"Namaste LMS utilizes the power of existing Wordpress plugins to handle "
+"exams, tests and quizzes. At this moment it can connect with two plugins:"
+msgstr ""
+
+#: views/options.php:35
+msgid "(Free) and "
+msgstr ""
+
+#: views/options.php:35
+msgid "(Premium)"
+msgstr ""
+
+#: views/options.php:37
+msgid ""
+"If you have any of these plugins installed and activated, please choose "
+"which one to use for handling tests below:"
+msgstr ""
+
+#: views/options.php:39
+msgid "I don not need to create any exams or tests."
+msgstr ""
+
+#: views/options.php:42
+msgid "I will create exams with Watu."
+msgstr ""
+
+#: views/options.php:46
+msgid "I will create exams with WatuPRO."
+msgstr ""
+
+#: views/options.php:49
+msgid "Save Exam Options"
+msgstr ""
+
+#: views/solution-submitted.php:1
+msgid "Solution submitted"
+msgstr ""
+
+#: views/solution-submitted.php:4
+msgid ""
+"A manager will review your solution and will approve or reject it. If the "
+"manager add any notes, they will appear in the assignments page for this "
+"course"
+msgstr ""
+
+#: views/solution-submitted.php:6 views/submit-solution.php:4
+msgid "Back to assignments in"
+msgstr ""
+
+#: views/solution-submitted.php:7 views/submit-solution.php:5
+msgid "from course"
+msgstr ""
+
+#: views/student-lessons.php:1
+msgid "Course Progress:"
+msgstr ""
+
+#: views/student-lessons.php:4
+msgid "Back to students in this course"
+msgstr ""
+
+#: views/student-lessons.php:12
+msgid "Student:"
+msgstr ""
+
+#: views/student-lessons.php:18
+msgid "Test/Exam"
+msgstr ""
+
+#: views/student-lessons.php:24 views/student-lessons.php:28
+msgid "None"
+msgstr ""
+
+#: views/submit-solution.php:1
+msgid "Submitting a solution to assignment"
+msgstr ""
+
+#: views/submit-solution.php:11
+msgid "Submit your solution below:"
+msgstr ""
+
+#: views/submit-solution.php:16
+msgid "Submit your solution"
+msgstr ""
+
+#: views/view-solutions.php:1
+msgid "Viewing Solutions for "
+msgstr ""
+
+#: views/view-solutions.php:7
+msgid "Back to assignments for \"%s\""
+msgstr ""
+
+#: views/view-solutions.php:10
+msgid "Showing solutions submitted by"
+msgstr ""
+
+#: views/view-solutions.php:11
+msgid ""
+"Note: when one solution is approved, the assignment will be considered "
+"completed by this student and they will not be asked to submit more "
+"solutions for it."
+msgstr ""
+
+#: views/view-solutions.php:15
+msgid "The student has not submitted any solutions for this assignment yet."
+msgstr ""
+
+#: views/view-solutions.php:22
+msgid "Solution submitted at %s"
+msgstr ""
+
+#: views/view-solutions.php:28
+msgid "Pending"
+msgstr ""
+
+#: views/view-solutions.php:29
+msgid "Approved"
+msgstr ""
+
+#: views/view-solutions.php:30
+msgid "Rejected"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://namaste-lms.org"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Learning Management System for Wordpress"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Kiboko Labs"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://calendarscripts.info/"
+msgstr ""
