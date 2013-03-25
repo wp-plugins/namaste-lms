@@ -70,7 +70,7 @@ class NamasteLMS {
 			$sql = "CREATE TABLE `" . NAMASTE_STUDENT_LESSONS . "` (
 				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 					`lesson_id` INT UNSIGNED NOT NULL DEFAULT 0,
-					`student_id` INT UNSIGNED NOT NUL DEFAULT 0L,
+					`student_id` INT UNSIGNED NOT NULL DEFAULT 0,
 					`status` INT UNSIGNED NOT NULL DEFAULT 0,
 					`completion_date` TEXT NOT NULL
 				) DEFAULT CHARSET=utf8;";
@@ -96,8 +96,8 @@ class NamasteLMS {
     NamasteLMSCourseModel::register_course_type();
     NamasteLMSLessonModel::register_lesson_type();
     flush_rewrite_rules();
-    
-	  update_option( 'namaste_version', "0.3.3");	  
+	  update_option( 'namaste_version', "0.6.6");	  
+	  // exit;
    }
    
    // main menu
