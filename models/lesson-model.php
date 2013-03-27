@@ -62,12 +62,13 @@ class NamasteLMSLessonModel {
 		// select quizzes from Watu/WatuPRO
 		$use_exams = get_option('namaste_use_exams');
 		
+		
 		if(!empty($use_exams)) {
-			if($use_exams = 'watu') {
+			if($use_exams == 'watu') {
 					$exams_table = $wpdb->prefix.'watu_master';
 					$grades_table = $wpdb->prefix.'watu_grading';
 			}
-			if($use_exams = 'watupro') {
+			if($use_exams == 'watupro') {
 					$exams_table = $wpdb->prefix.'watupro_master';
 					$grades_table = $wpdb->prefix.'watupro_grading';
 			}
