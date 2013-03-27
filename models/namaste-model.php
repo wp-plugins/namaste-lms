@@ -186,9 +186,10 @@ class NamasteLMS {
 	}	
 			
 	// manage general options
-	static function options() {		
+	static function options() {
+		global $wp_roles;		
 		if(!empty($_POST['namaste_options']) and check_admin_referer('save_options', 'nonce_options')) {
-			$roles = get_option('wp_user_roles');
+			$roles = $wp_roles->roles;			
 			
 			foreach($roles as $key=>$r) {
 				if($key == 'administrator') continue;
@@ -214,8 +215,8 @@ class NamasteLMS {
 		}
 		
 		// select all roles in the system
-		$roles = get_option('wp_user_roles');
-		
+		$roles = $wp_roles->roles;
+				
 		// what exams to use
 		$use_exams = get_option('namaste_use_exams');
 		
