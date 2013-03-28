@@ -237,7 +237,7 @@ class NamasteLMSLessonModel {
 		$course_id = get_post_meta($post->ID, 'namaste_course', true);
 		$course = $_course -> select($course_id);
 		$enrolled = $wpdb -> get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES.
-			" WHERE user_id = %d AND course_id = %d AND status = 'enrolled'", $user_ID, $course_id));
+			" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $course_id));
 		if(!$enrolled) {
 			$content = __('In order to see this lesson you first have to be enrolled in the course', 'namaste').' <b>"'.$course->post_title.'"</b>';
 			return $content; // no need to run further queries
@@ -255,7 +255,8 @@ class NamasteLMSLessonModel {
 			foreach($lesson_access as $access) {
 				if(!in_array($access, $completed_ids)) $not_completed_ids[] = $access;
 			}
-		}			
+		}
+					
 		if(!empty($not_completed_ids)) {
 			 $content = '<p>'.__('Before accessing this lesson you must complete the following lessons:','namaste').'</p>';			 
 			 $content	.= '<ul>';

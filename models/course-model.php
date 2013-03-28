@@ -114,9 +114,9 @@ class NamasteLMSCourseModel {
 	
 	// checks if all requirements for completion are satisfied
 	function is_ready($course_id, $student_id) {
-		$required_lessons = get_post_meta($post->ID, 'namaste_required_lessons', true);	
-			if(!is_array($required_lessons)) $required_lessons = array();
-			
+		$required_lessons = get_post_meta($course_id, 'namaste_required_lessons', true);	
+		if(!is_array($required_lessons)) $required_lessons = array();
+		
 		foreach($required_lessons as $lesson) {
 			if(!NamasteLMSLessonModel::is_completed($lesson, $student_id)) return false;
 		}	
