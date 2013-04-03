@@ -25,9 +25,13 @@
 <p><a href="admin.php?page=namaste_homeworks&course_id=<?php echo $_GET['course_id']?>&lesson_id=<?php echo $_GET['lesson_id']?>&do=add"><?php _e('Click here to create new assignment', 'namaste')?></a></p>
 	<?php if(sizeof($homeworks)):?>
 		<table class="widefat">
-			<tr><th><?php _e('Title', 'namaste')?></th><th><?php _e('Edit','namaste')?></th></tr>
+			<tr><th><?php _e('Title', 'namaste')?></th><th><?php _e('Edit','namaste')?></th><th><?php _e('View solutions','namaste')?></th></tr>
 			<?php foreach($homeworks as $homework):?>
-				<tr><td><?php echo $homework->title?></td><td><a href="admin.php?page=namaste_homeworks&course_id=<?php echo $_GET['course_id']?>&lesson_id=<?php echo $_GET['lesson_id']?>&do=edit&id=<?php echo $homework->id?>"><?php _e('Edit', 'namaste')?></a></td></tr>
+				<tr><td><?php echo $homework->title?></td><td><a href="admin.php?page=namaste_homeworks&course_id=<?php echo $_GET['course_id']?>&lesson_id=<?php echo $_GET['lesson_id']?>&do=edit&id=<?php echo $homework->id?>"><?php _e('Edit', 'namaste')?></a></td>
+				<td>
+				<?php if($homework->solutions):?>
+					<a href="admin.php?page=namaste_view_all_solutions&id=<?php echo $homework->id?>"><?php echo $homework->solutions?> <?php _e('solutions', 'namaste')?></a>
+				<?php else: _e('No solutions', 'namaste'); endif;?></td></tr>
 			<?php endforeach;?>
 		</table>	
 	<?php endif;?>

@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 0.6.4\n"
+"Project-Id-Version: Namaste! LMS 0.7\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-03-11 15:36:53+00:00\n"
+"POT-Creation-Date: 2013-04-03 16:34:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "You are not allowed to see these solutions"
 msgstr ""
 
-#: controllers/homeworks.php:45
+#: controllers/homeworks.php:74
 msgid "You are not allowed to do this"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Homework saved"
 msgstr ""
 
-#: models/homework-model.php:79
+#: models/homework-model.php:81
 msgid "You are not allowed to see this page"
 msgstr ""
 
@@ -115,42 +115,42 @@ msgstr ""
 msgid "This will create a new lesson in your Namaste! LMS."
 msgstr ""
 
-#: models/lesson-model.php:153
+#: models/lesson-model.php:154
 msgid "You must enroll in the course first before you can see the lessons"
 msgstr ""
 
-#: models/lesson-model.php:161
+#: models/lesson-model.php:162
 msgid ""
 "The lesson cannot be completed because there are unsatisfied requirements"
 msgstr ""
 
-#: models/lesson-model.php:208 views/manage-students.php:51
+#: models/lesson-model.php:209 views/manage-students.php:51
 #: views/student-lessons.php:37
 msgid "Not started"
 msgstr ""
 
-#: models/lesson-model.php:213
+#: models/lesson-model.php:214
 msgid "Completed on"
 msgstr ""
 
-#: models/lesson-model.php:218 views/manage-students.php:50
+#: models/lesson-model.php:219 views/manage-students.php:50
 #: views/student-lessons.php:38
 msgid "In progress"
 msgstr ""
 
-#: models/lesson-model.php:233
+#: models/lesson-model.php:234
 msgid "You need to be logged in to access this lesson."
 msgstr ""
 
-#: models/lesson-model.php:241
+#: models/lesson-model.php:242
 msgid "In order to see this lesson you first have to be enrolled in the course"
 msgstr ""
 
-#: models/lesson-model.php:259
+#: models/lesson-model.php:261
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.6.4)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.7)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:107
 msgid "Namaste! LMS"
@@ -184,11 +184,15 @@ msgstr ""
 msgid "Submit solution"
 msgstr ""
 
-#: models/namaste-model.php:118
+#: models/namaste-model.php:118 views/homeworks.php:28
 msgid "View solutions"
 msgstr ""
 
-#: models/namaste-model.php:121 views/my_courses.php:1
+#: models/namaste-model.php:119
+msgid "View all solutions"
+msgstr ""
+
+#: models/namaste-model.php:122 views/my_courses.php:1
 msgid "My Courses"
 msgstr ""
 
@@ -320,11 +324,11 @@ msgstr ""
 msgid "Select course:"
 msgstr ""
 
-#: views/homeworks.php:6 views/homeworks.php:46
+#: views/homeworks.php:6 views/homeworks.php:50
 msgid "- please select -"
 msgstr ""
 
-#: views/homeworks.php:14 views/homeworks.php:45
+#: views/homeworks.php:14 views/homeworks.php:49
 msgid "Select lesson:"
 msgstr ""
 
@@ -340,7 +344,15 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: views/homeworks.php:33
+msgid "solutions"
+msgstr ""
+
 #: views/homeworks.php:34
+msgid "No solutions"
+msgstr ""
+
+#: views/homeworks.php:38
 msgid "You have to select course and lesson before you can create assignments"
 msgstr ""
 
@@ -483,7 +495,7 @@ msgid "Student"
 msgstr ""
 
 #: views/manage-students.php:42 views/my_courses.php:16
-#: views/student-lessons.php:20 views/view-solutions.php:23
+#: views/student-lessons.php:20 views/view-solutions.php:31
 msgid "Status"
 msgstr ""
 
@@ -661,38 +673,50 @@ msgstr ""
 msgid "Viewing Solutions for "
 msgstr ""
 
-#: views/view-solutions.php:7
+#: views/view-solutions.php:8 views/view-solutions.php:12
 msgid "Back to assignments for \"%s\""
 msgstr ""
 
-#: views/view-solutions.php:10
-msgid "Showing solutions submitted by"
+#: views/view-solutions.php:9
+msgid "Showing everyone's solutions on this assignment."
 msgstr ""
 
-#: views/view-solutions.php:11
+#: views/view-solutions.php:10 views/view-solutions.php:15
 msgid ""
 "Note: when one solution is approved, the assignment will be considered "
 "completed by this student and they will not be asked to submit more "
 "solutions for it."
 msgstr ""
 
-#: views/view-solutions.php:15
+#: views/view-solutions.php:14
+msgid "Showing solutions submitted by"
+msgstr ""
+
+#: views/view-solutions.php:19
 msgid "The student has not submitted any solutions for this assignment yet."
 msgstr ""
 
-#: views/view-solutions.php:22
+#: views/view-solutions.php:20
+msgid "No one has submitted any solutions for this assignment yet."
+msgstr ""
+
+#: views/view-solutions.php:27
 msgid "Solution submitted at %s"
 msgstr ""
 
-#: views/view-solutions.php:28
+#: views/view-solutions.php:29
+msgid "by"
+msgstr ""
+
+#: views/view-solutions.php:36
 msgid "Pending"
 msgstr ""
 
-#: views/view-solutions.php:29
+#: views/view-solutions.php:37
 msgid "Approved"
 msgstr ""
 
-#: views/view-solutions.php:30
+#: views/view-solutions.php:38
 msgid "Rejected"
 msgstr ""
 

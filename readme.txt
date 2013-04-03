@@ -50,3 +50,10 @@ None yet, please ask in the forum
 5. Progress of a given student in the course
 6. Assignments for a lesson
 7. Submitting a solution for assignment
+
+== Changelog ==
+
+= Version 0.7 =
+- admin can see everyone's solution to a homework
+- admin/manager can also be a student and has My Courses section
+- other small bug fixes and code improvements

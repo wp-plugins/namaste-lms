@@ -116,9 +116,10 @@ class NamasteLMS {
    		add_submenu_page( NULL, __("Send note", 'namaste'), __("Send note", 'namaste'), 'namaste_manage', 'namaste_add_note', array('NamasteLMSNoteModel', "add_note"));
    		add_submenu_page( NULL, __("Submit solution", 'namaste'), __("Submit solution", 'namaste'), $namaste_cap, 'namaste_submit_solution', array('NamasteLMSHomeworkController', "submit_solution"));
    		add_submenu_page( NULL, __("View solutions", 'namaste'), __("View solutions", 'namaste'), $namaste_cap, 'namaste_view_solutions', array('NamasteLMSHomeworkController', "view"));
+   		add_submenu_page( NULL, __("View all solutions", 'namaste'), __("View all solutions", 'namaste'), 'namaste_manage', 'namaste_view_all_solutions', array('NamasteLMSHomeworkController', "view_all"));
    		
    		// student menu
-   		$menu=add_menu_page(__('My Courses', 'namaste'), __('My Courses', 'namaste'), "namaste", "namaste_my_courses", array('NamasteLMSCoursesController', "my_courses"));
+   		$menu=add_menu_page(__('My Courses', 'namaste'), __('My Courses', 'namaste'), $namaste_cap, "namaste_my_courses", array('NamasteLMSCoursesController', "my_courses"));
 	}
 	
 	// CSS and JS

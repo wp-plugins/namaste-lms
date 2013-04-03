@@ -60,7 +60,9 @@ class NamasteLMSHomeworkModel {
 			
 				// list existing homeworks if course and lesson are selected
 				if(!empty($_GET['course_id']) and !empty($_GET['lesson_id'])) {
-					$homeworks = self::select($wpdb->prepare(" WHERE course_id=%d AND lesson_id=%d ", 
+					$homeworks = $wpdb->get_results($wpdb->prepare("SELECT tH.*, COUNT(tS.id) as solutions 
+					FROM ".NAMASTE_HOMEWORKS." tH LEFT JOIN ".NAMASTE_STUDENT_HOMEWORKS." tS ON tS.homework_id = tH.id
+					WHERE tH.course_id=%d AND tH.lesson_id=%d GROUP BY tH.id ORDER BY tH.title", 
 						$_GET['course_id'], $_GET['lesson_id']));
 				} 
 				
