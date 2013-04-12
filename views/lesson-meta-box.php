@@ -35,7 +35,7 @@ endif;?>
 <?php endif;?>
 
 <?php if($use_exams and sizeof($exams)):?>
-	<p><?php _e('The following quiz must be completed:', 'namasted')?></p>
+	<p><?php _e('The following quiz must be completed:', 'namaste')?></p>
 	<p><select name="namaste_required_exam" onchange="namasteLoadGrades(this.value);">
 	<option value=""><?php _e('- No quiz required -', 'namaste')?></option>
 	<?php foreach($exams as $exam):?>
@@ -81,4 +81,6 @@ endif;?>
 		jQuery('#namasteGradeRequirement').show();
 	}
 	</script>
-<?php endif;?>
+<?php else: printf('<p style="font-weight:bold;">'.__('If you install %s or %s you can also require certain tests and quizzes to be completed.', 'namaste'), 
+	"<a href='http://wordpress.org/extend/plugins/watu/' target='_blank'>Watu</a>", "<a href='http://calendarscripts.info/watupro/' target='_blank'>WatuPRO</a>").'</p>';
+endif;?>

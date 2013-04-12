@@ -25,9 +25,11 @@ Learning management system for Wordpress. Support unlimited number of courses, l
 
 == Description ==
 
-Namaste! LMS is a learning management system for Wordpress. Support unlimited number of courses, lessons, assignments, students etc. You can create various rules for course and lesson access and completeness based on assignment completion, test results, or manual admin approval.
+Namaste! LMS is a learning management system for Wordpress. Supports unlimited number of courses, lessons, assignments, students etc. You can create various rules for course and lesson access and completeness based on assignment completion, test results, or manual admin approval.
 
 Namaste! lets you assign different user roles to work with the LMS and other roles who will manage it.
+
+Students can earn certificates upon completing courses. 
 
 For quick tour and more detailed help go to <a href="http://namaste-lms.org" target="_blank">namaste-lms.org</a>.
 
@@ -52,6 +54,11 @@ None yet, please ask in the forum
 7. Submitting a solution for assignment
 
 == Changelog ==
+
+= Version 0.8 =
+- Admin can create/edit personalized certificates
+- Users get certificates assigned to them upon successfully completing courses
+- bug fixes and code improvements
 
 = Version 0.7 =
 - admin can see everyone's solution to a homework

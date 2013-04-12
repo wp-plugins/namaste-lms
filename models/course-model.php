@@ -136,5 +136,12 @@ class NamasteLMSCourseModel {
 		
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_COURSES." SET status = 'completed',
 			completion_date = CURDATE() WHERE id=%d", $student_course->id));
+			
+		// should we assign certificates?
+		$_cert = new NamasteLMSCertificateModel();
+		$_cert -> complete_course($course_id, $student_id);
+		
+		// add custom action
+		do_action('namaste_completed_course');	
 	}
 }

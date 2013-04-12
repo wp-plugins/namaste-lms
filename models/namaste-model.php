@@ -78,6 +78,34 @@ class NamasteLMS {
 			$wpdb->query($sql);
 	  }  
 	  
+	  if($wpdb->get_var("SHOW TABLES LIKE '".NAMASTE_CERTIFICATES."'") != NAMASTE_CERTIFICATES) {        
+			$sql = "CREATE TABLE `" . NAMASTE_CERTIFICATES . "` (
+				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				  `course_ids` VARCHAR(255) NOT NULL DEFAULT '',
+				  `title` VARCHAR(255) NOT NULL DEFAULT '',
+				  `content` TEXT NOT NULL
+				) DEFAULT CHARSET=utf8;";
+			
+			$wpdb->query($sql);
+	  }  
+	  
+	  if($wpdb->get_var("SHOW TABLES LIKE '".NAMASTE_STUDENT_CERTIFICATES."'") != NAMASTE_STUDENT_CERTIFICATES) {        
+			$sql = "CREATE TABLE `" . NAMASTE_STUDENT_CERTIFICATES . "` (
+				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				  `certificate_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `student_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `date` DATE NOT NULL DEFAULT '2000-01-01'
+				) DEFAULT CHARSET=utf8;";
+			
+			$wpdb->query($sql);
+			
+			$sql= "ALTER TABLE  `" . NAMASTE_STUDENT_CERTIFICATES . "` ADD UNIQUE (
+			 `certificate_id` ,
+			 `student_id`
+			)";
+			$wpdb->query($sql);
+	  }  
+	 
 	  // add student role if not exists
     $res = add_role('student', 'Student', array(
           'read' => true, // True allows that capability
@@ -96,7 +124,7 @@ class NamasteLMS {
     NamasteLMSCourseModel::register_course_type();
     NamasteLMSLessonModel::register_lesson_type();
     flush_rewrite_rules();
-	  update_option( 'namaste_version', "0.6.6");	  
+	  update_option( 'namaste_version', "0.7");	  
 	  // exit;
    }
    
@@ -106,20 +134,24 @@ class NamasteLMS {
    	
    	$menu=add_menu_page(__('Namaste! LMS', 'namaste'), __('Namaste! LMS', 'namaste'), "namaste_manage", "namaste_options", 
    		array(__CLASS__, "options"));
-   		add_submenu_page('namaste_options', __("Assignments", 'namaste'), __("Assignments", 'namaste'), 'namaste_manage', 'namaste_homeworks', array('NamasteLMSHomeworkModel', "manage"));
-   		add_submenu_page('namaste_options', __("Students", 'namaste'), __("Students", 'namaste'), 'namaste_manage', 'namaste_students', array('NamasteLMSStudentModel', "manage"));
-   		add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));    
+		add_submenu_page('namaste_options', __("Assignments", 'namaste'), __("Assignments", 'namaste'), 'namaste_manage', 'namaste_homeworks', array('NamasteLMSHomeworkModel', "manage"));
+		add_submenu_page('namaste_options', __("Students", 'namaste'), __("Students", 'namaste'), 'namaste_manage', 'namaste_students', array('NamasteLMSStudentModel', "manage"));		
+		add_submenu_page('namaste_options', __("Certificates", 'namaste'), __("Certificates", 'namaste'), 'namaste_manage', 'namaste_certificates', array('NamasteLMSCertificatesController', "manage"));
+		add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));        
    		
-   		// not visible in menu
-   		add_submenu_page( NULL, __("Student Lessons", 'namaste'), __("Student Lessons", 'namaste'), $namaste_cap, 'namaste_student_lessons', array('NamasteLMSLessonModel', "student_lessons"));
-   		add_submenu_page( NULL, __("Homeworks", 'namaste'), __("Homeworks", 'namaste'), $namaste_cap, 'namaste_lesson_homeworks', array('NamasteLMSHomeworkModel', "lesson_homeworks"));
-   		add_submenu_page( NULL, __("Send note", 'namaste'), __("Send note", 'namaste'), 'namaste_manage', 'namaste_add_note', array('NamasteLMSNoteModel', "add_note"));
-   		add_submenu_page( NULL, __("Submit solution", 'namaste'), __("Submit solution", 'namaste'), $namaste_cap, 'namaste_submit_solution', array('NamasteLMSHomeworkController', "submit_solution"));
-   		add_submenu_page( NULL, __("View solutions", 'namaste'), __("View solutions", 'namaste'), $namaste_cap, 'namaste_view_solutions', array('NamasteLMSHomeworkController', "view"));
-   		add_submenu_page( NULL, __("View all solutions", 'namaste'), __("View all solutions", 'namaste'), 'namaste_manage', 'namaste_view_all_solutions', array('NamasteLMSHomeworkController', "view_all"));
-   		
-   		// student menu
-   		$menu=add_menu_page(__('My Courses', 'namaste'), __('My Courses', 'namaste'), $namaste_cap, "namaste_my_courses", array('NamasteLMSCoursesController', "my_courses"));
+		// not visible in menu
+		add_submenu_page( NULL, __("Student Lessons", 'namaste'), __("Student Lessons", 'namaste'), $namaste_cap, 'namaste_student_lessons', array('NamasteLMSLessonModel', "student_lessons"));
+		add_submenu_page( NULL, __("Homeworks", 'namaste'), __("Homeworks", 'namaste'), $namaste_cap, 'namaste_lesson_homeworks', array('NamasteLMSHomeworkModel', "lesson_homeworks"));
+		add_submenu_page( NULL, __("Send note", 'namaste'), __("Send note", 'namaste'), 'namaste_manage', 'namaste_add_note', array('NamasteLMSNoteModel', "add_note"));
+		add_submenu_page( NULL, __("Submit solution", 'namaste'), __("Submit solution", 'namaste'), $namaste_cap, 'namaste_submit_solution', array('NamasteLMSHomeworkController', "submit_solution"));
+		add_submenu_page( NULL, __("View solutions", 'namaste'), __("View solutions", 'namaste'), $namaste_cap, 'namaste_view_solutions', array('NamasteLMSHomeworkController', "view"));
+		add_submenu_page( NULL, __("View all solutions", 'namaste'), __("View all solutions", 'namaste'), 'namaste_manage', 'namaste_view_all_solutions', array('NamasteLMSHomeworkController', "view_all"));
+		add_submenu_page( NULL, __("View Certificate", 'namaste'), __("View Certificate", 'namaste'), $namaste_cap, 'namaste_view_certificate', array('NamasteLMSCertificatesController', "view_certificate"));
+		
+		
+		// student menu
+		$menu=add_menu_page(__('My Courses', 'namaste'), __('My Courses', 'namaste'), $namaste_cap, "namaste_my_courses", array('NamasteLMSCoursesController', "my_courses"));
+			add_submenu_page('namaste_my_courses', __("My Certificates", 'namaste'), __("My Certificates", 'namaste'), $namaste_cap, 'namaste_my_certificates', array('NamasteLMSCertificatesController', "my_certificates"));
 	}
 	
 	// CSS and JS
@@ -163,6 +195,8 @@ class NamasteLMS {
 		define( 'NAMASTE_STUDENT_HOMEWORKS', $wpdb->prefix. "namaste_student_homeworks");
 		define( 'NAMASTE_HOMEWORK_NOTES', $wpdb->prefix. "namaste_homework_notes");
 		define( 'NAMASTE_STUDENT_LESSONS', $wpdb->prefix. "namaste_student_lessons");
+		define( 'NAMASTE_CERTIFICATES', $wpdb->prefix. "namaste_certificates");
+		define( 'NAMASTE_STUDENT_CERTIFICATES', $wpdb->prefix. "namaste_student_certificates");
 		
 		define( 'NAMASTE_VERSION', get_option('namaste_version'));
 	}

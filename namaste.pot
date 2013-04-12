@@ -2,15 +2,31 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 0.7\n"
+"Project-Id-Version: Namaste! LMS 0.8\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-04-03 16:34:56+00:00\n"
+"POT-Creation-Date: 2013-04-12 14:57:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: controllers/certificates.php:44
+msgid "Certificate added"
+msgstr ""
+
+#: controllers/certificates.php:45
+msgid "Certificate saved"
+msgstr ""
+
+#: controllers/certificates.php:46
+msgid "Certificate deleted"
+msgstr ""
+
+#: controllers/certificates.php:71
+msgid "You are not allowed to access this certificate"
+msgstr ""
 
 #: controllers/courses.php:23
 msgid "You enrolled in \"%s\""
@@ -63,7 +79,7 @@ msgid "This will create a new course in your Namaste! LMS."
 msgstr ""
 
 #: models/course-model.php:48 models/lesson-model.php:28
-#: models/namaste-model.php:111
+#: models/namaste-model.php:140
 msgid "Namaste! Settings"
 msgstr ""
 
@@ -150,50 +166,62 @@ msgstr ""
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.7)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.8)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: models/namaste-model.php:107
+#: models/namaste-model.php:135
 msgid "Namaste! LMS"
 msgstr ""
 
-#: models/namaste-model.php:109
+#: models/namaste-model.php:137
 msgid "Assignments"
 msgstr ""
 
-#: models/namaste-model.php:110
+#: models/namaste-model.php:138
 msgid "Students"
 msgstr ""
 
-#: models/namaste-model.php:111
+#: models/namaste-model.php:139
+msgid "Certificates"
+msgstr ""
+
+#: models/namaste-model.php:140
 msgid "Settings"
 msgstr ""
 
-#: models/namaste-model.php:114
+#: models/namaste-model.php:143
 msgid "Student Lessons"
 msgstr ""
 
-#: models/namaste-model.php:115 views/student-lessons.php:16
+#: models/namaste-model.php:144 views/student-lessons.php:16
 msgid "Homeworks"
 msgstr ""
 
-#: models/namaste-model.php:116 views/add-note.php:15
+#: models/namaste-model.php:145 views/add-note.php:15
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:117 views/lesson-homeworks.php:26
+#: models/namaste-model.php:146 views/lesson-homeworks.php:26
 msgid "Submit solution"
 msgstr ""
 
-#: models/namaste-model.php:118 views/homeworks.php:28
+#: models/namaste-model.php:147 views/homeworks.php:28
 msgid "View solutions"
 msgstr ""
 
-#: models/namaste-model.php:119
+#: models/namaste-model.php:148
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:122 views/my_courses.php:1
+#: models/namaste-model.php:149
+msgid "View Certificate"
+msgstr ""
+
+#: models/namaste-model.php:153 views/my_courses.php:1
 msgid "My Courses"
+msgstr ""
+
+#: models/namaste-model.php:154 views/my-certificates.php:1
+msgid "My Certificates"
 msgstr ""
 
 #: models/student-model.php:23
@@ -241,6 +269,86 @@ msgstr ""
 
 #: views/add-note.php:10
 msgid "Back to assignments for the student on this lesson"
+msgstr ""
+
+#: views/certificate-form.php:1
+msgid "Add/Edit Certificate"
+msgstr ""
+
+#: views/certificate-form.php:5
+msgid "Certificate Title:"
+msgstr ""
+
+#: views/certificate-form.php:7
+msgid "Certificate Contents:"
+msgstr ""
+
+#: views/certificate-form.php:9
+msgid "You can use the following variables in the certificate contents:"
+msgstr ""
+
+#: views/certificate-form.php:11
+msgid "- The user full name or login name (whatever is available)"
+msgstr ""
+
+#: views/certificate-form.php:12
+msgid ""
+"- The names of the course which were completed to acquire this certificate"
+msgstr ""
+
+#: views/certificate-form.php:13
+msgid "- Date when the certificate was acquired"
+msgstr ""
+
+#: views/certificate-form.php:15
+msgid "Assign this certificate upon completing all of the following courses:"
+msgstr ""
+
+#: views/certificate-form.php:17
+msgid "You have not created any courses yet!"
+msgstr ""
+
+#: views/certificate-form.php:27
+msgid "Save Certificate"
+msgstr ""
+
+#: views/certificate-form.php:29
+msgid "Delete"
+msgstr ""
+
+#: views/certificate-form.php:38 views/homework.php:14
+#: views/manage-students.php:63
+msgid "Are you sure?"
+msgstr ""
+
+#: views/certificate-form.php:46
+msgid "Please enter certificate title"
+msgstr ""
+
+#: views/certificates.php:1
+msgid "Manage Certificates"
+msgstr ""
+
+#: views/certificates.php:8
+msgid ""
+"Certificates can optionally be assigned to users upon completion of courses."
+msgstr ""
+
+#: views/certificates.php:10
+msgid "Create new certificate"
+msgstr ""
+
+#: views/certificates.php:14
+msgid "Certificate title"
+msgstr ""
+
+#: views/certificates.php:14 views/certificates.php:16 views/homeworks.php:28
+#: views/homeworks.php:30
+msgid "Edit"
+msgstr ""
+
+#: views/certificates.php:20
+msgid "You have not added any certificates yet."
 msgstr ""
 
 #: views/course-meta-box.php:1
@@ -307,10 +415,6 @@ msgstr ""
 msgid "Delete Assignment"
 msgstr ""
 
-#: views/homework.php:14 views/manage-students.php:63
-msgid "Are you sure?"
-msgstr ""
-
 #: views/homework.php:24
 msgid "Please enter at least title for the assignment"
 msgstr ""
@@ -338,10 +442,6 @@ msgstr ""
 
 #: views/homeworks.php:28
 msgid "Title"
-msgstr ""
-
-#: views/homeworks.php:28 views/homeworks.php:30
-msgid "Edit"
 msgstr ""
 
 #: views/homeworks.php:33
@@ -460,6 +560,12 @@ msgstr ""
 msgid "- Any grade -"
 msgstr ""
 
+#: views/lesson-meta-box.php:84
+msgid ""
+"If you install %s or %s you can also require certain tests and quizzes to be "
+"completed."
+msgstr ""
+
 #: views/manage-students.php:1
 msgid "Student Enrollments"
 msgstr ""
@@ -509,6 +615,22 @@ msgstr ""
 
 #: views/manage-students.php:55
 msgid "reject"
+msgstr ""
+
+#: views/my-certificates.php:4
+msgid "You have not achieved any certificates yet."
+msgstr ""
+
+#: views/my-certificates.php:10
+msgid "Certificate"
+msgstr ""
+
+#: views/my-certificates.php:10
+msgid "Date"
+msgstr ""
+
+#: views/my-certificates.php:10
+msgid "Completed course(s)"
 msgstr ""
 
 #: views/my_courses.php:4

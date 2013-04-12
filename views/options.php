@@ -32,7 +32,7 @@
 	<div class="postbox wp-admin namaste-box">
 		<h2><?php _e('Exam/Test Related Settings')?></h2>
 		
-		<p><?php _e('Namaste LMS utilizes the power of existing Wordpress plugins to handle exams, tests and quizzes. At this moment it can connect with two plugins:', 'namaste')?> <a href="http://wordpress.org/extend/plugins/watu/">Watu</a> <?php _e('(Free) and ', 'namaste')?> <a href="http://calendarscripts.info/watupro/">WatuPRO</a> <?php _e('(Premium)', 'namaste')?></p>
+		<p><?php _e('Namaste LMS utilizes the power of existing Wordpress plugins to handle exams, tests and quizzes. At this moment it can connect with two plugins:', 'namaste')?> <a href="http://wordpress.org/extend/plugins/watu/">Watu</a> <?php _e('(Free) and ', 'namaste')?> <a href="http://calendarscripts.info/watupro/?r=namaste">WatuPRO</a> <?php _e('(Premium)', 'namaste')?></p>
 		
 		<p><?php _e('If you have any of these plugins installed and activated, please choose which one to use for handling tests below:', 'namaste')?></p>
 		
