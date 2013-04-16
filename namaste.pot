@@ -2,15 +2,19 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 0.8\n"
+"Project-Id-Version: Namaste! LMS 0.8.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-04-12 14:57:54+00:00\n"
+"POT-Creation-Date: 2013-04-16 15:12:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: controllers/ajax.php:33
+msgid "You are not allowed to view this"
+msgstr ""
 
 #: controllers/certificates.php:44
 msgid "Certificate added"
@@ -149,24 +153,24 @@ msgstr ""
 msgid "Completed on"
 msgstr ""
 
-#: models/lesson-model.php:219 views/manage-students.php:50
+#: models/lesson-model.php:220 views/manage-students.php:50
 #: views/student-lessons.php:38
 msgid "In progress"
 msgstr ""
 
-#: models/lesson-model.php:234
+#: models/lesson-model.php:235
 msgid "You need to be logged in to access this lesson."
 msgstr ""
 
-#: models/lesson-model.php:242
+#: models/lesson-model.php:243
 msgid "In order to see this lesson you first have to be enrolled in the course"
 msgstr ""
 
-#: models/lesson-model.php:261
+#: models/lesson-model.php:262
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.8)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.8.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:135
 msgid "Namaste! LMS"
@@ -480,7 +484,7 @@ msgstr ""
 msgid "Solutions"
 msgstr ""
 
-#: views/lesson-homeworks.php:16
+#: views/lesson-homeworks.php:16 views/lesson-homeworks.php:40
 msgid "Notes"
 msgstr ""
 
@@ -566,6 +570,28 @@ msgid ""
 "completed."
 msgstr ""
 
+#: views/lesson-todo.php:1
+msgid "'s todo items in lesson"
+msgstr ""
+
+#: views/lesson-todo.php:6
+msgid "To-do Assignments:"
+msgstr ""
+
+#: views/lesson-todo.php:17
+msgid "To-do Test/Exam:"
+msgstr ""
+
+#: views/lesson-todo.php:20
+msgid "Manual manager approval is also required to complete this lesson."
+msgstr ""
+
+#: views/lesson-todo.php:22
+msgid ""
+"All the requirements are completed. Maybe a manager has set this \"In "
+"progress\" status manually."
+msgstr ""
+
 #: views/manage-students.php:1
 msgid "Student Enrollments"
 msgstr ""
@@ -615,6 +641,10 @@ msgstr ""
 
 #: views/manage-students.php:55
 msgid "reject"
+msgstr ""
+
+#: views/manage-students.php:70 views/student-lessons.php:52
+msgid "Lesson progress"
 msgstr ""
 
 #: views/my-certificates.php:4
@@ -777,6 +807,10 @@ msgstr ""
 
 #: views/student-lessons.php:24 views/student-lessons.php:28
 msgid "None"
+msgstr ""
+
+#: views/student-lessons.php:41
+msgid "[todo]"
 msgstr ""
 
 #: views/submit-solution.php:1

@@ -47,7 +47,7 @@ endif;?>
 			<tr><td><a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $_GET['course_id']?>&student_id=<?php echo $student->ID?>"><?php echo $student->user_login?></td>
 			<?php foreach($lessons as $lesson):?>
 				<td><?php if(in_array($lesson->ID, $student->completed_lessons)): _e('Completed', 'namaste');
-				elseif(in_array($lesson->ID, $student->incomplete_lessons)): _e('In progress', 'namaste');
+				elseif(in_array($lesson->ID, $student->incomplete_lessons)): echo "<a href='#' onclick='namasteInProgress(".$lesson->ID.", ".$student->ID."); return false;'>".__('In progress', 'namaste')."</a>";
 				else: _e('Not started', 'namaste'); endif;?></td>
 			<?php endforeach;?>		
 			<td><?php echo $student->namaste_status;
@@ -64,5 +64,11 @@ function namasteConfirmStatus(status, id) {
 	
 	window.location="admin.php?page=namaste_students&course_id=<?php echo $_GET['course_id']?>&change_status=1&status="+status	
 		+ "&student_id="+id;	
+}
+
+function namasteInProgress(lessonID, studentID) {
+	tb_show("<?php _e('Lesson progress', 'namaste')?>", 
+		'<?php echo admin_url("admin-ajax.php?action=namaste_ajax&type=lesson_progress")?>&lesson_id=' + lessonID + 
+		'&student_id=' + studentID);
 }
 </script>

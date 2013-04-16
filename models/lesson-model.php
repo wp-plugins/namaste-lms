@@ -216,7 +216,8 @@ class NamasteLMSLessonModel {
 					$lessons[$cnt]->statuscode = 1;
 				}
 				else {
-					$lessons[$cnt]->status = __('In progress', 'namaste');
+					// in progress
+					$lessons[$cnt]->status = "<a href='#' onclick='namasteInProgress(".$lesson->ID.", ".$student_id.");return false;'>".__('In progress', 'namaste')."</a>";
 					$lessons[$cnt]->statuscode = 0;
 				}					
 			} // end defining status
@@ -287,6 +288,8 @@ class NamasteLMSLessonModel {
 		// think about how to reduce these queries a little bit in the future
 		if(self::is_ready($post->ID, $user_ID)) self::complete($post->ID, $user_ID);		
 				
+		do_action('namaste_accessed_lesson', $user_ID, $post->ID);			
+				
 		return $content;
 	} // end access_lesson
 	
@@ -316,52 +319,23 @@ class NamasteLMSLessonModel {
 		// Homeworks check
 		$required_homeworks = get_post_meta($lesson_id, 'namaste_required_homeworks', true);	
 		if(!is_array($required_homeworks)) $required_homeworks = array();
+		
 		if(!empty($required_homeworks)) {
 			// select all completed homeworks of this student and see if all required are satisfied
 			$completed_homeworks = $wpdb->get_results($wpdb->prepare("SELECT DISTINCT(homework_id) FROM ".
-				NAMASTE_STUDENT_HOMEWORKS." WHERE student_id=%d AND status='completed'", $student_id));
+				NAMASTE_STUDENT_HOMEWORKS." WHERE student_id=%d AND status='approved'", $student_id));
 			$ids = array(0);
+			
 			foreach($completed_homeworks as $hw) $ids[] = $hw->homework_id;
 			
 			// if just one is not completed, return false
-			foreach($required_homeworks as $homework) {
-				if(!in_array($homework->id, $ids)) return false;
+			foreach($required_homeworks as $required_id) {				
+				if(!in_array($required_id, $ids)) return false;
 			}	
 		}
 		
 		// Exam check
-		$use_exams = get_option('namaste_use_exams');
-		if(!empty($use_exams)) {
-			$required_exam = get_post_meta($lesson_id, 'namaste_required_exam', true);
-			$required_grade = get_post_meta($lesson_id, 'namaste_required_grade', true);
-			
-			if(!empty($required_exam)) {
-				// see if there is taking record at all
-				if($use_exams == 'watu') {
-					$takings = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}watu_takings 
-						WHERE user_id=%d AND exam_id=%d",$student_id, $required_exam));
-				}
-				if($use_exams == 'watupro') {
-					$takings = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}watupro_taken_exams 
-						WHERE user_id=%d AND exam_id=%d",$student_id, $required_exam));						
-				}
-				
-				if(empty($takings)) return false; // no takings at all, exam is not taken
-			}
-			
-			if(!empty($required_grade)) {
-				// let's make sure they have achieved the grade
-				$achieved_grade = false;
-				foreach($takings as $taking) {
-					if(preg_match("/^".$required_grade."<p/", $taking->result) or (trim($required_grade) == trim($taking->result))) {
-						$achieved_grade = true;
-						break;
-					}
-				}
-				
-				if(!$achieved_grade) return false;
-			}
-		}
+		if(!NamasteLMSLessonModel::todo_exam($lesson_id, $student_id, 'boolean')) return false;
 		
 		return true;
 	}
@@ -401,5 +375,108 @@ class NamasteLMSLessonModel {
 			WHERE lesson_id=%d AND student_id=%d AND status='1'", $lesson_id, $student_id));
 			
 		return $id;		
+	}
+	
+	// see what is to-do in a lesson - used when lesson is "in progress"
+	// order of checks:
+	// 1. homeworks required
+	// 2. tests that must be completed
+	// 3. admin approval
+	static function todo($lesson_id, $student_id) {
+		global $wpdb;
+		
+		// todo homeworks
+		$required_homeworks = get_post_meta($lesson_id, 'namaste_required_homeworks', true);	
+		if(!is_array($required_homeworks)) $required_homeworks = array();
+		if(!empty($required_homeworks)) {
+			// select all completed homeworks of this student and see if all required are satisfied
+			$completed_homeworks = $wpdb->get_results($wpdb->prepare("SELECT DISTINCT(homework_id) FROM ".
+				NAMASTE_STUDENT_HOMEWORKS." WHERE student_id=%d AND status='approved'", $student_id));
+			$ids = array(0);
+			foreach($completed_homeworks as $hw) $ids[] = $hw->homework_id;			
+			$todo_homeworks = array();
+			
+			foreach($required_homeworks as $required_id) {
+				if(!in_array($required_id, $ids)) {
+					$homework = $wpdb -> get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORKS." WHERE id=%d", $required_id));
+					$todo_homeworks[] = $homework;
+				}
+			}			
+		}
+		
+		
+		// todo exam
+		$use_exams = get_option('namaste_use_exams');
+		$todo_exam = NamasteLMSLessonModel::todo_exam($lesson_id, $student_id, 'id');
+		
+		if(!empty($todo_exam)) {
+			if($use_exams == 'watu') {
+				$todo_exam = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}watu_master WHERE ID=%d", $todo_exam));
+			}
+			
+			if($use_exams == 'watupro') {
+				$todo_exam = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}watupro_master WHERE ID=%d", $todo_exam));
+			}
+		}
+		
+		// admin approval?
+		$todo_admin_approval = false;
+		$lesson_completion = get_post_meta($lesson_id, 'namaste_completion', true);	
+		if(is_array($lesson_completion) and in_array('admin_approval', $lesson_completion)) $todo_admin_approval = true;
+		
+		// return todo
+		return array("todo_homeworks" => $todo_homeworks, "todo_exam" => $todo_exam, "todo_admin_approval" => $todo_admin_approval);
+	}
+	
+	// small helper that returns either todo exams or just boolean whether there are any
+	static function todo_exam($lesson_id, $student_id, $mode = 'boolean') {
+		global $wpdb;
+		
+		$todo_exam = null;
+		
+		$use_exams = get_option('namaste_use_exams');
+		if(!empty($use_exams)) {
+			$required_exam = get_post_meta($lesson_id, 'namaste_required_exam', true);
+			$required_grade = get_post_meta($lesson_id, 'namaste_required_grade', true);
+			
+			if(!empty($required_exam)) {
+				// see if there is taking record at all
+				if($use_exams == 'watu') {
+					$takings = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}watu_takings 
+						WHERE user_id=%d AND exam_id=%d",$student_id, $required_exam));
+				}
+				if($use_exams == 'watupro') {
+					$takings = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}watupro_taken_exams 
+						WHERE user_id=%d AND exam_id=%d",$student_id, $required_exam));						
+				}
+				
+				if(empty($takings)) {
+					if($mode == 'boolean') return false; // no takings at all, exam is not taken
+					
+					// else add in todo
+					$todo_exam = $required_exam;
+				}
+			}
+			
+			if(!empty($required_grade) and empty($todo_exam)) {
+				// let's make sure they have achieved the grade
+				$achieved_grade = false;
+				foreach($takings as $taking) {
+					if(preg_match("/^".$required_grade."<p/", $taking->result) or (trim($required_grade) == trim($taking->result))) {
+						$achieved_grade = true;
+						break;
+					}
+				}
+				
+				if(!$achieved_grade) {
+					if($mode == 'boolean') return false;
+					
+					$todo_exam = $required_exam;
+				}
+			}
+		}
+		
+		if($mode == 'boolean') return true;
+		else return $todo_exam;
 	}
 }

@@ -55,6 +55,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 0.8.2 = 
+- Important bug fixes on required homeworks
+- "In progress" popup showing what does a student has to do to complete a course
+
 = Version 0.8 =
 - Admin can create/edit personalized certificates
 - Users get certificates assigned to them upon successfully completing courses

@@ -32,16 +32,25 @@
 			<?php endif;?>			
 			<td><?php if($student->ID == $user_ID): echo $lesson->status;
 			else: ?>
-			<form method="post">
-			<select name="status" onchange="this.form.submit();">
-				<option value="-1"<?php if($lesson->statuscode == -1) echo ' selected'?>><?php _e('Not started', 'namaste')?></option>	
-				<option value="0"<?php if($lesson->statuscode == 0) echo ' selected'?>><?php _e('In progress', 'namaste')?></option>			
-				<option value="1"<?php if($lesson->statuscode == 1) echo ' selected'?>><?php _e('Completed', 'namaste')?></option>	
-			</select>
-			<input type="hidden" name="lesson_id" value="<?php echo $lesson->ID?>">
-			<input type="hidden" name="change_status" value="1">
-			</form>
+				<form method="post">
+				<select name="status" onchange="this.form.submit();">
+					<option value="-1"<?php if($lesson->statuscode == -1) echo ' selected'?>><?php _e('Not started', 'namaste')?></option>	
+					<option value="0"<?php if($lesson->statuscode == 0) echo ' selected'?>><?php _e('In progress', 'namaste')?></option>			
+					<option value="1"<?php if($lesson->statuscode == 1) echo ' selected'?>><?php _e('Completed', 'namaste')?></option>	
+				</select>
+				<?php if($lesson->statuscode == 0): echo " <a href='#' onclick='namasteInProgress(".$lesson->ID.",".$student->ID.");return false;'>".__('[todo]', 'namaste').'</a>'; endif;?>
+				<input type="hidden" name="lesson_id" value="<?php echo $lesson->ID?>">
+				<input type="hidden" name="change_status" value="1">
+				</form>
 			<?php endif;?></td></tr>
 		<?php endforeach; ?>	
 	</table>
 </div>
+
+<script type="text/javascript" >
+function namasteInProgress(lessonID, studentID) {
+	tb_show("<?php _e('Lesson progress', 'namaste')?>", 
+		'<?php echo admin_url("admin-ajax.php?action=namaste_ajax&type=lesson_progress")?>&lesson_id=' + lessonID + 
+		'&student_id=' + studentID);
+}
+</script>

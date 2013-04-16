@@ -26,6 +26,22 @@ function namaste_ajax() {
 				
 			require(NAMASTE_PATH."/views/homework-notes.php");	
 		break;
+		
+		// show course progress
+		case 'lesson_progress':
+			// if i am not manager I can see only my own todo
+			if(!current_user_can('namaste_manage') and $user_ID != $_GET['student_id']) die(__("You are not allowed to view this", 'namaste'));
+			
+			// select lesson and student
+			$lesson = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->posts} WHERE ID=%d", $_GET['lesson_id']));
+			$student = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->users} WHERE ID=%d", $_GET['student_id']));		
+			
+			$todo = NamasteLMSLessonModel :: todo($_GET['lesson_id'], $_GET['student_id']);
+			
+			if(empty($todo['todo_homeworks']) and empty($todo['todo_exam']) and empty($todo['todo_admin_approval'])) $todo['nothing'] = true;
+			
+			require(NAMASTE_PATH."/views/lesson-todo.php");		
+		break;
 	}
 	exit;
 }

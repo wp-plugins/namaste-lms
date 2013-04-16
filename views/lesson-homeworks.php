@@ -37,7 +37,7 @@ endif;?>
 
 <script type="text/javascript" >
 Namaste.loadNotes = function(homeworkID, studentID) {
-	tb_show("Taking Details", 
+	tb_show("<?php _e('Notes', 'namaste')?>", 
 		'<?php echo admin_url("admin-ajax.php?action=namaste_ajax&type=load_notes")?>&homework_id=' + homeworkID + 
 		'&student_id=' + studentID);
 }
