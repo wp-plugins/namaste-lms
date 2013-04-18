@@ -26,3 +26,13 @@
 .namaste-dashed {
 	border: 1px dashed black;
 }
+
+/* for completed/incomplete lessons and maybe other items */
+.namaste-completed a {
+	color:green;
+}
+
+.namaste-incomplete a {
+	color:red;
+	font-weight:bold;
+}

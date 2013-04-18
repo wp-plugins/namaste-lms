@@ -84,3 +84,7 @@ endif;?>
 <?php else: printf('<p style="font-weight:bold;">'.__('If you install %s or %s you can also require certain tests and quizzes to be completed.', 'namaste'), 
 	"<a href='http://wordpress.org/extend/plugins/watu/' target='_blank'>Watu</a>", "<a href='http://calendarscripts.info/watupro/' target='_blank'>WatuPRO</a>").'</p>';
 endif;?>
+
+<h4><?php _e('Shortcodes', 'namaste')?></h4>
+
+<p><?php _e('You can use the shortcode', 'namaste')?> <strong>[namaste-todo]</strong> <?php _e('inside the lesson content to display what the student needs to do to complete the lesson.', 'namaste')?></p>

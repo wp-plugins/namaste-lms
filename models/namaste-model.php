@@ -199,6 +199,9 @@ class NamasteLMS {
 		define( 'NAMASTE_STUDENT_CERTIFICATES', $wpdb->prefix. "namaste_student_certificates");
 		
 		define( 'NAMASTE_VERSION', get_option('namaste_version'));
+		
+		// shortcodes
+		add_shortcode('namaste-todo', array("NamasteLMSShortcodesController", 'todo'));
 	}
 	
 	// handle Namaste vars in the request

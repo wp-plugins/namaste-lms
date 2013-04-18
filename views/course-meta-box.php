@@ -16,3 +16,7 @@
 		<?php endforeach;?>
 	</ul>
 <?php endif;?>
+
+<h4><?php _e('Shortcodes', 'namaste')?></h4>
+
+<p><?php _e('You can use the shortcode', 'namaste')?> <strong>[namaste-todo]</strong> <?php _e('inside the course content to display what the student needs to do to complete the course.', 'namaste')?></p>

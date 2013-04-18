@@ -103,7 +103,7 @@ class NamasteLMSCourseModel {
 		$enrolled = false;
 		if(is_user_logged_in()) {
 			$enrolled = $wpdb -> get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES.
-			" WHERE user_id = %d AND course_id = %d AND status = 'enrolled'", $user_ID, $post->ID));
+			" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $post->ID));
 		}	
 		
 		if($enrolled) $text = __('You are enrolled in this course. Check "My courses" link in your dashboard to see the lessons and to-do list', 'namaste');
@@ -143,5 +143,22 @@ class NamasteLMSCourseModel {
 		
 		// add custom action
 		do_action('namaste_completed_course');	
+	}
+	
+	// returns all the required lessons along with mark whether they are completed or not
+	function required_lessons($course_id, $student_id) {
+		global $wpdb;
+		
+		$required_lessons_ids = get_post_meta($course_id, 'namaste_required_lessons', true);	
+		if(!is_array($required_lessons_ids)) return array();
+		
+		$required_lessons = $wpdb->get_results("SELECT * FROM {$wpdb->posts} 
+			WHERE ID IN (".implode(",", $required_lessons_ids).") ORDER BY ID");
+		
+		foreach($required_lessons as $cnt => $lesson) {
+			$required_lessons[$cnt]->namaste_completed = 0;
+			if(NamasteLMSLessonModel::is_completed($lesson->ID, $student_id)) $required_lessons[$cnt]->namaste_completed = 1;
+		}	
+		return $required_lessons;
 	}
 }

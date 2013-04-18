@@ -1,4 +1,6 @@
-<h2><?php echo $student->user_login?><?php _e("'s todo items in lesson", 'namaste')?> "<?php echo $lesson->post_title?>"</h2>
+<?php if(!empty($student) and !empty($lesson)):?>
+	<h2><?php echo $student->user_login?><?php _e("'s todo items in lesson", 'namaste')?> "<?php echo $lesson->post_title?>"</h2>
+<?php endif;?>	
 
 <div class="wrap">
 	<ol>

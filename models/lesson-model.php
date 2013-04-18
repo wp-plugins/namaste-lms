@@ -369,8 +369,7 @@ class NamasteLMSLessonModel {
 	
 	// checks if lesson is completed
 	static function is_completed($lesson_id, $student_id) {
-		global $wpdb;
-		
+		global $wpdb;		
 		$id = $wpdb->get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_LESSONS." 
 			WHERE lesson_id=%d AND student_id=%d AND status='1'", $lesson_id, $student_id));
 			
@@ -424,8 +423,12 @@ class NamasteLMSLessonModel {
 		$lesson_completion = get_post_meta($lesson_id, 'namaste_completion', true);	
 		if(is_array($lesson_completion) and in_array('admin_approval', $lesson_completion)) $todo_admin_approval = true;
 		
+		$nothing = false;
+		if(empty($todo_homeworks) and empty($todo_exam) and empty($todo_admin_approval)) $nothing = true;
+		
 		// return todo
-		return array("todo_homeworks" => $todo_homeworks, "todo_exam" => $todo_exam, "todo_admin_approval" => $todo_admin_approval);
+		return array("todo_homeworks" => $todo_homeworks, "todo_exam" => $todo_exam, 
+			"todo_admin_approval" => $todo_admin_approval, "todo_nothing"=>$nothing);
 	}
 	
 	// small helper that returns either todo exams or just boolean whether there are any
