@@ -234,6 +234,9 @@ class NamasteLMSLessonModel {
 		
 		if(!is_user_logged_in()) return __('You need to be logged in to access this lesson.', 'namaste');
 		
+		// manager will always access lesson
+		if(current_user_can('namaste_manage')) return $content;
+		
 		// enrolled in the course?
 		$course_id = get_post_meta($post->ID, 'namaste_course', true);
 		$course = $_course -> select($course_id);
