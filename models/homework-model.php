@@ -17,7 +17,11 @@ class NamasteLMSHomeworkModel {
 						$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HOMEWORKS." SET
 						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d",
 						$_GET['course_id'], $_GET['lesson_id'], $_POST['title'], 
-						$_POST['description'], $_POST['accept_files']));					
+						$_POST['description'], $_POST['accept_files']));	
+						
+						$id = $wpdb->insert_id;		
+						
+						do_action('namaste_add_homework', $id);		
 					
 						$_SESSION['namaste_flash'] = __('Homework added', 'namaste');
 						namaste_redirect("admin.php?page=namaste_homeworks&course_id=$_GET[course_id]&lesson_id=$_GET[lesson_id]");
@@ -39,7 +43,9 @@ class NamasteLMSHomeworkModel {
 						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d
 						WHERE id=%d",
 						$_GET['course_id'], $_GET['lesson_id'], $_POST['title'], 
-						$_POST['description'], $_POST['accept_files'], $_GET['id']));					
+						$_POST['description'], $_POST['accept_files'], $_GET['id']));		
+						
+						do_action('namaste_save_homework', $_GET['id']);					
 					
 						$_SESSION['namaste_flash'] = __('Homework saved', 'namaste');
 						namaste_redirect("admin.php?page=namaste_homeworks&course_id=$_GET[course_id]&lesson_id=$_GET[lesson_id]");

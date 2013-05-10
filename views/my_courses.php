@@ -20,16 +20,20 @@ endif;?>
 			<td><?php if(empty($course->status) or $course->status == 'pending'): 
 				_e('Enroll to get access to the lessons', 'namaste');
 				else: ?>
-					<p><a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $course->post_id?>&student_id=<?php echo $user_ID?>"><?php _e('View lessons', 'namaste')?></a></p>
+					<a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $course->post_id?>&student_id=<?php echo $user_ID?>"><?php _e('View lessons', 'namaste')?></a>
 				<?php endif;?></td>
 			<td>
-			<?php if(empty($course->status)):?>
+			<?php if(empty($course->status)): // not enrolled
+				if($course->fee and !$is_manager):
+					echo "<strong><a href='#' onclick='enrollCourse(".$course->post_id.", ".$user_ID.");return false;'>".__('Enroll for', 'namaste').' '.$currency." ".$course->fee."</a></strong>";
+				else:?>
 				<form method="post">
 					<input type="submit" value="<?php _e('Click to Enroll', 'namaste')?>">
 					<input type="hidden" name="enroll" value="1">
 					<input type="hidden" name="course_id" value="<?php echo $course->post_id?>">
-				</form>
-			<?php else:
+				</form>				
+			<?php	endif;  
+			else: // enrolled
 				if($course->status == 'pending'): _e('Pending enrollment', 'namaste'); endif;
 				if($course->status == 'rejected'): _e('Application rejected', 'namaste'); endif;
 				if($course->status == 'enrolled'): printf(__('Enrolled on %s', 'namaste'), 
@@ -41,3 +45,11 @@ endif;?>
 		<?php endforeach;?>
 	</table>
 </div>
+
+<script type="text/javascript" >
+function enrollCourse(courseID, studentID) {
+	tb_show("<?php _e('Payment for course', 'namaste')?>", 
+		'<?php echo admin_url("admin-ajax.php?action=namaste_ajax&type=course_payment")?>&course_id=' + courseID + 
+		'&student_id=' + studentID);
+}
+</script>

@@ -45,6 +45,8 @@
 			<?php endif;?></td></tr>
 		<?php endforeach; ?>	
 	</table>
+	
+	<?php do_action('namaste_course_progress_view', $_GET['student_id'], $_GET['course_id'])?>
 </div>
 
 <script type="text/javascript" >

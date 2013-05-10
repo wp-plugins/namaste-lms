@@ -6,6 +6,7 @@
 		<div><label><?php _e('Description/Requirements:')?></label>
 		<?php echo wp_editor(@$homework->description, 'description');?></div>
 		<div><input type="checkbox" name="accept_files" value="1" <?php if(!empty($homework->accept_files)) echo 'checked'?>> <?php _e('Accept file upload as solution')?></div>
+		<?php do_action('namaste_homework_form', @$homework);?>
 		<div>
 			<?php if(empty($homework->id)):?>
 				<input type="submit" value="<?php _e('Create Assignment', 'namaste')?>" name="ok">

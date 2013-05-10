@@ -62,6 +62,9 @@ class NamasteLMSCourseModel {
 			// enrollment - for now free or admin approved, in the future also paid
 			$enroll_mode = get_post_meta($post->ID, 'namaste_enroll_mode', true);
 			
+			$fee = get_post_meta($post->ID, 'namaste_fee', true);
+			$currency = get_option('namaste_currency');
+			
 			wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );
 			require(NAMASTE_PATH.'/views/course-meta-box.php');  
 	}
@@ -76,6 +79,7 @@ class NamasteLMSCourseModel {
 			
 			update_post_meta($post_id, "namaste_enroll_mode", $_POST['namaste_enroll_mode']);
 			update_post_meta($post_id, "namaste_required_lessons", $_POST['namaste_required_lessons']);			
+			update_post_meta($post_id, "namaste_fee", $_POST['namaste_fee']);
 	}	
 	
 	// select existing courses

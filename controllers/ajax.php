@@ -40,6 +40,25 @@ function namaste_ajax() {
 			
 			require(NAMASTE_PATH."/views/lesson-todo.php");		
 		break;
+		
+		// display payment screen for a course
+		case 'course_payment':
+			// select course
+			$course = $wpdb -> get_row( $wpdb->prepare("SELECT * FROM {$wpdb->posts} WHERE ID=%d", $_GET['course_id']));
+			$fee = get_post_meta($course->ID, 'namaste_fee', true);
+			$currency = get_option('namaste_currency');
+			$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
+			
+			if($accept_other_payment_methods) {
+				$other_payment_methods = stripslashes(get_option('namaste_other_payment_methods'));
+				$other_payment_methods = str_replace('{{course-id}}', $course->ID, $other_payment_methods);
+				$other_payment_methods = str_replace('{{course-name}}', $course->post_title, $other_payment_methods);
+				$other_payment_methods = str_replace('{{user-id}}', $_GET['student_id'], $other_payment_methods);
+				$other_payment_methods = str_replace('{{amount}}', $_GET['fee'], $other_payment_methods);
+			}
+			
+			require(NAMASTE_PATH."/views/course-pay.php");	
+		break;
 	}
 	exit;
 }

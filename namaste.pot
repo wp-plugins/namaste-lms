@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 0.8.2\n"
+"Project-Id-Version: Namaste! LMS 0.8.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-04-16 15:12:24+00:00\n"
+"POT-Creation-Date: 2013-05-10 15:19:04+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,17 +32,17 @@ msgstr ""
 msgid "You are not allowed to access this certificate"
 msgstr ""
 
-#: controllers/courses.php:23
+#: controllers/courses.php:32
 msgid "You enrolled in \"%s\""
 msgstr ""
 
-#: controllers/courses.php:24
+#: controllers/courses.php:33
 msgid ""
 "Thank you for your interest in enrolling this course. A manager will review "
 "your application."
 msgstr ""
 
-#: controllers/courses.php:26
+#: controllers/courses.php:35
 msgid "You have already enrolled in this course"
 msgstr ""
 
@@ -60,6 +60,19 @@ msgstr ""
 
 #: controllers/homeworks.php:74
 msgid "You are not allowed to do this"
+msgstr ""
+
+#: controllers/shortcodes.php:14
+msgid "This lesson has been completed."
+msgstr ""
+
+#: controllers/shortcodes.php:31 views/manage-students.php:49
+#: views/student-lessons.php:39
+msgid "Completed"
+msgstr ""
+
+#: controllers/shortcodes.php:32
+msgid "Not completed"
 msgstr ""
 
 #: models/course-model.php:7
@@ -87,31 +100,31 @@ msgstr ""
 msgid "Namaste! Settings"
 msgstr ""
 
-#: models/course-model.php:109
+#: models/course-model.php:113
 msgid ""
 "You are enrolled in this course. Check \"My courses\" link in your dashboard "
 "to see the lessons and to-do list"
 msgstr ""
 
-#: models/course-model.php:110
+#: models/course-model.php:114
 msgid ""
 "You can enroll in this course from your student dashboard. You need to be "
 "logged in."
 msgstr ""
 
-#: models/homework-model.php:22
+#: models/homework-model.php:26
 msgid "Homework added"
 msgstr ""
 
-#: models/homework-model.php:33
+#: models/homework-model.php:37
 msgid "Homework deleted"
 msgstr ""
 
-#: models/homework-model.php:44
+#: models/homework-model.php:50
 msgid "Homework saved"
 msgstr ""
 
-#: models/homework-model.php:81
+#: models/homework-model.php:87
 msgid "You are not allowed to see this page"
 msgstr ""
 
@@ -162,15 +175,15 @@ msgstr ""
 msgid "You need to be logged in to access this lesson."
 msgstr ""
 
-#: models/lesson-model.php:243
+#: models/lesson-model.php:246
 msgid "In order to see this lesson you first have to be enrolled in the course"
 msgstr ""
 
-#: models/lesson-model.php:262
+#: models/lesson-model.php:265
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.8.2)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.8.6)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:135
 msgid "Namaste! LMS"
@@ -204,7 +217,7 @@ msgstr ""
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:146 views/lesson-homeworks.php:26
+#: models/namaste-model.php:146 views/lesson-homeworks.php:28
 msgid "Submit solution"
 msgstr ""
 
@@ -320,7 +333,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: views/certificate-form.php:38 views/homework.php:14
+#: views/certificate-form.php:38 views/homework.php:15
 #: views/manage-students.php:63
 msgid "Are you sure?"
 msgstr ""
@@ -347,7 +360,7 @@ msgid "Certificate title"
 msgstr ""
 
 #: views/certificates.php:14 views/certificates.php:16 views/homeworks.php:28
-#: views/homeworks.php:30
+#: views/homeworks.php:32
 msgid "Edit"
 msgstr ""
 
@@ -367,20 +380,52 @@ msgstr ""
 msgid "Admin manually approves/enrolls students in courses"
 msgstr ""
 
-#: views/course-meta-box.php:7
+#: views/course-meta-box.php:8
+msgid "Students need to pay a fee of"
+msgstr ""
+
+#: views/course-meta-box.php:8
+msgid "to enroll this course. (Leave it 0 for no fee.)"
+msgstr ""
+
+#: views/course-meta-box.php:11
 msgid "Course completeness"
 msgstr ""
 
-#: views/course-meta-box.php:10
+#: views/course-meta-box.php:14
 msgid ""
 "This course has no lessons assigned so it can never be completed. Please "
 "create and assign some lessons to this course."
 msgstr ""
 
-#: views/course-meta-box.php:12
+#: views/course-meta-box.php:16
 msgid ""
 "The following lessons must be completed in order to complete this course. "
 "Please select at least one."
+msgstr ""
+
+#: views/course-meta-box.php:24 views/lesson-meta-box.php:88
+msgid "Shortcodes"
+msgstr ""
+
+#: views/course-meta-box.php:26 views/lesson-meta-box.php:90
+msgid "You can use the shortcode"
+msgstr ""
+
+#: views/course-meta-box.php:26
+msgid ""
+"inside the course content to display what the student needs to do to "
+"complete the course."
+msgstr ""
+
+#: views/course-pay.php:2
+msgid "Enrolling in course"
+msgstr ""
+
+#: views/course-pay.php:4
+msgid ""
+"This is a premium course. There is a fee of <strong>%s %d</strong> to enroll "
+"it."
 msgstr ""
 
 #: views/homework-notes.php:1
@@ -407,19 +452,19 @@ msgstr ""
 msgid "Accept file upload as solution"
 msgstr ""
 
-#: views/homework.php:11
+#: views/homework.php:12
 msgid "Create Assignment"
 msgstr ""
 
-#: views/homework.php:13
+#: views/homework.php:14
 msgid "Save Assignment"
 msgstr ""
 
-#: views/homework.php:14
+#: views/homework.php:15
 msgid "Delete Assignment"
 msgstr ""
 
-#: views/homework.php:24
+#: views/homework.php:25
 msgid "Please enter at least title for the assignment"
 msgstr ""
 
@@ -432,11 +477,11 @@ msgstr ""
 msgid "Select course:"
 msgstr ""
 
-#: views/homeworks.php:6 views/homeworks.php:50
+#: views/homeworks.php:6 views/homeworks.php:53
 msgid "- please select -"
 msgstr ""
 
-#: views/homeworks.php:14 views/homeworks.php:49
+#: views/homeworks.php:14 views/homeworks.php:52
 msgid "Select lesson:"
 msgstr ""
 
@@ -448,15 +493,15 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: views/homeworks.php:33
+#: views/homeworks.php:35
 msgid "solutions"
 msgstr ""
 
-#: views/homeworks.php:34
+#: views/homeworks.php:36
 msgid "No solutions"
 msgstr ""
 
-#: views/homeworks.php:38
+#: views/homeworks.php:41
 msgid "You have to select course and lesson before you can create assignments"
 msgstr ""
 
@@ -484,23 +529,23 @@ msgstr ""
 msgid "Solutions"
 msgstr ""
 
-#: views/lesson-homeworks.php:16 views/lesson-homeworks.php:40
+#: views/lesson-homeworks.php:16 views/lesson-homeworks.php:43
 msgid "Notes"
 msgstr ""
 
-#: views/lesson-homeworks.php:20 views/lesson-homeworks.php:29
+#: views/lesson-homeworks.php:22 views/lesson-homeworks.php:31
 msgid "None yet."
 msgstr ""
 
-#: views/lesson-homeworks.php:21
+#: views/lesson-homeworks.php:23
 msgid "%d solutions"
 msgstr ""
 
-#: views/lesson-homeworks.php:24
+#: views/lesson-homeworks.php:26
 msgid "A solution has been accepted and the assignment is completed."
 msgstr ""
 
-#: views/lesson-homeworks.php:33
+#: views/lesson-homeworks.php:35
 msgid "Add note"
 msgstr ""
 
@@ -570,23 +615,29 @@ msgid ""
 "completed."
 msgstr ""
 
-#: views/lesson-todo.php:1
+#: views/lesson-meta-box.php:90
+msgid ""
+"inside the lesson content to display what the student needs to do to "
+"complete the lesson."
+msgstr ""
+
+#: views/lesson-todo.php:2
 msgid "'s todo items in lesson"
 msgstr ""
 
-#: views/lesson-todo.php:6
+#: views/lesson-todo.php:8
 msgid "To-do Assignments:"
 msgstr ""
 
-#: views/lesson-todo.php:17
+#: views/lesson-todo.php:19
 msgid "To-do Test/Exam:"
 msgstr ""
 
-#: views/lesson-todo.php:20
+#: views/lesson-todo.php:22
 msgid "Manual manager approval is also required to complete this lesson."
 msgstr ""
 
-#: views/lesson-todo.php:22
+#: views/lesson-todo.php:24
 msgid ""
 "All the requirements are completed. Maybe a manager has set this \"In "
 "progress\" status manually."
@@ -631,10 +682,6 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: views/manage-students.php:49 views/student-lessons.php:39
-msgid "Completed"
-msgstr ""
-
 #: views/manage-students.php:55
 msgid "approve"
 msgstr ""
@@ -643,7 +690,7 @@ msgstr ""
 msgid "reject"
 msgstr ""
 
-#: views/manage-students.php:70 views/student-lessons.php:52
+#: views/manage-students.php:70 views/student-lessons.php:54
 msgid "Lesson progress"
 msgstr ""
 
@@ -680,34 +727,42 @@ msgid "View lessons"
 msgstr ""
 
 #: views/my_courses.php:28
+msgid "Enroll for"
+msgstr ""
+
+#: views/my_courses.php:31
 msgid "Click to Enroll"
 msgstr ""
 
-#: views/my_courses.php:33
+#: views/my_courses.php:37
 msgid "Pending enrollment"
 msgstr ""
 
-#: views/my_courses.php:34
+#: views/my_courses.php:38
 msgid "Application rejected"
 msgstr ""
 
-#: views/my_courses.php:35
+#: views/my_courses.php:39
 msgid "Enrolled on %s"
 msgstr ""
 
-#: views/my_courses.php:37
+#: views/my_courses.php:41
 msgid "Completed on %s"
 msgstr ""
 
-#: views/options.php:1
+#: views/my_courses.php:51
+msgid "Payment for course"
+msgstr ""
+
+#: views/options.php:2
 msgid "Namaste! LMS Options"
 msgstr ""
 
-#: views/options.php:5
+#: views/options.php:6
 msgid "Wordpress roles with access to the learning material"
 msgstr ""
 
-#: views/options.php:7
+#: views/options.php:8
 msgid ""
 "By default Namaste! LMS creates a role \"student\" which is the only role "
 "allowed to work with the learning material. The idea behind this is to allow "
@@ -716,57 +771,94 @@ msgid ""
 "regarding consuming content, and not creating it."
 msgstr ""
 
-#: views/options.php:15
+#: views/options.php:16
 msgid "Wordpress roles that can administrate the LMS"
 msgstr ""
 
-#: views/options.php:17
+#: views/options.php:18
 msgid ""
 "By default this is only the blog administrator. Here you can enable any of "
 "the other roles as well"
 msgstr ""
 
-#: views/options.php:26
+#: views/options.php:27
 msgid "Save Options"
 msgstr ""
 
-#: views/options.php:33
+#: views/options.php:34
+msgid "Payment Settings"
+msgstr ""
+
+#: views/options.php:36
+msgid "Payment currency:"
+msgstr ""
+
+#: views/options.php:44
+msgid ""
+"Here you can specify payment methods that you will accept to give access to "
+"courses. When a course requires payment, the enrollment (pending or active - "
+"depends on your other course settings) will be entered after the payment is "
+"completed."
+msgstr ""
+
+#: views/options.php:46
+msgid "Accept other payment methods"
+msgstr ""
+
+#: views/options.php:47
+msgid ""
+"This option lets you paste your own button HTML code or other manual "
+"instructions, for example bank wire. These payments will have to be "
+"processed manually unless you can build your own script to verify them."
+msgstr ""
+
+#: views/options.php:50
+msgid ""
+"Enter text or HTML code for payment button(s). You can use the following "
+"variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
+msgstr ""
+
+#: views/options.php:54
+msgid "Save payment settings"
+msgstr ""
+
+#: views/options.php:62
 msgid "Exam/Test Related Settings"
 msgstr ""
 
-#: views/options.php:35
+#: views/options.php:64
 msgid ""
 "Namaste LMS utilizes the power of existing Wordpress plugins to handle "
 "exams, tests and quizzes. At this moment it can connect with two plugins:"
 msgstr ""
 
-#: views/options.php:35
+#: views/options.php:64
 msgid "(Free) and "
 msgstr ""
 
-#: views/options.php:35
+#: views/options.php:64
 msgid "(Premium)"
 msgstr ""
 
-#: views/options.php:37
+#: views/options.php:66
 msgid ""
 "If you have any of these plugins installed and activated, please choose "
 "which one to use for handling tests below:"
 msgstr ""
 
-#: views/options.php:39
+#: views/options.php:68
 msgid "I don not need to create any exams or tests."
 msgstr ""
 
-#: views/options.php:42
+#: views/options.php:71
 msgid "I will create exams with Watu."
 msgstr ""
 
-#: views/options.php:46
+#: views/options.php:75
 msgid "I will create exams with WatuPRO."
 msgstr ""
 
-#: views/options.php:49
+#: views/options.php:78
 msgid "Save Exam Options"
 msgstr ""
 

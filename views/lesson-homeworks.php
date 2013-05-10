@@ -13,7 +13,9 @@ endif;?>
 
 <table class="widefat">
 	<tr><th><?php _e('Assignment title and description', 'namaste')?></th><th><?php _e('Solutions', 'namaste')?></th>
-		<th><?php _e('Notes', 'namaste')?></th></tr>
+		<th><?php _e('Notes', 'namaste')?></th>
+		<?php do_action('namaste_extra_th', 'lesson_homeworks');?>	
+		</tr>
 	<?php foreach($homeworks as $homework):?>
 		<tr><td><h2><?php echo $homework->title?></h2>
 		<?php echo apply_filters('the_content', stripslashes($homework->description))?></td>
@@ -31,7 +33,8 @@ endif;?>
 		<?php endif;?></p>		
 		<?php if($manager_mode):?>
 			<p><a href="admin.php?page=namaste_add_note&lesson_id=<?php echo $lesson->ID?>&student_id=<?php echo $_GET['student_id']?>&homework_id=<?php echo $homework->id?>"><?php _e('Add note', 'namaste')?></a></p>
-		<?php endif;?></td></tr>
+		<?php endif;?></td>
+		<?php do_action('namaste_extra_td', 'lesson_homeworks', $homework);?></tr>
 	<?php endforeach;?>
 </table>
 

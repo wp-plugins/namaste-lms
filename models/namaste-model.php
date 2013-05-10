@@ -252,6 +252,12 @@ class NamasteLMS {
 				update_option('namaste_use_exams', $_POST['use_exams']);
 		}
 		
+		if(!empty($_POST['namaste_payment_options']) and check_admin_referer('save_payment_options', 'nonce_payment_options')) {
+			update_option('namaste_accept_other_payment_methods', $_POST['accept_other_payment_methods']);
+			update_option('namaste_other_payment_methods', $_POST['other_payment_methods']);
+			update_option('namaste_currency', $_POST['currency']);
+		} 
+		
 		// select all roles in the system
 		$roles = $wp_roles->roles;
 				
@@ -263,6 +269,14 @@ class NamasteLMS {
 		$watu_active = $watupro_active = false;
 		if(in_array('watu/watu.php', $current_plugins)) $watu_active = true;
 		if(in_array('watupro/watupro.php', $current_plugins)) $watupro_active = true;
+			
+		$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
+		
+		$currency = get_option('namaste_currency');
+		$currencies=array('USD'=>'$', "EUR"=>"&euro;", "GBP"=>"&pound;", "JPY"=>"&yen;", "AUD"=>"AUD",
+	   "CAD"=>"CAD", "CHF"=>"CHF", "CZK"=>"CZK", "DKK"=>"DKK", "HKD"=>"HKD", "HUF"=>"HUF",
+	   "ILS"=>"ILS", "MXN"=>"MXN", "NOK"=>"NOK", "NZD"=>"NZD", "PLN"=>"PLN", "SEK"=>"SEK",
+	   "SGD"=>"SGD");		
 			
 		require(NAMASTE_PATH."/views/options.php");
 	}	
