@@ -6,6 +6,7 @@ class NamasteLMSCoursesController {
 		
 		$currency = get_option('namaste_currency');
 		$is_manager = current_user_can('namaste_manage');
+		$_course = new NamasteLMSCourseModel();
 		
 		$message = '';
 		if(!empty($_POST['enroll'])) {
@@ -24,10 +25,7 @@ class NamasteLMSCoursesController {
 				// depending on mode, status will be either 'pending' or 'enrolled'
 				$status = ($enroll_mode == 'free') ? 'enrolled' : 'pending';
 				
-				$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_COURSES." SET
-					course_id = %d, user_id = %d, status = %s, enrollment_date = CURDATE(),
-					completion_date='1900-01-01', comments=''",
-					$course->ID, $user_ID, $status));
+				$_course->enroll($user_ID, $course->ID, $status);	
 					
 				if($enroll_mode == 'free') $message = sprintf(__('You enrolled in "%s"', 'namaste'), $course->post_title);
 				else $message = __('Thank you for your interest in enrolling this course. A manager will review your application.', 'namaste');	

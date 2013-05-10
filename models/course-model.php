@@ -165,4 +165,17 @@ class NamasteLMSCourseModel {
 		}	
 		return $required_lessons;
 	}
+	
+	// enrolls or applies to enroll a course
+	function enroll($student_id, $course_id, $status) {
+		global $wpdb;
+		
+		$result = $wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_COURSES." SET
+					course_id = %d, user_id = %d, status = %s, enrollment_date = CURDATE(),
+					completion_date='1900-01-01', comments=''",
+					$course_id, $student_id, $status));
+		if($result !== false) {
+			do_action('namaste_enroll_course', $student_id, $course_id, $status);
+		}			
+	}
 }
