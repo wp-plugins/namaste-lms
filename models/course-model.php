@@ -88,9 +88,9 @@ class NamasteLMSCourseModel {
 		
 		$id_sql = $id ? $wpdb->prepare(' AND ID = %d ', $id) : '';
 		
-		$courses = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->posts}
+		$courses = $wpdb->get_results("SELECT * FROM {$wpdb->posts}
 		WHERE post_type = 'namaste_course'  AND (post_status='publish' OR post_status='draft')
-		$id_sql ORDER BY post_title"));
+		$id_sql ORDER BY post_title");
 		
 		if($id) return $courses[0];
 		
