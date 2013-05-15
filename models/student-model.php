@@ -41,6 +41,8 @@ class NamasteLMSStudentModel {
 					 			enrollment_date = CURDATE(), completion_date = '1900-01-01', comments=''",
 					 			$_GET['course_id'], $student->ID));
 					 		$success = __('User successfully enrolled in the course', 'namaste');	
+					 		
+					 		do_action('namaste_enrolled_course', $student->ID, $_GET['course_id'], true);
 					 }	
 				}
 				
