@@ -285,6 +285,7 @@ class NamasteLMSLessonModel {
 			  $wpdb -> query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_LESSONS." SET
 			  	lesson_id=%d, student_id=%d, status=%d, completion_date = CURDATE()", 
 			  	$post->ID, $user_ID, $status));
+			  do_action('namaste_started_lesson', $user_ID, $post->ID);
 		} 
 		
 		// if ready, complete lesson
@@ -363,6 +364,8 @@ class NamasteLMSLessonModel {
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_LESSONS." 
 		SET status = '1', completion_date = CURDATE() 
 		WHERE id=%d", $student_lesson->id));
+		
+		do_action('namaste_completed_lesson', $student_id, $lesson_id);
 		
 		// now see if course should be completed
 		if($_course->is_ready($course_id, $student_id)) $_course->complete($course_id, $student_id);

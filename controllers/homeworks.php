@@ -25,6 +25,8 @@ class NamasteLMSHomeworkController {
 					$homework->id, $user_ID, $_POST['content']));
 			}	 			
 			
+			do_action('namaste_submitted_solution', $user_ID, $homework->id);
+			
 			require(NAMASTE_PATH."/views/solution-submitted.php");
 		}
 		else require(NAMASTE_PATH."/views/submit-solution.php");		

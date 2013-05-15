@@ -146,7 +146,7 @@ class NamasteLMSCourseModel {
 		$_cert -> complete_course($course_id, $student_id);
 		
 		// add custom action
-		do_action('namaste_completed_course');	
+		do_action('namaste_completed_course', $student_id, $course_id);	
 	}
 	
 	// returns all the required lessons along with mark whether they are completed or not
@@ -175,7 +175,7 @@ class NamasteLMSCourseModel {
 					completion_date='1900-01-01', comments=''",
 					$course_id, $student_id, $status));
 		if($result !== false) {
-			do_action('namaste_enroll_course', $student_id, $course_id, $status);
+			do_action('namaste_enrolled_course', $student_id, $course_id, $status);
 		}			
 	}
 }

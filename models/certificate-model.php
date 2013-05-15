@@ -82,6 +82,8 @@ class NamasteLMSCertificateModel {
 			if($courses_completed) {
 				$wpdb->query($wpdb->prepare("INSERT IGNORE INTO ".NAMASTE_STUDENT_CERTIFICATES." SET
 					student_id=%d, certificate_id=%d, date=%s", $student_id, $certificate->id, date("Y-m-d")));
+					
+				do_action('namaste_achieved_certificate', $student_id, $certificate->id);	
 			}
 		} // end foreach certificate	
 	} // end complete_course
