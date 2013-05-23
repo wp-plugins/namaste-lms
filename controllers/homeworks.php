@@ -70,6 +70,7 @@ class NamasteLMSHomeworkController {
 		require(NAMASTE_PATH."/views/view-solutions.php");
 	}
 	
+	// approve or reject a homework solution
 	static function change_solution_status($lesson, $student_id = NULL) {
 		global $wpdb;
 		

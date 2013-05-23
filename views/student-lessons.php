@@ -13,7 +13,7 @@
 
 	<table class="widefat">
 		<tr><th><?php _e('Lesson', 'namaste')?></th>
-		<th><?php _e('Homeworks', 'namaste')?></th>
+		<th><?php _e('Assignments', 'namaste')?></th>
 		<?php if($use_exams):?>
 			<th><?php _e('Test/Exam', 'namaste')?></th>
 		<?php endif;?>

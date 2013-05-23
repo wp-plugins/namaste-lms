@@ -22,7 +22,7 @@ class NamasteLMSNoteModel {
 				homework_id=%d, student_id=%d, teacher_id=%d, note=%s, datetime=NOW()",
 				$homework->id, $student->ID, $user_ID, $_POST['note']));			
 				
-			do_action('namaste_added_homework_note', $student->ID, $homework->ID, $_POST['note']);	
+			do_action('namaste_added_homework_note', $student->ID, $homework->id, $_POST['note']);	
 			
 			// redirect back			
 			namaste_redirect("admin.php?page=namaste_lesson_homeworks&lesson_id=".$lesson->ID."&student_id=".$student->ID);

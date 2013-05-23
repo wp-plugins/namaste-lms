@@ -55,7 +55,7 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.8.8 = 
+= Version 0.8.9 = 
 - Important bug fixes on required homeworks
 - "In progress" popup showing what does a student has to do to complete a course
 - [namaste-todo] shortcode for lessons and courses to show what you need to do to complete them

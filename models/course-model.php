@@ -174,7 +174,7 @@ class NamasteLMSCourseModel {
 					course_id = %d, user_id = %d, status = %s, enrollment_date = CURDATE(),
 					completion_date='1900-01-01', comments=''",
 					$course_id, $student_id, $status));
-		if($result !== false) {
+		if($result !== false) {                        					
 			do_action('namaste_enrolled_course', $student_id, $course_id, $status);
 		}			
 	}

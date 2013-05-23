@@ -42,7 +42,7 @@ class NamasteLMSStudentModel {
 					 			$_GET['course_id'], $student->ID));
 					 		$success = __('User successfully enrolled in the course', 'namaste');	
 					 		
-					 		do_action('namaste_enrolled_course', $student->ID, $_GET['course_id'], true);
+					 		// do_action('namaste_enrolled_course', $student->ID, $_GET['course_id'], true);
 					 }	
 				}
 				
@@ -51,7 +51,10 @@ class NamasteLMSStudentModel {
 					 $wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_COURSES." SET
 					 			status=%s, completion_date=CURDATE() 
 					 			WHERE user_id=%d AND course_id=%d", $_GET['status'], $_GET['student_id'], $_GET['course_id']));
-					 namaste_redirect("admin.php?page=namaste_students&course_id=$_GET[course_id]");								 	
+					 			
+					 if($_GET['status'] == 'enrolled') do_action('namaste_enrollment_approved', $_GET['student_id'], $_GET['course_id']);
+					 else do_action('namaste_enrollment_rejected', $_GET['student_id'], $_GET['course_id']);					
+					 namaste_redirect("admin.php?page=namaste_students&course_id=$_GET[course_id]");					 							 	
 				}				
 				 	
 		 		// select lessons
