@@ -84,7 +84,7 @@ class NamasteLMSHomeworkController {
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_HOMEWORKS." SET
 			status=%s WHERE id=%d", $_POST['status'], $_POST['solution_id']));
 			
-		do_action('namaste_change_solution_status', $student_id, $solution->id, $_POST['status']);	
+		do_action('namaste_change_solution_status', $student_id, $_POST['solution_id'], $_POST['status']);	
 		
 		// maybe complete the lesson if the status is approved 				
 		if($_POST['status']=='approved' and NamasteLMSLessonModel::is_ready($lesson->ID, $student_id)) {
