@@ -27,13 +27,21 @@ endif;?>
 	</div>
 </form>
 
+<p><?php _e('Filter by student/course status:', 'namaste')?> <select name="status" onchange="window.location='admin.php?page=namaste_students&course_id=<?php echo $_GET['course_id']?>&status='+this.value;">
+	<option value="" <?php if(empty($_GET['status'])) echo 'selected'?>><?php _e('Any status', 'namaste')?></option>
+	<option value="pending" <?php if(!empty($_GET['status']) and $_GET['status']=='pending') echo 'selected'?>><?php _e('Pending', 'namaste')?></option>
+	<option value="enrolled" <?php if(!empty($_GET['status']) and $_GET['status']=='enrolled') echo 'selected'?>><?php _e('Enrolled', 'namaste')?></option>
+	<option value="rejected" <?php if(!empty($_GET['status']) and $_GET['status']=='rejected') echo 'selected'?>><?php _e('Rejected', 'namaste')?></option>
+	<option value="completed" <?php if(!empty($_GET['status']) and $_GET['status']=='completed') echo 'selected'?>><?php _e('Completed', 'namaste')?></option>
+</select></p>
+
 <?php if(!empty($_GET['course_id'])):?>
 	<?php if(!sizeof($students)):?>
 	<p><?php _e('There are no students enrolled in this course yet.', 'namaste')?></p>
 	<?php return false;
 	endif;?>
 	
-	<p><?php _e('The below table shows all students enrolled in this course allow with the status for every lesson in it', 'namaste')?></p>
+	<p><?php _e('The below table shows all students enrolled in this course allong with the status for every lesson in it', 'namaste')?></p>
 	<table class="widefat">
 		<tr><th><?php _e('Student', 'namaste')?></th>
 			<?php foreach($lessons as $lesson):?>
@@ -53,6 +61,9 @@ endif;?>
 			<td><?php echo $student->namaste_status;
 			if($student->namaste_status=='pending'):?>
 				(<a href="#" onclick="namasteConfirmStatus('enrolled',<?php echo $student->ID?>);return false;"><?php _e('approve', 'namaste')?></a> | <a href="#" onclick="namasteConfirmStatus('rejected',<?php echo $student->ID?>);return false;"><?php _e('reject')?></a>)
+			<?php endif;
+			if($student->namaste_status == 'completed' or $student->namaste_status == 'rejected'):?>
+			(<a href="#" onclick="namasteConfirmCleanup('<?php echo $student->ID?>');return false;"><?php _e('Cleanup', 'namaste')?></a>)
 			<?php endif;?></td></tr>
 		<?php endforeach;?>
 	</table>
@@ -70,5 +81,11 @@ function namasteInProgress(lessonID, studentID) {
 	tb_show("<?php _e('Lesson progress', 'namaste')?>", 
 		'<?php echo admin_url("admin-ajax.php?action=namaste_ajax&type=lesson_progress")?>&lesson_id=' + lessonID + 
 		'&student_id=' + studentID);
+}
+
+function namasteConfirmCleanup(studentID) {
+	if(confirm("<?php _e('Are you sure to cleanup this record? It will be removed from the system and history and the user will be able to enroll or request enrollment again', 'namaste')?>")) {
+		window.location = 'admin.php?page=namaste_students&course_id=<?php echo $_GET["course_id"]?>&status=<?php echo $_GET["status"]?>&cleanup=1&student_id='+studentID;
+	}
 }
 </script>

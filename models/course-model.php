@@ -1,4 +1,5 @@
 <?php
+// possible course statuses: pending, rejected, enrolled, completed
 class NamasteLMSCourseModel {
 	
 	// custom post type Course	

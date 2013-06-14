@@ -13,6 +13,13 @@ class NamasteLMSStudentModel {
 				 
 		 // if course selected, select lessons and enrolled students
 		 if(!empty($_GET['course_id'])) {
+				// cleanup student record
+				if(!empty($_GET['cleanup'])) {
+					 $wpdb->query( $wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_COURSES." 
+					 	WHERE course_id = %d AND user_id=%d", $_GET['course_id'], $_GET['student_id']) );
+					 namaste_redirect("admin.php?page=namaste_students&course_id=$_GET[course_id]&status=$_GET[status]");		
+				}		 	
+		 	
 				// enroll student
 				if(!empty($_GET['enroll'])) {
 					 // find the user
@@ -63,9 +70,14 @@ class NamasteLMSStudentModel {
 		 		foreach($lessons as $lesson) $lids[] = $lesson->ID;
 		 				 		
 		 		// select students
+		 		$status_sql = '';
+		 		if(!empty($_GET['status']) and $_GET['status']!='any') { 
+		 			$status_sql = $wpdb->prepare(" AND tS.status=%s", $_GET['status']);
+		 		}
 		 		$students = $wpdb->get_results($wpdb->prepare("SELECT tU.*, tS.status as namaste_status 
 		 		FROM {$wpdb->users} tU JOIN ".NAMASTE_STUDENT_COURSES." tS 
-		 		ON tS.user_id = tU.ID AND tS.course_id=%d ORDER BY user_nicename", $_GET['course_id']));		 		
+		 		ON tS.user_id = tU.ID AND tS.course_id=%d $status_sql
+		 		ORDER BY user_nicename", $_GET['course_id']));		 		
 		 		
 		 		// select student - to - lesson relations
 		 		$completed_lessons = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_LESSONS."

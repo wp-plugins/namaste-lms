@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 0.8.6\n"
+"Project-Id-Version: Namaste! LMS 0.9\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-05-10 15:19:04+00:00\n"
+"POT-Creation-Date: 2013-06-14 15:56:31+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,17 +32,17 @@ msgstr ""
 msgid "You are not allowed to access this certificate"
 msgstr ""
 
-#: controllers/courses.php:32
+#: controllers/courses.php:30
 msgid "You enrolled in \"%s\""
 msgstr ""
 
-#: controllers/courses.php:33
+#: controllers/courses.php:31
 msgid ""
 "Thank you for your interest in enrolling this course. A manager will review "
 "your application."
 msgstr ""
 
-#: controllers/courses.php:35
+#: controllers/courses.php:33
 msgid "You have already enrolled in this course"
 msgstr ""
 
@@ -54,11 +54,11 @@ msgstr ""
 msgid "You cannot submit an empty solution"
 msgstr ""
 
-#: controllers/homeworks.php:38
+#: controllers/homeworks.php:40
 msgid "You are not allowed to see these solutions"
 msgstr ""
 
-#: controllers/homeworks.php:74
+#: controllers/homeworks.php:77
 msgid "You are not allowed to do this"
 msgstr ""
 
@@ -66,8 +66,8 @@ msgstr ""
 msgid "This lesson has been completed."
 msgstr ""
 
-#: controllers/shortcodes.php:31 views/manage-students.php:49
-#: views/student-lessons.php:39
+#: controllers/shortcodes.php:31 views/manage-students.php:35
+#: views/manage-students.php:57 views/student-lessons.php:39
 msgid "Completed"
 msgstr ""
 
@@ -75,38 +75,38 @@ msgstr ""
 msgid "Not completed"
 msgstr ""
 
-#: models/course-model.php:7
+#: models/course-model.php:8
 msgid "Namaste! Courses"
 msgstr ""
 
-#: models/course-model.php:10
+#: models/course-model.php:11
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:11
+#: models/course-model.php:12
 msgid "Course"
 msgstr ""
 
-#: models/course-model.php:12
+#: models/course-model.php:13
 msgid "Add New Course"
 msgstr ""
 
-#: models/course-model.php:18
+#: models/course-model.php:19
 msgid "This will create a new course in your Namaste! LMS."
 msgstr ""
 
-#: models/course-model.php:48 models/lesson-model.php:28
+#: models/course-model.php:49 models/lesson-model.php:28
 #: models/namaste-model.php:140
 msgid "Namaste! Settings"
 msgstr ""
 
-#: models/course-model.php:113
+#: models/course-model.php:114
 msgid ""
 "You are enrolled in this course. Check \"My courses\" link in your dashboard "
 "to see the lessons and to-do list"
 msgstr ""
 
-#: models/course-model.php:114
+#: models/course-model.php:115
 msgid ""
 "You can enroll in this course from your student dashboard. You need to be "
 "logged in."
@@ -157,7 +157,7 @@ msgid ""
 "The lesson cannot be completed because there are unsatisfied requirements"
 msgstr ""
 
-#: models/lesson-model.php:209 views/manage-students.php:51
+#: models/lesson-model.php:209 views/manage-students.php:59
 #: views/student-lessons.php:37
 msgid "Not started"
 msgstr ""
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Completed on"
 msgstr ""
 
-#: models/lesson-model.php:220 views/manage-students.php:50
+#: models/lesson-model.php:220 views/manage-students.php:58
 #: views/student-lessons.php:38
 msgid "In progress"
 msgstr ""
@@ -183,13 +183,13 @@ msgstr ""
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.8.6)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 0.9)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:135
 msgid "Namaste! LMS"
 msgstr ""
 
-#: models/namaste-model.php:137
+#: models/namaste-model.php:137 views/student-lessons.php:16
 msgid "Assignments"
 msgstr ""
 
@@ -209,7 +209,7 @@ msgstr ""
 msgid "Student Lessons"
 msgstr ""
 
-#: models/namaste-model.php:144 views/student-lessons.php:16
+#: models/namaste-model.php:144
 msgid "Homeworks"
 msgstr ""
 
@@ -241,26 +241,26 @@ msgstr ""
 msgid "My Certificates"
 msgstr ""
 
-#: models/student-model.php:23
+#: models/student-model.php:30
 msgid "Sorry, I cannot find user with this email."
 msgstr ""
 
-#: models/student-model.php:27
+#: models/student-model.php:34
 msgid ""
 "This user's role does not allow them to use Namaste! LMS. You'll have either "
 "to change their role or allow the role work with the LMS from the Settings "
 "page"
 msgstr ""
 
-#: models/student-model.php:34
+#: models/student-model.php:41
 msgid "This user is already enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:43
+#: models/student-model.php:50
 msgid "User successfully enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:94
+#: models/student-model.php:111
 msgid "You cannot change someone else's status"
 msgstr ""
 
@@ -334,7 +334,7 @@ msgid "Delete"
 msgstr ""
 
 #: views/certificate-form.php:38 views/homework.php:15
-#: views/manage-students.php:63
+#: views/manage-students.php:74
 msgid "Are you sure?"
 msgstr ""
 
@@ -663,35 +663,65 @@ msgstr ""
 msgid "Enroll"
 msgstr ""
 
-#: views/manage-students.php:32
+#: views/manage-students.php:30
+msgid "Filter by student/course status:"
+msgstr ""
+
+#: views/manage-students.php:31
+msgid "Any status"
+msgstr ""
+
+#: views/manage-students.php:32 views/view-solutions.php:36
+msgid "Pending"
+msgstr ""
+
+#: views/manage-students.php:33
+msgid "Enrolled"
+msgstr ""
+
+#: views/manage-students.php:34 views/view-solutions.php:38
+msgid "Rejected"
+msgstr ""
+
+#: views/manage-students.php:40
 msgid "There are no students enrolled in this course yet."
 msgstr ""
 
-#: views/manage-students.php:36
+#: views/manage-students.php:44
 msgid ""
-"The below table shows all students enrolled in this course allow with the "
+"The below table shows all students enrolled in this course allong with the "
 "status for every lesson in it"
 msgstr ""
 
-#: views/manage-students.php:38
+#: views/manage-students.php:46
 msgid "Student"
 msgstr ""
 
-#: views/manage-students.php:42 views/my_courses.php:16
+#: views/manage-students.php:50 views/my_courses.php:16
 #: views/student-lessons.php:20 views/view-solutions.php:31
 msgid "Status"
 msgstr ""
 
-#: views/manage-students.php:55
+#: views/manage-students.php:63
 msgid "approve"
 msgstr ""
 
-#: views/manage-students.php:55
+#: views/manage-students.php:63
 msgid "reject"
 msgstr ""
 
-#: views/manage-students.php:70 views/student-lessons.php:54
+#: views/manage-students.php:66
+msgid "Cleanup"
+msgstr ""
+
+#: views/manage-students.php:81 views/student-lessons.php:54
 msgid "Lesson progress"
+msgstr ""
+
+#: views/manage-students.php:87
+msgid ""
+"Are you sure to cleanup this record? It will be removed from the system and "
+"history and the user will be able to enroll or request enrollment again"
 msgstr ""
 
 #: views/my-certificates.php:4
@@ -956,16 +986,8 @@ msgstr ""
 msgid "by"
 msgstr ""
 
-#: views/view-solutions.php:36
-msgid "Pending"
-msgstr ""
-
 #: views/view-solutions.php:37
 msgid "Approved"
-msgstr ""
-
-#: views/view-solutions.php:38
-msgid "Rejected"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
