@@ -48,6 +48,8 @@ function namaste_ajax() {
 			$fee = get_post_meta($course->ID, 'namaste_fee', true);
 			$currency = get_option('namaste_currency');
 			$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
+			$accept_paypal = get_option('namaste_accept_paypal');
+			$paypal_id = get_option('namaste_paypal_id');
 			
 			if($accept_other_payment_methods) {
 				$other_payment_methods = stripslashes(get_option('namaste_other_payment_methods'));

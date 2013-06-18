@@ -15,7 +15,8 @@ class NamasteLMSCoursesController {
 			
 			// course fee? For the moment all payments are manual so if there's a course fee, enrollment can't happen			
 			$fee = get_post_meta($course->ID, 'namaste_fee', true);
-			// THIS SHOULD BE CHANGED TO PAYMENT VERIFICATION WHEN WE APPLY PAYPAL IPN AND SIMILAR!!!
+			
+			// When fee is paid, enrollment is automatic so this is just fine here
 			if($fee > 0 and !$is_manager) wp_die("You can't enroll yourself in a course when there is a fee"); 			
 			
 			$enroll_mode = get_post_meta($course->ID, 'namaste_enroll_mode', true);
@@ -45,7 +46,9 @@ class NamasteLMSCoursesController {
 				$courses[$cnt]->fee = get_post_meta($course->post_id, 'namaste_fee', true); 
 			}
 		}	 
-			 
+		
+		wp_enqueue_script('thickbox',null,array('jquery'));
+		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');	 
 		require(NAMASTE_PATH."/views/my_courses.php");	 
 	}
 }

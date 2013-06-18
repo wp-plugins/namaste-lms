@@ -43,6 +43,12 @@
 			
 			<p><?php _e('Here you can specify payment methods that you will accept to give access to courses. When a course requires payment, the enrollment (pending or active - depends on your other course settings) will be entered after the payment is completed.', 'namaste')?></p>
 			
+			<p><input type="checkbox" name="accept_paypal" value="1" <?php if($accept_paypal) echo 'checked'?> onclick="this.checked?jQuery('#paypalDiv').show():jQuery('#paypalDiv').hide()"> <?php _e('Accept PayPal', 'namaste')?></p>
+			
+			<div id="paypalDiv" style="display:<?php echo $accept_paypal?'block':'none'?>;">
+				<p><label><?php _e('Your Paypal ID:', 'namaste')?></label> <input type="text" name="paypal_id" value="<?php echo get_option('namaste_paypal_id')?>"></p>
+			</div>
+			
 			<p><input type="checkbox" name="accept_other_payment_methods" value="1" <?php if($accept_other_payment_methods) echo 'checked'?> onclick="this.checked?jQuery('#otherPayments').show():jQuery('#otherPayments').hide()"> <?php _e('Accept other payment methods', 'namaste')?> 
 				<span class="namaste_help"><?php _e('This option lets you paste your own button HTML code or other manual instructions, for example bank wire. These payments will have to be processed manually unless you can build your own script to verify them.','namaste')?></span></p>
 				

@@ -106,6 +106,22 @@ class NamasteLMS {
 			$wpdb->query($sql);
 	  }  
 	 
+		  
+	  if($wpdb->get_var("SHOW TABLES LIKE '".NAMASTE_PAYMENTS."'") != NAMASTE_PAYMENTS) {        
+			$sql = "CREATE TABLE `" . NAMASTE_PAYMENTS . "` (
+				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				  `course_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `user_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `date` DATE NOT NULL DEFAULT '2001-01-01',
+				  `amount` DECIMAL(8,2),
+				  `status` VARCHAR(100) NOT NULL DEFAULT 'failed',
+				  `paycode` VARCHAR(100) NOT NULL DEFAULT '',
+				  `paytype` VARCHAR(100) NOT NULL DEFAULT 'paypal'
+				) DEFAULT CHARSET=utf8;";
+			
+			$wpdb->query($sql);
+	  }  	 
+	 
 	  // add student role if not exists
     $res = add_role('student', 'Student', array(
           'read' => true, // True allows that capability
@@ -138,6 +154,7 @@ class NamasteLMS {
 		add_submenu_page('namaste_options', __("Students", 'namaste'), __("Students", 'namaste'), 'namaste_manage', 'namaste_students', array('NamasteLMSStudentModel', "manage"));		
 		add_submenu_page('namaste_options', __("Certificates", 'namaste'), __("Certificates", 'namaste'), 'namaste_manage', 'namaste_certificates', array('NamasteLMSCertificatesController', "manage"));
 		add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));        
+		add_submenu_page('namaste_options', __("Namaste! Plugins &amp; API", 'namaste'), __("Plugins &amp; API", 'namaste'), 'namaste_manage', 'namaste_plugins', array(__CLASS__, "plugins"));
    		
 		// not visible in menu
 		add_submenu_page( NULL, __("Student Lessons", 'namaste'), __("Student Lessons", 'namaste'), $namaste_cap, 'namaste_student_lessons', array('NamasteLMSLessonModel', "student_lessons"));
@@ -197,16 +214,21 @@ class NamasteLMS {
 		define( 'NAMASTE_STUDENT_LESSONS', $wpdb->prefix. "namaste_student_lessons");
 		define( 'NAMASTE_CERTIFICATES', $wpdb->prefix. "namaste_certificates");
 		define( 'NAMASTE_STUDENT_CERTIFICATES', $wpdb->prefix. "namaste_student_certificates");
+		define( 'NAMASTE_PAYMENTS', $wpdb->prefix. "namaste_payments");
 		
 		define( 'NAMASTE_VERSION', get_option('namaste_version'));
 		
 		// shortcodes
 		add_shortcode('namaste-todo', array("NamasteLMSShortcodesController", 'todo'));
+		
+		// Paypal IPN
+		add_filter('query_vars', array(__CLASS__, "query_vars"));
+		add_action('parse_request', array("NamastePayment", "parse_request"));
 	}
 	
 	// handle Namaste vars in the request
 	static function query_vars($vars) {
-		$new_vars = array();
+		$new_vars = array('namaste');
 		$vars = array_merge($new_vars, $vars);
 	   return $vars;
 	} 	
@@ -256,6 +278,8 @@ class NamasteLMS {
 			update_option('namaste_accept_other_payment_methods', $_POST['accept_other_payment_methods']);
 			update_option('namaste_other_payment_methods', $_POST['other_payment_methods']);
 			update_option('namaste_currency', $_POST['currency']);
+			update_option('namaste_accept_paypal', $_POST['accept_paypal']);
+			update_option('namaste_paypal_id', $_POST['paypal_id']);
 		} 
 		
 		// select all roles in the system
@@ -271,6 +295,7 @@ class NamasteLMS {
 		if(in_array('watupro/watupro.php', $current_plugins)) $watupro_active = true;
 			
 		$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
+		$accept_paypal = get_option('namaste_accept_paypal');
 		
 		$currency = get_option('namaste_currency');
 		$currencies=array('USD'=>'$', "EUR"=>"&euro;", "GBP"=>"&pound;", "JPY"=>"&yen;", "AUD"=>"AUD",
@@ -283,6 +308,10 @@ class NamasteLMS {
 	
 	static function help() {
 		require(NAMASTE_PATH."/views/help.php");
+	}	
+	
+	static function plugins() {
+		require(NAMASTE_PATH."/views/plugins.php");
 	}	
 	
 	static function register_widgets() {
