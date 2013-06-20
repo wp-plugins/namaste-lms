@@ -280,6 +280,10 @@ class NamasteLMS {
 			update_option('namaste_currency', $_POST['currency']);
 			update_option('namaste_accept_paypal', $_POST['accept_paypal']);
 			update_option('namaste_paypal_id', $_POST['paypal_id']);
+			
+			update_option('namaste_accept_stripe', $_POST['accept_stripe']);
+			update_option('namaste_stripe_public', $_POST['stripe_public']);
+			update_option('namaste_stripe_secret', $_POST['stripe_secret']);
 		} 
 		
 		// select all roles in the system
@@ -296,6 +300,7 @@ class NamasteLMS {
 			
 		$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
 		$accept_paypal = get_option('namaste_accept_paypal');
+		$accept_stripe = get_option('namaste_accept_stripe');
 		
 		$currency = get_option('namaste_currency');
 		$currencies=array('USD'=>'$', "EUR"=>"&euro;", "GBP"=>"&pound;", "JPY"=>"&yen;", "AUD"=>"AUD",

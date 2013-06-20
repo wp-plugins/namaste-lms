@@ -49,6 +49,13 @@
 				<p><label><?php _e('Your Paypal ID:', 'namaste')?></label> <input type="text" name="paypal_id" value="<?php echo get_option('namaste_paypal_id')?>"></p>
 			</div>
 			
+			<p><input type="checkbox" name="accept_stripe" value="1" <?php if($accept_stripe) echo 'checked'?> onclick="this.checked?jQuery('#stripeDiv').show():jQuery('#stripeDiv').hide()"> <?php _e('Accept Stripe', 'namaste')?></p>
+			
+			<div id="stripeDiv" style="display:<?php echo $accept_stripe?'block':'none'?>;">
+				<p><label><?php _e('Your Public Key:', 'namaste')?></label> <input type="text" name="stripe_public" value="<?php echo get_option('namaste_stripe_public')?>"></p>
+				<p><label><?php _e('Your Secret Key:', 'namaste')?></label> <input type="text" name="stripe_secret" value="<?php echo get_option('namaste_stripe_secret')?>"></p>
+			</div>
+			
 			<p><input type="checkbox" name="accept_other_payment_methods" value="1" <?php if($accept_other_payment_methods) echo 'checked'?> onclick="this.checked?jQuery('#otherPayments').show():jQuery('#otherPayments').hide()"> <?php _e('Accept other payment methods', 'namaste')?> 
 				<span class="namaste_help"><?php _e('This option lets you paste your own button HTML code or other manual instructions, for example bank wire. These payments will have to be processed manually unless you can build your own script to verify them.','namaste')?></span></p>
 				

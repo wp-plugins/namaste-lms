@@ -25,7 +25,16 @@ endif;?>
 			<td>
 			<?php if(empty($course->status)): // not enrolled
 				if($course->fee and !$is_manager):
-					echo "<strong><a href='#' onclick='enrollCourse(".$course->post_id.", ".$user_ID.");return false;'>".__('Enroll for', 'namaste').' '.$currency." ".$course->fee."</a></strong>";
+					if($accept_paypal or $accept_other_payment_methods): echo "<strong><a href='#' onclick='enrollCourse(".$course->post_id.", ".$user_ID.");return false;'>".__('Enroll for', 'namaste').' '.$currency." ".$course->fee."</a></strong>"; endif;
+					if($accept_stripe):?>
+					<form method="post">
+					  <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+					          data-key="<?php echo $stripe['publishable_key']; ?>"
+					          data-amount="<?php echo $course->fee*100?>" data-description="<?php echo $course->post_title?>" data-currency="<?php echo $currency?>"></script>
+					<input type="hidden" name="stripe_pay" value="1">
+					<input type="hidden" name="course_id" value="<?php echo $course->post_id?>">
+					</form>
+					<?php endif; // end if accept stripe
 				else:?>
 				<form method="post">
 					<input type="submit" value="<?php _e('Click to Enroll', 'namaste')?>">

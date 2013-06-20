@@ -2,11 +2,63 @@
 class NamasteLMSCoursesController {
 	// displays courses of a student, lets them enroll in a course
 	function my_courses() {
-		global $wpdb, $user_ID;
+		global $wpdb, $user_ID, $user_email;
 		
 		$currency = get_option('namaste_currency');
 		$is_manager = current_user_can('namaste_manage');
 		$_course = new NamasteLMSCourseModel();
+		
+		// stripe integration goes right on this page
+		$accept_stripe = get_option('namaste_accept_stripe');
+		$accept_paypal = get_option('namaste_accept_paypal');
+		$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
+		if($accept_stripe) {
+				require_once(NAMASTE_PATH.'/lib/Stripe.php');
+ 
+				$stripe = array(
+				  'secret_key'      => get_option('namaste_stripe_secret'),
+				  'publishable_key' => get_option('namaste_stripe_public')
+				);
+				 
+				Stripe::setApiKey($stripe['secret_key']);
+		}		
+		
+		if(!empty($_POST['stripe_pay'])) {
+			 $token  = $_POST['stripeToken'];
+			 $course = get_post($_POST['course_id']);
+			 $fee = get_post_meta($course->ID, 'namaste_fee', true);
+			 
+			try {
+				 $customer = Stripe_Customer::create(array(
+			      'email' => $user_email,
+			      'card'  => $token
+			  ));				
+				
+				  $charge = Stripe_Charge::create(array(
+				      'customer' => $customer->id,
+				      'amount'   => $fee*100,
+				      'currency' => $currency
+				  ));
+			} catch (Exception $e) {
+				wp_die($e->getMessage());
+			}	  
+			 
+			// !!!!in the next version avoid this copy-paste
+			// almost the same code is in models/payment.php for the paypal payments
+			$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_PAYMENTS." SET 
+							course_id=%d, user_id=%s, date=CURDATE(), amount=%s, status='completed', paycode=%s, paytype='paypal'", 
+							$_POST['course_id'], $user_ID, $fee, $token));
+							
+			// enroll accordingly to course settings - this will be placed in a method once we 
+			// have more payment options
+			$enroll_mode = get_post_meta($course->ID, 'namaste_enroll_mode', true);	
+			if(!NamasteLMSStudentModel :: is_enrolled($user_ID, $course->ID))  {
+				$status = ($enroll_mode == 'free') ? 'enrolled' : 'pending';				
+				$_course->enroll($user_ID, $course->ID, $status);
+			}	
+			
+			namaste_redirect('admin.php?page=namaste_my_courses');
+		}	
 		
 		$message = '';
 		if(!empty($_POST['enroll'])) {
@@ -46,7 +98,7 @@ class NamasteLMSCoursesController {
 				$courses[$cnt]->fee = get_post_meta($course->post_id, 'namaste_fee', true); 
 			}
 		}	 
-		
+				
 		wp_enqueue_script('thickbox',null,array('jquery'));
 		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');	 
 		require(NAMASTE_PATH."/views/my_courses.php");	 

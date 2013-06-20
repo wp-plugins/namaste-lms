@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 0.9.2\n"
+"Project-Id-Version: Namaste! LMS 0.9.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-06-18 14:41:40+00:00\n"
+"POT-Creation-Date: 2013-06-20 16:28:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,15 +32,15 @@ msgstr ""
 msgid "You are not allowed to access this certificate"
 msgstr ""
 
-#: controllers/courses.php:31
+#: controllers/courses.php:83
 msgid "You enrolled in \"%s\""
 msgstr ""
 
-#: controllers/courses.php:32
+#: controllers/courses.php:84
 msgid "Thank you for your interest in enrolling this course. A manager will review your application."
 msgstr ""
 
-#: controllers/courses.php:34
+#: controllers/courses.php:86
 msgid "You have already enrolled in this course"
 msgstr ""
 
@@ -732,27 +732,27 @@ msgstr ""
 msgid "Enroll for"
 msgstr ""
 
-#: views/my_courses.php:31
+#: views/my_courses.php:40
 msgid "Click to Enroll"
 msgstr ""
 
-#: views/my_courses.php:37
+#: views/my_courses.php:46
 msgid "Pending enrollment"
 msgstr ""
 
-#: views/my_courses.php:38
+#: views/my_courses.php:47
 msgid "Application rejected"
 msgstr ""
 
-#: views/my_courses.php:39
+#: views/my_courses.php:48
 msgid "Enrolled on %s"
 msgstr ""
 
-#: views/my_courses.php:41
+#: views/my_courses.php:50
 msgid "Completed on %s"
 msgstr ""
 
-#: views/my_courses.php:51
+#: views/my_courses.php:60
 msgid "Payment for course"
 msgstr ""
 
@@ -801,54 +801,66 @@ msgid "Your Paypal ID:"
 msgstr ""
 
 #: views/options.php:52
-msgid "Accept other payment methods"
+msgid "Accept Stripe"
 msgstr ""
 
-#: views/options.php:53
-msgid "This option lets you paste your own button HTML code or other manual instructions, for example bank wire. These payments will have to be processed manually unless you can build your own script to verify them."
+#: views/options.php:55
+msgid "Your Public Key:"
 msgstr ""
 
 #: views/options.php:56
-msgid "Enter text or HTML code for payment button(s). You can use the following variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
+msgid "Your Secret Key:"
+msgstr ""
+
+#: views/options.php:59
+msgid "Accept other payment methods"
 msgstr ""
 
 #: views/options.php:60
+msgid "This option lets you paste your own button HTML code or other manual instructions, for example bank wire. These payments will have to be processed manually unless you can build your own script to verify them."
+msgstr ""
+
+#: views/options.php:63
+msgid "Enter text or HTML code for payment button(s). You can use the following variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
+msgstr ""
+
+#: views/options.php:67
 msgid "Save payment settings"
 msgstr ""
 
-#: views/options.php:68
+#: views/options.php:75
 msgid "Exam/Test Related Settings"
 msgstr ""
 
-#: views/options.php:70
+#: views/options.php:77
 msgid "Namaste LMS utilizes the power of existing Wordpress plugins to handle exams, tests and quizzes. At this moment it can connect with two plugins:"
 msgstr ""
 
-#: views/options.php:70
+#: views/options.php:77
 msgid "(Free) and "
 msgstr ""
 
-#: views/options.php:70
+#: views/options.php:77
 msgid "(Premium)"
 msgstr ""
 
-#: views/options.php:72
+#: views/options.php:79
 msgid "If you have any of these plugins installed and activated, please choose which one to use for handling tests below:"
 msgstr ""
 
-#: views/options.php:74
+#: views/options.php:81
 msgid "I don not need to create any exams or tests."
 msgstr ""
 
-#: views/options.php:77
+#: views/options.php:84
 msgid "I will create exams with Watu."
 msgstr ""
 
-#: views/options.php:81
+#: views/options.php:88
 msgid "I will create exams with WatuPRO."
 msgstr ""
 
-#: views/options.php:84
+#: views/options.php:91
 msgid "Save Exam Options"
 msgstr ""
 
