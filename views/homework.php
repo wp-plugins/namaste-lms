@@ -2,9 +2,9 @@
 
 <form method="post" onsubmit="return namasteValidateForm(this);">
 	<div class="postbox namaste-form namaste-box">
-		<div><label><?php _e('Title:', 'namaste')?></label> <input type="text" name="title" value="<?php echo $homework->title?>" size='80'></div>
+		<div><label><?php _e('Title:', 'namaste')?></label> <input type="text" name="title" value="<?php echo stripslashes($homework->title)?>" size='80'></div>
 		<div><label><?php _e('Description/Requirements:')?></label>
-		<?php echo wp_editor(@$homework->description, 'description');?></div>
+		<?php echo wp_editor(stripslashes(@$homework->description), 'description');?></div>
 		<div><input type="checkbox" name="accept_files" value="1" <?php if(!empty($homework->accept_files)) echo 'checked'?>> <?php _e('Accept file upload as solution')?></div>
 		<?php do_action('namaste_homework_form', @$homework);?>
 		<div>
