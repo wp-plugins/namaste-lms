@@ -77,9 +77,11 @@ class NamasteLMSCertificatesController {
 			
 		$output = stripslashes($certificate -> content);	
 			
-		$user_info=get_userdata($student_id);
+		$user_info=get_userdata($_GET['student_id']);
 		$name=(empty($user_info->first_name) or empty($user_info->last_name)) ? 
 			$user_info->display_name : $user_info->first_name." ".$user_info->last_name;
+		// if $name is still empty, output username
+		if(empty($name)) $name = $user_info->user_login;	
 			
 		$output = str_replace("{{name}}", $name, $output);			
 		

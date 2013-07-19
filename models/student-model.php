@@ -80,8 +80,8 @@ class NamasteLMSStudentModel {
 		 		ORDER BY user_nicename", $_GET['course_id']));		 		
 		 		
 		 		// select student - to - lesson relations
-		 		$completed_lessons = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_LESSONS."
-		 			WHERE lesson_id IN (".implode(',', $lids).")"));	
+		 		$completed_lessons = $wpdb->get_results("SELECT * FROM ".NAMASTE_STUDENT_LESSONS."
+		 			WHERE lesson_id IN (".implode(',', $lids).")");	
 		 				 		
 		 		// match to students	
 		 		foreach($students	as $cnt=>$student) {

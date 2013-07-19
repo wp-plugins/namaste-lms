@@ -9,7 +9,7 @@
 <?php endif;?>
 
 <div class="wrap">
-	<p><?php _e('Student:', 'namaste')?> <strong><?php echo $student->nice_name?$student->nice_name:$student->user_login?></strong></p>
+	<p><?php _e('Student:', 'namaste')?> <strong><?php echo !empty($student->nice_name)?$student->nice_name:$student->user_login?></strong></p>
 
 	<table class="widefat">
 		<tr><th><?php _e('Lesson', 'namaste')?></th>

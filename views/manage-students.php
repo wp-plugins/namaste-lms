@@ -16,7 +16,7 @@ endif;?>
 		<select name='course_id' onchange="this.form.submit();">
 		<option value=""></option>
 		<?php foreach($courses as $course):?>
-			<option value="<?php echo $course->ID?>" <?php if($course->ID == $_GET['course_id']) echo 'selected'?>><?php echo $course->post_title?></option>
+			<option value="<?php echo $course->ID?>" <?php if(!empty($_GET['course_id']) and $course->ID == $_GET['course_id']) echo 'selected'?>><?php echo $course->post_title?></option>
 		<?php endforeach;?>
 		</select></p>
 		<?php if(!empty($_GET['course_id'])):?>
@@ -85,7 +85,7 @@ function namasteInProgress(lessonID, studentID) {
 
 function namasteConfirmCleanup(studentID) {
 	if(confirm("<?php _e('Are you sure to cleanup this record? It will be removed from the system and history and the user will be able to enroll or request enrollment again', 'namaste')?>")) {
-		window.location = 'admin.php?page=namaste_students&course_id=<?php echo $_GET["course_id"]?>&status=<?php echo $_GET["status"]?>&cleanup=1&student_id='+studentID;
+		window.location = 'admin.php?page=namaste_students&course_id=<?php echo @$_GET["course_id"]?>&status=<?php echo @$_GET["status"]?>&cleanup=1&student_id='+studentID;
 	}
 }
 </script>

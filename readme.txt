@@ -55,12 +55,15 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.9.4 = 
+= Version 0.9.6 = 
 - Paypal payment button can now be generated automatically
 - Paypal IPN will be handled and enrollment will be automatically inserted after payment (pending or active, depends on your settings)
 - Added information about Namaste! Connect and the Developers API
 - Stripe integration implemented, you can now accept Stripe payments
 - Fixed issue with backslashes in assignments
+- Fixed issues with thickbox
+- Fixed bug with marking lessons as visited
+- Fixed bug with {{name}} bariable in certificates
 
 = Version 0.9 = 
 - Important bug fixes on required homeworks

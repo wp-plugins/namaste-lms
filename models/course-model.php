@@ -102,7 +102,7 @@ class NamasteLMSCourseModel {
 	function enroll_text($content) {
 		global $wpdb, $user_ID, $post;
 		
-		if($post->post_type != 'namaste_course') return $content;
+		if(@$post->post_type != 'namaste_course') return $content;
 		
 		// enrolled? 
 		$enrolled = false;

@@ -24,7 +24,7 @@ endif;?>
 				<?php endif;?></td>
 			<td>
 			<?php if(empty($course->status)): // not enrolled
-				if($course->fee and !$is_manager):
+				if(!empty($course->fee) and !$is_manager):
 					if($accept_paypal or $accept_other_payment_methods): echo "<strong><a href='#' onclick='enrollCourse(".$course->post_id.", ".$user_ID.");return false;'>".__('Enroll for', 'namaste').' '.$currency." ".$course->fee."</a></strong>"; endif;
 					if($accept_stripe):?>
 					<form method="post">

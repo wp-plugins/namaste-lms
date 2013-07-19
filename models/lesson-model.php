@@ -223,19 +223,22 @@ class NamasteLMSLessonModel {
 			} // end defining status
 		}
 		
+		// enqueue thickbox
+		wp_enqueue_script('thickbox',null,array('jquery'));
+		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');
 		require(NAMASTE_PATH."/views/student-lessons.php");
 	}
 	
 	// check if user can access the lesson, mark lesson as started
 	static function access_lesson($content) {
-		global $wpdb, $post, $user_ID;
-		if($post->post_type != 'namaste_lesson') return $content;		
+		global $wpdb, $post, $user_ID;		
+		if(@$post->post_type != 'namaste_lesson') return $content;		
 		$_course = new NamasteLMSCourseModel();
 		
 		if(!is_user_logged_in()) return __('You need to be logged in to access this lesson.', 'namaste');
 		
 		// manager will always access lesson
-		if(current_user_can('namaste_manage')) return $content;
+		if(current_user_can('namaste_manage')) { self :: mark_accessed(); return $content; }
 		
 		// enrolled in the course?
 		$course_id = get_post_meta($post->ID, 'namaste_course', true);
@@ -244,6 +247,7 @@ class NamasteLMSLessonModel {
 			" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $course_id));
 		if(!$enrolled) {
 			$content = __('In order to see this lesson you first have to be enrolled in the course', 'namaste').' <b>"'.$course->post_title.'"</b>';
+			self :: mark_accessed();
 			return $content; // no need to run further queries
 		}		
 		
@@ -272,8 +276,18 @@ class NamasteLMSLessonModel {
 			 }					 
 			 
 			 $content .= '</ul>';
+			 self :: mark_accessed();
 			 return $content;
 		}
+		
+		self :: mark_accessed();
+		return $content;
+	} // end access_lesson
+	
+	// actually access lesson (after permission checks)
+	// called only from self::access_lesson
+	private function mark_accessed() {
+		global $wpdb, $post, $user_ID;
 		
 		// mark as accessed now (if record does not exist)
 		$lesson_completion = get_post_meta($post->ID, 'namaste_completion', true);		
@@ -293,9 +307,7 @@ class NamasteLMSLessonModel {
 		if(self::is_ready($post->ID, $user_ID)) self::complete($post->ID, $user_ID);		
 				
 		do_action('namaste_accessed_lesson', $user_ID, $post->ID);			
-				
-		return $content;
-	} // end access_lesson
+	}
 	
 	// checks if the lesson is ready to be considered "completed" for a given student. 
 	// I.e. checks if all the requirements are completed
@@ -389,6 +401,7 @@ class NamasteLMSLessonModel {
 	// 3. admin approval
 	static function todo($lesson_id, $student_id) {
 		global $wpdb;
+		$todo_homeworks = $todo_exam = $todo_admin_approval = NULL;
 		
 		// todo homeworks
 		$required_homeworks = get_post_meta($lesson_id, 'namaste_required_homeworks', true);	
