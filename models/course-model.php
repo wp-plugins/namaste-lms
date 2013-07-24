@@ -74,7 +74,7 @@ class NamasteLMSCourseModel {
 			global $wpdb;
 			
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )  return;		
-	  	if ( !wp_verify_nonce( $_POST['namaste_noncemeta'], plugin_basename( __FILE__ ) ) ) return;  	  		
+	  	if ( empty($_POST['namaste_noncemeta']) or !wp_verify_nonce( $_POST['namaste_noncemeta'], plugin_basename( __FILE__ ) ) ) return;  	  		
 	  	if ( !current_user_can( 'edit_post', $post_id ) ) return;
 	  	if ('namaste_course' != $_POST['post_type']) return;
 			

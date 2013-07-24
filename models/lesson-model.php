@@ -101,7 +101,7 @@ class NamasteLMSLessonModel {
 		global $wpdb;
 			
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )  return;		
-	  	if ( !wp_verify_nonce( $_POST['namaste_noncemeta'], plugin_basename( __FILE__ ) ) ) return;  	  		
+	  	if ( empty($_POST['namaste_noncemeta']) or !wp_verify_nonce( $_POST['namaste_noncemeta'], plugin_basename( __FILE__ ) ) ) return;  	  		
 	  	if ( !current_user_can( 'edit_post', $post_id ) ) return;
 	  	if ('namaste_lesson' != $_POST['post_type']) return;
 	  	  		  
@@ -234,7 +234,7 @@ class NamasteLMSLessonModel {
 		global $wpdb, $post, $user_ID;		
 		if(@$post->post_type != 'namaste_lesson') return $content;		
 		$_course = new NamasteLMSCourseModel();
-		
+				
 		if(!is_user_logged_in()) return __('You need to be logged in to access this lesson.', 'namaste');
 		
 		// manager will always access lesson
@@ -291,14 +291,14 @@ class NamasteLMSLessonModel {
 		
 		// mark as accessed now (if record does not exist)
 		$lesson_completion = get_post_meta($post->ID, 'namaste_completion', true);		
-		$status = empty($lesson_completion) ? 1 : 0;	
+		
 		$exists = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_LESSONS." 
 			WHERE student_id=%d AND lesson_id=%d", $user_ID, $post->ID));
 			
 		if(empty($exists->id)) {
 			  $wpdb -> query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_LESSONS." SET
 			  	lesson_id=%d, student_id=%d, status=%d, completion_date = CURDATE()", 
-			  	$post->ID, $user_ID, $status));
+			  	$post->ID, $user_ID, 0));
 			  do_action('namaste_started_lesson', $user_ID, $post->ID);
 		} 
 		
@@ -315,7 +315,7 @@ class NamasteLMSLessonModel {
 	// completed status - because we want to check only the other reqs
 	static function is_ready($lesson_id, $student_id, $admin_check = false) {
 		global $wpdb;
-
+		
 		// first let's check for already completed status. If such is there, obviously the lesson is ready for completing
 		$student_lesson = $wpdb -> get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_LESSONS."
 			WHERE lesson_id=%d AND student_id=%d", $lesson_id, $student_id));				
@@ -480,7 +480,7 @@ class NamasteLMSLessonModel {
 				}
 			}
 			
-			if(!empty($required_grade) and empty($todo_exam)) {
+			if(!empty($required_grade) and !empty($required_exam) and empty($todo_exam)) {
 				// let's make sure they have achieved the grade
 				$achieved_grade = false;
 				foreach($takings as $taking) {
