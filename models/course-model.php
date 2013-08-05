@@ -30,17 +30,17 @@ class NamasteLMSCourseModel {
 		register_taxonomy_for_object_type('category', 'namaste_course');
 	}
 	
-	// thanks to paranoid at http://wordpress.org/support/topic/custom-post-type-tagscategories-archive-page?replies=40
+	// thanks to participants in the thread here http://wordpress.org/support/topic/custom-post-type-tagscategories-archive-page?replies=40
 	static function query_post_type($query) {
 		
-		if(is_category() || is_tag()) {
+		if(is_category() || is_tag() || is_home() and empty( $query->query_vars['suppress_filters'] )) {
 			$post_type = get_query_var('post_type');
 			if($post_type) $post_type = $post_type;
-			else $post_type = array('post','namaste_course'); 
+			else $post_type = array('post','namaste_course', 'nav_menu_item'); 
 			$query->set('post_type',$post_type);
 		}
 		
-		if ( is_home() && $query->is_main_query() ) $query->set( 'post_type', array( 'post', 'page', 'namaste_course' ) );
+		if ( is_home() and $query->is_main_query() ) $query->set( 'post_type', array( 'post', 'page', 'namaste_course', 'nav_menu_item' ) );
 		
 		return $query;
 	}
