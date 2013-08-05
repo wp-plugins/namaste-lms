@@ -17,7 +17,10 @@ class NamasteLMSStudentModel {
 				if(!empty($_GET['cleanup'])) {
 					 $wpdb->query( $wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_COURSES." 
 					 	WHERE course_id = %d AND user_id=%d", $_GET['course_id'], $_GET['student_id']) );
-					 namaste_redirect("admin.php?page=namaste_students&course_id=$_GET[course_id]&status=$_GET[status]");		
+					 	
+					 $wpdb->query( $wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_LESSONS." WHERE student_id= %d AND lesson_id IN (SELECT ID FROM {$wpdb->posts} tP JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course' AND tM.meta_value = %d WHERE post_type = 'namaste_lesson');", $_GET['student_id'], $_GET['course_id']) );					 	
+					 	
+					namaste_redirect("admin.php?page=namaste_students&course_id=$_GET[course_id]&status=$_GET[status]");		
 				}		 	
 		 	
 				// enroll student
@@ -65,7 +68,8 @@ class NamasteLMSStudentModel {
 				}				
 				 	
 		 		// select lessons
-		 		$lessons = NamasteLMSLessonModel :: select($_GET['course_id']);
+		 		$_lesson = new NamasteLMSLessonModel();
+		 		$lessons = $_lesson -> select($_GET['course_id']);
 		 		$lids = array(0);
 		 		foreach($lessons as $lesson) $lids[] = $lesson->ID;
 		 				 		

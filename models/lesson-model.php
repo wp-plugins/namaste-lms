@@ -134,7 +134,7 @@ class NamasteLMSLessonModel {
 	}
 	
 	// students lessons in a selected course
-	function student_lessons() {
+	static function student_lessons() {
 		global $wpdb, $user_ID; 
 		
 		// student_id
@@ -163,7 +163,8 @@ class NamasteLMSLessonModel {
 		}
 		
 		// select lessons
-		$lessons = self::select($course->ID);
+		$_lesson = new NamasteLMSLessonModel();
+		$lessons = $_lesson->select($course->ID);
 		$ids = array(0);
 		foreach($lessons as $lesson) $ids[] = $lesson->ID;
 		$id_sql = implode(",", $ids);
@@ -247,7 +248,7 @@ class NamasteLMSLessonModel {
 			" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $course_id));
 		if(!$enrolled) {
 			$content = __('In order to see this lesson you first have to be enrolled in the course', 'namaste').' <b>"'.$course->post_title.'"</b>';
-			self :: mark_accessed();
+			// self :: mark_accessed();
 			return $content; // no need to run further queries
 		}		
 		
@@ -276,7 +277,7 @@ class NamasteLMSLessonModel {
 			 }					 
 			 
 			 $content .= '</ul>';
-			 self :: mark_accessed();
+			 // self :: mark_accessed();
 			 return $content;
 		}
 		
@@ -286,7 +287,7 @@ class NamasteLMSLessonModel {
 	
 	// actually access lesson (after permission checks)
 	// called only from self::access_lesson
-	private function mark_accessed() {
+	private static function mark_accessed() {
 		global $wpdb, $post, $user_ID;
 		
 		// mark as accessed now (if record does not exist)

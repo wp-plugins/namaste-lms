@@ -99,7 +99,7 @@ class NamasteLMSCourseModel {
 	}
 	
 	// let's keep it simple for the moment - display text showing whether the user is enrolled or not
-	function enroll_text($content) {
+	static function enroll_text($content) {
 		global $wpdb, $user_ID, $post;
 		
 		if(@$post->post_type != 'namaste_course') return $content;

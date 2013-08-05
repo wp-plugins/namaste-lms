@@ -1,7 +1,7 @@
 <?php
 class NamasteLMSCoursesController {
 	// displays courses of a student, lets them enroll in a course
-	function my_courses() {
+	static function my_courses() {
 		global $wpdb, $user_ID, $user_email;
 		
 		$currency = get_option('namaste_currency');

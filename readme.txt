@@ -55,7 +55,7 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.9.7 = 
+= Version 0.9.8 = 
 - Paypal payment button can now be generated automatically
 - Paypal IPN will be handled and enrollment will be automatically inserted after payment (pending or active, depends on your settings)
 - Added information about Namaste! Connect and the Developers API
@@ -65,6 +65,9 @@ None yet, please ask in the forum
 - Fixed bug with marking lessons as visited
 - Fixed bug with {{name}} bariable in certificates
 - Fixed bug with lesson completeness when admin approval is not required
+- Fixed bugs with premature marking lesson as accessed
+- Fixed bug when cleaning up student/course record
+- Fixed several strick mode issues
 
 = Version 0.9 = 
 - Important bug fixes on required homeworks
