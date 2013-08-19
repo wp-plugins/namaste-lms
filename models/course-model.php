@@ -30,18 +30,23 @@ class NamasteLMSCourseModel {
 		register_taxonomy_for_object_type('category', 'namaste_course');
 	}
 	
-	// thanks to participants in the thread here http://wordpress.org/support/topic/custom-post-type-tagscategories-archive-page?replies=40
+	// add courses to the homepage and archive listings
 	static function query_post_type($query) {
-		
-		if(is_category() || is_tag() || is_home() and empty( $query->query_vars['suppress_filters'] )) {
-			$post_type = get_query_var('post_type');
-			if($post_type) $post_type = $post_type;
-			else $post_type = array('post','namaste_course', 'nav_menu_item'); 
-			$query->set('post_type',$post_type);
-		}
-		
-		if ( is_home() and $query->is_main_query() ) $query->set( 'post_type', array( 'post', 'page', 'namaste_course', 'nav_menu_item' ) );
-		
+		if ( (is_home() or is_archive()) and $query->is_main_query() ) {
+			$post_types = @$query->query_vars['post_type'];
+
+			// empty, so we'll have to create post_type setting			
+			if(empty($post_types)) {
+				if(is_home()) $post_types = array('post', 'page', 'nav_menu_item', 'namaste_course');
+				else $post_types = array('post', 'nav_menu_item', 'namaste_course');
+			}
+			
+			// not empty, so let's just add
+			if(!empty($post_types) and is_array($post_types)) {				
+				$post_types[] = 'namaste_course';
+				$query->set( 'post_type', $post_types );
+			}
+		}		
 		return $query;
 	}
 	
