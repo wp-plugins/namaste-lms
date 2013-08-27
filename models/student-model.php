@@ -102,6 +102,8 @@ class NamasteLMSStudentModel {
 		 		}
 		 } // end if course selected
 		 
+		wp_enqueue_script('thickbox',null,array('jquery'));
+	  wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0'); 
 		require(NAMASTE_PATH."/views/manage-students.php"); 
 	}
 	

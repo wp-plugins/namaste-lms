@@ -55,7 +55,7 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.9.9 = 
+= Version 1.0 = 
 - Paypal payment button can now be generated automatically
 - Paypal IPN will be handled and enrollment will be automatically inserted after payment (pending or active, depends on your settings)
 - Added information about Namaste! Connect and the Developers API
@@ -69,6 +69,7 @@ None yet, please ask in the forum
 - Fixed bug when cleaning up student/course record
 - Fixed several strick mode issues
 - Fixed problem with adding the custom post type to homepage
+- Added missing thickbox include 
 
 = Version 0.9 = 
 - Important bug fixes on required homeworks
