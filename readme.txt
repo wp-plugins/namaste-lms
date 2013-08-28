@@ -55,6 +55,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 1.0.2 =
+- Catching watu/watupro submit actions so lesson status can be immediatelly updated when exam is submitted
+- Added Course columng in Manage Lessons page so you can see which course each lesson belongs to
+
 = Version 1.0 = 
 - Paypal payment button can now be generated automatically
 - Paypal IPN will be handled and enrollment will be automatically inserted after payment (pending or active, depends on your settings)

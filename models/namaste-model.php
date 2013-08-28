@@ -224,6 +224,14 @@ class NamasteLMS {
 		// Paypal IPN
 		add_filter('query_vars', array(__CLASS__, "query_vars"));
 		add_action('parse_request', array("NamastePayment", "parse_request"));
+		
+		// exam related actions
+		add_action('watu_exam_submitted', array('NamasteLMSLessonModel','exam_submitted_watu'));
+		add_action('watupro_completed_exam', array('NamasteLMSLessonModel','exam_submitted_watupro'));
+		
+		// custom columns
+		add_filter('manage_namaste_lesson_posts_columns', array('NamasteLMSLessonModel','manage_post_columns'));
+		add_action( 'manage_posts_custom_column' , array('NamasteLMSLessonModel','custom_columns'), 10, 2 );
 	}
 	
 	// handle Namaste vars in the request

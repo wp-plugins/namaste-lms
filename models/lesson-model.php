@@ -502,4 +502,74 @@ class NamasteLMSLessonModel {
 		if($mode == 'boolean') return true;
 		else return $todo_exam;
 	}
+	
+	// this handler is called when someone submits watu or watupro exam
+	// it takes care to complete a lesson
+	// $plugin is the name of the exam plugin - for now watu or watupro
+	static function exam_submitted($taking_id, $plugin) {		
+		global $wpdb, $user_ID;
+				
+		// now select taking so we have full data and exam ID
+		if($plugin == 'watu') $taking = $wpdb->get_row( $wpdb->prepare("SELECT * FROM {$wpdb->prefix}watu_takings WHERE ID=%d", $taking_id));
+		if($plugin == 'watupro') $taking = $wpdb->get_row( $wpdb->prepare("SELECT * FROM {$wpdb->prefix}watupro_taken_exams WHERE ID=%d", $taking_id));
+		
+		if(empty($taking->ID)) return false;
+		
+		// select all my todo lessons
+		$my_todo_lessons = $wpdb -> get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_LESSONS." WHERE student_id=%d AND status=0", $user_ID));
+		if(!sizeof($my_todo_lessons)) return false;
+		$my_todo_lesson_ids = array();
+		foreach($my_todo_lessons as $my) $my_todo_lesson_ids[] = $my->lesson_id;
+				
+		// get all lessons that this user reads, need to complete, and require this exam ID
+		$args = array("meta_key" => 'namaste_required_exam', 'meta_value'=>$taking->exam_id, 'post_type' => 'namaste_lesson');
+		$lessons = get_posts( $args );
+						
+		// if is_ready complete the lesson
+		foreach($lessons as $lesson) {
+			if(!in_array($lesson->ID, $my_todo_lesson_ids)) continue;
+			if(self::is_ready($lesson->ID, $user_ID)) self::complete($lesson->ID, $user_ID);		
+		}
+	}	
+	
+	// the two functions below are actually called on add_action and then transfer the call to exam_submitted
+	static function exam_submitted_watu($taking_id) {
+		if(!is_user_logged_in()) return false;
+		
+		// are we using watu exams in Namaste?
+		if(get_option('namaste_use_exams') != 'watu') return false;
+		
+		self::exam_submitted($taking_id, 'watu');
+	}
+	
+	static function exam_submitted_watupro($taking_id) {
+		if(!is_user_logged_in()) return false;
+		
+		// are we using watu exams in Namaste?
+		if(get_option('namaste_use_exams') != 'watupro') return false;
+		
+		self::exam_submitted($taking_id, 'watupro');
+	}
+	
+	// adds course column in manage lessons page
+	static function manage_post_columns($columns) {
+		// add this after title column 
+		$final_columns = array();
+		foreach($columns as $key=>$column) {			
+			$final_columns[$key] = $column;
+			if($key == 'title') $final_columns['namaste_course'] = __( 'Course', 'namaste' );
+		}
+		return $final_columns;
+	}
+	
+	// actually displaying the course column value
+	static function custom_columns($column, $post_id) {
+		switch($column) {
+			case 'namaste_course':
+				$course_id = get_post_meta($post_id, "namaste_course", true);
+				$course = get_post($course_id);
+				echo '<a href="post.php?post='.$course_id.'&action=edit">'.$course->post_title.'</a>';
+			break;
+		}
+	}
 }
