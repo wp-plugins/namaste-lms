@@ -12,79 +12,14 @@ class NamasteLMSCoursesController {
 		$accept_stripe = get_option('namaste_accept_stripe');
 		$accept_paypal = get_option('namaste_accept_paypal');
 		$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
-		if($accept_stripe) {
-				require_once(NAMASTE_PATH.'/lib/Stripe.php');
- 
-				$stripe = array(
-				  'secret_key'      => get_option('namaste_stripe_secret'),
-				  'publishable_key' => get_option('namaste_stripe_public')
-				);
-				 
-				Stripe::setApiKey($stripe['secret_key']);
-		}		
+		if($accept_stripe) $stripe = NamasteStripe::load();
 		
 		if(!empty($_POST['stripe_pay'])) {
-			 $token  = $_POST['stripeToken'];
-			 $course = get_post($_POST['course_id']);
-			 $fee = get_post_meta($course->ID, 'namaste_fee', true);
-			 
-			try {
-				 $customer = Stripe_Customer::create(array(
-			      'email' => $user_email,
-			      'card'  => $token
-			  ));				
-				
-				  $charge = Stripe_Charge::create(array(
-				      'customer' => $customer->id,
-				      'amount'   => $fee*100,
-				      'currency' => $currency
-				  ));
-			} catch (Exception $e) {
-				wp_die($e->getMessage());
-			}	  
-			 
-			// !!!!in the next version avoid this copy-paste
-			// almost the same code is in models/payment.php for the paypal payments
-			$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_PAYMENTS." SET 
-							course_id=%d, user_id=%s, date=CURDATE(), amount=%s, status='completed', paycode=%s, paytype='paypal'", 
-							$_POST['course_id'], $user_ID, $fee, $token));
-							
-			// enroll accordingly to course settings - this will be placed in a method once we 
-			// have more payment options
-			$enroll_mode = get_post_meta($course->ID, 'namaste_enroll_mode', true);	
-			if(!NamasteLMSStudentModel :: is_enrolled($user_ID, $course->ID))  {
-				$status = ($enroll_mode == 'free') ? 'enrolled' : 'pending';				
-				$_course->enroll($user_ID, $course->ID, $status);
-			}	
-			
-			namaste_redirect('admin.php?page=namaste_my_courses');
+			 NamasteStripe::pay($currency);			
+			 namaste_redirect('admin.php?page=namaste_my_courses');
 		}	
 		
-		$message = '';
-		if(!empty($_POST['enroll'])) {
-			// enroll in course
-			$course = NamasteLMSCourseModel :: select($_POST['course_id']);
-			
-			// course fee? For the moment all payments are manual so if there's a course fee, enrollment can't happen			
-			$fee = get_post_meta($course->ID, 'namaste_fee', true);
-			
-			// When fee is paid, enrollment is automatic so this is just fine here
-			if($fee > 0 and !$is_manager) wp_die("You can't enroll yourself in a course when there is a fee"); 			
-			
-			$enroll_mode = get_post_meta($course->ID, 'namaste_enroll_mode', true);
-			
-			// if already enrolled, just skip this altogether
-			if(!NamasteLMSStudentModel :: is_enrolled($user_ID, $course->ID)) {
-				// depending on mode, status will be either 'pending' or 'enrolled'
-				$status = ($enroll_mode == 'free') ? 'enrolled' : 'pending';
-				
-				$_course->enroll($user_ID, $course->ID, $status);	
-					
-				if($enroll_mode == 'free') $message = sprintf(__('You enrolled in "%s"', 'namaste'), $course->post_title);
-				else $message = __('Thank you for your interest in enrolling this course. A manager will review your application.', 'namaste');	
-			}
-			else $message = __('You have already enrolled in this course','namaste');
-		}
+		if(!empty($_POST['enroll'])) $mesage = self::enroll($is_manager);
 		
 		// select all courses join to student courses so we can have status.
 		$courses = $wpdb -> get_results($wpdb->prepare("SELECT tSC.*, 
@@ -99,8 +34,46 @@ class NamasteLMSCoursesController {
 			}
 		}	 
 				
+		$_course->currency = $currency;
+		$_course->accept_other_payment_methods = $accept_other_payment_methods;
+		$_course->accept_paypal = $accept_paypal;
+		$_course->accept_stripe = $accept_stripe;		
+		$_course->stripe = $stripe;		
 		wp_enqueue_script('thickbox',null,array('jquery'));
 		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');	 
 		require(NAMASTE_PATH."/views/my_courses.php");	 
+	}
+	
+	// processes the whole enrollment thing so it can be reused in shortcode as well.
+	static function enroll($is_manager) {
+		global $wpdb, $user_ID, $user_email;
+		$_course = new NamasteLMSCourseModel();
+		
+		$message = '';		
+		
+		// enroll in course
+		$course = $_course->select($_POST['course_id']);
+		
+		// course fee? 
+		$fee = get_post_meta($course->ID, 'namaste_fee', true);
+		
+		// When fee is paid, enrollment is automatic so this is just fine here
+		if($fee > 0 and !$is_manager) wp_die("You can't enroll yourself in a course when there is a fee"); 			
+		
+		$enroll_mode = get_post_meta($course->ID, 'namaste_enroll_mode', true);
+				
+		// if already enrolled, just skip this altogether
+		if(!NamasteLMSStudentModel :: is_enrolled($user_ID, $course->ID)) {
+			// depending on mode, status will be either 'pending' or 'enrolled'
+			$status = ($enroll_mode == 'free') ? 'enrolled' : 'pending';
+			
+			$_course->enroll($user_ID, $course->ID, $status);	
+				
+			if($enroll_mode == 'free') $message = sprintf(__('You enrolled in "%s"', 'namaste'), $course->post_title);
+			else $message = __('Thank you for your interest in enrolling this course. A manager will review your application.', 'namaste');	
+		}
+		else $message = __('You have already enrolled in this course','namaste');
+		
+		return $message;
 	}
 }

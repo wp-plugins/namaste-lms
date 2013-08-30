@@ -59,7 +59,8 @@ class NamasteLMSCourseModel {
 			global $wpdb;
 			
 			// select lessons in this course
-			$lessons = NamasteLMSLessonModel::select($post->ID);
+			$_lesson = new NamasteLMSLessonModel();
+			$lessons = $_lesson -> select($post->ID);
 						
 			// required lessons
 			$required_lessons = get_post_meta($post->ID, 'namaste_required_lessons', true);	
@@ -108,6 +109,9 @@ class NamasteLMSCourseModel {
 		global $wpdb, $user_ID, $post;
 		
 		if(@$post->post_type != 'namaste_course') return $content;
+		
+		// if the shortcode is there don't show this
+		if(strstr($content, '[namaste-enroll]')) return $content;
 		
 		// enrolled? 
 		$enrolled = false;
@@ -184,4 +188,42 @@ class NamasteLMSCourseModel {
 			do_action('namaste_enrolled_course', $student_id, $course_id, $status);
 		}			
 	}
+	
+	// displays enroll buttons
+	function enroll_buttons($course, $is_manager) {
+		global $user_ID;
+		
+		$currency = $this->currency;
+		$accept_other_payment_methods = $this->accept_other_payment_methods;
+		$accept_paypal = $this->accept_paypal;
+		$accept_stripe = $this->accept_stripe;		
+		$stripe = $this->stripe;			
+		
+		$output = '';	
+		if(!empty($course->fee) and !$is_manager) {			
+			if($accept_paypal or $accept_other_payment_methods) { 
+				$url = admin_url("admin-ajax.php?action=namaste_ajax&type=course_payment");
+				$box_title = __('Payment for course', 'namaste');
+				$output .= "<strong><a href='#' onclick=\"namasteEnrollCourse('".$box_title."', ".$course->post_id.", ".$user_ID.", '".$url."');return false;\">".__('Enroll for', 'namaste').' '.$currency." ".$course->fee."</a></strong>"; 
+			}
+			if($accept_stripe) {
+				$output .= '<form method="post">
+				  <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+				          data-key="'.$stripe['publishable_key'].'"
+				          data-amount="'.($course->fee*100).'" data-description="'.$course->post_title.'" data-currency="'.$currency.'"></script>
+				<input type="hidden" name="stripe_pay" value="1">
+				<input type="hidden" name="course_id" value="'.$course->post_id.'">
+				</form>';
+			} // end if accept stripe
+		}	
+		else {
+			$output .= '<form method="post">
+				<input type="submit" value="'.__('Click to Enroll', 'namaste').'">
+				<input type="hidden" name="enroll" value="1">
+				<input type="hidden" name="course_id" value="'.$course->post_id.'">
+			</form>';				
+		}  
+		
+		return $output;
+	} // end enroll buttons
 }

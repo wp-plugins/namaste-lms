@@ -220,6 +220,7 @@ class NamasteLMS {
 		
 		// shortcodes
 		add_shortcode('namaste-todo', array("NamasteLMSShortcodesController", 'todo'));
+		add_shortcode('namaste-enroll', array("NamasteLMSShortcodesController", 'enroll'));
 		
 		// Paypal IPN
 		add_filter('query_vars', array(__CLASS__, "query_vars"));

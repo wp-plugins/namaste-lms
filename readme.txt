@@ -55,9 +55,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.0.2 =
+= Version 1.0.3 =
 - Catching watu/watupro submit actions so lesson status can be immediatelly updated when exam is submitted
 - Added Course columng in Manage Lessons page so you can see which course each lesson belongs to
+- Added shortcode [namaste-enroll] to display enrollment button or information right on the course page
 
 = Version 1.0 = 
 - Paypal payment button can now be generated automatically

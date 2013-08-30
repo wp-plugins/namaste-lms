@@ -3,13 +3,14 @@ class NamasteLMSHomeworkModel {
 	static function manage() {
 		global $wpdb;
 		$_course = new NamasteLMSCourseModel();
+		$_lesson = new NamasteLMSLessonModel();
 		
 		// select courses
 		$courses = $_course -> select();
 		
 		// if course and lesson are selected, populate two variables for displaying titles etc
 		if(!empty($_GET['course_id'])) $this_course = $_course -> select($_GET['course_id']);
-		if(!empty($_GET['lesson_id'])) $this_lesson = NamasteLMSLessonModel::select($_GET['course_id'], 'single', $_GET['lesson_id']);
+		if(!empty($_GET['lesson_id'])) $this_lesson = $_lesson -> select($_GET['course_id'], 'single', $_GET['lesson_id']);
 		
 		switch(@$_GET['do']) {
 			case 'add':
@@ -61,7 +62,7 @@ class NamasteLMSHomeworkModel {
 			default:
 				// if course is selected, find lessons
 				if(!empty($_GET['course_id'])) {
-					$lessons = NamasteLMSLessonModel::select($_GET['course_id']);
+					$lessons = $_lesson->select($_GET['course_id']);
 				}			
 			
 				// list existing homeworks if course and lesson are selected
@@ -158,6 +159,7 @@ class NamasteLMSHomeworkModel {
 	static function full_select($id) {
 		global $wpdb;
 		$_course = new NamasteLMSCourseModel();		
+		$_lesson = new NamasteLMSLessonModel();
 		
 		// select this homework and lesson
 		$homework = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORKS."
@@ -165,7 +167,7 @@ class NamasteLMSHomeworkModel {
 		// select course
 		$course = $_course->select($homework->course_id);		
 		// select lesson
-		$lesson = NamasteLMSLessonModel::select($course->ID, 'single', $homework->lesson_id);	
+		$lesson = $_lesson->select($course->ID, 'single', $homework->lesson_id);	
 		
 		return array($homework, $course, $lesson);
 	}

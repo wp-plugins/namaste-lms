@@ -24,24 +24,7 @@ endif;?>
 				<?php endif;?></td>
 			<td>
 			<?php if(empty($course->status)): // not enrolled
-				if(!empty($course->fee) and !$is_manager):
-					if($accept_paypal or $accept_other_payment_methods): echo "<strong><a href='#' onclick='enrollCourse(".$course->post_id.", ".$user_ID.");return false;'>".__('Enroll for', 'namaste').' '.$currency." ".$course->fee."</a></strong>"; endif;
-					if($accept_stripe):?>
-					<form method="post">
-					  <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-					          data-key="<?php echo $stripe['publishable_key']; ?>"
-					          data-amount="<?php echo $course->fee*100?>" data-description="<?php echo $course->post_title?>" data-currency="<?php echo $currency?>"></script>
-					<input type="hidden" name="stripe_pay" value="1">
-					<input type="hidden" name="course_id" value="<?php echo $course->post_id?>">
-					</form>
-					<?php endif; // end if accept stripe
-				else:?>
-				<form method="post">
-					<input type="submit" value="<?php _e('Click to Enroll', 'namaste')?>">
-					<input type="hidden" name="enroll" value="1">
-					<input type="hidden" name="course_id" value="<?php echo $course->post_id?>">
-				</form>				
-			<?php	endif;  
+				echo $_course->enroll_buttons($course, $is_manager);
 			else: // enrolled
 				if($course->status == 'pending'): _e('Pending enrollment', 'namaste'); endif;
 				if($course->status == 'rejected'): _e('Application rejected', 'namaste'); endif;
@@ -54,11 +37,3 @@ endif;?>
 		<?php endforeach;?>
 	</table>
 </div>
-
-<script type="text/javascript" >
-function enrollCourse(courseID, studentID) {
-	tb_show("<?php _e('Payment for course', 'namaste')?>", 
-		'<?php echo admin_url("admin-ajax.php?action=namaste_ajax&type=course_payment")?>&course_id=' + courseID + 
-		'&student_id=' + studentID);
-}
-</script>
