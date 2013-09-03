@@ -238,6 +238,9 @@ class NamasteLMSLessonModel {
 				
 		if(!is_user_logged_in()) return __('You need to be logged in to access this lesson.', 'namaste');
 		
+		// track visit
+		NamasteTrack::visit('lesson', $post->ID, $user_ID);
+		
 		// manager will always access lesson
 		if(current_user_can('namaste_manage')) { self :: mark_accessed(); return $content; }
 		
@@ -557,7 +560,10 @@ class NamasteLMSLessonModel {
 		$final_columns = array();
 		foreach($columns as $key=>$column) {			
 			$final_columns[$key] = $column;
-			if($key == 'title') $final_columns['namaste_course'] = __( 'Course', 'namaste' );
+			if($key == 'title') {
+				$final_columns['namaste_course'] = __( 'Course', 'namaste' );
+				$final_columns['namaste_lesson_visits'] = __( 'Visits (unique/total)', 'namaste' );
+			}
 		}
 		return $final_columns;
 	}
@@ -569,6 +575,11 @@ class NamasteLMSLessonModel {
 				$course_id = get_post_meta($post_id, "namaste_course", true);
 				$course = get_post($course_id);
 				echo '<a href="post.php?post='.$course_id.'&action=edit">'.$course->post_title.'</a>';
+			break;
+			case 'namaste_lesson_visits':
+				// get unique and total visits
+				list($total, $unique) = NamasteTrack::get_visits('lesson', $post_id);
+				echo $unique.' / '.$total;
 			break;
 		}
 	}

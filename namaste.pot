@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.0.3\n"
+"Project-Id-Version: Namaste! LMS 1.0.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-08-30 15:55:25+00:00\n"
+"POT-Creation-Date: 2013-09-03 16:02:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:12 models/lesson-model.php:560
+#: models/course-model.php:12 models/lesson-model.php:564
 msgid "Course"
 msgstr ""
 
@@ -114,28 +114,32 @@ msgid "This will create a new course in your Namaste! LMS."
 msgstr ""
 
 #: models/course-model.php:54 models/lesson-model.php:28
-#: models/namaste-model.php:156
+#: models/namaste-model.php:171
 msgid "Namaste! Settings"
 msgstr ""
 
-#: models/course-model.php:123
+#: models/course-model.php:126
 msgid "You are enrolled in this course. Check \"My courses\" link in your dashboard to see the lessons and to-do list"
 msgstr ""
 
-#: models/course-model.php:124
+#: models/course-model.php:127
 msgid "You can enroll in this course from your student dashboard. You need to be logged in."
 msgstr ""
 
-#: models/course-model.php:206
+#: models/course-model.php:209
 msgid "Payment for course"
 msgstr ""
 
-#: models/course-model.php:207
+#: models/course-model.php:210
 msgid "Enroll for"
 msgstr ""
 
-#: models/course-model.php:221
+#: models/course-model.php:224
 msgid "Click to Enroll"
+msgstr ""
+
+#: models/course-model.php:240 models/lesson-model.php:565
+msgid "Visits (unique/total)"
 msgstr ""
 
 #: models/homework-model.php:27
@@ -200,75 +204,75 @@ msgstr ""
 msgid "You need to be logged in to access this lesson."
 msgstr ""
 
-#: models/lesson-model.php:250
+#: models/lesson-model.php:253
 msgid "In order to see this lesson you first have to be enrolled in the course"
 msgstr ""
 
-#: models/lesson-model.php:270
+#: models/lesson-model.php:273
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#: models/namaste-model.php:151
+#: models/namaste-model.php:166
 msgid "Namaste! LMS"
 msgstr ""
 
-#: models/namaste-model.php:153 views/student-lessons.php:16
+#: models/namaste-model.php:168 views/student-lessons.php:16
 msgid "Assignments"
 msgstr ""
 
-#: models/namaste-model.php:154
+#: models/namaste-model.php:169
 msgid "Students"
 msgstr ""
 
-#: models/namaste-model.php:155
+#: models/namaste-model.php:170
 msgid "Certificates"
 msgstr ""
 
-#: models/namaste-model.php:156
+#: models/namaste-model.php:171
 msgid "Settings"
 msgstr ""
 
-#: models/namaste-model.php:157
+#: models/namaste-model.php:172
 msgid "Namaste! Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:157
+#: models/namaste-model.php:172
 msgid "Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:160
+#: models/namaste-model.php:175
 msgid "Student Lessons"
 msgstr ""
 
-#: models/namaste-model.php:161
+#: models/namaste-model.php:176
 msgid "Homeworks"
 msgstr ""
 
-#: models/namaste-model.php:162 views/add-note.php:15
+#: models/namaste-model.php:177 views/add-note.php:15
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:163 views/lesson-homeworks.php:28
+#: models/namaste-model.php:178 views/lesson-homeworks.php:28
 msgid "Submit solution"
 msgstr ""
 
-#: models/namaste-model.php:164 views/homeworks.php:28
+#: models/namaste-model.php:179 views/homeworks.php:28
 msgid "View solutions"
 msgstr ""
 
-#: models/namaste-model.php:165
+#: models/namaste-model.php:180
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:166
+#: models/namaste-model.php:181
 msgid "View Certificate"
 msgstr ""
 
-#: models/namaste-model.php:170 views/my_courses.php:1
+#: models/namaste-model.php:187 views/my_courses.php:1
 msgid "My Courses"
 msgstr ""
 
-#: models/namaste-model.php:171 views/my-certificates.php:1
+#: models/namaste-model.php:188 views/my-certificates.php:1
 msgid "My Certificates"
 msgstr ""
 

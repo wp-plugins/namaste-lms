@@ -1,6 +1,6 @@
 <?php
 class NamasteLMSHomeworkController {
-	function submit_solution() {
+	static function submit_solution() {
 		global $wpdb, $user_ID;
 		$_course = new NamasteLMSCourseModel();
 		
@@ -33,7 +33,7 @@ class NamasteLMSHomeworkController {
 	}
 	
 	// teacher views, approves, rejects submitted solutions
-	function view() {
+	static function view() {
 		global $wpdb, $user_ID;
 		
 		$student_id = empty($_GET['student_id'])?$user_ID : $_GET['student_id'];

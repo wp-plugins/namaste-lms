@@ -107,8 +107,11 @@ class NamasteLMSCourseModel {
 	// let's keep it simple for the moment - display text showing whether the user is enrolled or not
 	static function enroll_text($content) {
 		global $wpdb, $user_ID, $post;
-		
+				
 		if(@$post->post_type != 'namaste_course') return $content;
+		
+		// track the visit
+		if(is_user_logged_in()) NamasteTrack::visit('course', $post->ID, $user_ID);
 		
 		// if the shortcode is there don't show this
 		if(strstr($content, '[namaste-enroll]')) return $content;
@@ -226,4 +229,28 @@ class NamasteLMSCourseModel {
 		
 		return $output;
 	} // end enroll buttons
+	
+	// adds visits column in manage courses page
+	static function manage_post_columns($columns) {
+		// add this after title column 
+		$final_columns = array();
+		foreach($columns as $key=>$column) {			
+			$final_columns[$key] = $column;
+			if($key == 'title') {				
+				$final_columns['namaste_course_visits'] = __( 'Visits (unique/total)', 'namaste' );
+			}
+		}
+		return $final_columns;
+	}
+	
+	// actually displaying the course column value
+	static function custom_columns($column, $post_id) {
+		switch($column) {			
+			case 'namaste_course_visits':
+				// get unique and total visits
+				list($total, $unique) = NamasteTrack::get_visits('course', $post_id);
+				echo $unique.' / '.$total;
+			break;
+		}
+	}
 }

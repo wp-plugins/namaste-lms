@@ -106,7 +106,7 @@ class NamasteLMS {
 			$wpdb->query($sql);
 	  }  
 	 
-		  
+	  // payment records	  
 	  if($wpdb->get_var("SHOW TABLES LIKE '".NAMASTE_PAYMENTS."'") != NAMASTE_PAYMENTS) {        
 			$sql = "CREATE TABLE `" . NAMASTE_PAYMENTS . "` (
 				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -121,6 +121,21 @@ class NamasteLMS {
 			
 			$wpdb->query($sql);
 	  }  	 
+	 
+	   // tracks the visits on a give course or lesson
+	   // 1 record per user/date
+	   if($wpdb->get_var("SHOW TABLES LIKE '".NAMASTE_VISITS."'") != NAMASTE_VISITS) {        
+			$sql = "CREATE TABLE `" . NAMASTE_VISITS . "` (
+				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				  `course_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `lesson_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `user_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `date` DATE NOT NULL DEFAULT '2001-01-01',
+				  `visits` INT UNSIGNED NOT NULL DEFAULT 0
+				) DEFAULT CHARSET=utf8;";
+			
+			$wpdb->query($sql);
+	  }  	 	 
 	 
 	  // add student role if not exists
     $res = add_role('student', 'Student', array(
@@ -165,10 +180,14 @@ class NamasteLMS {
 		add_submenu_page( NULL, __("View all solutions", 'namaste'), __("View all solutions", 'namaste'), 'namaste_manage', 'namaste_view_all_solutions', array('NamasteLMSHomeworkController', "view_all"));
 		add_submenu_page( NULL, __("View Certificate", 'namaste'), __("View Certificate", 'namaste'), $namaste_cap, 'namaste_view_certificate', array('NamasteLMSCertificatesController', "view_certificate"));
 		
+		do_action('namaste_lms_admin_menu');
+		
 		
 		// student menu
 		$menu=add_menu_page(__('My Courses', 'namaste'), __('My Courses', 'namaste'), $namaste_cap, "namaste_my_courses", array('NamasteLMSCoursesController', "my_courses"));
 			add_submenu_page('namaste_my_courses', __("My Certificates", 'namaste'), __("My Certificates", 'namaste'), $namaste_cap, 'namaste_my_certificates', array('NamasteLMSCertificatesController', "my_certificates"));
+			
+		do_action('namaste_lms_user_menu');	
 	}
 	
 	// CSS and JS
@@ -208,13 +227,14 @@ class NamasteLMS {
 		// define table names 
 		define( 'NAMASTE_STUDENT_COURSES', $wpdb->prefix. "namaste_student_courses");
 		define( 'NAMASTE_LESSON_COURSES', $wpdb->prefix. "namaste_lesson_courses");
-		define( 'NAMASTE_HOMEWORKS', $wpdb->prefix. "namaste_homeworks");
+		if(!defined('NAMASTE_HOMEWORKS')) define( 'NAMASTE_HOMEWORKS', $wpdb->prefix. "namaste_homeworks");
 		define( 'NAMASTE_STUDENT_HOMEWORKS', $wpdb->prefix. "namaste_student_homeworks");
 		define( 'NAMASTE_HOMEWORK_NOTES', $wpdb->prefix. "namaste_homework_notes");
 		define( 'NAMASTE_STUDENT_LESSONS', $wpdb->prefix. "namaste_student_lessons");
 		define( 'NAMASTE_CERTIFICATES', $wpdb->prefix. "namaste_certificates");
 		define( 'NAMASTE_STUDENT_CERTIFICATES', $wpdb->prefix. "namaste_student_certificates");
 		define( 'NAMASTE_PAYMENTS', $wpdb->prefix. "namaste_payments");
+		define( 'NAMASTE_VISITS', $wpdb->prefix. "namaste_visits");
 		
 		define( 'NAMASTE_VERSION', get_option('namaste_version'));
 		
@@ -233,6 +253,8 @@ class NamasteLMS {
 		// custom columns
 		add_filter('manage_namaste_lesson_posts_columns', array('NamasteLMSLessonModel','manage_post_columns'));
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSLessonModel','custom_columns'), 10, 2 );
+		add_filter('manage_namaste_course_posts_columns', array('NamasteLMSCourseModel','manage_post_columns'));
+		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
 	}
 	
 	// handle Namaste vars in the request
