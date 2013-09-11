@@ -55,7 +55,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.0.5 =
+= Version 1.1 =
+- Gradebook - you can now grade user performance in assignments, lessons and courses
+- The grading system is configurable by you
+- User sees My Gradebook in their dashboard when grading system is enabled
 - Catching watu/watupro submit actions so lesson status can be immediatelly updated when exam is submitted
 - Added Course columng in Manage Lessons page so you can see which course each lesson belongs to
 - Added shortcode [namaste-enroll] to display enrollment button or information right on the course page

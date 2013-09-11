@@ -136,6 +136,19 @@ class NamasteLMS {
 			
 			$wpdb->query($sql);
 	  }  	 	 
+	  
+	  // add extra fields in new versions
+	  namaste_add_db_fields(array(
+		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''")	  
+	  ), NAMASTE_STUDENT_HOMEWORKS);
+	  
+	   namaste_add_db_fields(array(
+		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''")	  
+	  ), NAMASTE_STUDENT_COURSES);
+	  
+	   namaste_add_db_fields(array(
+		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''")	  
+	  ), NAMASTE_STUDENT_LESSONS);
 	 
 	  // add student role if not exists
     $res = add_role('student', 'Student', array(
@@ -162,12 +175,14 @@ class NamasteLMS {
    // main menu
    static function menu() {
 		$namaste_cap = current_user_can('namaste_manage')?'namaste_manage':'namaste';   	
+		$use_grading_system = get_option('namaste_use_grading_system');
    	
    	$menu=add_menu_page(__('Namaste! LMS', 'namaste'), __('Namaste! LMS', 'namaste'), "namaste_manage", "namaste_options", 
    		array(__CLASS__, "options"));
 		add_submenu_page('namaste_options', __("Assignments", 'namaste'), __("Assignments", 'namaste'), 'namaste_manage', 'namaste_homeworks', array('NamasteLMSHomeworkModel', "manage"));
 		add_submenu_page('namaste_options', __("Students", 'namaste'), __("Students", 'namaste'), 'namaste_manage', 'namaste_students', array('NamasteLMSStudentModel', "manage"));		
 		add_submenu_page('namaste_options', __("Certificates", 'namaste'), __("Certificates", 'namaste'), 'namaste_manage', 'namaste_certificates', array('NamasteLMSCertificatesController', "manage"));
+		if(!empty($use_grading_system)) add_submenu_page('namaste_options', __("Gradebook", 'namaste'), __("Gradebook", 'namaste'), 'namaste_manage', 'namaste_gradebook', array('NamasteLMSGradebookController', "manage"));
 		add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));        
 		add_submenu_page('namaste_options', __("Namaste! Plugins &amp; API", 'namaste'), __("Plugins &amp; API", 'namaste'), 'namaste_manage', 'namaste_plugins', array(__CLASS__, "plugins"));
    		
@@ -186,6 +201,7 @@ class NamasteLMS {
 		// student menu
 		$menu=add_menu_page(__('My Courses', 'namaste'), __('My Courses', 'namaste'), $namaste_cap, "namaste_my_courses", array('NamasteLMSCoursesController', "my_courses"));
 			add_submenu_page('namaste_my_courses', __("My Certificates", 'namaste'), __("My Certificates", 'namaste'), $namaste_cap, 'namaste_my_certificates', array('NamasteLMSCertificatesController', "my_certificates"));
+			if(!empty($use_grading_system)) add_submenu_page('namaste_my_courses', __("My Gradebook", 'namaste'), __("My Gradebook", 'namaste'), $namaste_cap, 'namaste_my_gradebook', array('NamasteLMSGradebookController', "my_gradebook"));
 			
 		do_action('namaste_lms_user_menu');	
 	}
@@ -317,6 +333,15 @@ class NamasteLMS {
 			update_option('namaste_stripe_secret', $_POST['stripe_secret']);
 		} 
 		
+		if(!empty($_POST['namaste_grade_options'])) {
+			update_option('namaste_use_grading_system', @$_POST['use_grading_system']);
+			update_option('namaste_grading_system', $_POST['grading_system']);
+			update_option('namaste_use_points_system', @$_POST['use_points_system']);
+			update_option('namaste_points_course', $_POST['points_course']);
+			update_option('namaste_points_lesson', $_POST['points_lesson']);
+			update_option('namaste_points_homework', $_POST['points_homework']);
+		}
+		
 		// select all roles in the system
 		$roles = $wp_roles->roles;
 				
@@ -338,6 +363,11 @@ class NamasteLMS {
 	   "CAD"=>"CAD", "CHF"=>"CHF", "CZK"=>"CZK", "DKK"=>"DKK", "HKD"=>"HKD", "HUF"=>"HUF",
 	   "ILS"=>"ILS", "MXN"=>"MXN", "NOK"=>"NOK", "NZD"=>"NZD", "PLN"=>"PLN", "SEK"=>"SEK",
 	   "SGD"=>"SGD");		
+	   
+	   $use_grading_system = get_option('namaste_use_grading_system');
+	   $grading_system = stripslashes(get_option('namaste_grading_system'));
+	   if(empty($grading_system)) $grading_system = "A, B, C, D, F";
+	   $use_points_system = get_option('namaste_use_points_system');
 			
 		require(NAMASTE_PATH."/views/options.php");
 	}	

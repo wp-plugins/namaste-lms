@@ -61,6 +61,27 @@ function namaste_ajax() {
 			
 			require(NAMASTE_PATH."/views/course-pay.php");	
 		break;
+		
+		// set student's grade for a course or lesson
+		case 'set_grade':
+			if(!current_user_can('namaste_manage')) die(__('You are not allowed to grade','namaste'));
+			
+			if($_POST['grade_what'] == 'course') {
+				$table = NAMASTE_STUDENT_COURSES;
+				$field = 'course_id';
+				$student_field = 'user_id';
+				do_action('namaste_graded_course', $_POST['student_id'], $_POST['item_id'], $_POST['grade']);
+			} 
+			else {
+				$table = NAMASTE_STUDENT_LESSONS;
+				$field = 'lesson_id';
+				$student_field = 'student_id';
+				do_action('namaste_graded_lesson', $_POST['student_id'], $_POST['item_id'], $_POST['grade']);
+			} 
+			
+			// now update the grade
+			$wpdb->query($wpdb->prepare("UPDATE $table SET grade=%s WHERE $field=%d AND $student_field=%d", $_POST['grade'], $_POST['item_id'], $_POST['student_id']));
+		break;
 	}
 	exit;
 }

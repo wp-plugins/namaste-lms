@@ -31,6 +31,37 @@
 	
 	<form method="post" class="namaste-form">
 		<div class="postbox wp-admin namaste-box">
+			<h2><?php _e('Grade and Point Systems', 'namaste')?></h2>
+			
+			<p><input type="checkbox" name="use_grading_system" <?php if($use_grading_system) echo 'checked'?> onclick="this.checked ? jQuery('#gradeSystem').show() : jQuery('#gradeSystem').hide();"> <?php _e('Use grading system*', 'namaste');?></p>
+			<p><?php _e('* Using a grading system allows you to rate student performance in courses, lessons, and assignments, and keeping a gradebook. Grading individual lessons is optional.', 'namaste')?> </p>
+			
+			<div id="gradeSystem" style="display:<?php echo $use_grading_system ? 'block' : 'none'?>">
+				<p><?php _e('Enter your grades in the box, separated by comma. Start with the best possible grade and go right to the worst:', 'namaste')?>
+				<input type="text" name="grading_system" value="<?php echo $grading_system;?>" size="40"></p>
+			</div>
+			
+			<hr>
+			
+			<p><input type="checkbox" name="use_points_system" <?php if($use_points_system) echo 'checked'?> onclick="this.checked ? jQuery('#pointsSystem').show() : jQuery('#pointsSystem').hide();"> <?php _e('Use points system* <b>(Not yet implemented)</b>', 'namaste');?></p>
+			<p><?php _e('* Points system can be used alone or together with a grading system. It lets you reward your students with points for completing lessons, courses, or assignments. These points will be displayed, and in the future (and in additional plugins) used to create leaderboards, redeem rewards, etc.', 'namaste')?> </p>
+			
+			<div id="pointsSystem" style="display:<?php echo $use_points_system ? 'block' : 'none'?>">
+				<p><?php _e('Default reward values. They can be overridden for every individual course, lesson, or assignment.', 'namaste')?></p>
+				
+				<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_course" size="4" value="<?php echo get_option('namaste_points_course')?>"> <?php _e('points for completing a course', 'namaste')?></p>
+				
+				<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_lesson" size="4" value="<?php echo get_option('namaste_points_lesson')?>"> <?php _e('points for completing a lesson', 'namaste')?></p>
+				
+				<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_homework" size="4" value="<?php echo get_option('namaste_points_homework')?>"> <?php _e('points for successfully completing a homework', 'namaste')?></p>
+			</div>
+			<input type="hidden" name="namaste_grade_options" value="1">
+			<p><input type="submit" value="<?php _e('Save grade and points settings', 'namaste')?>"></p>
+		</div>
+	</form>		
+	
+	<form method="post" class="namaste-form">
+		<div class="postbox wp-admin namaste-box">
 			<h2><?php _e('Payment Settings', 'namaste')?></h2>
 			
 			<p><label><?php _e('Payment currency:', 'namaste')?></label> <select name="currency">

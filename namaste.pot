@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.0.5\n"
+"Project-Id-Version: Namaste! LMS 1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-09-03 16:02:41+00:00\n"
+"POT-Creation-Date: 2013-09-11 15:34:13+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,6 +14,10 @@ msgstr ""
 
 #: controllers/ajax.php:33
 msgid "You are not allowed to view this"
+msgstr ""
+
+#: controllers/ajax.php:67
+msgid "You are not allowed to grade"
 msgstr ""
 
 #: controllers/certificates.php:44
@@ -56,7 +60,7 @@ msgstr ""
 msgid "You are not allowed to see these solutions"
 msgstr ""
 
-#: controllers/homeworks.php:77
+#: controllers/homeworks.php:87
 msgid "You are not allowed to do this"
 msgstr ""
 
@@ -114,7 +118,7 @@ msgid "This will create a new course in your Namaste! LMS."
 msgstr ""
 
 #: models/course-model.php:54 models/lesson-model.php:28
-#: models/namaste-model.php:171
+#: models/namaste-model.php:186
 msgid "Namaste! Settings"
 msgstr ""
 
@@ -166,7 +170,8 @@ msgstr ""
 msgid "Lessons"
 msgstr ""
 
-#: models/lesson-model.php:10 views/student-lessons.php:15
+#: models/lesson-model.php:10 views/my-gradebook.html.php:25
+#: views/student-lessons.php:15
 msgid "Lesson"
 msgstr ""
 
@@ -212,68 +217,76 @@ msgstr ""
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#: models/namaste-model.php:166
+#: models/namaste-model.php:180
 msgid "Namaste! LMS"
 msgstr ""
 
-#: models/namaste-model.php:168 views/student-lessons.php:16
+#: models/namaste-model.php:182 views/student-lessons.php:16
 msgid "Assignments"
 msgstr ""
 
-#: models/namaste-model.php:169
+#: models/namaste-model.php:183
 msgid "Students"
 msgstr ""
 
-#: models/namaste-model.php:170
+#: models/namaste-model.php:184
 msgid "Certificates"
 msgstr ""
 
-#: models/namaste-model.php:171
+#: models/namaste-model.php:185 views/gradebook.html.php:2
+msgid "Gradebook"
+msgstr ""
+
+#: models/namaste-model.php:186
 msgid "Settings"
 msgstr ""
 
-#: models/namaste-model.php:172
+#: models/namaste-model.php:187
 msgid "Namaste! Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:172
+#: models/namaste-model.php:187
 msgid "Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:175
+#: models/namaste-model.php:190
 msgid "Student Lessons"
 msgstr ""
 
-#: models/namaste-model.php:176
+#: models/namaste-model.php:191
 msgid "Homeworks"
 msgstr ""
 
-#: models/namaste-model.php:177 views/add-note.php:15
+#: models/namaste-model.php:192 views/add-note.php:15
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:178 views/lesson-homeworks.php:28
+#: models/namaste-model.php:193 views/lesson-homeworks.php:28
 msgid "Submit solution"
 msgstr ""
 
-#: models/namaste-model.php:179 views/homeworks.php:28
+#: models/namaste-model.php:194 views/homeworks.php:28
 msgid "View solutions"
 msgstr ""
 
-#: models/namaste-model.php:180
+#: models/namaste-model.php:195
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:181
+#: models/namaste-model.php:196
 msgid "View Certificate"
 msgstr ""
 
-#: models/namaste-model.php:187 views/my_courses.php:1
+#: models/namaste-model.php:202 views/my_courses.php:1
 msgid "My Courses"
 msgstr ""
 
-#: models/namaste-model.php:188 views/my-certificates.php:1
+#: models/namaste-model.php:203 views/my-certificates.php:1
 msgid "My Certificates"
+msgstr ""
+
+#: models/namaste-model.php:204 views/my-gradebook.html.php:2
+msgid "My Gradebook"
 msgstr ""
 
 #: models/student-model.php:33
@@ -459,6 +472,40 @@ msgstr ""
 msgid "Subscribe for"
 msgstr ""
 
+#: views/gradebook.html.php:6 views/homeworks.php:5 views/lesson-meta-box.php:4
+#: views/manage-students.php:15 views/my-gradebook.html.php:7
+msgid "Select course:"
+msgstr ""
+
+#: views/gradebook.html.php:7 views/homeworks.php:6 views/homeworks.php:53
+#: views/my-gradebook.html.php:8
+msgid "- please select -"
+msgstr ""
+
+#: views/gradebook.html.php:16
+msgid "Grades of the students in %"
+msgstr ""
+
+#: views/gradebook.html.php:19 views/manage-students.php:46
+msgid "Student"
+msgstr ""
+
+#: views/gradebook.html.php:19
+msgid "Lessons Grades (Shows also grades from assignments)"
+msgstr ""
+
+#: views/gradebook.html.php:19
+msgid "Final grade for the course"
+msgstr ""
+
+#: views/gradebook.html.php:32
+msgid "| Final:"
+msgstr ""
+
+#: views/gradebook.html.php:40
+msgid "Lesson not started"
+msgstr ""
+
 #: views/homework-notes.php:1
 msgid "Admin notes for assignment"
 msgstr ""
@@ -501,15 +548,6 @@ msgstr ""
 
 #: views/homeworks.php:1
 msgid "Assignments / Homeworks"
-msgstr ""
-
-#: views/homeworks.php:5 views/lesson-meta-box.php:4
-#: views/manage-students.php:15
-msgid "Select course:"
-msgstr ""
-
-#: views/homeworks.php:6 views/homeworks.php:53
-msgid "- please select -"
 msgstr ""
 
 #: views/homeworks.php:14 views/homeworks.php:52
@@ -560,11 +598,11 @@ msgstr ""
 msgid "Solutions"
 msgstr ""
 
-#: views/lesson-homeworks.php:16 views/lesson-homeworks.php:43
+#: views/lesson-homeworks.php:16 views/lesson-homeworks.php:44
 msgid "Notes"
 msgstr ""
 
-#: views/lesson-homeworks.php:22 views/lesson-homeworks.php:31
+#: views/lesson-homeworks.php:22 views/lesson-homeworks.php:32
 msgid "None yet."
 msgstr ""
 
@@ -576,7 +614,7 @@ msgstr ""
 msgid "A solution has been accepted and the assignment is completed."
 msgstr ""
 
-#: views/lesson-homeworks.php:35
+#: views/lesson-homeworks.php:36
 msgid "Add note"
 msgstr ""
 
@@ -688,7 +726,7 @@ msgstr ""
 msgid "Any status"
 msgstr ""
 
-#: views/manage-students.php:32 views/view-solutions.php:36
+#: views/manage-students.php:32 views/view-solutions.php:39
 msgid "Pending"
 msgstr ""
 
@@ -696,7 +734,7 @@ msgstr ""
 msgid "Enrolled"
 msgstr ""
 
-#: views/manage-students.php:34 views/view-solutions.php:38
+#: views/manage-students.php:34 views/view-solutions.php:41
 msgid "Rejected"
 msgstr ""
 
@@ -706,10 +744,6 @@ msgstr ""
 
 #: views/manage-students.php:44
 msgid "The below table shows all students enrolled in this course allong with the status for every lesson in it"
-msgstr ""
-
-#: views/manage-students.php:46
-msgid "Student"
 msgstr ""
 
 #: views/manage-students.php:50 views/my_courses.php:16
@@ -751,6 +785,55 @@ msgstr ""
 
 #: views/my-certificates.php:10
 msgid "Completed course(s)"
+msgstr ""
+
+#: views/my-gradebook.html.php:16
+msgid "You need to enroll some courses first."
+msgstr ""
+
+#: views/my-gradebook.html.php:20
+msgid "My grades in %s"
+msgstr ""
+
+#: views/my-gradebook.html.php:22
+msgid "Final grade for the whole course:"
+msgstr ""
+
+#: views/my-gradebook.html.php:25
+msgid "Grades from assignments"
+msgstr ""
+
+#: views/my-gradebook.html.php:25
+msgid "Final grade"
+msgstr ""
+
+#: views/my-gradebook.html.php:30
+msgid "Assignment:"
+msgstr ""
+
+#: views/my-gradebook.html.php:32
+msgid "Solution"
+msgstr ""
+
+#: views/my-gradebook.html.php:32 views/view-solutions.php:33
+msgid "Grade"
+msgstr ""
+
+#: views/my-gradebook.html.php:34 views/view-solutions.php:27
+msgid "Solution submitted at %s"
+msgstr ""
+
+#: views/my-gradebook.html.php:35 views/my-gradebook.html.php:42
+#: views/view-solutions.php:61
+msgid "Not graded"
+msgstr ""
+
+#: views/my-gradebook.html.php:38
+msgid "No solutions submitted yet."
+msgstr ""
+
+#: views/my-gradebook.html.php:41
+msgid "No assignments"
 msgstr ""
 
 #: views/my_courses.php:4
@@ -810,86 +893,134 @@ msgid "Save Options"
 msgstr ""
 
 #: views/options.php:34
-msgid "Payment Settings"
+msgid "Grade and Point Systems"
 msgstr ""
 
 #: views/options.php:36
-msgid "Payment currency:"
+msgid "Use grading system*"
 msgstr ""
 
-#: views/options.php:44
-msgid "Here you can specify payment methods that you will accept to give access to courses. When a course requires payment, the enrollment (pending or active - depends on your other course settings) will be entered after the payment is completed."
+#: views/options.php:37
+msgid "* Using a grading system allows you to rate student performance in courses, lessons, and assignments, and keeping a gradebook. Grading individual lessons is optional."
+msgstr ""
+
+#: views/options.php:40
+msgid "Enter your grades in the box, separated by comma. Start with the best possible grade and go right to the worst:"
 msgstr ""
 
 #: views/options.php:46
-msgid "Accept PayPal"
+msgid "Use points system* <b>(Not yet implemented)</b>"
 msgstr ""
 
-#: views/options.php:49
-msgid "Your Paypal ID:"
+#: views/options.php:47
+msgid "* Points system can be used alone or together with a grading system. It lets you reward your students with points for completing lessons, courses, or assignments. These points will be displayed, and in the future (and in additional plugins) used to create leaderboards, redeem rewards, etc."
+msgstr ""
+
+#: views/options.php:50
+msgid "Default reward values. They can be overridden for every individual course, lesson, or assignment."
+msgstr ""
+
+#: views/options.php:52 views/options.php:54 views/options.php:56
+msgid "Reward"
 msgstr ""
 
 #: views/options.php:52
-msgid "Accept Stripe"
+msgid "points for completing a course"
 msgstr ""
 
-#: views/options.php:55
-msgid "Your Public Key:"
+#: views/options.php:54
+msgid "points for completing a lesson"
 msgstr ""
 
 #: views/options.php:56
-msgid "Your Secret Key:"
+msgid "points for successfully completing a homework"
 msgstr ""
 
 #: views/options.php:59
-msgid "Accept other payment methods"
+msgid "Save grade and points settings"
 msgstr ""
 
-#: views/options.php:60
-msgid "This option lets you paste your own button HTML code or other manual instructions, for example bank wire. These payments will have to be processed manually unless you can build your own script to verify them."
-msgstr ""
-
-#: views/options.php:63
-msgid "Enter text or HTML code for payment button(s). You can use the following variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
+#: views/options.php:65
+msgid "Payment Settings"
 msgstr ""
 
 #: views/options.php:67
-msgid "Save payment settings"
+msgid "Payment currency:"
 msgstr ""
 
 #: views/options.php:75
-msgid "Exam/Test Related Settings"
+msgid "Here you can specify payment methods that you will accept to give access to courses. When a course requires payment, the enrollment (pending or active - depends on your other course settings) will be entered after the payment is completed."
 msgstr ""
 
 #: views/options.php:77
-msgid "Namaste LMS utilizes the power of existing Wordpress plugins to handle exams, tests and quizzes. At this moment it can connect with two plugins:"
+msgid "Accept PayPal"
 msgstr ""
 
-#: views/options.php:77
-msgid "(Free) and "
+#: views/options.php:80
+msgid "Your Paypal ID:"
 msgstr ""
 
-#: views/options.php:77
-msgid "(Premium)"
+#: views/options.php:83
+msgid "Accept Stripe"
 msgstr ""
 
-#: views/options.php:79
-msgid "If you have any of these plugins installed and activated, please choose which one to use for handling tests below:"
+#: views/options.php:86
+msgid "Your Public Key:"
 msgstr ""
 
-#: views/options.php:81
-msgid "I don not need to create any exams or tests."
+#: views/options.php:87
+msgid "Your Secret Key:"
 msgstr ""
 
-#: views/options.php:84
-msgid "I will create exams with Watu."
-msgstr ""
-
-#: views/options.php:88
-msgid "I will create exams with WatuPRO."
+#: views/options.php:90
+msgid "Accept other payment methods"
 msgstr ""
 
 #: views/options.php:91
+msgid "This option lets you paste your own button HTML code or other manual instructions, for example bank wire. These payments will have to be processed manually unless you can build your own script to verify them."
+msgstr ""
+
+#: views/options.php:94
+msgid "Enter text or HTML code for payment button(s). You can use the following variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
+msgstr ""
+
+#: views/options.php:98
+msgid "Save payment settings"
+msgstr ""
+
+#: views/options.php:106
+msgid "Exam/Test Related Settings"
+msgstr ""
+
+#: views/options.php:108
+msgid "Namaste LMS utilizes the power of existing Wordpress plugins to handle exams, tests and quizzes. At this moment it can connect with two plugins:"
+msgstr ""
+
+#: views/options.php:108
+msgid "(Free) and "
+msgstr ""
+
+#: views/options.php:108
+msgid "(Premium)"
+msgstr ""
+
+#: views/options.php:110
+msgid "If you have any of these plugins installed and activated, please choose which one to use for handling tests below:"
+msgstr ""
+
+#: views/options.php:112
+msgid "I don not need to create any exams or tests."
+msgstr ""
+
+#: views/options.php:115
+msgid "I will create exams with Watu."
+msgstr ""
+
+#: views/options.php:119
+msgid "I will create exams with WatuPRO."
+msgstr ""
+
+#: views/options.php:122
 msgid "Save Exam Options"
 msgstr ""
 
@@ -973,14 +1104,10 @@ msgstr ""
 msgid "No one has submitted any solutions for this assignment yet."
 msgstr ""
 
-#: views/view-solutions.php:27
-msgid "Solution submitted at %s"
-msgstr ""
-
 #: views/view-solutions.php:29
 msgid "by"
 msgstr ""
 
-#: views/view-solutions.php:37
+#: views/view-solutions.php:40
 msgid "Approved"
 msgstr ""

@@ -1,7 +1,7 @@
 <h1><?php _e('Assignments for lesson', 'namaste')?> "<?php echo $lesson->post_title?>"</h1>
 
 <?php if($user_ID != $_GET['student_id']):?>
-	<p><?php _e('Showing assignments of', 'namaste')?> <strong><?php echo $student->user_login?></strong></p>
+	<h3><?php _e('Showing assignments of', 'namaste')?> <strong><?php echo $student->user_login?>.</strong></h3>
 <?php endif;?>
 
 <p><a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $course_id?>&student_id=<?php echo $_GET['student_id']?>"><?php _e('Back to the lessons page in this course', 'namaste')?></a></p>
@@ -12,7 +12,7 @@
 endif;?>
 
 <table class="widefat">
-	<tr><th><?php _e('Assignment title and description', 'namaste')?></th><th><?php _e('Solutions', 'namaste')?></th>
+	<tr><th><?php _e('Assignment title and description', 'namaste')?></th><th><?php _e('Solutions', 'namaste')?></th>		
 		<th><?php _e('Notes', 'namaste')?></th>
 		<?php do_action('namaste_extra_th', 'lesson_homeworks');?>	
 		</tr>
@@ -28,6 +28,7 @@ endif;?>
 				<p><a href="admin.php?page=namaste_submit_solution&id=<?php echo $homework->id?>"><?php _e('Submit solution', 'namaste')?></a></p>
 		<?php endif; 
 		endif;?></td>
+		
 		<td><p><?php if(!sizeof($homework->notes)): _e('None yet.', 'namaste');
 		else:?> <a href="#" onclick="Namaste.loadNotes('<?php echo $homework->id?>', '<?php echo $student->ID?>');return false;"><?php _e(sprintf('%d notes', sizeof($homework->notes)), 'namaste')?></a>
 		<?php endif;?></p>		

@@ -28,7 +28,10 @@
 		<?php if(!empty($show_everyone)):
 		 echo __('by','namaste')." <a href='admin.php?page=namaste_lesson_homeworks&lesson_id=".$lesson->ID."&student_id=".$solution->student_id."' target='_blank'>".$solution->user_login."</a>";
 		endif;?></th>
-		<th><?php _e('Status');?></th></tr>
+		<th><?php _e('Status');?></th>
+		<?php if($use_grading_system):?>
+			<th><?php _e('Grade', 'namaste')?></th>
+		<?php endif;?></tr>
 		<tr><td><?php echo apply_filters('the_content', $solution->content);?></td>
 		<td><?php if(current_user_can('namaste_manage')):?>
 		<form method="post">
@@ -41,7 +44,24 @@
 			<input type="hidden" name="solution_id" value="<?php echo $solution->id?>">					
 		</form>
 		<?php else: echo $solution->status;
-		endif;?></td></tr>
+		endif;?></td>
+		<?php if($use_grading_system):?>
+			<td><?php if(current_user_can('namaste_manage') and empty($show_everyone)): ?>
+				<form method="post">
+				<input type="hidden" name="grade_solution" value="1">		
+				<input type="hidden" name="id" value="<?php echo $solution->id?>">
+				<select name="grade" onchange="this.form.submit();">
+					<option value="">---------</option>
+					<?php foreach($grades as $grade):
+					 $grade = trim($grade);?>
+					 	<option value="<?php echo $grade?>" <?php if($grade == $solution->grade) echo 'selected'?>><?php echo $grade;?></option>
+					<?php endforeach;?> 
+				</select>
+				</form>			
+			<?php else: echo $solution->grade ? $solution->grade : __('Not graded', 'namaste');
+			endif;?></td>
+		<?php endif;?>				
+		</tr>
 	<?php endforeach;?>
 	</table>
 </div>

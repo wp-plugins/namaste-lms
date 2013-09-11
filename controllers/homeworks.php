@@ -45,6 +45,14 @@ class NamasteLMSHomeworkController {
 		// approve or reject solution
 		if(!empty($_POST['change_status'])) self::change_solution_status($lesson, $student_id);
 		
+		$use_grading_system = get_option('namaste_use_grading_system');
+		$grades = explode(",", stripslashes(get_option('namaste_grading_system')));
+		// give grade on a solution
+		if($use_grading_system and !empty($_POST['grade_solution']) and current_user_can('namaste_manage')) {
+			$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_HOMEWORKS." SET grade=%s WHERE id=%d", $_POST['grade'], $_POST['id']));
+			do_action('namaste_graded_homework', $_POST['id'], $_POST['grade']);
+		}
+		
 		// select submitted solutions
 		$solutions = $wpdb -> get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_HOMEWORKS."
 			WHERE student_id=%d AND homework_id=%d ORDER BY id DESC", $student_id, $homework->id));
@@ -57,6 +65,8 @@ class NamasteLMSHomeworkController {
 		global $wpdb;
 		
 		list($homework, $course, $lesson) = NamasteLMSHomeworkModel::full_select($_GET['id']);
+		
+		$use_grading_system = get_option('namaste_use_grading_system');
 		
 		// approve or reject solution
 		if(!empty($_POST['change_status'])) self::change_solution_status($lesson);
