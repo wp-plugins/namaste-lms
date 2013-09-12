@@ -55,6 +55,9 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 1.1.1 = 
+- Force activation hook on update because activation hook doesn't run sometimes
+
 = Version 1.1 =
 - Gradebook - you can now grade user performance in assignments, lessons and courses
 - The grading system is configurable by you

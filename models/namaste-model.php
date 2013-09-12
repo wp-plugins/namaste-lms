@@ -1,11 +1,12 @@
 <?php
 // main model containing general config and UI functions
 class NamasteLMS {
-   static function install() {
+   static function install($update = false) {
    	global $wpdb;	
    	$wpdb -> show_errors();
    	
-   	self::init();
+   	update_option( 'namaste_version', "1.1");
+   	if(!$update) self::init();
 	  
 	  // enrollments to courses
    	if($wpdb->get_var("SHOW TABLES LIKE '".NAMASTE_STUDENT_COURSES."'") != NAMASTE_STUDENT_COURSES) {        
@@ -167,8 +168,7 @@ class NamasteLMS {
     // fush rewrite rules
     NamasteLMSCourseModel::register_course_type();
     NamasteLMSLessonModel::register_lesson_type();
-    flush_rewrite_rules();
-	  update_option( 'namaste_version', "0.7");	  
+    flush_rewrite_rules();	  	  
 	  // exit;
    }
    
@@ -271,6 +271,9 @@ class NamasteLMS {
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSLessonModel','custom_columns'), 10, 2 );
 		add_filter('manage_namaste_course_posts_columns', array('NamasteLMSCourseModel','manage_post_columns'));
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
+		
+		$version = get_option('namaste_version');
+		if($version != '1.1') self::install(true);
 	}
 	
 	// handle Namaste vars in the request
