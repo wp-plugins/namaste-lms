@@ -72,6 +72,10 @@ class NamasteLMSCourseModel {
 			$fee = get_post_meta($post->ID, 'namaste_fee', true);
 			$currency = get_option('namaste_currency');
 			
+			$use_points_system = get_option('namaste_use_points_system');
+			$award_points = get_post_meta($post->ID, 'namaste_award_points', true);
+			if($award_points === '') $award_points = get_option('namaste_points_course');
+			
 			wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );
 			require(NAMASTE_PATH.'/views/course-meta-box.php');  
 	}
@@ -80,13 +84,14 @@ class NamasteLMSCourseModel {
 			global $wpdb;
 			
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )  return;		
-	  	if ( empty($_POST['namaste_noncemeta']) or !wp_verify_nonce( $_POST['namaste_noncemeta'], plugin_basename( __FILE__ ) ) ) return;  	  		
-	  	if ( !current_user_can( 'edit_post', $post_id ) ) return;
-	  	if ('namaste_course' != $_POST['post_type']) return;
+	  		if ( empty($_POST['namaste_noncemeta']) or !wp_verify_nonce( $_POST['namaste_noncemeta'], plugin_basename( __FILE__ ) ) ) return;  	  		
+	  		if ( !current_user_can( 'edit_post', $post_id ) ) return;
+	 	 	if ('namaste_course' != $_POST['post_type']) return;
 			
 			update_post_meta($post_id, "namaste_enroll_mode", $_POST['namaste_enroll_mode']);
 			update_post_meta($post_id, "namaste_required_lessons", $_POST['namaste_required_lessons']);			
 			update_post_meta($post_id, "namaste_fee", $_POST['namaste_fee']);
+			if(isset($_POST['namaste_award_points'])) update_post_meta($post_id, "namaste_award_points", $_POST['namaste_award_points']);
 	}	
 	
 	// select existing courses
@@ -157,6 +162,17 @@ class NamasteLMSCourseModel {
 		// should we assign certificates?
 		$_cert = new NamasteLMSCertificateModel();
 		$_cert -> complete_course($course_id, $student_id);
+		
+		// award points?
+		$use_points_system = get_option('namaste_use_points_system');
+		if($use_points_system) {
+			$award_points = get_post_meta($course_id, 'namaste_award_points', true);
+			if($award_points === '') $award_points = get_option('namaste_points_course');
+			if($award_points) {
+				$course = get_post($course_id);
+				NamastePoint :: award($student_id, $award_points, sprintf(__('Received %d points for completing course "%s".', 'namaste'), $award_points, $course->post_title));
+			}
+		}
 		
 		// add custom action
 		do_action('namaste_completed_course', $student_id, $course_id);	

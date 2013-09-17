@@ -1,4 +1,4 @@
-<h1><?php _e("Assignments / Homeworks", 'namaste')?></h1>
+<h1><?php _e("Assignments / Homework", 'namaste')?></h1>
 
 <form method="get" action="admin.php">
 	<input type="hidden" name="page" value="namaste_homeworks">

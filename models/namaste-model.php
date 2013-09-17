@@ -138,6 +138,21 @@ class NamasteLMS {
 			$wpdb->query($sql);
 	  }  	 	 
 	  
+	  // history of various actions, for example points awarded and spent
+	   if($wpdb->get_var("SHOW TABLES LIKE '".NAMASTE_HISTORY."'") != NAMASTE_HISTORY) {        
+			$sql = "CREATE TABLE `" . NAMASTE_HISTORY . "` (
+				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				  `user_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `date` DATE NOT NULL DEFAULT '2001-01-01',
+				  `datetime` DATETIME,
+				  `action` VARCHAR(255) NOT NULL DEFAULT '',
+				  `value` VARCHAR(255) NOT NULL DEFAULT '', /* some textual value if required */
+				  `num_value` INT UNSIGNED NOT NULL DEFAULT 0 /* some numeric value, for example points */
+				) DEFAULT CHARSET=utf8;";
+			
+			$wpdb->query($sql);
+	  }  		  
+	  
 	  // add extra fields in new versions
 	  namaste_add_db_fields(array(
 		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''")	  
@@ -150,6 +165,10 @@ class NamasteLMS {
 	   namaste_add_db_fields(array(
 		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''")	  
 	  ), NAMASTE_STUDENT_LESSONS);
+	  
+	  namaste_add_db_fields(array(
+		  array("name"=>"award_points", "type"=>"INT UNSIGNED NOT NULL DEFAULT 0")	  
+	  ), NAMASTE_HOMEWORKS);
 	 
 	  // add student role if not exists
     $res = add_role('student', 'Student', array(
@@ -251,12 +270,15 @@ class NamasteLMS {
 		define( 'NAMASTE_STUDENT_CERTIFICATES', $wpdb->prefix. "namaste_student_certificates");
 		define( 'NAMASTE_PAYMENTS', $wpdb->prefix. "namaste_payments");
 		define( 'NAMASTE_VISITS', $wpdb->prefix. "namaste_visits");
+		define( 'NAMASTE_HISTORY', $wpdb->prefix. "namaste_history");
 		
 		define( 'NAMASTE_VERSION', get_option('namaste_version'));
 		
 		// shortcodes
 		add_shortcode('namaste-todo', array("NamasteLMSShortcodesController", 'todo'));
 		add_shortcode('namaste-enroll', array("NamasteLMSShortcodesController", 'enroll'));
+		add_shortcode('namaste-points', array("NamasteLMSShortcodesController", 'points'));
+		add_shortcode('namaste-leaderboard', array("NamasteLMSShortcodesController", 'leaderboard'));
 		
 		// Paypal IPN
 		add_filter('query_vars', array(__CLASS__, "query_vars"));

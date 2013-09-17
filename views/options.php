@@ -53,7 +53,15 @@
 				
 				<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_lesson" size="4" value="<?php echo get_option('namaste_points_lesson')?>"> <?php _e('points for completing a lesson', 'namaste')?></p>
 				
-				<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_homework" size="4" value="<?php echo get_option('namaste_points_homework')?>"> <?php _e('points for successfully completing a homework', 'namaste')?></p>
+				<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_homework" size="4" value="<?php echo get_option('namaste_points_homework')?>"> <?php _e('points for successfully completing a homework / assignment', 'namaste')?></p>
+				
+				<h3><?php _e('Shortcodes enabled by using a points system', 'namaste');?></h3>
+				<p><?php _e('If you activate a points system the following shortcodes become available:', 'namaste');?></p>
+				
+				<ol>
+					<li><input type="text" size="12" readonly onclick="this.select();" value="[namaste-points]"> <?php _e('and', 'namaste');?> <input type="text" size="14" readonly onclick="this.select();" value="[namaste-points x]"> <?php _e('(where "x" is given user ID) outputs the total number of points the user has earned.', 'namaste')?> </li>
+					<li><input type="text" size="18" readonly onclick="this.select();" value="[namaste-leaderboard x]"> <?php _e('and', 'namaste');?> <input type="text" size="24" readonly onclick="this.select();" value="[namaste-leaderboard x points]"> <?php _e('displays a leaderboard based on collected points. Replace "x" with the number of users you want to show. When you use the second shortcode the usernames will be shown in a table with the points collected in front of them.', 'namaste');?> </li>
+				</ol>
 			</div>
 			<input type="hidden" name="namaste_grade_options" value="1">
 			<p><input type="submit" value="<?php _e('Save grade and points settings', 'namaste')?>"></p>

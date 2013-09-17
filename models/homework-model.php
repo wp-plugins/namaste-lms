@@ -16,9 +16,9 @@ class NamasteLMSHomeworkModel {
 			case 'add':
 				if(!empty($_POST['ok'])) {
 						$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HOMEWORKS." SET
-						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d",
+						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d, award_points=%d",
 						$_GET['course_id'], $_GET['lesson_id'], $_POST['title'], 
-						$_POST['description'], $_POST['accept_files']));	
+						$_POST['description'], $_POST['accept_files'], @$_POST['award_points']));	
 						
 						$id = $wpdb->insert_id;		
 						
@@ -41,10 +41,10 @@ class NamasteLMSHomeworkModel {
 			
 				if(!empty($_POST['ok'])) {
 						$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_HOMEWORKS." SET
-						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d
+						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d, award_points=%d
 						WHERE id=%d",
 						$_GET['course_id'], $_GET['lesson_id'], $_POST['title'], 
-						$_POST['description'], $_POST['accept_files'], $_GET['id']));		
+						$_POST['description'], @$_POST['accept_files'], @$_POST['award_points'], $_GET['id']));		
 						
 						do_action('namaste_save_homework', $_GET['id']);					
 					

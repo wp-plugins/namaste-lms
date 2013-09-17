@@ -93,6 +93,45 @@ class NamasteLMSShortcodesController {
 		}
 	}
 	
+	// display user points
+	static function points($atts) {
+		global $user_ID;
+		$user_id = $user_ID;
+		if(!empty($atts[0]) and is_numeric($atts[0])) $user_id = $atts[0];		
+		
+		$points = get_user_meta($user_id, 'namaste_points', true);
+		return $points;
+	}
+	
+	// displays leaderboard by points
+	static function leaderboard($atts) {
+		global $wpdb;
+		
+		$num_users = @$atts[0];
+		if(!is_numeric($num_users)) $num_users = 10;
+		
+		$display = empty($atts[1]) ? 'usernames' : 'table';		
+
+		// select top users
+		$users = $wpdb->get_results($wpdb->prepare("SELECT tU.*, tM.meta_value as namaste_points FROM {$wpdb->users} tU JOIN {$wpdb->usermeta} tM
+			ON tU.ID = tM.user_id AND tM.meta_key = 'namaste_points'
+			ORDER BY namaste_points DESC LIMIT %d", $num_users));
+		
+		$html = "";
+		if($display == 'usernames') {
+			$html .= "<ol class='namaste-leaderboard'>";
+			foreach($users as $user) $html.="<li>".$user->user_nicename."</li>";
+			$html .= "</ol>";
+		}
+		else {
+			$html .= "<table class='namaste-leaderboard'><tr><th>".__('User', 'namaste')."</th><th>".__('Points')."</th></tr>";
+			foreach($users as $user) $html.="<tr><td>".$user->user_nicename."</td><td>".$user->namaste_points."</td></tr>";
+			$html .="</table>";
+		}
+		
+		return $html;
+	}
+	
 	// display lessons in this course 
 	// in table, just <ul>, or in user-defined HTML
 	static function lessons() {

@@ -86,15 +86,22 @@ class NamasteLMSHomeworkController {
 		
 		if(!current_user_can('namaste_manage')) wp_die(__('You are not allowed to do this', 'namaste'));
 		
-		if(!$student_id) {
-			$solution = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE id=%d", $_POST['solution_id']));
-			$student_id = $solution->student_id;
-		}
+		$solution = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE id=%d", $_POST['solution_id']));
+		if(!$student_id)  $student_id = $solution->student_id;
 			
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_HOMEWORKS." SET
 			status=%s WHERE id=%d", $_POST['status'], $_POST['solution_id']));
 			
 		do_action('namaste_change_solution_status', $student_id, $_POST['solution_id'], $_POST['status']);	
+		
+		// award points?
+		if($_POST['status']=='approved' and get_option('namaste_use_points_system')) {
+			$homework = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORKS." WHERE id=%d", $solution->homework_id));
+			if($homework->award_points) {
+				NamastePoint :: award($student_id, $homework->award_points, sprintf(__('Received %d points for completing assignment "%s".', 'namaste'), 
+					$homework->award_points, $homework->title));
+			}
+		}
 		
 		// maybe complete the lesson if the status is approved 				
 		if($_POST['status']=='approved' and NamasteLMSLessonModel::is_ready($lesson->ID, $student_id)) {

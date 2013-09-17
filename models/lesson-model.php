@@ -92,6 +92,10 @@ class NamasteLMSLessonModel {
 					if($required_exam and $required_exam == $exam->ID) $required_grades = $exam_grades;
 			}
 		}
+
+		$use_points_system = get_option('namaste_use_points_system');
+		$award_points = get_post_meta($post->ID, 'namaste_award_points', true);
+		if($award_points === '') $award_points = get_option('namaste_points_lesson');		
 		
 		wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );
 		require(NAMASTE_PATH."/views/lesson-meta-box.php");
@@ -111,6 +115,7 @@ class NamasteLMSLessonModel {
 	  	update_post_meta($post_id, "namaste_required_homeworks", $_POST['namaste_required_homeworks']);  	
 	  	update_post_meta($post_id, "namaste_required_exam", $_POST['namaste_required_exam']);
 	  	update_post_meta($post_id, "namaste_required_grade", $_POST['namaste_required_grade']);
+	  	if(isset($_POST['namaste_award_points'])) update_post_meta($post_id, "namaste_award_points", $_POST['namaste_award_points']);
 	}
 	
 	// select lessons in course ID
@@ -380,6 +385,16 @@ class NamasteLMSLessonModel {
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_LESSONS." 
 		SET status = '1', completion_date = CURDATE() 
 		WHERE id=%d", $student_lesson->id));
+		
+		// award points?
+		$use_points_system = get_option('namaste_use_points_system');
+		if($use_points_system) {
+			$award_points = get_post_meta($lesson_id, 'namaste_award_points', true);
+			if($award_points === '') $award_points = get_option('namaste_points_lesson');
+			if($award_points) {				
+				NamastePoint :: award($student_id, $award_points, sprintf(__('Received %d points for completing lesson "%s".', 'namaste'), $award_points, $lesson->post_title));
+			}
+		}
 		
 		do_action('namaste_completed_lesson', $student_id, $lesson_id);
 		

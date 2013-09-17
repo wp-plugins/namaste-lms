@@ -85,6 +85,11 @@ endif;?>
 	"<a href='http://wordpress.org/extend/plugins/watu/' target='_blank'>Watu</a>", "<a href='http://calendarscripts.info/watupro/' target='_blank'>WatuPRO</a>").'</p>';
 endif;?>
 
+<?php if(!empty($use_points_system)):?>
+	<p><?php _e('Reward', 'namaste')?> <input type="text" size="4" name="namaste_award_points" value="<?php echo $award_points?>"> <?php _e('points for completing this lesson.', 'namaste')?></p>
+<?php endif;?>
+
+
 <h4><?php _e('Shortcodes', 'namaste')?></h4>
 
 <p><?php _e('You can use the shortcode', 'namaste')?> <strong>[namaste-todo]</strong> <?php _e('inside the lesson content to display what the student needs to do to complete the lesson.', 'namaste')?></p>
