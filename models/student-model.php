@@ -52,6 +52,12 @@ class NamasteLMSStudentModel {
 					 			$_GET['course_id'], $student->ID));
 					 		$success = __('User successfully enrolled in the course', 'namaste');	
 					 		
+					 		// insert in history
+					 		$course = get_post($_GET['course_id']);
+					 		$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
+								user_id=%d, date=CURDATE(), datetime=NOW(), action='enrolled_course', value=%s, num_value=%d",
+								$student->ID, sprintf(__('Enrolled in course %s. Status: %s', 'namaste'), $course->post_title, 'enrolled'), $_GET['course_id']));
+					 		
 					 		// do_action('namaste_enrolled_course', $student->ID, $_GET['course_id'], true);
 					 }	
 				}
@@ -62,8 +68,22 @@ class NamasteLMSStudentModel {
 					 			status=%s, completion_date=CURDATE() 
 					 			WHERE user_id=%d AND course_id=%d", $_GET['status'], $_GET['student_id'], $_GET['course_id']));
 					 			
-					 if($_GET['status'] == 'enrolled') do_action('namaste_enrollment_approved', $_GET['student_id'], $_GET['course_id']);
-					 else do_action('namaste_enrollment_rejected', $_GET['student_id'], $_GET['course_id']);					
+					 $course = get_post($_GET['course_id']);
+					 			
+					 if($_GET['status'] == 'enrolled') {
+					 	do_action('namaste_enrollment_approved', $_GET['student_id'], $_GET['course_id']);
+					 	$history_msg = sprintf(__('Enrollment in %s has been approved.','namaste'), $course->post_title);
+					 }
+					 else {
+					 	do_action('namaste_enrollment_rejected', $_GET['student_id'], $_GET['course_id']);
+					 	$history_msg = sprintf(__('Enrollment in %s has been rejected.','namaste'), $course->post_title);
+					 }	
+					 
+					 // insert in history
+					$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
+								user_id=%d, date=CURDATE(), datetime=NOW(), action='enrolled_course', value=%s, num_value=%d",
+								$_GET['student_id'], $history_msg, $_GET['course_id']));
+					 					
 					 namaste_redirect("admin.php?page=namaste_students&course_id=$_GET[course_id]");					 							 	
 				}				
 				 	

@@ -55,10 +55,11 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.1.3 = 
+= Version 1.1.4 = 
 - Force activation hook on update because activation hook doesn't run sometimes
 - Completed the points system (see Namaste Settings page)
 - added shortcodes for user points and simple points-based leaderboard
+- Created DB log for all important user actions
 
 = Version 1.1 =
 - Gradebook - you can now grade user performance in assignments, lessons and courses

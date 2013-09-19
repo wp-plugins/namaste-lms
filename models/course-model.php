@@ -156,6 +156,8 @@ class NamasteLMSCourseModel {
 		
 		if(empty($student_course->id)) return false;
 		
+		$course = get_post($course_id);
+		
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_COURSES." SET status = 'completed',
 			completion_date = CURDATE() WHERE id=%d", $student_course->id));
 			
@@ -168,14 +170,18 @@ class NamasteLMSCourseModel {
 		if($use_points_system) {
 			$award_points = get_post_meta($course_id, 'namaste_award_points', true);
 			if($award_points === '') $award_points = get_option('namaste_points_course');
-			if($award_points) {
-				$course = get_post($course_id);
+			if($award_points) {				
 				NamastePoint :: award($student_id, $award_points, sprintf(__('Received %d points for completing course "%s".', 'namaste'), $award_points, $course->post_title));
 			}
 		}
 		
 		// add custom action
 		do_action('namaste_completed_course', $student_id, $course_id);	
+		
+		// insert in history
+	  $wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
+			user_id=%d, date=CURDATE(), datetime=NOW(), action='completed_course', value=%s, num_value=%d",
+			$student_id, sprintf(__('Completed course "%s"', 'namaste'), $course->post_title), $course_id));
 	}
 	
 	// returns all the required lessons along with mark whether they are completed or not
@@ -205,6 +211,12 @@ class NamasteLMSCourseModel {
 					$course_id, $student_id, $status));
 		if($result !== false) {                        					
 			do_action('namaste_enrolled_course', $student_id, $course_id, $status);
+			
+			// insert in history
+			$course = get_post($course_id);
+			$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
+				user_id=%d, date=CURDATE(), datetime=NOW(), action='enrolled_course', value=%s, num_value=%d",
+				$student_id, sprintf(__('Enrolled in course %s. Status: %s', 'namaste'), $course->post_title, $status), $course_id));
 		}			
 	}
 	

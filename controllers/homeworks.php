@@ -27,6 +27,11 @@ class NamasteLMSHomeworkController {
 			
 			do_action('namaste_submitted_solution', $user_ID, $homework->id);
 			
+			// insert in history
+			$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
+				user_id=%d, date=CURDATE(), datetime=NOW(), action='submitted_solution', value=%s, num_value=%d",
+				$user_ID, sprintf(__('Submitted solution to assignment "%s"', 'namaste'), $homework->title), $homework->id));
+			
 			require(NAMASTE_PATH."/views/solution-submitted.php");
 		}
 		else require(NAMASTE_PATH."/views/submit-solution.php");		
@@ -88,15 +93,20 @@ class NamasteLMSHomeworkController {
 		
 		$solution = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE id=%d", $_POST['solution_id']));
 		if(!$student_id)  $student_id = $solution->student_id;
+		$homework = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORKS." WHERE id=%d", $solution->homework_id));
 			
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_HOMEWORKS." SET
 			status=%s WHERE id=%d", $_POST['status'], $_POST['solution_id']));
 			
 		do_action('namaste_change_solution_status', $student_id, $_POST['solution_id'], $_POST['status']);	
 		
+		// insert in history
+		$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
+			user_id=%d, date=CURDATE(), datetime=NOW(), action='solution_processed', value=%s, num_value=%d",
+			$student_id, sprintf(__('Solution to assignment %s was %s', 'namaste'), $homework->title, $_POST['status']), $_POST['solution_id']));
+		
 		// award points?
-		if($_POST['status']=='approved' and get_option('namaste_use_points_system')) {
-			$homework = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORKS." WHERE id=%d", $solution->homework_id));
+		if($_POST['status']=='approved' and get_option('namaste_use_points_system')) {			
 			if($homework->award_points) {
 				NamastePoint :: award($student_id, $homework->award_points, sprintf(__('Received %d points for completing assignment "%s".', 'namaste'), 
 					$homework->award_points, $homework->title));

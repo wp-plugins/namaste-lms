@@ -294,6 +294,10 @@ class NamasteLMS {
 		add_filter('manage_namaste_course_posts_columns', array('NamasteLMSCourseModel','manage_post_columns'));
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
 		
+		// purge history log older than 180 days
+		// in the next version this period should be configurable
+		$wpdb->query("DELETE FROM ".NAMASTE_HISTORY." WHERE date < CURDATE() - INTERVAL 180 DAY");
+		
 		$version = get_option('namaste_version');
 		if($version != '1.1') self::install(true);
 	}

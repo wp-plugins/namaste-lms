@@ -309,6 +309,11 @@ class NamasteLMSLessonModel {
 			  	lesson_id=%d, student_id=%d, status=%d, completion_date = CURDATE()", 
 			  	$post->ID, $user_ID, 0));
 			  do_action('namaste_started_lesson', $user_ID, $post->ID);
+			  
+			  // insert in history
+			  $wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
+					user_id=%d, date=CURDATE(), datetime=NOW(), action='started_lesson', value=%s, num_value=%d",
+					$user_ID, sprintf(__('Started reading lesson "%s"', 'namaste'), $post->post_title), $post->ID));
 		} 
 		
 		// if ready, complete lesson
@@ -397,6 +402,11 @@ class NamasteLMSLessonModel {
 		}
 		
 		do_action('namaste_completed_lesson', $student_id, $lesson_id);
+		
+		// insert in history
+	   $wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
+			user_id=%d, date=CURDATE(), datetime=NOW(), action='completed_lesson', value=%s, num_value=%d",
+			$student_id, sprintf(__('Completed lesson "%s"', 'namaste'), $lesson->post_title), $lesson_id));
 		
 		// now see if course should be completed
 		if($_course->is_ready($course_id, $student_id)) $_course->complete($course_id, $student_id);
