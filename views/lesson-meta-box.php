@@ -35,7 +35,7 @@ endif;?>
 <?php endif;?>
 
 <?php if($use_exams and sizeof($exams)):?>
-	<p><?php _e('The following quiz must be completed:', 'namaste')?></p>
+	<p><?php _e('The following quiz must be completed (will take effect only if the quiz is published):', 'namaste')?></p>
 	<p><select name="namaste_required_exam" onchange="namasteLoadGrades(this.value);">
 	<option value=""><?php _e('- No quiz required -', 'namaste')?></option>
 	<?php foreach($exams as $exam):?>

@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.1.3\n"
+"Project-Id-Version: Namaste! LMS 1.1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-09-17 14:41:07+00:00\n"
+"POT-Creation-Date: 2013-09-27 13:37:06+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -56,15 +56,23 @@ msgstr ""
 msgid "You cannot submit an empty solution"
 msgstr ""
 
-#: controllers/homeworks.php:40
+#: controllers/homeworks.php:33
+msgid "Submitted solution to assignment \"%s\""
+msgstr ""
+
+#: controllers/homeworks.php:45
 msgid "You are not allowed to see these solutions"
 msgstr ""
 
-#: controllers/homeworks.php:87
+#: controllers/homeworks.php:92
 msgid "You are not allowed to do this"
 msgstr ""
 
-#: controllers/homeworks.php:101
+#: controllers/homeworks.php:106
+msgid "Solution to assignment %s was %s"
+msgstr ""
+
+#: controllers/homeworks.php:111
 msgid "Received %d points for completing assignment \"%s\"."
 msgstr ""
 
@@ -117,7 +125,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:12 models/lesson-model.php:579
+#: models/course-model.php:12 models/lesson-model.php:590
 msgid "Course"
 msgstr ""
 
@@ -142,23 +150,31 @@ msgstr ""
 msgid "You can enroll in this course from your student dashboard. You need to be logged in."
 msgstr ""
 
-#: models/course-model.php:173
+#: models/course-model.php:174
 msgid "Received %d points for completing course \"%s\"."
 msgstr ""
 
-#: models/course-model.php:225
+#: models/course-model.php:184
+msgid "Completed course \"%s\""
+msgstr ""
+
+#: models/course-model.php:219 models/student-model.php:59
+msgid "Enrolled in course %s. Status: %s"
+msgstr ""
+
+#: models/course-model.php:237
 msgid "Payment for course"
 msgstr ""
 
-#: models/course-model.php:226
+#: models/course-model.php:238
 msgid "Enroll for"
 msgstr ""
 
-#: models/course-model.php:240
+#: models/course-model.php:252
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:256 models/lesson-model.php:580
+#: models/course-model.php:268 models/lesson-model.php:591
 msgid "Visits (unique/total)"
 msgstr ""
 
@@ -207,34 +223,42 @@ msgstr ""
 msgid "The lesson cannot be completed because there are unsatisfied requirements"
 msgstr ""
 
-#: models/lesson-model.php:215 views/manage-students.php:59
+#: models/lesson-model.php:216 views/manage-students.php:59
 #: views/student-lessons.php:37
 msgid "Not started"
 msgstr ""
 
-#: models/lesson-model.php:220
+#: models/lesson-model.php:221
 msgid "Completed on"
 msgstr ""
 
-#: models/lesson-model.php:226 views/manage-students.php:58
+#: models/lesson-model.php:227 views/manage-students.php:58
 #: views/student-lessons.php:38
 msgid "In progress"
 msgstr ""
 
-#: models/lesson-model.php:244
+#: models/lesson-model.php:245
 msgid "You need to be logged in to access this lesson."
 msgstr ""
 
-#: models/lesson-model.php:258
+#: models/lesson-model.php:259
 msgid "In order to see this lesson you first have to be enrolled in the course"
 msgstr ""
 
-#: models/lesson-model.php:278
+#: models/lesson-model.php:279
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#: models/lesson-model.php:395
+#: models/lesson-model.php:317
+msgid "Started reading lesson \"%s\""
+msgstr ""
+
+#: models/lesson-model.php:401
 msgid "Received %d points for completing lesson \"%s\"."
+msgstr ""
+
+#: models/lesson-model.php:410
+msgid "Completed lesson \"%s\""
 msgstr ""
 
 #: models/namaste-model.php:199
@@ -325,7 +349,15 @@ msgstr ""
 msgid "User successfully enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:117
+#: models/student-model.php:75
+msgid "Enrollment in %s has been approved."
+msgstr ""
+
+#: models/student-model.php:79
+msgid "Enrollment in %s has been rejected."
+msgstr ""
+
+#: models/student-model.php:137
 msgid "You cannot change someone else's status"
 msgstr ""
 
@@ -689,7 +721,7 @@ msgid "The following assignments/homeworks must be completed:"
 msgstr ""
 
 #: views/lesson-meta-box.php:38
-msgid "The following quiz must be completed:"
+msgid "The following quiz must be completed (will take effect only if the quiz is published):"
 msgstr ""
 
 #: views/lesson-meta-box.php:40
@@ -1164,4 +1196,23 @@ msgstr ""
 
 #: views/view-solutions.php:40
 msgid "Approved"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "Namaste! LMS"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://namaste-lms.org"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Learning Management System for Wordpress"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Kiboko Labs"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://calendarscripts.info/"
 msgstr ""

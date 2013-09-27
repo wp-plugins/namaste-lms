@@ -195,6 +195,7 @@ class NamasteLMSLessonModel {
 			
 			if($use_exams) {
 				$required_exam = get_post_meta($lesson->ID, 'namaste_required_exam', true);
+				
 				if($required_exam) {
 					$exam = $wpdb->get_row("SELECT tE.*, tP.id as post_id FROM $exams_table tE, {$wpdb->posts} tP
 						WHERE tE.ID = $required_exam AND tP.post_content LIKE CONCAT('%[$shortcode ', tE.ID, ']%')
