@@ -2,13 +2,13 @@
 
 <form method="post" onsubmit="return namasteValidateForm(this);">
 	<div class="postbox namaste-form namaste-box">
-		<div><label><?php _e('Title:', 'namaste')?></label> <input type="text" name="title" value="<?php echo stripslashes($homework->title)?>" size='80'></div>
+		<div><label><?php _e('Title:', 'namaste')?></label> <input type="text" name="title" value="<?php echo stripslashes(@$homework->title)?>" size='80'></div>
 		<div><label><?php _e('Description/Requirements:')?></label>
 		<?php echo wp_editor(stripslashes(@$homework->description), 'description');?></div>
 		<div><input type="checkbox" name="accept_files" value="1" <?php if(!empty($homework->accept_files)) echo 'checked'?>> <?php _e('Accept file upload as solution')?></div>
 		
 		<?php if(get_option('namaste_use_points_system')):?>
-			<p><?php _e('Reward', 'namaste')?> <input type="text" size="4" name="award_points" value="<?php echo $homework->award_points?>"> <?php _e('points for successfully completing this assignment.', 'namaste')?></p>
+			<p><?php _e('Reward', 'namaste')?> <input type="text" size="4" name="award_points" value="<?php echo @$homework->award_points?>"> <?php _e('points for successfully completing this assignment.', 'namaste')?></p>
 		<?php endif;?>
 		
 		<?php do_action('namaste_homework_form', @$homework);?>

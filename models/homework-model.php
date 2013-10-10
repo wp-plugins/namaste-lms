@@ -18,7 +18,7 @@ class NamasteLMSHomeworkModel {
 						$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HOMEWORKS." SET
 						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d, award_points=%d",
 						$_GET['course_id'], $_GET['lesson_id'], $_POST['title'], 
-						$_POST['description'], $_POST['accept_files'], @$_POST['award_points']));	
+						$_POST['description'], @$_POST['accept_files'], @$_POST['award_points']));	
 						
 						$id = $wpdb->insert_id;		
 						
