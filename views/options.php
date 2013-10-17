@@ -12,17 +12,17 @@
 				$role = get_role($key);?>
 				<input type="checkbox" name="use_roles[]" value="<?php echo $key?>" <?php if($role->has_cap('namaste')) echo 'checked';?>> <?php _e($role->name, 'namaste')?> &nbsp;
 			<?php endforeach;?></p>
-			
-			<h2><?php _e('Wordpress roles that can administrate the LMS', 'namaste')?></h2>
-			
-			<p><?php _e('By default this is only the blog administrator. Here you can enable any of the other roles as well', 'namaste')?></p>
-			
-			<p><?php foreach($roles as $key=>$r):
-				if($key=='administrator') continue;
-				$role = get_role($key);?>
-				<input type="checkbox" name="manage_roles[]" value="<?php echo $key?>" <?php if($role->has_cap('namaste_manage')) echo 'checked';?>> <?php _e($role->name, 'namaste')?> &nbsp;
-			<?php endforeach;?></p>
-			
+			<?php if($is_admin):?>
+				<h2><?php _e('Wordpress roles that can administrate the LMS', 'namaste')?></h2>
+				
+				<p><?php _e('By default this is only the blog administrator. Here you can enable any of the other roles as well', 'namaste')?></p>
+				
+				<p><?php foreach($roles as $key=>$r):
+					if($key=='administrator') continue;
+					$role = get_role($key);?>
+					<input type="checkbox" name="manage_roles[]" value="<?php echo $key?>" <?php if($role->has_cap('namaste_manage')) echo 'checked';?>> <?php _e($role->name, 'namaste')?> &nbsp;
+				<?php endforeach;?></p>
+			<?php endif;?>
 			<p></p>
 			<p><input type="submit" value="<?php _e('Save Options', 'namaste')?>" name="namaste_options"></p>
 		</div>

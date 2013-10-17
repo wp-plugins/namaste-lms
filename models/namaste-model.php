@@ -325,6 +325,9 @@ class NamasteLMS {
 	// manage general options
 	static function options() {
 		global $wp_roles;		
+		
+		$is_admin = current_user_can('administrator');		
+		
 		if(!empty($_POST['namaste_options']) and check_admin_referer('save_options', 'nonce_options')) {
 			$roles = $wp_roles->roles;			
 			
@@ -339,12 +342,14 @@ class NamasteLMS {
 				}
 				else $role->remove_cap('namaste');
 				
-				// manage Namaste!
-				if(@in_array($key, $_POST['manage_roles'])) {					
-    			if(!$role->has_cap('namaste_manage')) $role->add_cap('namaste_manage');
-				}
-				else $role->remove_cap('namaste_manage');
-			} 
+				// manage Namaste! - allow only admin change this
+				if($is_admin) {
+					if(@in_array($key, $_POST['manage_roles'])) {					
+	    				if(!$role->has_cap('namaste_manage')) $role->add_cap('namaste_manage');
+					}
+					else $role->remove_cap('namaste_manage');
+				}	// end if can_manage_options
+			} // end foreach role 
 		}
 		
 		if(!empty($_POST['namaste_exam_options']) and check_admin_referer('save_exam_options', 'nonce_exam_options')) {
