@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: LMS, learning, courses, lessons, ILE
 Requires at least: 3.0
-Tested up to: 3.6
+Tested up to: 3.6.1
 Stable tag: trunk
 License: GPL2
 
@@ -55,7 +55,9 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.1.6 = 
+= Version 1.1.8 =
+- Added new shortcodes to allow exporting part of the functionality outside of the user's dashboard. Shorcodes added: [namaste-mycourses] and [namaste-course-lessons]. See the internal Help page for more details.
+- Added Help page and information about Namaste! Reports in the Plugins/API page 
 - Force activation hook on update because activation hook doesn't run sometimes
 - Completed the points system (see Namaste Settings page)
 - added shortcodes for user points and simple points-based leaderboard

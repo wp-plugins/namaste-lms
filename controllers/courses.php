@@ -1,7 +1,8 @@
 <?php
 class NamasteLMSCoursesController {
 	// displays courses of a student, lets them enroll in a course
-	static function my_courses() {
+	// @param $simplified boolean - when true outputs the page without "view lessons" link
+	static function my_courses($simplified = false) {
 		global $wpdb, $user_ID, $user_email;
 		
 		$currency = get_option('namaste_currency');

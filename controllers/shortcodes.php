@@ -134,7 +134,44 @@ class NamasteLMSShortcodesController {
 	
 	// display lessons in this course 
 	// in table, just <ul>, or in user-defined HTML
-	static function lessons() {
-		// NYI
+	static function lessons($atts) {		
+		global $post;
+		
+		$status = @$atts[0];
+		$course_id = empty($atts[1]) ? $post->ID : $atts[1];
+		
+		// when status column is NOT passed we have a simple task and won't call the student_lessons() method
+		// this is because the student_lessons() method is for logged in users only. 
+		if(empty($status) or !is_user_logged_in()) {
+			$_lesson = new NamasteLMSLessonModel();
+			$lessons = $_lesson->select($course_id);
+			
+			$content = "<ul>";
+			foreach($lessons as $lesson) {
+				$content .= "<li><a href='".get_permalink($lesson->ID)."'>".$lesson->post_title."</a></li>";
+			}
+			$content .= "</ul>";
+			return $content;
+		}	
+		
+		// status column is requested so we'll have to call the model method		
+		ob_start();
+		$_GET['course_id'] = $course_id;
+		$simplified = empty($status) ? 2 : 1; // simplified is always at least 1 when called as shortcode. But will be 2 if status column is not requested
+		NamasteLMSLessonModel :: student_lessons($simplified);
+		$content = ob_get_contents();
+		ob_end_clean();
+		return $content;
 	}	
+	
+	// displays simplified version of "My Courses" page
+	static function my_courses() {
+		if(!is_user_logged_in()) return __('This content is for logged in users.', 'namaste');
+		// call the simplified version
+		ob_start();
+		NamasteLMSCoursesController::my_courses(true);
+		$content = ob_get_contents();
+		ob_end_clean();
+		return $content;
+	}
 }

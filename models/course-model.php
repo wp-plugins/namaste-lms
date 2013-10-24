@@ -53,6 +53,8 @@ class NamasteLMSCourseModel {
 	static function meta_boxes() {
 		add_meta_box("namaste_meta", __("Namaste! Settings", 'namaste'), 
 							array(__CLASS__, "print_meta_box"), "namaste_course", 'normal', 'high');
+		add_meta_box("namaste_advanced_reports_hint", __("Advanced Reports", 'namaste'), 
+							array(__CLASS__, "print_reports_box"), "namaste_course", 'side', 'default');					
 	}
 	
 	static function print_meta_box($post) {
@@ -78,6 +80,18 @@ class NamasteLMSCourseModel {
 			
 			wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );
 			require(NAMASTE_PATH.'/views/course-meta-box.php');  
+	}
+	
+	static function print_reports_box($post) {
+			global $wpdb;
+			
+			// for now simply remind there are reports
+			// or hint to the plugin. In the future we'll allow some basic report to be shown right in the box
+			if(is_plugin_active('namaste-reports/namaste-reports.php')) {
+				echo "<p>".sprintf(__('For advanced reports on this course, <a href="%s">click here</a>.', 'namaste'), 'admin.php?page=namasterep&action=courses&course_id='.$post->ID)."</p>";
+			} else {
+				echo "<p>".sprintf(__('You can get <b>advanced reports</b> on this course if you install the <a href="%s" target="_blank">Namaste! Reports</a> plugin.', 'namaste'), 'http://namaste-lms.org/reports.php"')."</p>";
+			}
 	}
 	
 	static function save_course_meta($post_id) {

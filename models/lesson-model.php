@@ -139,7 +139,8 @@ class NamasteLMSLessonModel {
 	}
 	
 	// students lessons in a selected course
-	static function student_lessons() {
+	// @param $simplified boolean - when true doesn't assignment and text/exam  
+	static function student_lessons($simplified = false) {
 		global $wpdb, $user_ID; 
 		
 		// student_id
@@ -610,3 +611,4 @@ class NamasteLMSLessonModel {
 		}
 	}
 }
+	// @param $simplified boolean - when true doesn't assignment, text/exam a

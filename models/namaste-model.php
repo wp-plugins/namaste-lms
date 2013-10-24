@@ -5,7 +5,7 @@ class NamasteLMS {
    	global $wpdb;	
    	$wpdb -> show_errors();
    	
-   	update_option( 'namaste_version', "1.1.4");
+   	update_option( 'namaste_version', "1.1.8");
    	if(!$update) self::init();
 	  
 	  // enrollments to courses
@@ -202,7 +202,8 @@ class NamasteLMS {
 		add_submenu_page('namaste_options', __("Students", 'namaste'), __("Students", 'namaste'), 'namaste_manage', 'namaste_students', array('NamasteLMSStudentModel', "manage"));		
 		add_submenu_page('namaste_options', __("Certificates", 'namaste'), __("Certificates", 'namaste'), 'namaste_manage', 'namaste_certificates', array('NamasteLMSCertificatesController', "manage"));
 		if(!empty($use_grading_system)) add_submenu_page('namaste_options', __("Gradebook", 'namaste'), __("Gradebook", 'namaste'), 'namaste_manage', 'namaste_gradebook', array('NamasteLMSGradebookController', "manage"));
-		add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));        
+		add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));     
+		add_submenu_page('namaste_options', __("Help", 'namaste'), __("Help", 'namaste'), 'namaste_manage', 'namaste_help', array(__CLASS__, "help"));        
 		add_submenu_page('namaste_options', __("Namaste! Plugins &amp; API", 'namaste'), __("Plugins &amp; API", 'namaste'), 'namaste_manage', 'namaste_plugins', array(__CLASS__, "plugins"));
    		
 		// not visible in menu
@@ -279,6 +280,8 @@ class NamasteLMS {
 		add_shortcode('namaste-enroll', array("NamasteLMSShortcodesController", 'enroll'));
 		add_shortcode('namaste-points', array("NamasteLMSShortcodesController", 'points'));
 		add_shortcode('namaste-leaderboard', array("NamasteLMSShortcodesController", 'leaderboard'));
+		add_shortcode('namaste-mycourses', array("NamasteLMSShortcodesController", 'my_courses'));
+		add_shortcode('namaste-course-lessons', array("NamasteLMSShortcodesController", 'lessons'));
 		
 		// Paypal IPN
 		add_filter('query_vars', array(__CLASS__, "query_vars"));
@@ -295,7 +298,7 @@ class NamasteLMS {
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
 		
 		$version = get_option('namaste_version');
-		if($version != '1.1.4') self::install(true);
+		if($version != '1.1.8') self::install(true);
 		
 		// purge history log older than 180 days
 		// in the next version this period should be configurable
@@ -408,7 +411,7 @@ class NamasteLMS {
 	}	
 	
 	static function help() {
-		require(NAMASTE_PATH."/views/help.php");
+		require(NAMASTE_PATH."/views/help.html.php");
 	}	
 	
 	static function plugins() {

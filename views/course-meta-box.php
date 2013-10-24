@@ -29,4 +29,5 @@
 
 <h4><?php _e('Shortcodes', 'namaste')?></h4>
 
-<p><?php _e('You can use the shortcode', 'namaste')?> <strong>[namaste-todo]</strong> <?php _e('inside the course content to display what the student needs to do to complete the course.', 'namaste')?></p>
+<p><?php _e('You can use the shortcode', 'namaste')?> <b>[namaste-todo]</b> <?php _e('inside the course content to display what the student needs to do to complete the course.', 'namaste')?></p>
+<p><?php _e('The shortcode', 'namaste')?> <b>[namaste-course-lessons]</b> <?php _e('will display the lessons in the course.','namaste');?> <?php _e('It allows more advanced configurations explained on the ', 'namaste');?> <a href="admin.php?page=namaste_help"><?php _e('help page.', 'namaste')?></a></p>
