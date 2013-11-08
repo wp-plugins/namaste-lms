@@ -140,6 +140,10 @@ class NamasteLMSShortcodesController {
 		$status = @$atts[0];
 		$course_id = empty($atts[1]) ? $post->ID : $atts[1];
 		
+		// are we in the course desc page or in a lesson of this course?
+		$post = get_post($course_id);
+		if($post->post_type == 'namaste_lesson') $course_id = get_post_meta($course_id, 'namaste_course', true);
+		
 		// when status column is NOT passed we have a simple task and won't call the student_lessons() method
 		// this is because the student_lessons() method is for logged in users only. 
 		if(empty($status) or !is_user_logged_in()) {
