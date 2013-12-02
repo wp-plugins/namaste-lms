@@ -170,6 +170,9 @@ class NamasteLMSCourseModel {
 		
 		if(empty($student_course->id)) return false;
 		
+		// if the course is already completed, don't mark it again
+		if($student_course->status == 'completed') return false;
+		
 		$course = get_post($course_id);
 		
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_COURSES." SET status = 'completed',

@@ -389,6 +389,9 @@ class NamasteLMSLessonModel {
 			WHERE lesson_id=%d AND student_id=%d", $lesson->ID, $student_id));
 		if(empty($student_lesson->id)) return false;
 		
+		// if the lesson is already completed, don't mark it again
+		if($student_lesson->statis == 1) return false;
+		
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_LESSONS." 
 		SET status = '1', completion_date = CURDATE() 
 		WHERE id=%d", $student_lesson->id));
