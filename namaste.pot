@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.1.8\n"
+"Project-Id-Version: Namaste! LMS 1.2.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-10-24 16:03:03+00:00\n"
+"POT-Creation-Date: 2013-12-05 17:33:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Points"
 msgstr ""
 
-#: controllers/shortcodes.php:169
+#: controllers/shortcodes.php:173
 msgid "This content is for logged in users."
 msgstr ""
 
@@ -129,7 +129,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:12 models/lesson-model.php:591
+#: models/course-model.php:12 models/lesson-model.php:594
 msgid "Course"
 msgstr ""
 
@@ -166,31 +166,31 @@ msgstr ""
 msgid "You can enroll in this course from your student dashboard. You need to be logged in."
 msgstr ""
 
-#: models/course-model.php:188
+#: models/course-model.php:191
 msgid "Received %d points for completing course \"%s\"."
 msgstr ""
 
-#: models/course-model.php:198
+#: models/course-model.php:201
 msgid "Completed course \"%s\""
 msgstr ""
 
-#: models/course-model.php:233 models/student-model.php:59
+#: models/course-model.php:236 models/student-model.php:86
 msgid "Enrolled in course %s. Status: %s"
 msgstr ""
 
-#: models/course-model.php:251
+#: models/course-model.php:254
 msgid "Payment for course"
 msgstr ""
 
-#: models/course-model.php:252
+#: models/course-model.php:255
 msgid "Enroll for"
 msgstr ""
 
-#: models/course-model.php:266
+#: models/course-model.php:269
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:282 models/lesson-model.php:592
+#: models/course-model.php:285 models/lesson-model.php:595
 msgid "Visits (unique/total)"
 msgstr ""
 
@@ -269,11 +269,11 @@ msgstr ""
 msgid "Started reading lesson \"%s\""
 msgstr ""
 
-#: models/lesson-model.php:402
+#: models/lesson-model.php:405
 msgid "Received %d points for completing lesson \"%s\"."
 msgstr ""
 
-#: models/lesson-model.php:411
+#: models/lesson-model.php:414
 msgid "Completed lesson \"%s\""
 msgstr ""
 
@@ -353,31 +353,31 @@ msgstr ""
 msgid "My Gradebook"
 msgstr ""
 
-#: models/student-model.php:33
+#: models/student-model.php:60
 msgid "Sorry, I cannot find user with this email."
 msgstr ""
 
-#: models/student-model.php:37
+#: models/student-model.php:64
 msgid "This user's role does not allow them to use Namaste! LMS. You'll have either to change their role or allow the role work with the LMS from the Settings page"
 msgstr ""
 
-#: models/student-model.php:44
+#: models/student-model.php:71
 msgid "This user is already enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:53
+#: models/student-model.php:80
 msgid "User successfully enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:75
+#: models/student-model.php:102
 msgid "Enrollment in %s has been approved."
 msgstr ""
 
-#: models/student-model.php:79
+#: models/student-model.php:106
 msgid "Enrollment in %s has been rejected."
 msgstr ""
 
-#: models/student-model.php:137
+#: models/student-model.php:164
 msgid "You cannot change someone else's status"
 msgstr ""
 
@@ -1186,7 +1186,11 @@ msgstr ""
 msgid "I will create exams with WatuPRO."
 msgstr ""
 
-#: views/options.php:130
+#: views/options.php:131
+msgid "When I cleanup student course data from the \"Manage Students\" page I want any related exam data for this student also to be REMOVED."
+msgstr ""
+
+#: views/options.php:134
 msgid "Save Exam Options"
 msgstr ""
 

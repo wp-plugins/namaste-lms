@@ -357,6 +357,7 @@ class NamasteLMS {
 		
 		if(!empty($_POST['namaste_exam_options']) and check_admin_referer('save_exam_options', 'nonce_exam_options')) {
 				update_option('namaste_use_exams', $_POST['use_exams']);
+				update_option('namaste_cleanup_exams', @$_POST['cleanup_exams']);
 		}
 		
 		if(!empty($_POST['namaste_payment_options']) and check_admin_referer('save_payment_options', 'nonce_payment_options')) {

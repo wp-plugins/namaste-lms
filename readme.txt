@@ -55,6 +55,9 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 1.2.1 = 
+- Improved course cleanup - now homework solutions are deleted on cleanup. If you use watu / watupro exams you can select to cleanup them as well (from the Namaste Settings page)
+
 = Version 1.2 =
 - Avoids duplicate completion on lessons and courses
 - Allow using [namaste-course-lessons] inside a lesson page of the course

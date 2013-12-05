@@ -127,6 +127,10 @@
 				<p><input type="radio" name='use_exams' <?php if(!empty($use_exams) and ($use_exams == 'watupro')) echo 'checked'?> value="watupro"> <?php _e('I will create exams with WatuPRO.', 'namaste')?></p>
 			<?php endif;?>
 			
+			<?php if($watu_active or $watupro_active):?>
+				<p><input type="checkbox" name="cleanup_exams" value="yes" <?php if(get_option('namaste_cleanup_exams') == 'yes') echo 'checked'?>> <?php _e('When I cleanup student course data from the "Manage Students" page I want any related exam data for this student also to be REMOVED.', 'namaste')?> </p>
+			<?php endif;?>
+			
 			<p><input type="submit" value="<?php _e('Save Exam Options', 'namaste')?>" name="namaste_exam_options"></p>
 		</div>
 		<?php echo wp_nonce_field('save_exam_options', 'nonce_exam_options');?>
