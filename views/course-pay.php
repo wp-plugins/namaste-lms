@@ -1,7 +1,7 @@
 <div class="wrap">
 	<h2><?php _e('Enrolling in course', 'namaste')?> "<?php echo $course->post_title?>"</h2>
 
-	<p><?php printf(__('This is a premium course. There is a fee of <strong>%s %d</strong> to enroll it.', 'namaste'), $currency, $fee)?></p>
+	<p><?php printf(__('This is a premium course. There is a fee of <strong>%s %s</strong> to enroll it.', 'namaste'), $currency, $fee)?></p>
 	
 	<?php if($accept_paypal and $paypal_id): // generate Paypal button ?>
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
