@@ -178,4 +178,23 @@ class NamasteLMSShortcodesController {
 		ob_end_clean();
 		return $content;
 	}
+	
+	// selects the next lesson in the course if any
+	static function next_lesson($atts) {
+		global $post, $wpdb;
+		if(empty($post->ID) or $post->post_type != 'namaste_lesson') return "";
+		
+		$text = empty($atts[0]) ? __('next lesson') : $atts[0];
+		
+		// select next lesson
+		$course_id = get_post_meta($post->ID, 'namaste_course', true);
+		$next_lesson = $wpdb->get_row($wpdb->prepare("SELECT tP.* FROM {$wpdb->posts} tP
+			JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course'
+			WHERE tP.post_type = 'namaste_lesson' AND tM.meta_value = %d AND tP.ID > %d
+			AND tP.post_status = 'publish'", $course_id, $post->ID));
+			
+		if(empty($next_lesson->ID)) return "";
+		
+		return "<a href='".get_permalink($next_lesson->ID)."'>$text</a>";	
+	}
 }

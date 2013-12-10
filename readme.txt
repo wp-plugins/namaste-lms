@@ -1,8 +1,8 @@
 === Namaste! LMS ===
 Contributors: prasunsen
 Tags: LMS, learning, courses, lessons, ILE
-Requires at least: 3.0
-Tested up to: 3.6.1
+Requires at least: 3.3
+Tested up to: 3.7.1
 Stable tag: trunk
 License: GPL2
 
@@ -55,7 +55,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.2.1 = 
+= Version 1.2.2 =
+- Added [namaste-next-lesson] shortcode to display a link to the next lesson in a course (please see the Help page inside Namaste menu) 
 - Improved course cleanup - now homework solutions are deleted on cleanup. If you use watu / watupro exams you can select to cleanup them as well (from the Namaste Settings page)
 
 = Version 1.2 =
