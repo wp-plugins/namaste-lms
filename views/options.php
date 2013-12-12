@@ -104,9 +104,14 @@
 			</div>	
 			
 			<p><input type="submit" value="<?php _e('Save payment settings', 'namaste')?>"></p>
+			
+			<?php if(!empty($payment_errors)):?>
+				<p><a href="#" onclick="jQuery('#namasteErrorlog').toggle();return false;"><?php _e('View payments errorlog', 'namaste')?></a></p>
+				<div id="namasteErrorlog" style="display:none;"><?php echo nl2br($payment_errors)?></div>
+			<?php endif;?>	
 		</div>
 		<input type="hidden" name="namaste_payment_options" value="1">
-		<?php echo wp_nonce_field('save_payment_options', 'nonce_payment_options');?>
+		<?php echo wp_nonce_field('save_payment_options', 'nonce_payment_options');?>	
 	</form>
 	
 	<form method="post" class="namaste-form">

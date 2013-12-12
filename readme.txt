@@ -55,8 +55,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.2.2 =
+= Version 1.2.3 =
+- Improved the Paypal error logging and added a "View errorlog" link on the main payment settings page (link visible only if there are errors)
 - Added [namaste-next-lesson] shortcode to display a link to the next lesson in a course (please see the Help page inside Namaste menu) 
+- Similarly, added [namaste-prev-lesson] to show the previous lesson link
 - Improved course cleanup - now homework solutions are deleted on cleanup. If you use watu / watupro exams you can select to cleanup them as well (from the Namaste Settings page)
 
 = Version 1.2 =

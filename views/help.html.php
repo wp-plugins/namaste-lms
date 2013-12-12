@@ -15,4 +15,7 @@
 	
 	<p><b>[namaste-next-lesson]</b> <?php _e('or', 'namaste')?> <b>[namaste-next-lesson "hyperlinked text"]</b>
 		<?php _e('can be used only in a lesson and will display the next lesson from the course. You can replace "hyperlinked text" with your own text. If you omit the parameter the link will say "next lesson".', 'namaste')?></p>
+		
+	<p><b>[namaste-prev-lesson]</b> <?php _e('or', 'namaste')?> <b>[namaste-prev-lesson "hyperlinked text"]</b>
+		<?php _e('Similar to the above, used to display a link for the previous lesson in this course. Note that lessons are ordered in the order of creation.', 'namaste')?></p>	
 </div>

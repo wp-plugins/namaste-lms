@@ -283,6 +283,7 @@ class NamasteLMS {
 		add_shortcode('namaste-mycourses', array("NamasteLMSShortcodesController", 'my_courses'));
 		add_shortcode('namaste-course-lessons', array("NamasteLMSShortcodesController", 'lessons'));
 		add_shortcode('namaste-next-lesson', array("NamasteLMSShortcodesController", 'next_lesson'));
+		add_shortcode('namaste-prev-lesson', array("NamasteLMSShortcodesController", 'prev_lesson'));
 		
 		// Paypal IPN
 		add_filter('query_vars', array(__CLASS__, "query_vars"));
@@ -408,6 +409,10 @@ class NamasteLMS {
 	   $grading_system = stripslashes(get_option('namaste_grading_system'));
 	   if(empty($grading_system)) $grading_system = "A, B, C, D, F";
 	   $use_points_system = get_option('namaste_use_points_system');
+	   
+	   $payment_errors = get_option('namaste_errorlog');
+	   // strip to reasonable length
+	   $payment_errors = substr($payment_errors, 0, 10000);
 			
 		require(NAMASTE_PATH."/views/options.php");
 	}	

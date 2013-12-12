@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.2.2\n"
+"Project-Id-Version: Namaste! LMS 1.2.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2013-12-10 16:41:28+00:00\n"
+"POT-Creation-Date: 2013-12-12 17:48:51+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -123,6 +123,10 @@ msgstr ""
 
 #: controllers/shortcodes.php:187
 msgid "next lesson"
+msgstr ""
+
+#: controllers/shortcodes.php:206
+msgid "previous lesson"
 msgstr ""
 
 #: models/course-model.php:8
@@ -632,7 +636,7 @@ msgstr ""
 msgid "Displays simplified version of the student dashboard - the same table with all the available courses but without the \"view lessons\" link. Instead of this link you can include the shortcode for \"lessons in course\" (given below) in the course page itself."
 msgstr ""
 
-#: views/help.html.php:14 views/help.html.php:16
+#: views/help.html.php:14 views/help.html.php:16 views/help.html.php:19
 msgid "or"
 msgstr ""
 
@@ -646,6 +650,10 @@ msgstr ""
 
 #: views/help.html.php:17
 msgid "can be used only in a lesson and will display the next lesson from the course. You can replace \"hyperlinked text\" with your own text. If you omit the parameter the link will say \"next lesson\"."
+msgstr ""
+
+#: views/help.html.php:20
+msgid "Similar to the above, used to display a link for the previous lesson in this course. Note that lessons are ordered in the order of creation."
 msgstr ""
 
 #: views/homework-notes.php:1
@@ -1162,43 +1170,47 @@ msgstr ""
 msgid "Save payment settings"
 msgstr ""
 
-#: views/options.php:114
+#: views/options.php:109
+msgid "View payments errorlog"
+msgstr ""
+
+#: views/options.php:119
 msgid "Exam/Test Related Settings"
 msgstr ""
 
-#: views/options.php:116
+#: views/options.php:121
 msgid "Namaste LMS utilizes the power of existing Wordpress plugins to handle exams, tests and quizzes. At this moment it can connect with two plugins:"
 msgstr ""
 
-#: views/options.php:116
+#: views/options.php:121
 msgid "(Free) and "
 msgstr ""
 
-#: views/options.php:116
+#: views/options.php:121
 msgid "(Premium)"
 msgstr ""
 
-#: views/options.php:118
+#: views/options.php:123
 msgid "If you have any of these plugins installed and activated, please choose which one to use for handling tests below:"
 msgstr ""
 
-#: views/options.php:120
+#: views/options.php:125
 msgid "I don not need to create any exams or tests."
 msgstr ""
 
-#: views/options.php:123
+#: views/options.php:128
 msgid "I will create exams with Watu."
 msgstr ""
 
-#: views/options.php:127
+#: views/options.php:132
 msgid "I will create exams with WatuPRO."
 msgstr ""
 
-#: views/options.php:131
+#: views/options.php:136
 msgid "When I cleanup student course data from the \"Manage Students\" page I want any related exam data for this student also to be REMOVED."
 msgstr ""
 
-#: views/options.php:134
+#: views/options.php:139
 msgid "Save Exam Options"
 msgstr ""
 

@@ -108,6 +108,7 @@ class NamastePayment {
 	// log paypal errors
 	static function log_and_exit($msg) {
 		// log
+		$msg = "Paypal payment attempt failed at ".date(get_option('date_format').' '.get_option('time_format')).": ".$msg;
 		$errorlog=get_option("namaste_errorlog");
 		$errorlog = $msg."\n".$errorlog;
 		update_option("namaste_errorlog",$errorlog);
