@@ -72,7 +72,7 @@ class NamastePayment {
 					else self::log_and_exit("Currency is $_POST[mc_currency]"); 
 					
 					// check amount
-					$fee = get_post_meta($_POST['item_id'], 'namaste_fee', true);
+					$fee = get_post_meta($_GET['course_id'], 'namaste_fee', true);
 					if($_POST['mc_gross']>=$fee) {
 						$payment_amount_okay = true;
 					}
@@ -83,15 +83,15 @@ class NamastePayment {
 							and $payment_amount_okay) {						
 						$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_PAYMENTS." SET 
 							course_id=%d, user_id=%s, date=CURDATE(), amount=%s, status='completed', paycode=%s, paytype='paypal'", 
-							$_POST['item_id'], $_GET['user_id'], $fee, $_POST['txn_id']));
+							$_GET['course_id'], $_GET['user_id'], $fee, $_POST['txn_id']));
 							
 						// enroll accordingly to course settings - this will be placed in a method once we 
 						// have more payment options
-						$enroll_mode = get_post_meta($_POST['item_id'], 'namaste_enroll_mode', true);	
-						if(!NamasteLMSStudentModel :: is_enrolled($_GET['user_id'], $_POST['item_id']))  {
+						$enroll_mode = get_post_meta($_GET['course_id'], 'namaste_enroll_mode', true);	
+						if(!NamasteLMSStudentModel :: is_enrolled($_GET['user_id'], $_GET['course_id']))  {
 							$_course = new NamasteLMSCourseModel();
 							$status = ($enroll_mode == 'free') ? 'enrolled' : 'pending';				
-							$_course->enroll($_GET['user_id'], $_POST['item_id'], $status);
+							$_course->enroll($_GET['user_id'], $_GET['course_id'], $status);
 						}	
 						exit;
 					}

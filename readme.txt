@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: LMS, learning, courses, lessons, ILE
 Requires at least: 3.3
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: trunk
 License: GPL2
 
@@ -55,7 +55,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.2.3 =
+= Version 1.2.4 =
+- Fixed possible bug with passing course ID through Paypal
 - Improved the Paypal error logging and added a "View errorlog" link on the main payment settings page (link visible only if there are errors)
 - Added [namaste-next-lesson] shortcode to display a link to the next lesson in a course (please see the Help page inside Namaste menu) 
 - Similarly, added [namaste-prev-lesson] to show the previous lesson link
