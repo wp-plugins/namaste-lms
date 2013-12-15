@@ -119,7 +119,7 @@ class NamasteLMSLessonModel {
 	}
 	
 	// select lessons in course ID
-	function select($course_id, $format = 'array', $id = null) {
+	function select($course_id, $format = 'array', $id = null, $ob = 'post_title', $dir = 'ASC') {
 		global $wpdb;
 		
 		$id_sql = '';
@@ -129,7 +129,7 @@ class NamasteLMSLessonModel {
 			JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course'
 			AND tM.meta_value = %d
 			WHERE post_type = 'namaste_lesson'  AND (post_status='publish' OR post_status='draft') $id_sql
-			ORDER BY post_title",  $course_id));
+			ORDER BY $ob $dir",  $course_id));
 			
 		if($format == 'array') return $lessons;
 		

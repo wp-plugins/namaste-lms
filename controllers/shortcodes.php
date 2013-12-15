@@ -139,7 +139,9 @@ class NamasteLMSShortcodesController {
 		
 		$status = @$atts[0];
 		$course_id = empty($atts[1]) ? $post->ID : $atts[1];
-		
+		$ob = empty($atts[2]) ? 'post_title' : "tP.".$atts[2];
+		$dir = empty($atts[3]) ? 'ASC' : $atts[3];
+				
 		// are we in the course desc page or in a lesson of this course?
 		$post = get_post($course_id);
 		if($post->post_type == 'namaste_lesson') $course_id = get_post_meta($course_id, 'namaste_course', true);
@@ -148,7 +150,8 @@ class NamasteLMSShortcodesController {
 		// this is because the student_lessons() method is for logged in users only. 
 		if(empty($status) or !is_user_logged_in()) {
 			$_lesson = new NamasteLMSLessonModel();
-			$lessons = $_lesson->select($course_id);
+
+			$lessons = $_lesson->select($course_id, 'array', null, $ob, $dir);
 			
 			$content = "<ul>";
 			foreach($lessons as $lesson) {
