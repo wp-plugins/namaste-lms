@@ -127,11 +127,13 @@ class NamasteLMSHomeworkController {
 	
 	// download solution file
 	static function download_solution() {
-		global $wpdb;
+		global $wpdb, $user_ID;
 		
 		$solution = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE id=%d", $_GET['id']));
 		
 		if(empty($solution->fileblob)) wp_die(__("There is nothing to download.", 'namaste'));
+		
+		if(!current_user_can('namaste_manage') and $user_ID != $solution->student_id) wp_die(__('You can download only your own solutions.', 'namaste'));
 		
 		// send download headers
 		header('Content-Disposition: attachment; filename="'.$solution->file.'"');				

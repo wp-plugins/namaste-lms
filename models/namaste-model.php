@@ -215,7 +215,7 @@ class NamasteLMS {
 		add_submenu_page( NULL, __("View solutions", 'namaste'), __("View solutions", 'namaste'), $namaste_cap, 'namaste_view_solutions', array('NamasteLMSHomeworkController', "view"));
 		add_submenu_page( NULL, __("View all solutions", 'namaste'), __("View all solutions", 'namaste'), 'namaste_manage', 'namaste_view_all_solutions', array('NamasteLMSHomeworkController', "view_all"));
 		add_submenu_page( NULL, __("View Certificate", 'namaste'), __("View Certificate", 'namaste'), $namaste_cap, 'namaste_view_certificate', array('NamasteLMSCertificatesController', "view_certificate"));
-		add_submenu_page( NULL, __("Download solution", 'namaste'), __("Download solution", 'namaste'), 'namaste_manage', 'namaste_download_solution', array('NamasteLMSHomeworkController', "download_solution"));
+		add_submenu_page( NULL, __("Download solution", 'namaste'), __("Download solution", 'namaste'), $namaste_cap, 'namaste_download_solution', array('NamasteLMSHomeworkController', "download_solution"));
 		
 		do_action('namaste_lms_admin_menu');
 		
