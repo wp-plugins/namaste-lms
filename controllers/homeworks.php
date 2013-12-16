@@ -19,10 +19,16 @@ class NamasteLMSHomeworkController {
 				WHERE student_id=%d AND homework_id=%d AND content=%s", $user_ID, $homework->id,
 				$_POST['content']));
 			if(!$exists) {
+				$file = $file_blob = '';
+				if($homework->accept_files and !empty($_FILES['file']['tmp_name'])) {
+					$file_blob = file_get_contents($_FILES['file']['tmp_name']);
+					$file = $_FILES['file']['name'];
+				}				
+				
 				$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_HOMEWORKS." SET
 					homework_id=%d, student_id=%d, status='pending', date_submitted=CURDATE(), 
-					content=%s, file=''",
-					$homework->id, $user_ID, $_POST['content']));
+					content=%s, file=%s, fileblob=%s",
+					$homework->id, $user_ID, $_POST['content'], $file, $file_blob));
 			}	 			
 			
 			do_action('namaste_submitted_solution', $user_ID, $homework->id);
@@ -117,5 +123,24 @@ class NamasteLMSHomeworkController {
 		if($_POST['status']=='approved' and NamasteLMSLessonModel::is_ready($lesson->ID, $student_id)) {
 			NamasteLMSLessonModel::complete($lesson->ID, $student_id);
 		}		
+	} // end change_solution_status
+	
+	// download solution file
+	static function download_solution() {
+		global $wpdb;
+		
+		$solution = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE id=%d", $_GET['id']));
+		
+		if(empty($solution->fileblob)) wp_die(__("There is nothing to download.", 'namaste'));
+		
+		// send download headers
+		header('Content-Disposition: attachment; filename="'.$solution->file.'"');				
+		header("Content-Type: application/force-download");
+		header("Content-Type: application/octet-stream");
+		header("Content-Type: application/download");
+		header("Content-Description: File Transfer");
+		header("Content-Length: " . strlen($solution->fileblob)); 
+		
+		echo $solution->fileblob;
 	}
 }

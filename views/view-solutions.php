@@ -23,8 +23,9 @@
 	endif;?>
 	
 	<table class="widefat">
-	<?php foreach($solutions as $solution):?>
-		<tr><th><?php printf(__('Solution submitted at %s', 'namaste'), date(get_option('date_format'), strtotime($solution->date_submitted)));?>
+	<?php foreach($solutions as $solution):
+	$class = ('alternate' == @$class) ? '' : 'alternate';?>
+		<tr class="<?php echo $class?>"><th><?php printf(__('Solution submitted at %s', 'namaste'), date(get_option('date_format'), strtotime($solution->date_submitted)));?>
 		<?php if(!empty($show_everyone)):
 		 echo __('by','namaste')." <a href='admin.php?page=namaste_lesson_homeworks&lesson_id=".$lesson->ID."&student_id=".$solution->student_id."' target='_blank'>".$solution->user_login."</a>";
 		endif;?></th>
@@ -32,7 +33,10 @@
 		<?php if($use_grading_system):?>
 			<th><?php _e('Grade', 'namaste')?></th>
 		<?php endif;?></tr>
-		<tr><td><?php echo apply_filters('the_content', $solution->content);?></td>
+		<tr><td><?php echo apply_filters('the_content', $solution->content);?>
+		<?php if(!empty($solution->file)):?>
+			<p><?php _e('Attachment:', 'namaste')?> <a href="admin.php?page=namaste_download_solution&id=<?php echo $solution->id?>&noheader=1"><?php echo $solution->file?></a></p>
+		<?php endif;?></td>
 		<td><?php if(current_user_can('namaste_manage')):?>
 		<form method="post">
 			<select name="status" onchange="this.form.submit();">

@@ -55,7 +55,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.2.6 =
+= Version 1.2.7 =
+- "Accept file upload as solution" is finally implemented
 - Added arguments that let you control the order of lessons in [namaste-course-lessons] shortcode
 - Fixed possible bug with passing course ID through Paypal
 - Improved the Paypal error logging and added a "View errorlog" link on the main payment settings page (link visible only if there are errors)

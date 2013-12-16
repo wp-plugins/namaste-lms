@@ -10,7 +10,10 @@
 
 	<p><b><?php _e('Submit your solution below:','namaste')?></b></p>
 	
-	<form method="post">
+	<form method="post" enctype="multipart/form-data">
+	<?php if($homework->accept_files):?>
+		<div><label><?php _e('Upload file:', 'namaste')?></label> <input type="file" name="file"></div>
+	<?php endif;?>
 	<div><?php wp_editor('', 'content');?></div>
 	<p align="center">
 		<input type="submit" value="<?php _e('Submit your solution', 'namaste')?>">

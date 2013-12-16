@@ -5,7 +5,7 @@ class NamasteLMS {
    	global $wpdb;	
    	$wpdb -> show_errors();
    	
-   	update_option( 'namaste_version', "1.1.8");
+   	update_option( 'namaste_version', "1.2.6");
    	if(!$update) self::init();
 	  
 	  // enrollments to courses
@@ -155,7 +155,8 @@ class NamasteLMS {
 	  
 	  // add extra fields in new versions
 	  namaste_add_db_fields(array(
-		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''")	  
+		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''"),	  
+		  array("name"=>"fileblob", "type"=>"BLOB"),
 	  ), NAMASTE_STUDENT_HOMEWORKS);
 	  
 	   namaste_add_db_fields(array(
@@ -214,6 +215,7 @@ class NamasteLMS {
 		add_submenu_page( NULL, __("View solutions", 'namaste'), __("View solutions", 'namaste'), $namaste_cap, 'namaste_view_solutions', array('NamasteLMSHomeworkController', "view"));
 		add_submenu_page( NULL, __("View all solutions", 'namaste'), __("View all solutions", 'namaste'), 'namaste_manage', 'namaste_view_all_solutions', array('NamasteLMSHomeworkController', "view_all"));
 		add_submenu_page( NULL, __("View Certificate", 'namaste'), __("View Certificate", 'namaste'), $namaste_cap, 'namaste_view_certificate', array('NamasteLMSCertificatesController', "view_certificate"));
+		add_submenu_page( NULL, __("Download solution", 'namaste'), __("Download solution", 'namaste'), 'namaste_manage', 'namaste_download_solution', array('NamasteLMSHomeworkController', "download_solution"));
 		
 		do_action('namaste_lms_admin_menu');
 		
@@ -300,7 +302,7 @@ class NamasteLMS {
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
 		
 		$version = get_option('namaste_version');
-		if($version != '1.1.8') self::install(true);
+		if($version != '1.2.6') self::install(true);
 		
 		// purge history log older than 180 days
 		// in the next version this period should be configurable
