@@ -5,7 +5,8 @@ class NamasteLMS {
    	global $wpdb;	
    	$wpdb -> show_errors();
    	
-   	update_option( 'namaste_version', "1.2.6");
+   	$old_version = get_option('namaste_version');
+   	update_option( 'namaste_version', "1.27");
    	if(!$update) self::init();
 	  
 	  // enrollments to courses
@@ -156,7 +157,7 @@ class NamasteLMS {
 	  // add extra fields in new versions
 	  namaste_add_db_fields(array(
 		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''"),	  
-		  array("name"=>"fileblob", "type"=>"BLOB"),
+		  array("name"=>"fileblob", "type"=>"LONGBLOB"),
 	  ), NAMASTE_STUDENT_HOMEWORKS);
 	  
 	   namaste_add_db_fields(array(
@@ -184,6 +185,11 @@ class NamasteLMS {
     // add manage cap to the admin / superadmin by default
     $role = get_role('administrator');
     if(!$role->has_cap('namaste_manage')) $role->add_cap('namaste_manage');
+    
+    // update fileblog
+    if($old_version < 1.27) {
+    	$wpdb->query("ALTER TABLE ".NAMASTE_STUDENT_HOMEWORKS." CHANGE fileblob fileblob LONGBLOB");
+    }
     
     // fush rewrite rules
     NamasteLMSCourseModel::register_course_type();
@@ -302,7 +308,7 @@ class NamasteLMS {
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
 		
 		$version = get_option('namaste_version');
-		if($version != '1.2.6') self::install(true);
+		if($version != '1.27') self::install(true);
 		
 		// purge history log older than 180 days
 		// in the next version this period should be configurable

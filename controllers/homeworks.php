@@ -135,6 +135,9 @@ class NamasteLMSHomeworkController {
 		
 		if(!current_user_can('namaste_manage') and $user_ID != $solution->student_id) wp_die(__('You can download only your own solutions.', 'namaste'));
 		
+		// select fileblob
+		// $fileblob = $wpdb->get_var($wpdb->prepare("SELECT BINARY fileblob FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE id=%d", $solution->id)); 
+				
 		// send download headers
 		header('Content-Disposition: attachment; filename="'.$solution->file.'"');				
 		header("Content-Type: application/force-download");
