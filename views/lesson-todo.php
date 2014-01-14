@@ -9,7 +9,7 @@
 		
 			<ol>
 				<?php foreach($todo['todo_homeworks'] as $homework):?>
-					<li><strong><?php echo $homework->title?></strong></li>
+					<li><strong><a href="<?php echo admin_url('admin.php?page=namaste_submit_solution&id='.$homework->id)?>"><?php echo $homework->title?></a></strong></li>
 				<?php endforeach;?>
 			</ol>
 		</li>

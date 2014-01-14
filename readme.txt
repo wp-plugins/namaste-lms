@@ -55,7 +55,9 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.2.8 =
+= Version 1.2.9 =
+- The URL slugs "namaste-lesson" and "namaste-course" are now translate-able so you can use your own URL rewrites
+- Links to assignments are now generated in [namaste-todo] shortcode
 - "Accept file upload as solution" is finally implemented
 - fixed problems with PDFs and other large files when uploading solution to assignment
 - Added arguments that let you control the order of lessons in [namaste-course-lessons] shortcode

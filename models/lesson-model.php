@@ -13,7 +13,7 @@ class NamasteLMSLessonModel {
 			"public"=> true,
 			"show_ui"=>true,
 			"has_archive"=>true,
-			"rewrite"=> array("slug"=>"namaste-lesson", "with_front"=>false),
+			"rewrite"=> array("slug"=>__("namaste-lesson", 'namaste'), "with_front"=>false),
 			"description"=>__("This will create a new lesson in your Namaste! LMS.",'namaste'),
 			"supports"=>array("title", 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'post-formats'),
 			"taxonomies"=>array("category"),

@@ -15,7 +15,7 @@ class NamasteLMSCourseModel {
 			"public"=> true,
 			"show_ui"=>true,
 			"has_archive"=>true,
-			"rewrite"=> array("slug"=>"namaste-course", "with_front"=>false),
+			"rewrite"=> array("slug"=>__("namaste-course", 'namaste'), "with_front"=>false),
 			"description"=>__("This will create a new course in your Namaste! LMS.",'namaste'),
 			"supports"=>array("title", 'editor', 'thumbnail', 'excerpt'),
 			"taxonomies"=>array("category"),
