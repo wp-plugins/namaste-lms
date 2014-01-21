@@ -55,7 +55,7 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.2.9 =
+= Version 1.3 =
 - The URL slugs "namaste-lesson" and "namaste-course" are now translate-able so you can use your own URL rewrites
 - Links to assignments are now generated in [namaste-todo] shortcode
 - "Accept file upload as solution" is finally implemented
@@ -66,6 +66,8 @@ None yet, please ask in the forum
 - Added [namaste-next-lesson] shortcode to display a link to the next lesson in a course (please see the Help page inside Namaste menu) 
 - Similarly, added [namaste-prev-lesson] to show the previous lesson link
 - Improved course cleanup - now homework solutions are deleted on cleanup. If you use watu / watupro exams you can select to cleanup them as well (from the Namaste Settings page)
+- User can be enrolled in course using username as well
+- Fixed small issue with role restriction on enrolling
 
 = Version 1.2 =
 - Avoids duplicate completion on lessons and courses

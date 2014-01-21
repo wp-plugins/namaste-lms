@@ -22,7 +22,7 @@
 			</select></p>
 			<?php if(!empty($_GET['course_id'])):?>
 				<p><label><?php _e('Enroll student in the course:', 'namaste')?></label>
-				 <input type="text" name="email" size="30" placeholder="<?php _e('Enter email', 'namaste')?>"> 
+				 <input type="text" name="email" size="30" placeholder="<?php _e('Enter email or user login', 'namaste')?>"> 
 				<input type="submit" name="enroll" value="<?php _e('Enroll', 'namaste')?>"></p>
 			<?php endif;?>
 		</div>

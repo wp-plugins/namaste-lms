@@ -54,13 +54,14 @@ class NamasteLMSStudentModel {
 				if(!empty($_GET['enroll'])) {
 					 // find the user
 					 $error = false;
-					 $student = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->users} WHERE user_email=%s", $_GET['email']));
+					 if(strstr($_GET['email'], '@')) $student = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->users} WHERE user_email=%s", $_GET['email']));
+					 else $student = get_user_by('login', $_GET['email']);
 					 
 					 // user exists?
-					 if(empty($student->ID)) $error = __('Sorry, I cannot find user with this email.', 'namaste');
+					 if(empty($student->ID)) $error = __('Sorry, I cannot find user with this email or user handle.', 'namaste');
 					 
 					 // allowed to use Namaste!?
-					 if(!$error and !user_can($student->ID, 'namaste')) {
+					 if(!$error and !user_can($student->ID, 'administrator') and !user_can($student->ID, 'namaste')) {
 					 	$error = __("This user's role does not allow them to use Namaste! LMS. You'll have either to change their role or allow the role work with the LMS from the Settings page", 'namaste');
 					 }	
 					 
