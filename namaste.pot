@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.3\n"
+"Project-Id-Version: Namaste! LMS 1.3.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2014-01-21 15:41:26+00:00\n"
+"POT-Creation-Date: 2014-01-28 16:47:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:12 models/lesson-model.php:594
+#: models/course-model.php:12 models/lesson-model.php:601
 msgid "Course"
 msgstr ""
 
@@ -210,7 +210,7 @@ msgstr ""
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:285 models/lesson-model.php:595
+#: models/course-model.php:285 models/lesson-model.php:602
 msgid "Visits (unique/total)"
 msgstr ""
 
@@ -1095,7 +1095,7 @@ msgid "Enter your grades in the box, separated by comma. Start with the best pos
 msgstr ""
 
 #: views/options.php:46
-msgid "Use points system* <b>(Not yet implemented)</b>"
+msgid "Use points system*"
 msgstr ""
 
 #: views/options.php:47

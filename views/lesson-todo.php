@@ -16,7 +16,7 @@
 	<?php endif;?>
 	
 	<?php if(!empty($todo['todo_exam'])):?>
-		<li><?php _e('To-do Test/Exam:', 'namaste')?> <strong><?php echo $todo['todo_exam']->name?></strong></li>
+		<li><?php _e('To-do Test/Exam:', 'namaste')?> <a href="<?php echo $todo['todo_exam']->post_link?>" target="_blank"><?php echo $todo['todo_exam']->name?></a></li>
 	<?php endif;?>
 	
 	<?php if($todo['todo_admin_approval']) echo "<li>".__('Manual manager approval is also required to complete this lesson.', 'namaste')."</li>";?>

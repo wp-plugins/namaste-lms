@@ -43,7 +43,7 @@
 			
 			<hr>
 			
-			<p><input type="checkbox" name="use_points_system" <?php if($use_points_system) echo 'checked'?> onclick="this.checked ? jQuery('#pointsSystem').show() : jQuery('#pointsSystem').hide();"> <?php _e('Use points system* <b>(Not yet implemented)</b>', 'namaste');?></p>
+			<p><input type="checkbox" name="use_points_system" <?php if($use_points_system) echo 'checked'?> onclick="this.checked ? jQuery('#pointsSystem').show() : jQuery('#pointsSystem').hide();"> <?php _e('Use points system*', 'namaste');?></p>
 			<p><?php _e('* Points system can be used alone or together with a grading system. It lets you reward your students with points for completing lessons, courses, or assignments. These points will be displayed, and in the future (and in additional plugins) used to create leaderboards, redeem rewards, etc.', 'namaste')?> </p>
 			
 			<div id="pointsSystem" style="display:<?php echo $use_points_system ? 'block' : 'none'?>">

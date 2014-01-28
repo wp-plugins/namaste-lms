@@ -464,11 +464,18 @@ class NamasteLMSLessonModel {
 		if(!empty($todo_exam)) {
 			if($use_exams == 'watu') {
 				$todo_exam = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}watu_master WHERE ID=%d", $todo_exam));
+				$codesearch = "[WATU ".$todo_exam->ID."]";
 			}
 			
 			if($use_exams == 'watupro') {
 				$todo_exam = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}watupro_master WHERE ID=%d", $todo_exam));
+				$codesearch = "[WATUPRO ".$todo_exam->ID."]";
 			}
+			
+			// find the post to match it to the exam
+			$post = $wpdb->get_row("SELECT * FROM {$wpdb->posts} WHERE post_content LIKE '%$codesearch%' 
+				AND post_status='publish' AND post_title!='' ORDER BY post_date DESC");
+			$todo_exam->post_link = get_permalink($post->ID); 	
 		}
 		
 		// admin approval?

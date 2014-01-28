@@ -55,6 +55,9 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 1.3.1 = 
+- Links are generated to exams/tests in [namaste-todo] shortcode
+
 = Version 1.3 =
 - The URL slugs "namaste-lesson" and "namaste-course" are now translate-able so you can use your own URL rewrites
 - Links to assignments are now generated in [namaste-todo] shortcode
