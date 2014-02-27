@@ -54,7 +54,8 @@ class NamasteLMSLessonModel {
 		$required_homeworks = get_post_meta($post->ID, 'namaste_required_homeworks', true);	
 		if(!is_array($required_homeworks)) $required_homeworks = array();
 		$required_exam = get_post_meta($post->ID, 'namaste_required_exam', true);
-		$required_grade = get_post_meta($post->ID, 'namaste_required_grade', true);
+		$required_grade = get_post_meta($post->ID, 'namaste_required_grade', true); 
+		if(!is_array($required_grade)) $required_grade = array($required_grade);
 		
 		// select assignments
 		$homeworks = NamasteLMSHomeworkModel::select($wpdb->prepare(' WHERE lesson_id = %d', $post->ID));
@@ -475,7 +476,7 @@ class NamasteLMSLessonModel {
 			// find the post to match it to the exam
 			$post = $wpdb->get_row("SELECT * FROM {$wpdb->posts} WHERE post_content LIKE '%$codesearch%' 
 				AND post_status='publish' AND post_title!='' ORDER BY post_date DESC");
-			$todo_exam->post_link = get_permalink($post->ID); 	
+			$todo_exam->post_link = get_permalink(@$post->ID); 	
 		}
 		
 		// admin approval?
@@ -500,7 +501,8 @@ class NamasteLMSLessonModel {
 		$use_exams = get_option('namaste_use_exams');
 		if(!empty($use_exams)) {
 			$required_exam = get_post_meta($lesson_id, 'namaste_required_exam', true);
-			$required_grade = get_post_meta($lesson_id, 'namaste_required_grade', true);
+			$required_grade = get_post_meta($lesson_id, 'namaste_required_grade', true); // multiple grades in array
+			if(!is_array($required_grade)) $required_grade = array($required_grade);
 			
 			if(!empty($required_exam)) {
 				// see if there is taking record at all
@@ -524,11 +526,14 @@ class NamasteLMSLessonModel {
 			if(!empty($required_grade) and !empty($required_exam) and empty($todo_exam)) {
 				// let's make sure they have achieved the grade
 				$achieved_grade = false;
+				
 				foreach($takings as $taking) {
-					if(preg_match("/^".$required_grade."<p/", $taking->result) or (trim($required_grade) == trim($taking->result))) {
-						$achieved_grade = true;
-						break;
-					}
+					foreach($required_grade as $rgrade) {
+						if(preg_match("/^".$rgrade."<p/", $taking->result) or (trim($rgrade) == trim($taking->result))) {
+							$achieved_grade = true;
+							break;
+						}
+					}					
 				}
 				
 				if(!$achieved_grade) {

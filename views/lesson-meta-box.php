@@ -43,13 +43,13 @@ endif;?>
 	<?php endforeach;?>
 	</select> 
 	<span id='namasteGradeRequirement' style="display:<?php echo $required_exam?'inline':'none'?>">
-	<?php _e('with the following grade achieved:', 'namaste')?>
+	<?php _e('with any of the following grade(s) achieved:', 'namaste')?>
 		<span id="namasteGradeSelection">
 			<?php if($required_exam):?>
-				<select name="namaste_required_grade">
+				<select name="namaste_required_grade[]" size="4" multiple="true">
 					<option value=""><?php _e('- Any grade -')?></option>
 					<?php foreach($required_grades as $grade):?>
-						<option value="<?php echo $grade->gtitle?>" <?php if($grade->gtitle == $required_grade) echo 'selected'?>><?php echo $grade->gtitle?></option>
+						<option value="<?php echo $grade->gtitle?>" <?php if(in_array($grade->gtitle, $required_grade)) echo 'selected'?>><?php echo $grade->gtitle?></option>
 					<?php endforeach;?>
 				</select>
 			<?php endif;?>

@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: LMS, learning, courses, lessons, ILE
 Requires at least: 3.3
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 License: GPL2
 
@@ -55,8 +55,9 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.3.1 = 
+= Version 1.3.2 = 
 - Links are generated to exams/tests in [namaste-todo] shortcode
+- Allow multiple grades to be used in the "required quiz" for completing a lesson
 
 = Version 1.3 =
 - The URL slugs "namaste-lesson" and "namaste-course" are now translate-able so you can use your own URL rewrites
