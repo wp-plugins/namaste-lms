@@ -58,6 +58,7 @@ None yet, please ask in the forum
 = Version 1.3.2 = 
 - Links are generated to exams/tests in [namaste-todo] shortcode
 - Allow multiple grades to be used in the "required quiz" for completing a lesson
+- Fixed problem with listing pages on your homepage when Namaste is activated
 
 = Version 1.3 =
 - The URL slugs "namaste-lesson" and "namaste-course" are now translate-able so you can use your own URL rewrites

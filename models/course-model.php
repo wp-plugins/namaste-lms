@@ -37,7 +37,7 @@ class NamasteLMSCourseModel {
 
 			// empty, so we'll have to create post_type setting			
 			if(empty($post_types)) {
-				if(is_home()) $post_types = array('post', 'page', 'nav_menu_item', 'namaste_course');
+				if(is_home()) $post_types = array('post', 'nav_menu_item', 'namaste_course');
 				else $post_types = array('post', 'nav_menu_item', 'namaste_course');
 			}
 			
