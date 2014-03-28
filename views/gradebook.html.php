@@ -13,7 +13,7 @@
 	</form>
 
 	<?php if(!empty($this_course->ID)):?>
-		<h2><?php printf(__('Grades of the students in %', 'namaste'), $this_course->post_title)?></h2>
+		<h2><?php printf(__('Grades of the students in %s', 'namaste'), $this_course->post_title)?></h2>
 		
 		<table class="widefat">
 			<tr><th rowspan="2"><?php _e('Student', 'namaste');?></th><th colspan="<?php echo sizeof($lessons);?>"><?php _e('Lessons Grades (Shows also grades from assignments)', 'namaste');?></th><th rowspan="2"><?php _e('Final grade for the course', 'namaste')?></th></tr>
@@ -50,7 +50,12 @@
 				</tr>
 			<?php endforeach;?>
 		</table>
+		
+		<p><?php _e('Shortcode to display final course grade for a student:', 'namaste')?> <input type="text" value="[namaste-grade course_id=<?php echo $this_course->ID?> userlogin='' whenempty='N/A']" size="50" readonly="true" onclick="this.select();"><br>
+	<?php _e('When userlogin is left empty it will display the grade of the current user. If you pass username, it will display the grade of that user. The "whenempty" parameter lets you define text to show when there is no grade assigned yet.', 'namaste')?></p>
 	<?php endif;?>
+	
+	
 </div>
 
 <script type="text/javascript" >

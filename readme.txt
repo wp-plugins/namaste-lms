@@ -55,7 +55,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.3.2 = 
+= Version 1.3.2.2 = 
+- Added shhortcode to display student grade on given course (see Gradebook)
 - Links are generated to exams/tests in [namaste-todo] shortcode
 - Allow multiple grades to be used in the "required quiz" for completing a lesson
 - Fixed problem with listing pages on your homepage when Namaste is activated

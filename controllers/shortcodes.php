@@ -219,4 +219,23 @@ class NamasteLMSShortcodesController {
 		
 		return "<a href='".get_permalink($prev_lesson->ID)."'>$text</a>";	
 	}
+	
+	// display grade on a course
+	static function grade($atts) {
+		global $wpdb, $user_ID;
+		
+		$course_id = intval($atts['course_id']);
+		if(empty($atts['userlogin'])) $user_id = $user_ID;
+		else {
+			$user = get_user_by('login', $atts['userlogin']);
+			$user_id = $user->ID;
+		}
+		
+		// select grade
+		$grade = $wpdb->get_var($wpdb->prepare("SELECT grade FROM ".NAMASTE_STUDENT_COURSES."
+			WHERE course_id = %d AND user_id = %d", $course_id, $user_id));
+			
+		if($grade !== '') return $grade;
+		else return @$atts['whenempty'];	
+	}
 }
