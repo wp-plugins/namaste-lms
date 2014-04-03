@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.3.2.2\n"
+"Project-Id-Version: Namaste! LMS 1.3.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2014-03-28 17:06:16+00:00\n"
+"POT-Creation-Date: 2014-04-03 13:57:37+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,17 +36,21 @@ msgstr ""
 msgid "You are not allowed to access this certificate"
 msgstr ""
 
-#: controllers/courses.php:73
+#: controllers/courses.php:53
+msgid "These courses should be completed before you can enroll:"
+msgstr ""
+
+#: controllers/courses.php:99
 msgid "You enrolled in \"%s\""
 msgstr ""
 
-#: controllers/courses.php:74
+#: controllers/courses.php:100
 msgid ""
 "Thank you for your interest in enrolling this course. A manager will review "
 "your application."
 msgstr ""
 
-#: controllers/courses.php:76
+#: controllers/courses.php:102
 msgid "You have already enrolled in this course"
 msgstr ""
 
@@ -91,7 +95,7 @@ msgid "This lesson has been completed."
 msgstr ""
 
 #: controllers/shortcodes.php:31 views/manage-students.php:36
-#: views/manage-students.php:58 views/student-lessons.php:46
+#: views/manage-students.php:59 views/student-lessons.php:46
 msgid "Completed"
 msgstr ""
 
@@ -172,53 +176,58 @@ msgstr ""
 msgid "Advanced Reports"
 msgstr ""
 
-#: models/course-model.php:91
+#: models/course-model.php:100
 msgid "For advanced reports on this course, <a href=\"%s\">click here</a>."
 msgstr ""
 
-#: models/course-model.php:93
+#: models/course-model.php:102
 msgid ""
 "You can get <b>advanced reports</b> on this course if you install the <a "
 "href=\"%s\" target=\"_blank\">Namaste! Reports</a> plugin."
 msgstr ""
 
-#: models/course-model.php:145
+#: models/course-model.php:155
 msgid ""
 "You are enrolled in this course. Check \"My courses\" link in your dashboard "
 "to see the lessons and to-do list"
 msgstr ""
 
-#: models/course-model.php:146
+#: models/course-model.php:156
 msgid ""
 "You can enroll in this course from your student dashboard. You need to be "
 "logged in."
 msgstr ""
 
-#: models/course-model.php:191
+#: models/course-model.php:201
 msgid "Received %d points for completing course \"%s\"."
 msgstr ""
 
-#: models/course-model.php:201
+#: models/course-model.php:211
 msgid "Completed course \"%s\""
 msgstr ""
 
-#: models/course-model.php:236 models/student-model.php:87
+#: models/course-model.php:242
+msgid ""
+"You cannot enroll this course - other courses have to be completed first."
+msgstr ""
+
+#: models/course-model.php:257 models/student-model.php:87
 msgid "Enrolled in course %s. Status: %s"
 msgstr ""
 
-#: models/course-model.php:254
+#: models/course-model.php:280
 msgid "Payment for course"
 msgstr ""
 
-#: models/course-model.php:255
+#: models/course-model.php:281
 msgid "Enroll for"
 msgstr ""
 
-#: models/course-model.php:269
+#: models/course-model.php:295
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:285 models/lesson-model.php:607
+#: models/course-model.php:311 models/lesson-model.php:607
 msgid "Visits (unique/total)"
 msgstr ""
 
@@ -272,7 +281,7 @@ msgid ""
 "The lesson cannot be completed because there are unsatisfied requirements"
 msgstr ""
 
-#: models/lesson-model.php:218 views/manage-students.php:60
+#: models/lesson-model.php:218 views/manage-students.php:61
 #: views/student-lessons.php:44
 msgid "Not started"
 msgstr ""
@@ -281,7 +290,7 @@ msgstr ""
 msgid "Completed on"
 msgstr ""
 
-#: models/lesson-model.php:229 views/manage-students.php:59
+#: models/lesson-model.php:229 views/manage-students.php:60
 #: views/student-lessons.php:45
 msgid "In progress"
 msgstr ""
@@ -310,7 +319,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.3.2.2)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.3.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:206
 msgid "Namaste! LMS"
@@ -493,7 +502,7 @@ msgid "Delete"
 msgstr ""
 
 #: views/certificate-form.php:38 views/homework.php:20
-#: views/manage-students.php:81
+#: views/manage-students.php:82
 msgid "Are you sure?"
 msgstr ""
 
@@ -531,7 +540,7 @@ msgstr ""
 msgid "Enrollment mode:"
 msgstr ""
 
-#: views/course-meta-box.php:3 views/course-meta-box.php:32
+#: views/course-meta-box.php:3 views/course-meta-box.php:43
 #: views/lesson-meta-box.php:95
 msgid "You can use the shortcode"
 msgstr ""
@@ -559,54 +568,68 @@ msgid "to enroll this course. (Leave it 0 for no fee.)"
 msgstr ""
 
 #: views/course-meta-box.php:13
-msgid "Course completeness"
+msgid "Course Access / Pre-requisites"
 msgstr ""
 
 #: views/course-meta-box.php:16
+msgid "There are no other courses so every student can enroll in this course."
+msgstr ""
+
+#: views/course-meta-box.php:18
+msgid ""
+"This course will be accessible only after the following courses are "
+"completed:"
+msgstr ""
+
+#: views/course-meta-box.php:24
+msgid "Course completeness"
+msgstr ""
+
+#: views/course-meta-box.php:27
 msgid ""
 "This course has no lessons assigned so it can never be completed. Please "
 "create and assign some lessons to this course."
 msgstr ""
 
-#: views/course-meta-box.php:18
+#: views/course-meta-box.php:29
 msgid ""
 "The following lessons must be completed in order to complete this course. "
 "Please select at least one."
 msgstr ""
 
-#: views/course-meta-box.php:27 views/homework.php:11
+#: views/course-meta-box.php:38 views/homework.php:11
 #: views/lesson-meta-box.php:89 views/options.php:52 views/options.php:54
 #: views/options.php:56
 msgid "Reward"
 msgstr ""
 
-#: views/course-meta-box.php:27
+#: views/course-meta-box.php:38
 msgid "points for completing this course."
 msgstr ""
 
-#: views/course-meta-box.php:30 views/lesson-meta-box.php:93
+#: views/course-meta-box.php:41 views/lesson-meta-box.php:93
 msgid "Shortcodes"
 msgstr ""
 
-#: views/course-meta-box.php:32
+#: views/course-meta-box.php:43
 msgid ""
 "inside the course content to display what the student needs to do to "
 "complete the course."
 msgstr ""
 
-#: views/course-meta-box.php:33
+#: views/course-meta-box.php:44
 msgid "The shortcode"
 msgstr ""
 
-#: views/course-meta-box.php:33
+#: views/course-meta-box.php:44
 msgid "will display the lessons in the course."
 msgstr ""
 
-#: views/course-meta-box.php:33
+#: views/course-meta-box.php:44
 msgid "It allows more advanced configurations explained on the "
 msgstr ""
 
-#: views/course-meta-box.php:33
+#: views/course-meta-box.php:44
 msgid "help page."
 msgstr ""
 
@@ -1017,35 +1040,35 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: views/manage-students.php:64
+#: views/manage-students.php:65
 msgid "approve"
 msgstr ""
 
-#: views/manage-students.php:64
+#: views/manage-students.php:65
 msgid "reject"
 msgstr ""
 
-#: views/manage-students.php:67
+#: views/manage-students.php:68
 msgid "Cleanup"
 msgstr ""
 
-#: views/manage-students.php:74
+#: views/manage-students.php:75
 msgid ""
 "Don't forget that you can get <a href='%s'>Advanced Reports</a> for your "
 "students performance."
 msgstr ""
 
-#: views/manage-students.php:76
+#: views/manage-students.php:77
 msgid ""
 "You can get advanced reports and ranking shortcodes with the <a href='%s' "
 "target='_blank'>Namaste! Reports</a> plugin."
 msgstr ""
 
-#: views/manage-students.php:88 views/student-lessons.php:63
+#: views/manage-students.php:89 views/student-lessons.php:63
 msgid "Lesson progress"
 msgstr ""
 
-#: views/manage-students.php:94
+#: views/manage-students.php:95
 msgid ""
 "Are you sure to cleanup this record? It will be removed from the system and "
 "history and the user will be able to enroll or request enrollment again"
@@ -1124,27 +1147,27 @@ msgstr ""
 msgid "Course title &amp; description"
 msgstr ""
 
-#: views/my_courses.php:22
+#: views/my_courses.php:23
 msgid "Enroll to get access to the lessons"
 msgstr ""
 
-#: views/my_courses.php:24
+#: views/my_courses.php:25
 msgid "View lessons"
 msgstr ""
 
-#: views/my_courses.php:31
+#: views/my_courses.php:32
 msgid "Pending enrollment"
 msgstr ""
 
-#: views/my_courses.php:32
+#: views/my_courses.php:33
 msgid "Application rejected"
 msgstr ""
 
-#: views/my_courses.php:33
+#: views/my_courses.php:34
 msgid "Enrolled on %s"
 msgstr ""
 
-#: views/my_courses.php:35
+#: views/my_courses.php:36
 msgid "Completed on %s"
 msgstr ""
 

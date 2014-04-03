@@ -78,6 +78,15 @@ class NamasteLMSCourseModel {
 			$award_points = get_post_meta($post->ID, 'namaste_award_points', true);
 			if($award_points === '') $award_points = get_option('namaste_points_course');
 			
+			// other courses
+			$other_courses = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->posts} tP			
+			WHERE post_type = 'namaste_course'  AND (post_status='publish' OR post_status='draft') 
+			AND ID!=%d ORDER BY post_title", $post->ID));
+
+			// course will be accessible after these course(s) are completed			
+			$course_access = get_post_meta($post->ID, 'namaste_access', true);	
+			if(!is_array($course_access)) $course_access = array();
+			
 			wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );
 			require(NAMASTE_PATH.'/views/course-meta-box.php');  
 	}
@@ -105,6 +114,7 @@ class NamasteLMSCourseModel {
 			update_post_meta($post_id, "namaste_enroll_mode", $_POST['namaste_enroll_mode']);
 			update_post_meta($post_id, "namaste_required_lessons", $_POST['namaste_required_lessons']);			
 			update_post_meta($post_id, "namaste_fee", $_POST['namaste_fee']);
+			update_post_meta($post_id, "namaste_access", $_POST['namaste_access']);
 			if(isset($_POST['namaste_award_points'])) update_post_meta($post_id, "namaste_award_points", $_POST['namaste_award_points']);
 	}	
 	
@@ -222,6 +232,17 @@ class NamasteLMSCourseModel {
 	function enroll($student_id, $course_id, $status) {
 		global $wpdb;
 		
+		// check for course access requirements
+		$course_access = get_post_meta($course_id, 'namaste_access', true);
+		if(!empty($course_access) and is_array($course_access)) {
+			// check if there is any unsatisfied requirement
+			foreach($course_access as $required_course) {
+				$is_completed = $wpdb->get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES."
+					WHERE user_id=%d AND course_id=%d AND status='completed'", $student_id, $required_course));
+				if(!$is_completed) wp_die(__('You cannot enroll this course - other courses have to be completed first.', 'namaste'));	
+			}
+		}
+		
 		$result = $wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_COURSES." SET
 					course_id = %d, user_id = %d, status = %s, enrollment_date = CURDATE(),
 					completion_date='1900-01-01', comments=''",
@@ -245,7 +266,12 @@ class NamasteLMSCourseModel {
 		$accept_other_payment_methods = $this->accept_other_payment_methods;
 		$accept_paypal = $this->accept_paypal;
 		$accept_stripe = $this->accept_stripe;		
-		$stripe = $this->stripe;			
+		$stripe = $this->stripe;		
+		
+		// can't enroll?
+		if(!$course->can_enroll) {
+			return $course->enroll_prerequisites;
+		}	
 		
 		$output = '';	
 		if(!empty($course->fee) and !$is_manager) {			

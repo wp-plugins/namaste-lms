@@ -14,8 +14,9 @@ endif;?>
 		<tr><th><?php _e('Course title &amp; description', 'namaste')?></th>
 		<?php if(!$simplified):?><th><?php _e('Lessons', 'namaste')?></th><?php endif;?>		
 		<th><?php _e('Status', 'namaste')?></th></tr>
-		<?php foreach($courses as $course):?>
-			<tr><td><a href="<?php echo get_permalink($course->post_id)?>" target="_blank"><?php echo $course->post_title?></a>
+		<?php foreach($courses as $course):
+			$class = ('alternate' == @$class) ? '' : 'alternate';?>
+			<tr class="<?php echo $class?>"><td><a href="<?php echo get_permalink($course->post_id)?>" target="_blank"><?php echo $course->post_title?></a>
 			<?php if(!empty($course->post_excerpt)): echo apply_filters('the_content', stripslashes($course->post_excerpt)); endif;?></td>
 			<?php if(!$simplified):?>
 			<td><?php if(empty($course->status) or $course->status == 'pending'): 

@@ -52,8 +52,9 @@
 			</tr>	
 			<?php foreach($students as $student):
 				// this page linked in the first cell will be the same for student - when student clicks on enrolled course, 
-				// they'll see the same table as the admin will see here?>
-				<tr><td><a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $_GET['course_id']?>&student_id=<?php echo $student->ID?>"><?php echo $student->user_login?></td>
+				// they'll see the same table as the admin will see here
+				$class = ('alternate' == @$class) ? '' : 'alternate';?>
+				<tr class="<?php echo $class?>"><td><a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $_GET['course_id']?>&student_id=<?php echo $student->ID?>"><?php echo $student->user_login?></td>
 				<?php foreach($lessons as $lesson):?>
 					<td><?php if(in_array($lesson->ID, $student->completed_lessons)): _e('Completed', 'namaste');
 					elseif(in_array($lesson->ID, $student->incomplete_lessons)): echo "<a href='#' onclick='namasteInProgress(".$lesson->ID.", ".$student->ID."); return false;'>".__('In progress', 'namaste')."</a>";

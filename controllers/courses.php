@@ -42,6 +42,32 @@ class NamasteLMSCoursesController {
 		$_course->stripe = $stripe;		
 		wp_enqueue_script('thickbox',null,array('jquery'));
 		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');	 
+		
+		foreach($courses as $cnt => $course) {
+			// can enroll? or are there unsatisfied pre-requisites
+			$can_enroll = true;		
+			$enroll_prerequisites = '';
+			// check for course access requirements
+			$course_access = get_post_meta($course->post_id, 'namaste_access', true);
+			if(!empty($course_access) and is_array($course_access)) {
+				$enroll_prerequisites = __('These courses should be completed before you can enroll:', 'namaste');
+				
+				// check if there is any unsatisfied requirement
+				foreach($course_access as $required_course) {
+					$is_completed = $wpdb->get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES."
+						WHERE user_id=%d AND course_id=%d AND status='completed'", $user_ID, $required_course));
+					if(!$is_completed) {
+						$can_enroll = false; // even one failed is enough;
+						$required_course_post = get_post($required_course);
+						$enroll_prerequisites .= ' <b>' . $required_course_post->post_title. '</b>;';
+					}
+				} // end foreach course access
+			}
+			
+			$courses[$cnt]->can_enroll = $can_enroll;
+			$courses[$cnt]->enroll_prerequisites = $enroll_prerequisites;
+		}
+		
 		require(NAMASTE_PATH."/views/my_courses.php");	 
 	}
 	

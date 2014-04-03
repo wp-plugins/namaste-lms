@@ -10,6 +10,17 @@
 	<p><?php _e('Students need to pay a fee of', 'namaste')?> <?php echo $currency?> <input type="text" size="6" name="namaste_fee" value="<?php echo $fee?>"> <?php _e('to enroll this course. (Leave it 0 for no fee.)', 'namaste')?></p>
 <?php endif;?>
 
+<h4><?php _e('Course Access / Pre-requisites', 'namaste')?></h4>
+
+<?php if(!sizeof($other_courses)):?>
+	<p><?php _e('There are no other courses so every student can enroll in this course.', 'namaste')?></p>
+<?php else: 
+echo '<p>'.__('This course will be accessible only after the following courses are completed:','namaste').'</p>'; 
+foreach($other_courses as $course):?>
+	<p><input type="checkbox" name="namaste_access[]" value="<?php echo $course->ID?>" <?php if(in_array($course->ID, $course_access)) echo "checked"?>> <?php echo $course->post_title?></p>
+<?php endforeach;
+endif;?>
+
 <h4><?php _e('Course completeness', 'namaste')?></h4>
 
 <?php if(!sizeof($lessons)):?>
