@@ -411,8 +411,8 @@ class NamasteLMS {
 		$currency = get_option('namaste_currency');
 		$currencies=array('USD'=>'$', "EUR"=>"&euro;", "GBP"=>"&pound;", "JPY"=>"&yen;", "AUD"=>"AUD",
 	   "CAD"=>"CAD", "CHF"=>"CHF", "CZK"=>"CZK", "DKK"=>"DKK", "HKD"=>"HKD", "HUF"=>"HUF",
-	   "ILS"=>"ILS", "MXN"=>"MXN", "NOK"=>"NOK", "NZD"=>"NZD", "PLN"=>"PLN", "SEK"=>"SEK",
-	   "SGD"=>"SGD");		
+	   "ILS"=>"ILS", "INR"=>"INR", "MXN"=>"MXN", "NOK"=>"NOK", "NZD"=>"NZD", "PLN"=>"PLN", "SEK"=>"SEK",
+	   "SGD"=>"SGD", "ZAR"=>"ZAR");		
 	   
 	   $use_grading_system = get_option('namaste_use_grading_system');
 	   $grading_system = stripslashes(get_option('namaste_grading_system'));
