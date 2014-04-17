@@ -50,8 +50,8 @@ class NamasteLMSShortcodesController {
    	
    	$enrolled = $wpdb -> get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_COURSES.
 			" WHERE user_id = %d AND course_id = %d", $user_ID, $post->ID));
-			
-		if(empty($enrolled->id)) {
+	
+		if(empty($enrolled->id)) {			
 			$currency = get_option('namaste_currency');
 			$is_manager = current_user_can('namaste_manage');
 			$_course = new NamasteLMSCourseModel();
