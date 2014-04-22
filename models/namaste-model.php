@@ -200,7 +200,7 @@ class NamasteLMS {
    
    // main menu
    static function menu() {
-		$namaste_cap = current_user_can('namaste_manage')?'namaste_manage':'namaste';   	
+		$namaste_cap = current_user_can('namaste_manage') ? 'namaste_manage' : 'namaste';   	
 		$use_grading_system = get_option('namaste_use_grading_system');
    	
    	$menu=add_menu_page(__('Namaste! LMS', 'namaste'), __('Namaste! LMS', 'namaste'), "namaste_manage", "namaste_options", 
@@ -364,6 +364,8 @@ class NamasteLMS {
 					else $role->remove_cap('namaste_manage');
 				}	// end if can_manage_options
 			} // end foreach role 
+			
+			update_option('namaste_show_courses_in_blog', @$_POST['show_courses_in_blog']);
 		}
 		
 		if(!empty($_POST['namaste_exam_options']) and check_admin_referer('save_exam_options', 'nonce_exam_options')) {

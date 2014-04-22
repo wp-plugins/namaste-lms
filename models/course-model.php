@@ -32,6 +32,8 @@ class NamasteLMSCourseModel {
 	
 	// add courses to the homepage and archive listings
 	static function query_post_type($query) {
+		if(!get_option('namaste_show_courses_in_blog')) return $query;
+		
 		if ( (is_home() or is_archive()) and $query->is_main_query() ) {
 			$post_types = @$query->query_vars['post_type'];
 
@@ -231,6 +233,10 @@ class NamasteLMSCourseModel {
 	// enrolls or applies to enroll a course
 	function enroll($student_id, $course_id, $status) {
 		global $wpdb;
+		
+		// checks from other plugins, for example Namaste PRO
+		$has_access = apply_filters('namaste-course-access', true, $student_id, $course_id);
+		if(!$has_access) wp_die(__('You are not allowed to enroll in this course', 'namaste'));
 		
 		// check for course access requirements
 		$course_access = get_post_meta($course_id, 'namaste_access', true);

@@ -256,12 +256,19 @@ class NamasteLMSLessonModel {
 		$course_id = get_post_meta($post->ID, 'namaste_course', true);
 		$course = $_course -> select($course_id);
 		$enrolled = $wpdb -> get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES.
-			" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $course_id));
+			" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $course_id));	
 		if(!$enrolled) {
 			$content = __('In order to see this lesson you first have to be enrolled in the course', 'namaste').' <b>"'.$course->post_title.'"</b>';
 			// self :: mark_accessed();
 			return $content; // no need to run further queries
 		}		
+		
+		// no access due to filters? (Classes from Namaste PRO etc)
+		$has_access = apply_filters('namaste-course-access', true, $user_ID, $course_id);
+		if(!$has_access) {			
+			 $content = __('You are not allowed to access anything in this course', 'namaste');
+			 return $content;
+		}
 		
 		// can access based on other lesson restriction?
 		$lesson_access = get_post_meta($post->ID, 'namaste_access', true);	

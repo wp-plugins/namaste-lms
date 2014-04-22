@@ -21,13 +21,17 @@ class NamasteLMSCoursesController {
 		}	
 		
 		if(!empty($_POST['enroll'])) $mesage = self::enroll($is_manager);
+
+		// filters from other plugins like Namaste! PRO		
+		$filter_sql = '';
+		$filter_sql = apply_filters('namaste-course-select-sql', $filter_sql, $user_ID);
 		
 		// select all courses join to student courses so we can have status.
 		$courses = $wpdb -> get_results($wpdb->prepare("SELECT tSC.*, 
 			tC.post_title as post_title, tC.ID as post_id, tC.post_excerpt as post_excerpt
 			 FROM {$wpdb->posts} tC LEFT JOIN ".NAMASTE_STUDENT_COURSES." tSC ON tC.ID = tSC.course_id
 			 AND tSC.user_id = %d WHERE tC.post_status = 'publish'
-			 AND tC.post_type='namaste_course' ORDER BY tC.post_title", $user_ID));
+			 AND tC.post_type='namaste_course' $filter_sql ORDER BY tC.post_title", $user_ID));
 			 
 		if(!empty($currency) and !$is_manager) {
 			foreach($courses as $cnt=>$course) {
