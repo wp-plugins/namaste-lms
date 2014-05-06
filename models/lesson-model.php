@@ -337,7 +337,7 @@ class NamasteLMSLessonModel {
 	// I.e. checks if all the requirements are completed
 	// $admin_check - when admin checks completeness, we'll ignore the requirement for 
 	// completed status - because we want to check only the other reqs
-	static function is_ready($lesson_id, $student_id, $admin_check = false) {
+	static function is_ready($lesson_id, $student_id, $admin_check = false, $marking_by_student = false) {
 		global $wpdb;
 		
 		// first let's check for already completed status. If such is there, obviously the lesson is ready for completing
@@ -376,6 +376,12 @@ class NamasteLMSLessonModel {
 		
 		// Exam check
 		if(!NamasteLMSLessonModel::todo_exam($lesson_id, $student_id, 'boolean')) return false;
+		
+		// contains [namaste-mark] check
+		if(!$marking_by_student and !$admin_check) {
+			$lesson = get_post($lesson_id);
+			if(strstr($lesson->post_content, '[namaste-mark]')) return false;
+		}
 		
 		return true;
 	}

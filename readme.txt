@@ -55,7 +55,7 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.3.5 = 
+= Version 1.3.6 = 
 - Added shhortcode to display student grade on given course (see Gradebook)
 - Links are generated to exams/tests in [namaste-todo] shortcode
 - Allow multiple grades to be used in the "required quiz" for completing a lesson
@@ -64,6 +64,7 @@ None yet, please ask in the forum
 - Fixed problem with [namaste-enroll] shortcode and the new course pre-requisites
 - Added setting to show / hide courses in blog and home pages (default is off)
 - Added filers for course access to allow other plugins to add conditions
+- Added shortcode to publish a button that lets student mark lesson as completed themselves
 
 = Version 1.3 =
 - The URL slugs "namaste-lesson" and "namaste-course" are now translate-able so you can use your own URL rewrites

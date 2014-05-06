@@ -26,7 +26,7 @@ endif;?>
 <p><input type="checkbox" name="namaste_completion[]" value="admin_approval" <?php if(in_array('admin_approval', $lesson_completion)) echo 'checked'?>> <?php _e('Lesson completion will be manually verified and approved by the admin for every student.', 'namaste')?></p>
 
 <?php if(!empty($homeworks) and sizeof($homeworks)):?>
-<p><?php _e('The following assignments/homeworks must be completed:', 'namaste')?></p>
+<p><b><?php _e('The following assignments/homework must be completed:', 'namaste')?></b></p>
 <ul>
 	<?php foreach($homeworks as $homework):?>
 		<li><input type="checkbox" name="namaste_required_homeworks[]" value="<?php echo $homework->id?>"<?php if(in_array($homework->id, $required_homeworks)) echo 'checked'?>> <?php echo $homework->title?></li>
@@ -35,7 +35,8 @@ endif;?>
 <?php endif;?>
 
 <?php if($use_exams and sizeof($exams)):?>
-	<p><?php _e('The following quiz must be completed (will take effect only if the quiz is published):', 'namaste')?></p>
+	<p><b><?php _e('The following quiz must be completed (will take effect only if the quiz is published):', 'namaste')?></b></p>
+	<p><b><?php _e('The following quiz must be completed (will take effect only if the quiz is published):', 'namaste')?></b></p>
 	<p><select name="namaste_required_exam" onchange="namasteLoadGrades(this.value);">
 	<option value=""><?php _e('- No quiz required -', 'namaste')?></option>
 	<?php foreach($exams as $exam):?>
@@ -90,6 +91,8 @@ endif;?>
 <?php endif;?>
 
 
-<h4><?php _e('Shortcodes', 'namaste')?></h4>
+<h3><?php _e('Shortcodes', 'namaste')?></h3>
 
-<p><?php _e('You can use the shortcode', 'namaste')?> <strong>[namaste-todo]</strong> <?php _e('inside the lesson content to display what the student needs to do to complete the lesson.', 'namaste')?></p>
+<p><?php _e('You can use the shortcode', 'namaste')?> <input type="text" value="[namaste-todo]" readonly="readonly" onclick="this.select();"> <?php _e('inside the lesson content to display what the student needs to do to complete the lesson.', 'namaste')?></p>
+
+<p><?php _e('The shortcode', 'namaste')?> <input type="text" value="[namaste-mark]" readonly="readonly" onclick="this.select();"> <?php _e('will display a "Mark Completed" button so the student can mark the lesson completed themselves. <b>If such button is included in the lesson it will not be marked as completed until the student does it!</b> The button will appear <b>only after the "Lesson Completeness" requirements are satisfied.</b>', 'namaste')?></p>

@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.3.5\n"
+"Project-Id-Version: Namaste! LMS 1.3.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2014-04-22 15:16:23+00:00\n"
+"POT-Creation-Date: 2014-05-06 17:19:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -139,6 +139,14 @@ msgstr ""
 msgid "previous lesson"
 msgstr ""
 
+#: controllers/shortcodes.php:258
+msgid "Lesson completed!"
+msgstr ""
+
+#: controllers/shortcodes.php:262
+msgid "Mark as completed"
+msgstr ""
+
 #: models/course-model.php:8
 msgid "Namaste! Courses"
 msgstr ""
@@ -147,7 +155,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:12 models/lesson-model.php:613
+#: models/course-model.php:12 models/lesson-model.php:619
 msgid "Course"
 msgstr ""
 
@@ -227,7 +235,7 @@ msgstr ""
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:320 models/lesson-model.php:614
+#: models/course-model.php:320 models/lesson-model.php:620
 msgid "Visits (unique/total)"
 msgstr ""
 
@@ -319,15 +327,15 @@ msgstr ""
 msgid "Started reading lesson \"%s\""
 msgstr ""
 
-#: models/lesson-model.php:413
+#: models/lesson-model.php:419
 msgid "Received %d points for completing lesson \"%s\"."
 msgstr ""
 
-#: models/lesson-model.php:422
+#: models/lesson-model.php:428
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.3.5)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.3.6)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:206
 msgid "Namaste! LMS"
@@ -549,7 +557,7 @@ msgid "Enrollment mode:"
 msgstr ""
 
 #: views/course-meta-box.php:3 views/course-meta-box.php:43
-#: views/lesson-meta-box.php:95
+#: views/lesson-meta-box.php:96
 msgid "You can use the shortcode"
 msgstr ""
 
@@ -606,7 +614,7 @@ msgid ""
 msgstr ""
 
 #: views/course-meta-box.php:38 views/homework.php:11
-#: views/lesson-meta-box.php:89 views/options.php:57 views/options.php:59
+#: views/lesson-meta-box.php:90 views/options.php:57 views/options.php:59
 #: views/options.php:61
 msgid "Reward"
 msgstr ""
@@ -615,7 +623,7 @@ msgstr ""
 msgid "points for completing this course."
 msgstr ""
 
-#: views/course-meta-box.php:41 views/lesson-meta-box.php:93
+#: views/course-meta-box.php:41 views/lesson-meta-box.php:94
 msgid "Shortcodes"
 msgstr ""
 
@@ -625,7 +633,7 @@ msgid ""
 "complete the course."
 msgstr ""
 
-#: views/course-meta-box.php:44
+#: views/course-meta-box.php:44 views/lesson-meta-box.php:98
 msgid "The shortcode"
 msgstr ""
 
@@ -934,41 +942,50 @@ msgid ""
 msgstr ""
 
 #: views/lesson-meta-box.php:29
-msgid "The following assignments/homeworks must be completed:"
+msgid "The following assignments/homework must be completed:"
 msgstr ""
 
-#: views/lesson-meta-box.php:38
+#: views/lesson-meta-box.php:38 views/lesson-meta-box.php:39
 msgid ""
 "The following quiz must be completed (will take effect only if the quiz is "
 "published):"
 msgstr ""
 
-#: views/lesson-meta-box.php:40
+#: views/lesson-meta-box.php:41
 msgid "- No quiz required -"
 msgstr ""
 
-#: views/lesson-meta-box.php:46
+#: views/lesson-meta-box.php:47
 msgid "with any of the following grade(s) achieved:"
 msgstr ""
 
-#: views/lesson-meta-box.php:50 views/lesson-meta-box.php:72
+#: views/lesson-meta-box.php:51 views/lesson-meta-box.php:73
 msgid "- Any grade -"
 msgstr ""
 
-#: views/lesson-meta-box.php:84
+#: views/lesson-meta-box.php:85
 msgid ""
 "If you install %s or %s you can also require certain tests and quizzes to be "
 "completed."
 msgstr ""
 
-#: views/lesson-meta-box.php:89
+#: views/lesson-meta-box.php:90
 msgid "points for completing this lesson."
 msgstr ""
 
-#: views/lesson-meta-box.php:95
+#: views/lesson-meta-box.php:96
 msgid ""
 "inside the lesson content to display what the student needs to do to "
 "complete the lesson."
+msgstr ""
+
+#: views/lesson-meta-box.php:98
+msgid ""
+"will display a \"Mark Completed\" button so the student can mark the lesson "
+"completed themselves. <b>If such button is included in the lesson it will "
+"not be marked as completed until the student does it!</b> The button will "
+"appear <b>only after the \"Lesson Completeness\" requirements are satisfied."
+"</b>"
 msgstr ""
 
 #: views/lesson-todo.php:2
@@ -1171,11 +1188,11 @@ msgstr ""
 msgid "Application rejected"
 msgstr ""
 
-#: views/my_courses.php:34
+#: views/my_courses.php:35
 msgid "Enrolled on %s"
 msgstr ""
 
-#: views/my_courses.php:36
+#: views/my_courses.php:38
 msgid "Completed on %s"
 msgstr ""
 

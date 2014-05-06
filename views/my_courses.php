@@ -31,8 +31,10 @@ endif;?>
 			else: // enrolled
 				if($course->status == 'pending'): _e('Pending enrollment', 'namaste'); endif;
 				if($course->status == 'rejected'): _e('Application rejected', 'namaste'); endif;
-				if($course->status == 'enrolled'): printf(__('Enrolled on %s', 'namaste'), 
-					date(get_option('date_format'), strtotime($course->enrollment_date))); endif;
+				if($course->status == 'enrolled'): 
+					printf(__('Enrolled on %s', 'namaste'), date(get_option('date_format'), strtotime($course->enrollment_date)));
+					do_action('namaste-course-status', $course->post_id, $user_ID); 
+				endif;
 				if($course->status == 'completed'): printf(__('Completed on %s', 'namaste'), 
 					date(get_option('date_format'), strtotime($course->completion_date))); endif;
 			endif;?>			
