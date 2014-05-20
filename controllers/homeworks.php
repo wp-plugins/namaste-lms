@@ -1,7 +1,7 @@
 <?php
 class NamasteLMSHomeworkController {
-	static function submit_solution() {
-		global $wpdb, $user_ID;
+	static function submit_solution($in_shortcode = false) {
+		global $wpdb, $user_ID, $post;
 		$_course = new NamasteLMSCourseModel();
 		
 		list($homework, $course, $lesson) = NamasteLMSHomeworkModel::full_select($_GET['id']);
@@ -44,8 +44,8 @@ class NamasteLMSHomeworkController {
 	}
 	
 	// teacher views, approves, rejects submitted solutions
-	static function view() {
-		global $wpdb, $user_ID;
+	static function view($in_shortcode = false) {
+		global $wpdb, $user_ID, $post;
 		
 		$student_id = empty($_GET['student_id'])?$user_ID : $_GET['student_id'];
 		if(!current_user_can('namaste_manage') and $student_id!=$user_ID) wp_die(__('You are not allowed to see these solutions', 'namaste'));

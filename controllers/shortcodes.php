@@ -264,4 +264,34 @@ class NamasteLMSShortcodesController {
 			}
 		}	 
 	} // end mark
+	
+	// lesson assignments
+	static function assignments($atts) {
+		global $user_ID;
+		
+		if(!empty($atts['lesson_id'])) $_GET['lesson_id'] = intval($atts['lesson_id']);		
+		
+		// prepare arguments
+		$_GET['student_id'] = $user_ID;
+		ob_start();
+		
+		// returning the view solutions page		
+		if(!empty($_GET['view_solutions'])) {
+		 	NamasteLMSHomeworkController :: view(true);
+		 	$content = ob_get_clean();
+			return $content;
+		}
+		
+		// returning submit solution page
+		if(!empty($_GET['submit_solution'])) {
+		 	NamasteLMSHomeworkController :: submit_solution(true);
+		 	$content = ob_get_clean();
+			return $content;
+		}
+		
+		// normally we return the homeworks
+		NamasteLMSHomeworkModel :: lesson_homeworks(true);
+		$content = ob_get_clean();
+		return $content;		
+	}
 }

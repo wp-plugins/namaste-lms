@@ -19,14 +19,29 @@ endif;?>
 	<?php foreach($homeworks as $homework):?>
 		<tr><td><h2><?php echo $homework->title?></h2>
 		<?php echo apply_filters('the_content', stripslashes($homework->description))?></td>
-		<td><p><?php if(!sizeof($homework->solutions)) _e('None yet.', 'namaste');
-		else echo "<a href='admin.php?page=namaste_view_solutions&student_id=".$student->ID."&id=".$homework->id."'>".sprintf(__('%d solutions', 'namaste'), sizeof($homework->solutions))."</a>"?></p>
+		<td><p><?php if(!sizeof($homework->solutions)): _e('None yet.', 'namaste');
+		else: 
+			if($in_shortcode):
+				$permalink = get_permalink($post->ID);
+			   $params = array('id' => $homework->id, 'view_solutions' => 1);
+				$target_url = add_query_arg( $params, $permalink );
+				echo "<a href='".$target_url."'>".sprintf(__('%d solutions', 'namaste'), sizeof($homework->solutions))."</a>";
+				else: echo "<a href='admin.php?page=namaste_view_solutions&student_id=".$student->ID."&id=".$homework->id."'>".sprintf(__('%d solutions', 'namaste'), sizeof($homework->solutions))."</a>";
+			endif; // end not in shortcode
+		endif;?></p>
 		<?php if(!$manager_mode):
 			if($homework->status):?>
 				<p><?php _e('A solution has been accepted and the assignment is completed.','namaste')?></p>
-			<?php else:?>
+			<?php else:
+			   if($in_shortcode):
+			   	$permalink = get_permalink($post->ID);
+			   	$params = array('id' => $homework->id, 'submit_solution' => 1);
+					$target_url = add_query_arg( $params, $permalink );?>
+			   	<p><a href="<?php echo $target_url ?>"><?php _e('Submit solution', 'namaste')?></a></p>
+			   <?php else:?>
 				<p><a href="admin.php?page=namaste_submit_solution&id=<?php echo $homework->id?>"><?php _e('Submit solution', 'namaste')?></a></p>
-		<?php endif; 
+		<?php endif; // end if not in shrotcode 
+			endif; // end if no solution yet
 		endif;?></td>
 		
 		<td><p><?php if(!sizeof($homework->notes)): _e('None yet.', 'namaste');

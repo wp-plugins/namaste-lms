@@ -294,6 +294,7 @@ class NamasteLMS {
 		add_shortcode('namaste-prev-lesson', array("NamasteLMSShortcodesController", 'prev_lesson'));
 		add_shortcode('namaste-grade', array("NamasteLMSShortcodesController", 'grade'));
 		add_shortcode('namaste-mark', array("NamasteLMSShortcodesController", 'mark'));
+		add_shortcode('namaste-assignments', array("NamasteLMSShortcodesController", 'assignments'));
 		
 		// Paypal IPN
 		add_filter('query_vars', array(__CLASS__, "query_vars"));
@@ -302,6 +303,7 @@ class NamasteLMS {
 		// exam related actions
 		add_action('watu_exam_submitted', array('NamasteLMSLessonModel','exam_submitted_watu'));
 		add_action('watupro_completed_exam', array('NamasteLMSLessonModel','exam_submitted_watupro'));
+		add_action('watupro_completed_exam_edited', array('NamasteLMSLessonModel','exam_submitted_watupro'));
 		
 		// custom columns
 		add_filter('manage_namaste_lesson_posts_columns', array('NamasteLMSLessonModel','manage_post_columns'));

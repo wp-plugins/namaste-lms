@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: LMS, learning, courses, lessons, ILE
 Requires at least: 3.3
-Tested up to: 3.9
+Tested up to: 3.9.1
 Stable tag: trunk
 License: GPL2
 
@@ -55,7 +55,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.3.6 = 
+= Version 1.3.7 =
+- Added shortcode to display functional "lesson assignments" page 
 - Added shhortcode to display student grade on given course (see Gradebook)
 - Links are generated to exams/tests in [namaste-todo] shortcode
 - Allow multiple grades to be used in the "required quiz" for completing a lesson

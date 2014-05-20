@@ -8,8 +8,15 @@
 		<p><a href="admin.php?page=namaste_homeworks&lesson_id=<?php echo $lesson->ID?>&course_id=<?php echo $course->ID?>"><?php printf(__('Back to assignments for "%s"', 'namaste'), $lesson->post_title);?></a></p>
 		<p><strong><?php _e("Showing everyone's solutions on this assignment.", 'namaste')?></strong></p>
 		<p><?php _e('Note: when one solution is approved, the assignment will be considered completed by this student and they will not be asked to submit more solutions for it.', 'namaste')?></p>
-	<?php else: ?>
+	<?php else: 
+		if($in_shortcode):
+		$permalink = get_permalink($post->ID);
+		$params = array('lesson_id' => $_GET['lesson_id']);
+		$target_url = add_query_arg( $params, $permalink );?>
+		<p><a href="<?php echo $target_url?>"><?php printf(__('Back to assignments for "%s"', 'namaste'), $lesson->post_title);?></a></p>
+		<?php else:?>
 		<p><a href="admin.php?page=namaste_lesson_homeworks&lesson_id=<?php echo $lesson->ID?>&student_id=<?php echo $student->ID?>"><?php printf(__('Back to assignments for "%s"', 'namaste'), $lesson->post_title);?></a></p>
+		<?php endif; // not in shortcode?>
 		<?php if($user_ID != $student->ID):?>
 			<p><?php _e('Showing solutions submitted by', 'namaste')?> <strong><?php echo $student->user_login?></strong></p>
 			<p><?php _e('Note: when one solution is approved, the assignment will be considered completed by this student and they will not be asked to submit more solutions for it.', 'namaste')?></p>

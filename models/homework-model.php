@@ -79,8 +79,8 @@ class NamasteLMSHomeworkModel {
 	}
 	
 	// shows homeworks assigned to a lesson
-	static function lesson_homeworks() {
-		 global $wpdb, $user_ID;
+	static function lesson_homeworks($in_shortcode = false) {
+		 global $wpdb, $user_ID, $post;
 		 
 		 // not my own homeworks? I need to have manage caps then
 		 $manager_mode = false;
