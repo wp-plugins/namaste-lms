@@ -64,8 +64,9 @@ class NamasteLMSGradebookController {
 				$students[$cnt]->lesson_ids = $lesson_ids;
 			} // end foreach $student
 		} // end if $_GET[course_id]
-		
-		include(NAMASTE_PATH."/views/gradebook.html.php"); 
+		 
+		if(@file_exists(get_stylesheet_directory().'/namaste/gradebook.html.php')) require get_stylesheet_directory().'/namaste/gradebook.html.php';
+		else require(NAMASTE_PATH."/views/gradebook.html.php");
 	} // end manage();
 	
 	// gradebook for the current user
@@ -122,7 +123,8 @@ class NamasteLMSGradebookController {
 				$lessons[$cnt]->homeworks = $lesson_homeworks;
 			}
 		}
-		
-		include(NAMASTE_PATH."/views/my-gradebook.html.php"); 
+		 
+		if(@file_exists(get_stylesheet_directory().'/namaste/my-gradebook.htm.php')) require get_stylesheet_directory().'/namaste/my-gradebook.html.php';
+		else require(NAMASTE_PATH."/views/my-gradebook.html.php");
 	} // end my_gradebook
 }

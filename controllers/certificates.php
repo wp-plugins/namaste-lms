@@ -17,7 +17,8 @@ class NamasteLMSCertificatesController {
 					namaste_redirect("admin.php?page=namaste_certificates&msg=added");
 				}
 				
-				require(NAMASTE_PATH."/views/certificate-form.php");		
+				if(@file_exists(get_stylesheet_directory().'/namaste/certificate-form.php')) require get_stylesheet_directory().'/namaste/certificate-form.php';
+				else require(NAMASTE_PATH."/views/certificate-form.php");		
 			break;	
 			
 			case 'edit':
@@ -32,8 +33,9 @@ class NamasteLMSCertificatesController {
 				}
 				
 				$certificate = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_CERTIFICATES." WHERE id=%d", $_GET['id']));	
-				
-				require(NAMASTE_PATH."/views/certificate-form.php");		
+					
+				if(@file_exists(get_stylesheet_directory().'/namaste/certificate-form.php')) require get_stylesheet_directory().'/namaste/certificate-form.php';
+				else require(NAMASTE_PATH."/views/certificate-form.php");		
 			break;	
 			
 			default:
@@ -46,8 +48,9 @@ class NamasteLMSCertificatesController {
 						case 'deleted': $msg = __('Certificate deleted', 'namaste'); break;
 					}
 				}			
-						
-				require(NAMASTE_PATH."/views/certificates.php");		
+				
+				if(@file_exists(get_stylesheet_directory().'/namaste/certificates.php')) require get_stylesheet_directory().'/namaste/certificates.php';
+				else require(NAMASTE_PATH."/views/certificates.php");		
 			break;
 		}
 	}
@@ -61,7 +64,8 @@ class NamasteLMSCertificatesController {
 		
 		$student_id = $user_ID;
 		
-		require(NAMASTE_PATH."/views/my-certificates.php");
+		if(@file_exists(get_stylesheet_directory().'/namaste/my-certificates.php')) require get_stylesheet_directory().'/namaste/my-certificates.php';
+		else require(NAMASTE_PATH."/views/my-certificates.php");
 	}
 	
 	// viewing a specific certificate

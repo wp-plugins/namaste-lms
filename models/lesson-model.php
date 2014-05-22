@@ -98,8 +98,9 @@ class NamasteLMSLessonModel {
 		$award_points = get_post_meta($post->ID, 'namaste_award_points', true);
 		if($award_points === '') $award_points = get_option('namaste_points_lesson');		
 		
-		wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );
-		require(NAMASTE_PATH."/views/lesson-meta-box.php");
+		wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );		
+		if(@file_exists(get_stylesheet_directory().'/namaste/lesson-meta-box.php')) require get_stylesheet_directory().'/namaste/lesson-meta-box.php';
+		else require(NAMASTE_PATH."/views/lesson-meta-box.php");
 	}
 	
 	static function save_lesson_meta($post_id) {	
@@ -234,8 +235,9 @@ class NamasteLMSLessonModel {
 		
 		// enqueue thickbox
 		wp_enqueue_script('thickbox',null,array('jquery'));
-		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');
-		require(NAMASTE_PATH."/views/student-lessons.php");
+		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');		
+		if(@file_exists(get_stylesheet_directory().'/namaste/student-lessons.php')) require get_stylesheet_directory().'/namaste/student-lessons.php';
+		else require(NAMASTE_PATH."/views/student-lessons.php");
 	}
 	
 	// check if user can access the lesson, mark lesson as started

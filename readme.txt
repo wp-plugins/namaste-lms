@@ -55,7 +55,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.3.7 =
+= Version 1.3.8 =
+- Advanced users only: You can now create your own versions of all Namaste views for high-level of customization
 - Added shortcode to display functional "lesson assignments" page 
 - Added shhortcode to display student grade on given course (see Gradebook)
 - Links are generated to exams/tests in [namaste-todo] shortcode

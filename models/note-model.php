@@ -28,6 +28,7 @@ class NamasteLMSNoteModel {
 			namaste_redirect("admin.php?page=namaste_lesson_homeworks&lesson_id=".$lesson->ID."&student_id=".$student->ID);
 		}		
 		
-		require(NAMASTE_PATH."/views/add-note.php");
+		if(@file_exists(get_stylesheet_directory().'/namaste/add-note.php')) require get_stylesheet_directory().'/namaste/add-note.php';
+		else require(NAMASTE_PATH."/views/add-note.php");
 	}
 }

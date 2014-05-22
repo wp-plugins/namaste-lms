@@ -9,8 +9,9 @@ class NamasteLMSShortcodesController {
    	
    	if($post->post_type == 'namaste_lesson') {   		
    		$todo = NamasteLMSLessonModel :: todo($post->ID, $user_ID);   		
-   		ob_start();
-   		require(NAMASTE_PATH."/views/lesson-todo.php");
+   		ob_start();   		
+   		if(@file_exists(get_stylesheet_directory().'/namaste/lesson-todo.php')) require get_stylesheet_directory().'/namaste/lesson-todo.php';
+			else require(NAMASTE_PATH."/views/lesson-todo.php");
    		if(!empty($todo['todo_nothing'])) _e('This lesson has been completed.', 'namaste');
    		$content = ob_get_contents();
    		ob_end_clean();

@@ -24,7 +24,8 @@ function namaste_ajax() {
 			// select homework
 			$homework = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORKS." WHERE id=%d", $_GET['homework_id']));	
 				
-			require(NAMASTE_PATH."/views/homework-notes.php");	
+			if(@file_exists(get_stylesheet_directory().'/namaste/homework-notes.php')) require get_stylesheet_directory().'/namaste/homework-notes.php';
+		else require(NAMASTE_PATH."/views/homework-notes.php");
 		break;
 		
 		// show lesson progress
@@ -37,8 +38,9 @@ function namaste_ajax() {
 			$student = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->users} WHERE ID=%d", $_GET['student_id']));		
 			
 			$todo = NamasteLMSLessonModel :: todo($_GET['lesson_id'], $_GET['student_id']);
-			
-			require(NAMASTE_PATH."/views/lesson-todo.php");		
+					
+			if(@file_exists(get_stylesheet_directory().'/namaste/lesson-todo.php')) require get_stylesheet_directory().'/namaste/lesson-todo.php';
+		else require(NAMASTE_PATH."/views/lesson-todo.php");
 		break;
 		
 		// display payment screen for a course
@@ -59,7 +61,8 @@ function namaste_ajax() {
 				$other_payment_methods = str_replace('{{amount}}', @$_GET['fee'], $other_payment_methods);
 			}
 			
-			require(NAMASTE_PATH."/views/course-pay.php");	
+			if(@file_exists(get_stylesheet_directory().'/namaste/course-pay.php')) require get_stylesheet_directory().'/namaste/course-pay.php';
+		else require(NAMASTE_PATH."/views/course-pay.php");	
 		break;
 		
 		// set student's grade for a course or lesson

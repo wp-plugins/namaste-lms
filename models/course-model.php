@@ -89,8 +89,9 @@ class NamasteLMSCourseModel {
 			$course_access = get_post_meta($post->ID, 'namaste_access', true);	
 			if(!is_array($course_access)) $course_access = array();
 			
-			wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );
-			require(NAMASTE_PATH.'/views/course-meta-box.php');  
+			wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );			  
+			if(@file_exists(get_stylesheet_directory().'/namaste/course-meta-box.php')) require get_stylesheet_directory().'/namaste/course-meta-box.php';
+			else require(NAMASTE_PATH."/views/course-meta-box.php");
 	}
 	
 	static function print_reports_box($post) {

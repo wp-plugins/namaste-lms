@@ -427,8 +427,9 @@ class NamasteLMS {
 	   $payment_errors = get_option('namaste_errorlog');
 	   // strip to reasonable length
 	   $payment_errors = substr($payment_errors, 0, 10000);
-			
-		require(NAMASTE_PATH."/views/options.php");
+		
+		if(@file_exists(get_stylesheet_directory().'/namaste/options.php')) require get_stylesheet_directory().'/namaste/options.php';
+		else require(NAMASTE_PATH."/views/options.php");
 	}	
 	
 	static function help() {

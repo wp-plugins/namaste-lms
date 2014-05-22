@@ -38,9 +38,13 @@ class NamasteLMSHomeworkController {
 				user_id=%d, date=CURDATE(), datetime=NOW(), action='submitted_solution', value=%s, num_value=%d",
 				$user_ID, sprintf(__('Submitted solution to assignment "%s"', 'namaste'), $homework->title), $homework->id));
 			
-			require(NAMASTE_PATH."/views/solution-submitted.php");
+			if(@file_exists(get_stylesheet_directory().'/namaste/solution-submitted.php')) require get_stylesheet_directory().'/namaste/solution-submitted.php';
+			else require(NAMASTE_PATH."/views/solution-submitted.php");
 		}
-		else require(NAMASTE_PATH."/views/submit-solution.php");		
+		else {			 
+			 if(@file_exists(get_stylesheet_directory().'/namaste/submit-solution.php')) require get_stylesheet_directory().'/namaste/submit-solution.php';
+			 else require(NAMASTE_PATH."/views/submit-solution.php");
+		}		
 	}
 	
 	// teacher views, approves, rejects submitted solutions
@@ -68,7 +72,8 @@ class NamasteLMSHomeworkController {
 		$solutions = $wpdb -> get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_HOMEWORKS."
 			WHERE student_id=%d AND homework_id=%d ORDER BY id DESC", $student_id, $homework->id));
 		
-		require(NAMASTE_PATH."/views/view-solutions.php");
+		if(@file_exists(get_stylesheet_directory().'/namaste/view-solutions.php')) require get_stylesheet_directory().'/namaste/view-solutions.php';
+		else require(NAMASTE_PATH."/views/view-solutions.php");
 	}
 	
 	// view everyone's solutions ion a homework
@@ -88,7 +93,8 @@ class NamasteLMSHomeworkController {
 			WHERE homework_id=%d ORDER BY id DESC", $homework->id));
 			
 		$show_everyone = true;
-		require(NAMASTE_PATH."/views/view-solutions.php");
+		if(@file_exists(get_stylesheet_directory().'/namaste/view-solutions.php')) require get_stylesheet_directory().'/namaste/view-solutions.php';
+		else require(NAMASTE_PATH."/views/view-solutions.php");
 	}
 	
 	// approve or reject a homework solution

@@ -20,6 +20,23 @@
 		<?php _e('Similar to the above, used to display a link for the previous lesson in this course. Note that lessons are ordered in the order of creation.', 'namaste')?></p>	
 		
 	<p><input type="text" value='namaste-assignments lesson_id="X"' onclick="this.select();" readonly="readonly" size="30"> <?php _e('(where X is lesson ID) will output the assignments to the lesson on the front-end. The links to submit and view solutions will also work. You can omit the "lesson_id" parameter and pass it as URL variable. This could be useful if you are manually building a page with lessons and want to give links to assignments from it.', 'namaste')?></p>	
+	
+	<h2><?php _e('Redesigning and Customizing the Views / Templates', 'namaste');?></h2>
+	
+	<p style="color:red;"><b><?php _e('Only for advanced users!', 'namaste')?></b></p>
+	
+	<p><?php _e('You can safely customize all files from the "views" folders by placing their copies in your theme folder. Simply create folder "namaste" <b>in your theme root folder</b> and copy the files you want to custom from "views" folder directly there.', 'namaste')?></p>
+
+	<p><?php _e('For example:', 'namaste')?></p>
+	
+	<ol>
+		<li><?php _e('If you are using the Twenty Fourteen theme, you should create folder "namaste" under it so the structure will now be something like <b>wp-content/themes/twentyfourteen/namaste</b>. (The files that are above the new "namaste" folder should remain where they are)', 'namaste')?></li>
+		<li><?php _e('Then if you want to modify the "Manage Certificates" page copy the file certificates.php from the plugin "views" folder and place it in the new "namaste" folder so you will have  <b>wp-content/themes/twentyfourteen/namaste/certificates.php</b>', 'namaste')?></li>	
+	</ol>	
+	
+	<p><?php _e("Don't worry if you use modified WordPress directory structure and don't have 'wp-content' folder. The trick will work with any structure as long as you follow the same logic.", 'namaste')?></p>
+	
+	<p><?php _e('Then feel free to modify the code, but of course be careful not to mess with the PHP or Javascript inside. This will let you change the design and even part of the functionality and not lose these changes when the plugin is upgraded. Be careful: we can not provide support for your custom versions of our views.', 'namaste')?></p>
 		
 	<?php do_action('namaste-help');?>	
 </div>

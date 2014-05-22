@@ -28,7 +28,8 @@ class NamasteLMSHomeworkModel {
 						namaste_redirect("admin.php?page=namaste_homeworks&course_id=$_GET[course_id]&lesson_id=$_GET[lesson_id]");
 				}			
 			
-				require(NAMASTE_PATH."/views/homework.php");
+				if(@file_exists(get_stylesheet_directory().'/namaste/homework.php')) require get_stylesheet_directory().'/namaste/homework.php';
+				else require(NAMASTE_PATH."/views/homework.php");
 			break;		
 			
 			case 'edit':
@@ -56,7 +57,8 @@ class NamasteLMSHomeworkModel {
 				$homework = self::select($wpdb->prepare(' WHERE id=%d ', $_GET['id']));
 				$homework = $homework[0];
 			
-				require(NAMASTE_PATH."/views/homework.php");
+				if(@file_exists(get_stylesheet_directory().'/namaste/homework.php')) require get_stylesheet_directory().'/namaste/homework.php';
+				else require(NAMASTE_PATH."/views/homework.php");
 			break;			
 			
 			default:
@@ -73,7 +75,8 @@ class NamasteLMSHomeworkModel {
 						$_GET['course_id'], $_GET['lesson_id']));
 				} 
 				
-				require(NAMASTE_PATH."/views/homeworks.php");
+				if(@file_exists(get_stylesheet_directory().'/namaste/homeworks.php')) require get_stylesheet_directory().'/namaste/homeworks.php';
+				else require(NAMASTE_PATH."/views/homeworks.php");
 			break;
 		}
 	}
@@ -135,6 +138,8 @@ class NamasteLMSHomeworkModel {
 		 wp_enqueue_script('thickbox',null,array('jquery'));
 		 wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');		 
 		 require(NAMASTE_PATH."/views/lesson-homeworks.php");
+		 if(@file_exists(get_stylesheet_directory().'/namaste/lesson-homeworks.php')) require get_stylesheet_directory().'/namaste/lesson-homeworks.php';
+		  else require(NAMASTE_PATH."/views/lesson-homeworks.php");
 	}
 	
 	// select homeworks

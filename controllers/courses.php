@@ -46,8 +46,9 @@ class NamasteLMSCoursesController {
 		$_course->stripe = $stripe;		
 		wp_enqueue_script('thickbox',null,array('jquery'));
 		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');	 
-		
-		require(NAMASTE_PATH."/views/my_courses.php");	 
+			 
+		if(@file_exists(get_stylesheet_directory().'/namaste/my_courses.php')) require get_stylesheet_directory().'/namaste/my_courses.php';
+		else require(NAMASTE_PATH."/views/my_courses.php");
 	}
 	
 	// processes the whole enrollment thing so it can be reused in shortcode as well.
