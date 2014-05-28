@@ -28,8 +28,9 @@
 			<tr><th><?php _e('Title', 'namaste')?></th><th><?php _e('Edit','namaste')?></th><th><?php _e('View solutions','namaste')?></th>
 			<?php do_action('namaste_extra_th', 'homeworks');?>				
 			</tr>
-			<?php foreach($homeworks as $homework):?>
-				<tr><td><?php echo stripslashes($homework->title)?></td><td><a href="admin.php?page=namaste_homeworks&course_id=<?php echo $_GET['course_id']?>&lesson_id=<?php echo $_GET['lesson_id']?>&do=edit&id=<?php echo $homework->id?>"><?php _e('Edit', 'namaste')?></a></td>
+			<?php foreach($homeworks as $homework):
+				$class = ('alternate' == @$class) ? '' : 'alternate';?>
+				<tr class="<?php echo $class?>"><td><?php echo stripslashes($homework->title)?></td><td><a href="admin.php?page=namaste_homeworks&course_id=<?php echo $_GET['course_id']?>&lesson_id=<?php echo $_GET['lesson_id']?>&do=edit&id=<?php echo $homework->id?>"><?php _e('Edit', 'namaste')?></a></td>
 				<td>
 				<?php if($homework->solutions):?>
 					<a href="admin.php?page=namaste_view_all_solutions&id=<?php echo $homework->id?>"><?php echo $homework->solutions?> <?php _e('solutions', 'namaste')?></a>

@@ -11,7 +11,7 @@ if (!function_exists('json_decode')) {
 }
 
 // Stripe singleton
-require(dirname(__FILE__) . '/Stripe/Stripe.php');
+require_once(dirname(__FILE__) . '/Stripe/Stripe.php');
 
 // Utilities
 require(dirname(__FILE__) . '/Stripe/Util.php');

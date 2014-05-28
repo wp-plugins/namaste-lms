@@ -136,8 +136,7 @@ class NamasteLMSHomeworkModel {
 		 }
 		 
 		 wp_enqueue_script('thickbox',null,array('jquery'));
-		 wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');		 
-		 require(NAMASTE_PATH."/views/lesson-homeworks.php");
+		 wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');
 		 if(@file_exists(get_stylesheet_directory().'/namaste/lesson-homeworks.php')) require get_stylesheet_directory().'/namaste/lesson-homeworks.php';
 		  else require(NAMASTE_PATH."/views/lesson-homeworks.php");
 	}

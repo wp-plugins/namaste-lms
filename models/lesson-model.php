@@ -362,6 +362,11 @@ class NamasteLMSLessonModel {
 		$required_homeworks = get_post_meta($lesson_id, 'namaste_required_homeworks', true);	
 		if(!is_array($required_homeworks)) $required_homeworks = array();
 		
+		// select all existing homework IDs to make sure required assignment is not deleted
+		$homeworks = $wpdb->get_results("SELECT id FROM ".NAMASTE_HOMEWORKS);
+		$hids = array(0);
+		foreach($homeworks as $homework) $hids[] = $homework->id; 
+		
 		if(!empty($required_homeworks)) {
 			// select all completed homeworks of this student and see if all required are satisfied
 			$completed_homeworks = $wpdb->get_results($wpdb->prepare("SELECT DISTINCT(homework_id) FROM ".
@@ -372,7 +377,7 @@ class NamasteLMSLessonModel {
 			
 			// if just one is not completed, return false
 			foreach($required_homeworks as $required_id) {				
-				if(!in_array($required_id, $ids)) return false;
+				if(!in_array($required_id, $ids) and in_array($required_id, $hids)) return false;
 			}	
 		}
 		
