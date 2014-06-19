@@ -10,9 +10,12 @@ class NamasteLMSStudentModel {
 		 
 		 // select all courses
 		 $courses = $_course -> select();
+		 $courses = apply_filters('namaste-homeworks-select-courses', $courses);
 				 
 		 // if course selected, select lessons and enrolled students
 		 if(!empty($_GET['course_id'])) {
+				do_action('namaste-check-permissions', 'course', $_GET['course_id']);		 	
+		 	
 				// cleanup student record
 				if(!empty($_GET['cleanup'])) {
 					 $wpdb->query( $wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_COURSES." 

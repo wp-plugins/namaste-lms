@@ -55,7 +55,7 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.3.8 =
+= Version 1.3.9 =
 - Advanced users only: You can now create your own versions of all Namaste views for high-level of customization
 - Added shortcode to display functional "lesson assignments" page 
 - Added shhortcode to display student grade on given course (see Gradebook)
@@ -67,6 +67,7 @@ None yet, please ask in the forum
 - Added setting to show / hide courses in blog and home pages (default is off)
 - Added filers for course access to allow other plugins to add conditions
 - Added shortcode to publish a button that lets student mark lesson as completed themselves
+- Added shortcode to display the first lesson in a course
 
 = Version 1.3 =
 - The URL slugs "namaste-lesson" and "namaste-course" are now translate-able so you can use your own URL rewrites

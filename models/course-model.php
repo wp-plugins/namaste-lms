@@ -236,8 +236,8 @@ class NamasteLMSCourseModel {
 		global $wpdb;
 		
 		// checks from other plugins, for example Namaste PRO
-		$has_access = apply_filters('namaste-course-access', true, $student_id, $course_id);
-		if(!$has_access) wp_die(__('You are not allowed to enroll in this course', 'namaste'));
+		list($no_access, $message) = apply_filters('namaste-course-access', $student_id, $course_id);
+		if($no_access) wp_die($message);
 		
 		// check for course access requirements
 		$course_access = get_post_meta($course_id, 'namaste_access', true);

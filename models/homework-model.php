@@ -1,12 +1,13 @@
 <?php
 class NamasteLMSHomeworkModel {
 	static function manage() {
-		global $wpdb;
+		global $wpdb, $user_ID;
 		$_course = new NamasteLMSCourseModel();
 		$_lesson = new NamasteLMSLessonModel();
 		
 		// select courses
 		$courses = $_course -> select();
+		$courses = apply_filters('namaste-homeworks-select-courses', $courses);
 		
 		// if course and lesson are selected, populate two variables for displaying titles etc
 		if(!empty($_GET['course_id'])) $this_course = $_course -> select($_GET['course_id']);
@@ -14,6 +15,8 @@ class NamasteLMSHomeworkModel {
 		
 		switch(@$_GET['do']) {
 			case 'add':
+				// apply permissions from other plugins 
+				do_action('namaste-check-permissions', 'course', $_GET['course_id']);
 				if(!empty($_POST['ok'])) {
 						$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HOMEWORKS." SET
 						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d, award_points=%d",
@@ -33,6 +36,8 @@ class NamasteLMSHomeworkModel {
 			break;		
 			
 			case 'edit':
+				// apply permissions from other plugins 
+				do_action('namaste-check-permissions', 'homework', $_GET['id']);
 				if(!empty($_POST['del'])) {
 					 self::delete($_GET['id']);
 					 
@@ -69,6 +74,9 @@ class NamasteLMSHomeworkModel {
 			
 				// list existing homeworks if course and lesson are selected
 				if(!empty($_GET['course_id']) and !empty($_GET['lesson_id'])) {
+					// apply permissions from other plugins - this allows other plugins to die here if user can't access the course
+					do_action('namaste-check-permissions', 'course', $_GET['course_id']);
+					
 					$homeworks = $wpdb->get_results($wpdb->prepare("SELECT tH.*, COUNT(tS.id) as solutions 
 					FROM ".NAMASTE_HOMEWORKS." tH LEFT JOIN ".NAMASTE_STUDENT_HOMEWORKS." tS ON tS.homework_id = tH.id
 					WHERE tH.course_id=%d AND tH.lesson_id=%d GROUP BY tH.id ORDER BY tH.title", 

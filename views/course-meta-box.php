@@ -42,3 +42,11 @@ endif;?>
 
 <p><?php _e('You can use the shortcode', 'namaste')?> <b>[namaste-todo]</b> <?php _e('inside the course content to display what the student needs to do to complete the course.', 'namaste')?></p>
 <p><?php _e('The shortcode', 'namaste')?> <b>[namaste-course-lessons]</b> <?php _e('will display the lessons in the course.','namaste');?> <?php _e('It allows more advanced configurations explained on the ', 'namaste');?> <a href="admin.php?page=namaste_help"><?php _e('help page.', 'namaste')?></a></p>
+
+<h4><?php _e('Did you know?', 'namaste')?></h4>
+
+<?php if(is_plugin_active('namaste-pro/namaste-pro.php')):?>
+	<p><?php printf(__('You can limit the access to this course also by <a href="%s" target="_blank">class / group</a>.', 'namaste'), 'admin.php?page=namastepro_classes')?></p>
+<?php else:?>
+	<p><?php printf(__('If you <a href="%s" target="_blank">upgrade to PRO</a> you will be able to assign courses to classes and restrict access based on class, have different managers for different classes, and a lot more.', 'namaste'),'http://namaste-lms.org/pro.php')?></p>
+<?php endif;?>

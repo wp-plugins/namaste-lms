@@ -292,6 +292,7 @@ class NamasteLMS {
 		add_shortcode('namaste-course-lessons', array("NamasteLMSShortcodesController", 'lessons'));
 		add_shortcode('namaste-next-lesson', array("NamasteLMSShortcodesController", 'next_lesson'));
 		add_shortcode('namaste-prev-lesson', array("NamasteLMSShortcodesController", 'prev_lesson'));
+		add_shortcode('namaste-first-lesson', array("NamasteLMSShortcodesController", 'first_lesson'));
 		add_shortcode('namaste-grade', array("NamasteLMSShortcodesController", 'grade'));
 		add_shortcode('namaste-mark', array("NamasteLMSShortcodesController", 'mark'));
 		add_shortcode('namaste-assignments', array("NamasteLMSShortcodesController", 'assignments'));

@@ -266,11 +266,13 @@ class NamasteLMSLessonModel {
 		}		
 		
 		// no access due to filters? (Classes from Namaste PRO etc)
-		$has_access = apply_filters('namaste-course-access', true, $user_ID, $course_id);
-		if(!$has_access) {			
-			 $content = __('You are not allowed to access anything in this course', 'namaste');
-			 return $content;
-		}
+		list($no_access, $message) = apply_filters('namaste-course-access', $user_ID, $course_id);
+		if(!empty($no_access)) return $message;		
+			 
+		// no access due to other lesson restrictions based on filters from other plugins		
+		list($no_access, $message) = apply_filters('namaste-lesson-access', $user_ID, $post->ID);
+		if(!empty($no_access)) return $message;		
+		
 		
 		// can access based on other lesson restriction?
 		$lesson_access = get_post_meta($post->ID, 'namaste_access', true);	

@@ -221,6 +221,24 @@ class NamasteLMSShortcodesController {
 		return "<a href='".get_permalink($prev_lesson->ID)."'>$text</a>";	
 	}
 	
+	// selects the first lesson in the course 
+	static function first_lesson($atts) {
+		global $post, $wpdb;
+		if(empty($post->ID) or $post->post_type != 'namaste_course') return "";
+		
+		// select first lesson		
+		$first_lesson = $wpdb->get_row($wpdb->prepare("SELECT tP.* FROM {$wpdb->posts} tP
+			JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course'
+			WHERE tP.post_type = 'namaste_lesson' AND tM.meta_value = %d AND tP.post_status = 'publish'
+			ORDER BY tP.ID LIMIT 1", $post->ID));
+			
+		$text = empty($atts[0]) ? $first_lesson->post_title : $atts[0];	
+			
+		if(empty($first_lesson->ID)) return "";
+		
+		return "<a href='".get_permalink($first_lesson->ID)."'>$text</a>";	
+	}	
+	
 	// display grade on a course
 	static function grade($atts) {
 		global $wpdb, $user_ID;

@@ -95,3 +95,10 @@ endif;?>
 <p><?php _e('You can use the shortcode', 'namaste')?> <input type="text" value="[namaste-todo]" readonly="readonly" onclick="this.select();"> <?php _e('inside the lesson content to display what the student needs to do to complete the lesson.', 'namaste')?></p>
 
 <p><?php _e('The shortcode', 'namaste')?> <input type="text" value="[namaste-mark]" readonly="readonly" onclick="this.select();"> <?php _e('will display a "Mark Completed" button so the student can mark the lesson completed themselves. <b>If such button is included in the lesson it will not be marked as completed until the student does it!</b> The button will appear <b>only after the "Lesson Completeness" requirements are satisfied.</b>', 'namaste')?></p>
+
+<h4><?php _e('Did you know?', 'namaste')?></h4>
+<?php if(is_plugin_active('namaste-pro/namaste-pro.php')):?>
+	<p><?php printf(__('You can set <a href="%s" target="_blank">delayed access</a> to this lesson.', 'namaste'), 'admin.php?page=namastepro_delayed_access')?></p>
+<?php else:?>
+	<p><?php printf(__('If you <a href="%s" target="_blank">upgrade to PRO</a> you will be able to set delayed access to this lesson, namage classes and teachers, and a lot more.', 'namaste'),'http://namaste-lms.org/pro.php')?></p>
+<?php endif;?>

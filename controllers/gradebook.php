@@ -10,10 +10,12 @@ class NamasteLMSGradebookController {
 		
 		// select courses
 		$courses = $_course -> select();
+		$courses = apply_filters('namaste-homeworks-select-courses', $courses);
 		
 		// if course is selected, select in progress students in the course, 
 		// select lessons and homeworks in it too
 		if(!empty($_GET['course_id'])) {
+			do_action('namaste-check-permissions', 'course', $_GET['course_id']);
 			$this_course = $_course -> select($_GET['course_id']);			
 			$lessons = $_lesson->select($_GET['course_id']);
 			$lids = array(0);
