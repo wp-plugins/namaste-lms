@@ -545,7 +545,7 @@ class NamasteLMSLessonModel {
 				}
 			}
 			
-			if(!empty($required_grade) and !empty($required_exam) and empty($todo_exam)) {
+			if(!empty($required_grade[0]) and !empty($required_exam) and empty($todo_exam)) {
 				// let's make sure they have achieved the grade
 				$achieved_grade = false;
 				
