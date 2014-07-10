@@ -1,6 +1,6 @@
 === Namaste! LMS ===
 Contributors: prasunsen
-Tags: LMS, learning, courses, lessons, ILE
+Tags: LMS, learning, courses, lessons, ILE, wpmu, multisite
 Requires at least: 3.3
 Tested up to: 3.9.1
 Stable tag: trunk
@@ -55,7 +55,7 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.3.9 =
+= Version 1.4 =
 - Advanced users only: You can now create your own versions of all Namaste views for high-level of customization
 - Added shortcode to display functional "lesson assignments" page 
 - Added shhortcode to display student grade on given course (see Gradebook)
@@ -68,6 +68,7 @@ None yet, please ask in the forum
 - Added filers for course access to allow other plugins to add conditions
 - Added shortcode to publish a button that lets student mark lesson as completed themselves
 - Added shortcode to display the first lesson in a course
+- The [lesson-todo] shortcode will now automatically recognize if you have published the [namaste-assignments] shortcode for this lesson and will display the front-end link to submit a solution for the to-do assignments. This way you can entirely hide the back-end if you wish.
 
 = Version 1.3 =
 - The URL slugs "namaste-lesson" and "namaste-course" are now translate-able so you can use your own URL rewrites

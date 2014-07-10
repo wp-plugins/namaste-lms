@@ -8,7 +8,8 @@ class NamasteLMSShortcodesController {
    	if(!is_user_logged_in()) return "";
    	
    	if($post->post_type == 'namaste_lesson') {   		
-   		$todo = NamasteLMSLessonModel :: todo($post->ID, $user_ID);   		
+   		$todo = NamasteLMSLessonModel :: todo($post->ID, $user_ID);  
+   		 		
    		ob_start();   		
    		if(@file_exists(get_stylesheet_directory().'/namaste/lesson-todo.php')) require get_stylesheet_directory().'/namaste/lesson-todo.php';
 			else require(NAMASTE_PATH."/views/lesson-todo.php");

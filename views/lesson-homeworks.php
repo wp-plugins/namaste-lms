@@ -4,7 +4,9 @@
 	<h3><?php _e('Showing assignments of', 'namaste')?> <strong><?php echo $student->user_login?>.</strong></h3>
 <?php endif;?>
 
-<p><a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $course_id?>&student_id=<?php echo $_GET['student_id']?>"><?php _e('Back to the lessons page in this course', 'namaste')?></a></p>
+<?php if(!$in_shortcode):?>
+	<p><a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $course_id?>&student_id=<?php echo $_GET['student_id']?>"><?php _e('Back to the lessons page in this course', 'namaste')?></a></p>
+<?php endif;?>	
 
 <?php if(!sizeof($homeworks)):
 	echo "<p>".__('There are no homeworks in this lesson', 'namaste').'</p>';
@@ -26,7 +28,7 @@ endif;?>
 			   $params = array('id' => $homework->id, 'view_solutions' => 1);
 				$target_url = add_query_arg( $params, $permalink );
 				echo "<a href='".$target_url."'>".sprintf(__('%d solutions', 'namaste'), sizeof($homework->solutions))."</a>";
-				else: echo "<a href='admin.php?page=namaste_view_solutions&student_id=".$student->ID."&id=".$homework->id."'>".sprintf(__('%d solutions', 'namaste'), sizeof($homework->solutions))."</a>";
+			else: echo "<a href='admin.php?page=namaste_view_solutions&student_id=".$student->ID."&id=".$homework->id."'>".sprintf(__('%d solutions', 'namaste'), sizeof($homework->solutions))."</a>";
 			endif; // end not in shortcode
 		endif;?></p>
 		<?php if(!$manager_mode):

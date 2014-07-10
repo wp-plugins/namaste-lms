@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.3.8\n"
+"Project-Id-Version: Namaste! LMS 1.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2014-05-22 13:09:59+00:00\n"
+"POT-Creation-Date: 2014-07-10 16:10:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,64 +86,64 @@ msgstr ""
 msgid "You can download only your own solutions."
 msgstr ""
 
-#: controllers/shortcodes.php:15
+#: controllers/shortcodes.php:16
 msgid "This lesson has been completed."
 msgstr ""
 
-#: controllers/shortcodes.php:32 views/manage-students.php:36
+#: controllers/shortcodes.php:33 views/manage-students.php:36
 #: views/manage-students.php:59 views/student-lessons.php:46
 msgid "Completed"
 msgstr ""
 
-#: controllers/shortcodes.php:33
+#: controllers/shortcodes.php:34
 msgid "Not completed"
 msgstr ""
 
-#: controllers/shortcodes.php:49
+#: controllers/shortcodes.php:50
 msgid "You need to be logged in to enroll in this course"
 msgstr ""
 
-#: controllers/shortcodes.php:89
+#: controllers/shortcodes.php:90
 msgid "You are enrolled in this course."
 msgstr ""
 
-#: controllers/shortcodes.php:90
+#: controllers/shortcodes.php:91
 msgid "Your enroll request is received. Waiting for manager approval."
 msgstr ""
 
-#: controllers/shortcodes.php:91
+#: controllers/shortcodes.php:92
 msgid "You have completed this course."
 msgstr ""
 
-#: controllers/shortcodes.php:92
+#: controllers/shortcodes.php:93
 msgid "Your enrollment request is rejected."
 msgstr ""
 
-#: controllers/shortcodes.php:128
+#: controllers/shortcodes.php:129
 msgid "User"
 msgstr ""
 
-#: controllers/shortcodes.php:128
+#: controllers/shortcodes.php:129
 msgid "Points"
 msgstr ""
 
-#: controllers/shortcodes.php:177
+#: controllers/shortcodes.php:178
 msgid "This content is for logged in users."
 msgstr ""
 
-#: controllers/shortcodes.php:191
+#: controllers/shortcodes.php:192
 msgid "next lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:210
+#: controllers/shortcodes.php:211
 msgid "previous lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:259
+#: controllers/shortcodes.php:278
 msgid "Lesson completed!"
 msgstr ""
 
-#: controllers/shortcodes.php:263
+#: controllers/shortcodes.php:282
 msgid "Mark as completed"
 msgstr ""
 
@@ -155,7 +155,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:12 models/lesson-model.php:621
+#: models/course-model.php:12 models/lesson-model.php:653
 msgid "Course"
 msgstr ""
 
@@ -210,16 +210,12 @@ msgstr ""
 msgid "Completed course \"%s\""
 msgstr ""
 
-#: models/course-model.php:240
-msgid "You are not allowed to enroll in this course"
-msgstr ""
-
 #: models/course-model.php:249
 msgid ""
 "You cannot enroll this course - other courses have to be completed first."
 msgstr ""
 
-#: models/course-model.php:264 models/student-model.php:87
+#: models/course-model.php:264 models/student-model.php:90
 msgid "Enrolled in course %s. Status: %s"
 msgstr ""
 
@@ -235,7 +231,7 @@ msgstr ""
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:321 models/lesson-model.php:622
+#: models/course-model.php:321 models/lesson-model.php:654
 msgid "Visits (unique/total)"
 msgstr ""
 
@@ -243,19 +239,19 @@ msgstr ""
 msgid "These courses should be completed before you can enroll:"
 msgstr ""
 
-#: models/homework-model.php:27
+#: models/homework-model.php:30
 msgid "Homework added"
 msgstr ""
 
-#: models/homework-model.php:39
+#: models/homework-model.php:44
 msgid "Homework deleted"
 msgstr ""
 
-#: models/homework-model.php:52
+#: models/homework-model.php:57
 msgid "Homework saved"
 msgstr ""
 
-#: models/homework-model.php:91
+#: models/homework-model.php:99
 msgid "You are not allowed to see this page"
 msgstr ""
 
@@ -315,27 +311,23 @@ msgstr ""
 msgid "In order to see this lesson you first have to be enrolled in the course"
 msgstr ""
 
-#: models/lesson-model.php:271
-msgid "You are not allowed to access anything in this course"
-msgstr ""
-
-#: models/lesson-model.php:290
+#: models/lesson-model.php:292
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#: models/lesson-model.php:328
+#: models/lesson-model.php:330
 msgid "Started reading lesson \"%s\""
 msgstr ""
 
-#: models/lesson-model.php:421
+#: models/lesson-model.php:428
 msgid "Received %d points for completing lesson \"%s\"."
 msgstr ""
 
-#: models/lesson-model.php:430
+#: models/lesson-model.php:437
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.3.8)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:206
 msgid "Namaste! LMS"
@@ -385,12 +377,12 @@ msgstr ""
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:220 views/lesson-homeworks.php:40
-#: views/lesson-homeworks.php:42
+#: models/namaste-model.php:220 views/lesson-homeworks.php:42
+#: views/lesson-homeworks.php:44
 msgid "Submit solution"
 msgstr ""
 
-#: models/namaste-model.php:221 views/homeworks.php:28
+#: models/namaste-model.php:221 views/homeworks.php:29
 msgid "View solutions"
 msgstr ""
 
@@ -418,34 +410,34 @@ msgstr ""
 msgid "My Gradebook"
 msgstr ""
 
-#: models/student-model.php:61
+#: models/student-model.php:64
 msgid "Sorry, I cannot find user with this email or user handle."
 msgstr ""
 
-#: models/student-model.php:65
+#: models/student-model.php:68
 msgid ""
 "This user's role does not allow them to use Namaste! LMS. You'll have either "
 "to change their role or allow the role work with the LMS from the Settings "
 "page"
 msgstr ""
 
-#: models/student-model.php:72
+#: models/student-model.php:75
 msgid "This user is already enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:81
+#: models/student-model.php:84
 msgid "User successfully enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:103
+#: models/student-model.php:106
 msgid "Enrollment in %s has been approved."
 msgstr ""
 
-#: models/student-model.php:107
+#: models/student-model.php:110
 msgid "Enrollment in %s has been rejected."
 msgstr ""
 
-#: models/student-model.php:166
+#: models/student-model.php:169
 msgid "You cannot change someone else's status"
 msgstr ""
 
@@ -544,8 +536,8 @@ msgstr ""
 msgid "Certificate title"
 msgstr ""
 
-#: views/certificates.php:14 views/certificates.php:16 views/homeworks.php:28
-#: views/homeworks.php:32
+#: views/certificates.php:14 views/certificates.php:16 views/homeworks.php:29
+#: views/homeworks.php:34
 msgid "Edit"
 msgstr ""
 
@@ -558,7 +550,7 @@ msgid "Enrollment mode:"
 msgstr ""
 
 #: views/course-meta-box.php:3 views/course-meta-box.php:43
-#: views/lesson-meta-box.php:96
+#: views/lesson-meta-box.php:95
 msgid "You can use the shortcode"
 msgstr ""
 
@@ -615,7 +607,7 @@ msgid ""
 msgstr ""
 
 #: views/course-meta-box.php:38 views/homework.php:11
-#: views/lesson-meta-box.php:90 views/options.php:57 views/options.php:59
+#: views/lesson-meta-box.php:89 views/options.php:57 views/options.php:59
 #: views/options.php:61
 msgid "Reward"
 msgstr ""
@@ -624,7 +616,7 @@ msgstr ""
 msgid "points for completing this course."
 msgstr ""
 
-#: views/course-meta-box.php:41 views/lesson-meta-box.php:94
+#: views/course-meta-box.php:41 views/lesson-meta-box.php:93
 msgid "Shortcodes"
 msgstr ""
 
@@ -634,7 +626,7 @@ msgid ""
 "complete the course."
 msgstr ""
 
-#: views/course-meta-box.php:44 views/lesson-meta-box.php:98
+#: views/course-meta-box.php:44 views/lesson-meta-box.php:97
 msgid "The shortcode"
 msgstr ""
 
@@ -648,6 +640,23 @@ msgstr ""
 
 #: views/course-meta-box.php:44
 msgid "help page."
+msgstr ""
+
+#: views/course-meta-box.php:46 views/lesson-meta-box.php:99
+msgid "Did you know?"
+msgstr ""
+
+#: views/course-meta-box.php:49
+msgid ""
+"You can limit the access to this course also by <a href=\"%s\" target="
+"\"_blank\">class / group</a>."
+msgstr ""
+
+#: views/course-meta-box.php:51
+msgid ""
+"If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able "
+"to assign courses to classes and restrict access based on class, have "
+"different managers for different classes, and a lot more."
 msgstr ""
 
 #: views/course-pay.php:2
@@ -664,13 +673,13 @@ msgstr ""
 msgid "Subscribe for"
 msgstr ""
 
-#: views/gradebook.html.php:6 views/homeworks.php:5
+#: views/gradebook.html.php:6 views/homeworks.php:6
 #: views/lesson-meta-box.php:4 views/manage-students.php:16
 #: views/my-gradebook.html.php:7
 msgid "Select course:"
 msgstr ""
 
-#: views/gradebook.html.php:7 views/homeworks.php:6 views/homeworks.php:53
+#: views/gradebook.html.php:7 views/homeworks.php:7 views/homeworks.php:61
 #: views/my-gradebook.html.php:8
 msgid "- please select -"
 msgstr ""
@@ -724,23 +733,34 @@ msgid ""
 msgstr ""
 
 #: views/help.html.php:6
-msgid "Available Shortcodes"
+msgid "Please Rate Us!"
 msgstr ""
 
 #: views/help.html.php:8
+msgid ""
+"Several hundred hours of development have been invested into the development "
+"of this free plugin. Now we need <a href=\"%s\" target=\"_blank\">five "
+"minutes of your time and five stars</a> to help the core plugin stay free!"
+msgstr ""
+
+#: views/help.html.php:10
+msgid "Available Shortcodes"
+msgstr ""
+
+#: views/help.html.php:12
 msgid ""
 "This is flexible shortcode that can be placed inside a lesson or course "
 "content. It will display what the logged in student still needs to do to "
 "complete the given lesson or course."
 msgstr ""
 
-#: views/help.html.php:10
+#: views/help.html.php:14
 msgid ""
 "displays enroll button or \"enrolled/pending enrollment\" message in the "
 "course."
 msgstr ""
 
-#: views/help.html.php:12
+#: views/help.html.php:16
 msgid ""
 "Displays simplified version of the student dashboard - the same table with "
 "all the available courses but without the \"view lessons\" link. Instead of "
@@ -748,11 +768,12 @@ msgid ""
 "below) in the course page itself."
 msgstr ""
 
-#: views/help.html.php:14 views/help.html.php:16 views/help.html.php:19
+#: views/help.html.php:18 views/help.html.php:20 views/help.html.php:23
+#: views/help.html.php:26
 msgid "or"
 msgstr ""
 
-#: views/help.html.php:14
+#: views/help.html.php:18
 msgid ""
 "will display all the lessons in a course along with links to them. If you "
 "use the second format and pass \"status\" as first argument, the shortcode "
@@ -769,24 +790,31 @@ msgid ""
 "be shown on top)."
 msgstr ""
 
-#: views/help.html.php:14
+#: views/help.html.php:18
 msgid "Note that status column will be shown only for logged in users."
 msgstr ""
 
-#: views/help.html.php:17
+#: views/help.html.php:21
+msgid ""
+"can be used only in a course page and will display the first lesson from the "
+"course. You can replace \"hyperlinked text\" with your own text. If you omit "
+"the parameter the link will say \"first lesson\"."
+msgstr ""
+
+#: views/help.html.php:24
 msgid ""
 "can be used only in a lesson and will display the next lesson from the "
 "course. You can replace \"hyperlinked text\" with your own text. If you omit "
-"the parameter the link will say \"next lesson\"."
+"the parameter the link will use the lesson title as hyperlinked text."
 msgstr ""
 
-#: views/help.html.php:20
+#: views/help.html.php:27
 msgid ""
 "Similar to the above, used to display a link for the previous lesson in this "
 "course. Note that lessons are ordered in the order of creation."
 msgstr ""
 
-#: views/help.html.php:22
+#: views/help.html.php:29
 msgid ""
 "(where X is lesson ID) will output the assignments to the lesson on the "
 "front-end. The links to submit and view solutions will also work. You can "
@@ -795,15 +823,15 @@ msgid ""
 "links to assignments from it."
 msgstr ""
 
-#: views/help.html.php:24
+#: views/help.html.php:31
 msgid "Redesigning and Customizing the Views / Templates"
 msgstr ""
 
-#: views/help.html.php:26
+#: views/help.html.php:33
 msgid "Only for advanced users!"
 msgstr ""
 
-#: views/help.html.php:28
+#: views/help.html.php:35
 msgid ""
 "You can safely customize all files from the \"views\" folders by placing "
 "their copies in your theme folder. Simply create folder \"namaste\" <b>in "
@@ -811,11 +839,11 @@ msgid ""
 "\" folder directly there."
 msgstr ""
 
-#: views/help.html.php:30
+#: views/help.html.php:37
 msgid "For example:"
 msgstr ""
 
-#: views/help.html.php:33
+#: views/help.html.php:40
 msgid ""
 "If you are using the Twenty Fourteen theme, you should create folder "
 "\"namaste\" under it so the structure will now be something like <b>wp-"
@@ -823,7 +851,7 @@ msgid ""
 "\"namaste\" folder should remain where they are)"
 msgstr ""
 
-#: views/help.html.php:34
+#: views/help.html.php:41
 msgid ""
 "Then if you want to modify the \"Manage Certificates\" page copy the file "
 "certificates.php from the plugin \"views\" folder and place it in the new "
@@ -831,14 +859,14 @@ msgid ""
 "namaste/certificates.php</b>"
 msgstr ""
 
-#: views/help.html.php:37
+#: views/help.html.php:44
 msgid ""
 "Don't worry if you use modified WordPress directory structure and don't have "
 "'wp-content' folder. The trick will work with any structure as long as you "
 "follow the same logic."
 msgstr ""
 
-#: views/help.html.php:39
+#: views/help.html.php:46
 msgid ""
 "Then feel free to modify the code, but of course be careful not to mess with "
 "the PHP or Javascript inside. This will let you change the design and even "
@@ -895,27 +923,31 @@ msgstr ""
 msgid "Assignments / Homework"
 msgstr ""
 
-#: views/homeworks.php:14 views/homeworks.php:52
+#: views/homeworks.php:15 views/homeworks.php:60
 msgid "Select lesson:"
 msgstr ""
 
-#: views/homeworks.php:25
+#: views/homeworks.php:26
 msgid "Click here to create new assignment"
 msgstr ""
 
-#: views/homeworks.php:28
+#: views/homeworks.php:29
 msgid "Title"
 msgstr ""
 
-#: views/homeworks.php:35
+#: views/homeworks.php:37
 msgid "solutions"
 msgstr ""
 
-#: views/homeworks.php:36
+#: views/homeworks.php:38
 msgid "No solutions"
 msgstr ""
 
-#: views/homeworks.php:41
+#: views/homeworks.php:42
+msgid "Shortcode to publish these assignments on the front-end:"
+msgstr ""
+
+#: views/homeworks.php:44
 msgid "You have to select course and lesson before you can create assignments"
 msgstr ""
 
@@ -927,39 +959,39 @@ msgstr ""
 msgid "Showing assignments of"
 msgstr ""
 
-#: views/lesson-homeworks.php:7
+#: views/lesson-homeworks.php:8
 msgid "Back to the lessons page in this course"
 msgstr ""
 
-#: views/lesson-homeworks.php:10
+#: views/lesson-homeworks.php:12
 msgid "There are no homeworks in this lesson"
 msgstr ""
 
-#: views/lesson-homeworks.php:15
+#: views/lesson-homeworks.php:17
 msgid "Assignment title and description"
 msgstr ""
 
-#: views/lesson-homeworks.php:15
+#: views/lesson-homeworks.php:17
 msgid "Solutions"
 msgstr ""
 
-#: views/lesson-homeworks.php:16 views/lesson-homeworks.php:59
+#: views/lesson-homeworks.php:18 views/lesson-homeworks.php:61
 msgid "Notes"
 msgstr ""
 
-#: views/lesson-homeworks.php:22 views/lesson-homeworks.php:47
+#: views/lesson-homeworks.php:24 views/lesson-homeworks.php:49
 msgid "None yet."
 msgstr ""
 
-#: views/lesson-homeworks.php:28 views/lesson-homeworks.php:29
+#: views/lesson-homeworks.php:30 views/lesson-homeworks.php:31
 msgid "%d solutions"
 msgstr ""
 
-#: views/lesson-homeworks.php:34
+#: views/lesson-homeworks.php:36
 msgid "A solution has been accepted and the assignment is completed."
 msgstr ""
 
-#: views/lesson-homeworks.php:51
+#: views/lesson-homeworks.php:53
 msgid "Add note"
 msgstr ""
 
@@ -1007,47 +1039,60 @@ msgstr ""
 msgid "The following assignments/homework must be completed:"
 msgstr ""
 
-#: views/lesson-meta-box.php:38 views/lesson-meta-box.php:39
+#: views/lesson-meta-box.php:38
 msgid ""
 "The following quiz must be completed (will take effect only if the quiz is "
 "published):"
 msgstr ""
 
-#: views/lesson-meta-box.php:41
+#: views/lesson-meta-box.php:40
 msgid "- No quiz required -"
 msgstr ""
 
-#: views/lesson-meta-box.php:47
+#: views/lesson-meta-box.php:46
 msgid "with any of the following grade(s) achieved:"
 msgstr ""
 
-#: views/lesson-meta-box.php:51 views/lesson-meta-box.php:73
+#: views/lesson-meta-box.php:50 views/lesson-meta-box.php:72
 msgid "- Any grade -"
 msgstr ""
 
-#: views/lesson-meta-box.php:85
+#: views/lesson-meta-box.php:84
 msgid ""
 "If you install %s or %s you can also require certain tests and quizzes to be "
 "completed."
 msgstr ""
 
-#: views/lesson-meta-box.php:90
+#: views/lesson-meta-box.php:89
 msgid "points for completing this lesson."
 msgstr ""
 
-#: views/lesson-meta-box.php:96
+#: views/lesson-meta-box.php:95
 msgid ""
 "inside the lesson content to display what the student needs to do to "
 "complete the lesson."
 msgstr ""
 
-#: views/lesson-meta-box.php:98
+#: views/lesson-meta-box.php:97
 msgid ""
 "will display a \"Mark Completed\" button so the student can mark the lesson "
 "completed themselves. <b>If such button is included in the lesson it will "
 "not be marked as completed until the student does it!</b> The button will "
 "appear <b>only after the \"Lesson Completeness\" requirements are satisfied."
 "</b>"
+msgstr ""
+
+#: views/lesson-meta-box.php:101
+msgid ""
+"You can set <a href=\"%s\" target=\"_blank\">delayed access</a> to this "
+"lesson."
+msgstr ""
+
+#: views/lesson-meta-box.php:103
+msgid ""
+"If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able "
+"to set delayed access to this lesson, namage classes and teachers, and a lot "
+"more."
 msgstr ""
 
 #: views/lesson-todo.php:2
@@ -1484,6 +1529,133 @@ msgstr ""
 
 #: views/options.php:144
 msgid "Save Exam Options"
+msgstr ""
+
+#: views/sidebar.html.php:22
+msgid "Go PRO!"
+msgstr ""
+
+#: views/sidebar.html.php:24
+msgid "Get more powerful features by"
+msgstr ""
+
+#: views/sidebar.html.php:24
+msgid "upgrading to the PRO version:"
+msgstr ""
+
+#: views/sidebar.html.php:27
+msgid "Premium support"
+msgstr ""
+
+#: views/sidebar.html.php:27
+msgid "Free email support for 1 year after purchase"
+msgstr ""
+
+#: views/sidebar.html.php:28
+msgid "Create classes and limit access to courses based on them."
+msgstr ""
+
+#: views/sidebar.html.php:29
+msgid ""
+"Assign teachers to the classes to have your team members manage content."
+msgstr ""
+
+#: views/sidebar.html.php:30
+msgid "Delayed access to course material."
+msgstr ""
+
+#: views/sidebar.html.php:31
+msgid "Shortcodes to let users sign-up for classes."
+msgstr ""
+
+#: views/sidebar.html.php:32
+msgid "Progress bar shows users how they do in each course."
+msgstr ""
+
+#: views/sidebar.html.php:34
+msgid "Localization-ready"
+msgstr ""
+
+#: views/sidebar.html.php:34
+msgid "with translation .pot file"
+msgstr ""
+
+#: views/sidebar.html.php:35
+msgid "Unlimited domains license"
+msgstr ""
+
+#: views/sidebar.html.php:35
+msgid "for domains you own"
+msgstr ""
+
+#: views/sidebar.html.php:36
+msgid "And more - just come to see!"
+msgstr ""
+
+#: views/sidebar.html.php:39
+msgid "Just go ahead and"
+msgstr ""
+
+#: views/sidebar.html.php:39
+msgid "take the tour"
+msgstr ""
+
+#: views/sidebar.html.php:39
+msgid "or check the"
+msgstr ""
+
+#: views/sidebar.html.php:39
+msgid "online demo."
+msgstr ""
+
+#: views/sidebar.html.php:41
+msgid ""
+"Upgrading to PRO comes with 60 days money-back guarantee, one year free "
+"upgrades and one year free support."
+msgstr ""
+
+#: views/sidebar.html.php:45
+msgid "Help To Spread The Word!"
+msgstr ""
+
+#: views/sidebar.html.php:47
+msgid "If you like this plugin you can do some of the following:"
+msgstr ""
+
+#: views/sidebar.html.php:50
+msgid "Rate it 5 starts at Wordpress.org"
+msgstr ""
+
+#: views/sidebar.html.php:51
+msgid "Let others know about it by blogging or posting"
+msgstr ""
+
+#: views/sidebar.html.php:51
+msgid "our home page"
+msgstr ""
+
+#: views/sidebar.html.php:51
+msgid "on social networks."
+msgstr ""
+
+#: views/sidebar.html.php:52
+msgid "Go PRO"
+msgstr ""
+
+#: views/sidebar.html.php:52
+msgid "to empower your site with extra benefits"
+msgstr ""
+
+#: views/sidebar.html.php:57
+msgid "Need Support?"
+msgstr ""
+
+#: views/sidebar.html.php:59
+msgid "Please ask your question in the"
+msgstr ""
+
+#: views/sidebar.html.php:59
+msgid "support forum at WordPress."
 msgstr ""
 
 #: views/solution-submitted.php:1

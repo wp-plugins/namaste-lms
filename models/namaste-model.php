@@ -264,7 +264,7 @@ class NamasteLMS {
 	
 	// initialization
 	static function init() {
-		global $wpdb;
+		global $wpdb;		
 		load_plugin_textdomain( 'namaste', false, NAMASTE_RELATIVE_PATH."/languages/" );
 		if (!session_id()) @session_start();
 		

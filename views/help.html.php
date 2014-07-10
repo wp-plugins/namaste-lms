@@ -26,7 +26,7 @@
 	<p><input type="text" value='[namaste-prev-lesson]' onclick="this.select();" readonly="readonly"> <?php _e('or', 'namaste')?> <b>[namaste-prev-lesson "hyperlinked text"]</b>
 		<?php _e('Similar to the above, used to display a link for the previous lesson in this course. Note that lessons are ordered in the order of creation.', 'namaste')?></p>	
 		
-	<p><input type="text" value='namaste-assignments lesson_id="X"' onclick="this.select();" readonly="readonly" size="30"> <?php _e('(where X is lesson ID) will output the assignments to the lesson on the front-end. The links to submit and view solutions will also work. You can omit the "lesson_id" parameter and pass it as URL variable. This could be useful if you are manually building a page with lessons and want to give links to assignments from it.', 'namaste')?></p>	
+	<p><input type="text" value='[namaste-assignments lesson_id="X"]' onclick="this.select();" readonly="readonly" size="30"> <?php _e('(where X is lesson ID) will output the assignments to the lesson on the front-end. The links to submit and view solutions will also work. You can omit the "lesson_id" parameter and pass it as URL variable. This could be useful if you are manually building a page with lessons and want to give links to assignments from it.', 'namaste')?></p>	
 	
 	<h2><?php _e('Redesigning and Customizing the Views / Templates', 'namaste');?></h2>
 	

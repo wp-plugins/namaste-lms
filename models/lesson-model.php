@@ -460,6 +460,20 @@ class NamasteLMSLessonModel {
 		global $wpdb;
 		$todo_homeworks = $todo_exam = $todo_admin_approval = NULL;
 		
+		// for homeworks automatically detect if there is a post that contains [namaste-assignments lesson_id="X"]
+		// If yes, generate proper submit link instead of going into the admin
+		$homework_posts = $wpdb->get_results("SELECT ID, post_content FROM {$wpdb->posts}
+			WHERE post_status = 'publish' AND post_date < NOW()
+			AND post_content LIKE '%[namaste-assignments%' ORDER BY ID DESC"); 
+		$post_found = null;
+		foreach($homework_posts as $post) {
+			if(stristr($post->post_content, '[namaste-assignments lesson_id="'.$lesson_id.'"]') 
+				or stristr($post->post_content, '[namaste-assignments lesson_id='.$lesson_id.']')) {
+				$post_found = $post->ID;
+				break;
+			}
+		}	
+		
 		// todo homeworks
 		$required_homeworks = get_post_meta($lesson_id, 'namaste_required_homeworks', true);	
 		if(!is_array($required_homeworks)) $required_homeworks = array();
@@ -472,8 +486,19 @@ class NamasteLMSLessonModel {
 			$todo_homeworks = array();
 			
 			foreach($required_homeworks as $required_id) {
-				if(!in_array($required_id, $ids)) {
+				if(!empty($required_id) and !in_array($required_id, $ids)) {
 					$homework = $wpdb -> get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORKS." WHERE id=%d", $required_id));
+					if(empty($homework->id)) continue;					
+					
+					// define the submit link
+					if($post_found) {						
+						$permalink = get_permalink($post_found);
+				   	$params = array('id' => $homework->id, 'submit_solution' => 1);
+						$target_url = add_query_arg( $params, $permalink );
+						$homework->submit_link = $target_url;
+					}
+					else $homework->submit_link = admin_url("admin.php?page=namaste_submit_solution&id=".$homework->id);					
+					
 					$todo_homeworks[] = $homework;
 				}
 			}			
