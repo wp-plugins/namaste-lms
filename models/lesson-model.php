@@ -266,11 +266,11 @@ class NamasteLMSLessonModel {
 		}		
 		
 		// no access due to filters? (Classes from Namaste PRO etc)
-		list($no_access, $message) = apply_filters('namaste-course-access', $user_ID, $course_id);
+		list($no_access, $message) = apply_filters('namaste-course-access', array(false, ''), $user_ID, $course_id);
 		if(!empty($no_access)) return $message;		
 			 
 		// no access due to other lesson restrictions based on filters from other plugins		
-		list($no_access, $message) = apply_filters('namaste-lesson-access', $user_ID, $post->ID);
+		list($no_access, $message) = apply_filters('namaste-lesson-access', array(false, ''), $user_ID, $post->ID);
 		if(!empty($no_access)) return $message;		
 		
 		

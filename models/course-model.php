@@ -236,11 +236,14 @@ class NamasteLMSCourseModel {
 		global $wpdb;
 		
 		// checks from other plugins, for example Namaste PRO
-		list($no_access, $message) = apply_filters('namaste-course-access', $student_id, $course_id);
+		$no_access = $message = null;
+		list($no_access, $message) = apply_filters('namaste-course-access', array(false, ''), $student_id, $course_id);
+		// echo $no_access.'a';
 		if($no_access) wp_die($message);
 		
 		// check for course access requirements
 		$course_access = get_post_meta($course_id, 'namaste_access', true);
+
 		if(!empty($course_access) and is_array($course_access)) {
 			// check if there is any unsatisfied requirement
 			foreach($course_access as $required_course) {
