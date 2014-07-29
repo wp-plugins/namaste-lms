@@ -233,6 +233,9 @@ class NamasteLMSLessonModel {
 			} // end defining status
 		}
 		
+		// external reorder?
+		$lessons = apply_filters('namaste-reorder-lessons', $lessons);
+		
 		// enqueue thickbox
 		wp_enqueue_script('thickbox',null,array('jquery'));
 		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');		

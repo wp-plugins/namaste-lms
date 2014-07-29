@@ -24,8 +24,9 @@
 		<th><?php _e('Status', 'namaste')?></th>		
 		</tr>
 		
-		<?php foreach($lessons as $lesson):?>
-			<tr><td><a href="<?php echo get_permalink($lesson->ID)?>"><?php echo $lesson->post_title?></a></td>
+		<?php foreach($lessons as $lesson):
+			$class = ('alternate' == @$class) ? '' : 'alternate'; ?>
+			<tr class="<?php echo $class?>"><td><a href="<?php echo get_permalink($lesson->ID)?>"><?php echo $lesson->post_title?></a></td>
 			<?php if(!$simplified):?>
 				<td><?php if(!sizeof($lesson->homeworks)): echo __('None', 'namaste'); 
 				else:?> <a href="admin.php?page=namaste_lesson_homeworks&lesson_id=<?php echo $lesson->ID?>&student_id=<?php echo $student_id?>"><?php echo sizeof($lesson->homeworks)?></a>

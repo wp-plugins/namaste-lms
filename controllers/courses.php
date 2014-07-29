@@ -33,6 +33,9 @@ class NamasteLMSCoursesController {
 			 AND tSC.user_id = %d WHERE tC.post_status = 'publish'
 			 AND tC.post_type='namaste_course' $filter_sql ORDER BY tC.post_title", $user_ID));
 			 
+		// external reorder?
+		$courses = apply_filters('namaste-reorder-courses', $courses);	 
+			 
 		if(!empty($currency) and !$is_manager) {
 			foreach($courses as $cnt=>$course) {
 				$courses[$cnt]->fee = get_post_meta($course->post_id, 'namaste_fee', true); 
