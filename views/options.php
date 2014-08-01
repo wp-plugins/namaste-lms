@@ -77,13 +77,15 @@
 		<div class="postbox wp-admin namaste-box">
 			<h2><?php _e('Payment Settings', 'namaste')?></h2>
 			
-			<p><label><?php _e('Payment currency:', 'namaste')?></label> <select name="currency">
+			<p><label><?php _e('Payment currency:', 'namaste')?></label> <select name="currency" onchange="this.value ? jQuery('#customCurrency').hide() : jQuery('#customCurrency').show(); ">
 			<?php foreach($currencies as $key=>$val):
             if($key==$currency) $selected='selected';
             else $selected='';?>
         		<option <?php echo $selected?> value='<?php echo $key?>'><?php echo $val?></option>
          <?php endforeach; ?>
-			</select></p>
+			<option value="" <?php if(!in_array($currency, $currency_keys)) echo 'selected'?>><?php _e('Custom', 'namaste')?></option>
+			</select>
+			<input type="text" id="customCurrency" name="custom_currency" style="display:<?php echo in_array($currency, $currency_keys) ? 'none' : 'inline';?>" value="<?php echo $currency?>"></p>
 			
 			<p><?php _e('Here you can specify payment methods that you will accept to give access to courses. When a course requires payment, the enrollment (pending or active - depends on your other course settings) will be entered after the payment is completed.', 'namaste')?></p>
 			

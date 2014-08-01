@@ -55,6 +55,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 1.4.1 =
+- Added "custom currency" option in the payment settings page
+- Submitting solutions to assignments on a lesson is not allowed if the lesson access requirements are not satisfied.
+
 = Version 1.4 =
 - Advanced users only: You can now create your own versions of all Namaste views for high-level of customization
 - Added shortcode to display functional "lesson assignments" page 

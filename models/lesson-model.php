@@ -278,18 +278,7 @@ class NamasteLMSLessonModel {
 		
 		
 		// can access based on other lesson restriction?
-		$lesson_access = get_post_meta($post->ID, 'namaste_access', true);	
-		if(!is_array($lesson_access)) $lesson_access = array();
-		$completed_lessons = $wpdb -> get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_LESSONS.
-			" WHERE student_id = %d AND status = 1 ", $user_ID));
-		$completed_ids = array(0);
-		foreach($completed_lessons as $l) $completed_ids[] = $l->lesson_id;
-		if(sizeof($lesson_access)) {
-			$not_completed_ids = array();
-			foreach($lesson_access as $access) {
-				if(!in_array($access, $completed_ids)) $not_completed_ids[] = $access;
-			}
-		}
+		$not_completed_ids = self :: unsatisfied_complete_requirements($post);
 					
 		if(!empty($not_completed_ids)) {
 			 $content = '<p>'.__('Before accessing this lesson you must complete the following lessons:','namaste').'</p>';			 
@@ -309,6 +298,29 @@ class NamasteLMSLessonModel {
 		self :: mark_accessed();
 		return $content;
 	} // end access_lesson
+	
+	// small helper to check if lesson completion requirements are met
+	// returns false if there are NO unsatisfied requirements, else 
+	// returns the not comleted lesson IDs
+	static function unsatisfied_complete_requirements($post) {
+		global $wpdb, $user_ID;
+		
+		$lesson_access = get_post_meta($post->ID, 'namaste_access', true);	
+		if(!is_array($lesson_access)) $lesson_access = array();
+		$completed_lessons = $wpdb -> get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_LESSONS.
+			" WHERE student_id = %d AND status = 1 ", $user_ID));
+		$completed_ids = array(0);
+		$not_completed_ids = false;
+		foreach($completed_lessons as $l) $completed_ids[] = $l->lesson_id;
+		if(sizeof($lesson_access)) {
+			$not_completed_ids = array();
+			foreach($lesson_access as $access) {
+				if(!in_array($access, $completed_ids)) $not_completed_ids[] = $access;
+			}
+		}
+		
+		return $not_completed_ids;
+	} // end unsatisfied_complete_requirements()
 	
 	// actually access lesson (after permission checks)
 	// called only from self::access_lesson

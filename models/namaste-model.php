@@ -380,6 +380,7 @@ class NamasteLMS {
 		if(!empty($_POST['namaste_payment_options']) and check_admin_referer('save_payment_options', 'nonce_payment_options')) {
 			update_option('namaste_accept_other_payment_methods', $_POST['accept_other_payment_methods']);
 			update_option('namaste_other_payment_methods', $_POST['other_payment_methods']);
+			if(empty($_POST['currency'])) $_POST['currency'] = $_POST['custom_currency'];
 			update_option('namaste_currency', $_POST['currency']);
 			update_option('namaste_accept_paypal', $_POST['accept_paypal']);
 			update_option('namaste_paypal_id', $_POST['paypal_id']);
@@ -419,6 +420,7 @@ class NamasteLMS {
 	   "CAD"=>"CAD", "CHF"=>"CHF", "CZK"=>"CZK", "DKK"=>"DKK", "HKD"=>"HKD", "HUF"=>"HUF",
 	   "ILS"=>"ILS", "INR"=>"INR", "MXN"=>"MXN", "NOK"=>"NOK", "NZD"=>"NZD", "PLN"=>"PLN", "SEK"=>"SEK",
 	   "SGD"=>"SGD", "ZAR"=>"ZAR");		
+	   $currency_keys = array_keys($currencies);  
 	   
 	   $use_grading_system = get_option('namaste_use_grading_system');
 	   $grading_system = stripslashes(get_option('namaste_grading_system'));

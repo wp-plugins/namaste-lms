@@ -10,6 +10,24 @@ class NamasteLMSHomeworkController {
 		if(!NamasteLMSStudentModel::is_enrolled($user_ID, $course->ID)) wp_die(__('You are not enrolled in this course!',
 			'namaste'));
 			
+		// unsatisfied lesson completion requirements?
+		$not_completed_ids = NamasteLMSLessonModel :: unsatisfied_complete_requirements($lesson);
+		if(!empty($not_completed_ids)) {
+			 $content = '<p>'.__('Before submitting solutions on this lesson you must complete the following lessons:','namaste').'</p>';			 
+			 $content	.= '<ul>';
+			
+			 foreach($not_completed_ids as $id) {
+			 		$not_completed = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->posts} WHERE id=%d", $id));
+			 		
+			 		$content .= '<li><a href="'.get_permalink($id).'">'.$not_completed->post_title.'</a></li>';
+			 }					 
+			 
+			 $content .= '</ul>';
+			 echo $content;
+			 // self :: mark_accessed();
+			 return true;
+		}
+			
 		// now submit
 		if(!empty($_POST['ok'])) {
 			if(empty($_POST['content'])) wp_die(__('You cannot submit an empty solution', 'namaste'));			
