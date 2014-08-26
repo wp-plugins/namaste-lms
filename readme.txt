@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: LMS, learning, courses, lessons, ILE, wpmu, multisite
 Requires at least: 3.3
-Tested up to: 3.9.1
+Tested up to: 3.9.2
 Stable tag: trunk
 License: GPL2
 
@@ -55,9 +55,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.4.1 =
+= Version 1.4.2 =
 - Added "custom currency" option in the payment settings page
 - Submitting solutions to assignments on a lesson is not allowed if the lesson access requirements are not satisfied.
+- Added option to un-enroll student from a course
 
 = Version 1.4 =
 - Advanced users only: You can now create your own versions of all Namaste views for high-level of customization
