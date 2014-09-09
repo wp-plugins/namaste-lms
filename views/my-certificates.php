@@ -8,8 +8,9 @@ endif;?>
 <div class="wrap">
 	<table class="widefat">
 		<tr><th><?php _e('Certificate', 'namaste')?></th><th><?php _e('Date', 'namaste')?></th><th><?php _e('Completed course(s)', 'namaste')?></th></tr>
-		<?php foreach($certificates as $certificate):?>
-			<tr><td><a href="admin.php?page=namaste_view_certificate&id=<?php echo $certificate->id?>&student_id=<?php echo $student_id?>&noheader=1" target="_blank"><?php echo $certificate->title?></a></td>
+		<?php foreach($certificates as $certificate):
+			$class = ('alternate' == @$class) ? '' : 'alternate';?>
+			<tr class="<?php echo $class?>"><td><a href="admin.php?page=namaste_view_certificate&id=<?php echo $certificate->id?>&student_id=<?php echo $student_id?>&noheader=1" target="_blank"><?php echo $certificate->title?></a></td>
 			<td><?php echo date(get_option('date_format'), strtotime($certificate->date))?></td>
 			<td><?php echo $certificate->courses?></td></tr>
 		<?php endforeach;?>

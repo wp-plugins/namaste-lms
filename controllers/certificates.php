@@ -47,7 +47,12 @@ class NamasteLMSCertificatesController {
 						case 'edited': $msg = __('Certificate saved', 'namaste'); break;
 						case 'deleted': $msg = __('Certificate deleted', 'namaste'); break;
 					}
-				}			
+				}	
+				
+				// using PDF bridge?
+				if(!empty($_POST['save_pdf_settings'])) {
+					update_option('namaste_generate_pdf_certificates', @$_POST['generate_pdf_certificates']);
+				}		
 				
 				if(@file_exists(get_stylesheet_directory().'/namaste/certificates.php')) require get_stylesheet_directory().'/namaste/certificates.php';
 				else require(NAMASTE_PATH."/views/certificates.php");		
@@ -106,6 +111,19 @@ class NamasteLMSCertificatesController {
 	
 		$date = date(get_option('date_format'), strtotime($certificate->date));
 	 	$output=str_replace("{{date}}", $date, $output);
+	 	
+	 	if(get_option('namaste_generate_pdf_certificates') == "1") {
+	 		$output = '<html>
+			<head><title>'.$certificate->title.'</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></head>
+			<body>'.$output.'</body>
+			</html>';
+			//	die($output);
+			$content = apply_filters('pdf-bridge-convert', $output);		
+			echo $content;
+			exit;	
+		}	 	
+	 	// else output HTML
 		?>
 		<html>
 		<head><title><?php echo $certificate->title;?></title>

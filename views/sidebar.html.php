@@ -1,3 +1,6 @@
+<?php 
+$current_plugins = get_option('active_plugins');
+?>
 <style type="text/css">
 .namaste-sidebox
 {
@@ -18,28 +21,30 @@
 }
 </style>
 
-<div id="namaste-related" class="namaste-sidebox">
-	<h3><?php _e('Go PRO!', 'http://namaste-lms.org/pro.php')?></h3>
-	
-	<p><?php _e('Get more powerful features by', 'http://namaste-lms.org/pro.php')?> <a href="http://namaste-lms.org/pro.php" target="_blank"><?php _e('upgrading to the PRO version:', 'http://namaste-lms.org/pro.php')?></a></p>
-	
-	<ol>
-		<li><strong><?php _e('Premium support', 'http://namaste-lms.org/pro.php')?></strong>. <?php _e('Free email support for 1 year after purchase', 'namaste')?></li>
-		<li><strong><?php _e('Create classes and limit access to courses based on them.', 'namaste')?></strong>. </li>
-		<li><strong><?php _e('Assign teachers to the classes to have your team members manage content.', 'namaste')?></strong></li>
-		<li><strong><?php _e('Delayed access to course material.', 'namaste')?></strong> </li>
-		<li><strong><?php _e('Shortcodes to let users sign-up for classes.', 'namaste')?></strong> </li>
-		<li><strong><?php _e('Progress bar shows users how they do in each course.', 'namaste')?></strong> </li>
+<?php if(!in_array('namaste-pro/namaste-pro.php', $current_plugins)):?>
+	<div id="namaste-related" class="namaste-sidebox">
+		<h3><?php _e('Go PRO!', 'http://namaste-lms.org/pro.php')?></h3>
 		
-		<li><strong><?php _e('Localization-ready', 'namaste')?></strong> <?php _e('with translation .pot file', 'namaste')?></li>
-		<li><strong><?php _e('Unlimited domains license', 'namaste')?></strong> <?php _e('for domains you own', 'namaste')?></li>		
-		<li><?php _e('And more - just come to see!', 'namaste')?></li>
-	</ol>
-	
-	<p><?php _e('Just go ahead and', 'namaste')?> <a href="ttp://namaste-lms.org/pro.php" target="_blank"><?php _e('take the tour', 'namaste')?></a> <?php _e('or check the', 'namaste')?> <a href="http://namaste-lms.org/pro.php#demo" target="_blank"><?php _e('online demo.', 'namaste')?></a></p>
-	
-	<p><?php _e('Upgrading to PRO comes with 60 days money-back guarantee, one year free upgrades and one year free support.', 'namaste')?></p>
-</div>
+		<p><?php _e('Get more powerful features by', 'http://namaste-lms.org/pro.php')?> <a href="http://namaste-lms.org/pro.php" target="_blank"><?php _e('upgrading to the PRO version:', 'http://namaste-lms.org/pro.php')?></a></p>
+		
+		<ol>
+			<li><strong><?php _e('Premium support', 'http://namaste-lms.org/pro.php')?></strong>. <?php _e('Free email support for 1 year after purchase', 'namaste')?></li>
+			<li><strong><?php _e('Create classes and limit access to courses based on them.', 'namaste')?></strong>. </li>
+			<li><strong><?php _e('Assign teachers to the classes to have your team members manage content.', 'namaste')?></strong></li>
+			<li><strong><?php _e('Delayed access to course material.', 'namaste')?></strong> </li>
+			<li><strong><?php _e('Shortcodes to let users sign-up for classes.', 'namaste')?></strong> </li>
+			<li><strong><?php _e('Progress bar shows users how they do in each course.', 'namaste')?></strong> </li>
+			
+			<li><strong><?php _e('Localization-ready', 'namaste')?></strong> <?php _e('with translation .pot file', 'namaste')?></li>
+			<li><strong><?php _e('Unlimited domains license', 'namaste')?></strong> <?php _e('for domains you own', 'namaste')?></li>		
+			<li><?php _e('And more - just come to see!', 'namaste')?></li>
+		</ol>
+		
+		<p><?php _e('Just go ahead and', 'namaste')?> <a href="ttp://namaste-lms.org/pro.php" target="_blank"><?php _e('take the tour', 'namaste')?></a> <?php _e('or check the', 'namaste')?> <a href="http://namaste-lms.org/pro.php#demo" target="_blank"><?php _e('online demo.', 'namaste')?></a></p>
+		
+		<p><?php _e('Upgrading to PRO comes with 60 days money-back guarantee, one year free upgrades and one year free support.', 'namaste')?></p>
+	</div>
+<?php endif;?>
 
 <div id="namaste-ad" class="namaste-sidebox">
 	<h3><?php _e('Help To Spread The Word!', 'namaste')?></h3>

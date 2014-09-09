@@ -5,10 +5,6 @@
 	float:left;
 }
 
-.namaste-form div:not(.wp-editor-tools) {
-	 margin-bottom:15px;
-}
-
 .namaste-box {padding:10px;}
 
 .namaste-error {

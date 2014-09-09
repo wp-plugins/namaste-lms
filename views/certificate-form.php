@@ -2,9 +2,9 @@
 
 <div class="wrap">
 	<form class="namaste-form" onsubmit="return namasteValidateForm(this);" method="post">
-		<div><label><?php _e('Certificate Title:', 'namaste')?></label> <input type="text" name="title" value="<?php if(!empty($certificate->title)) echo $certificate->title?>" size="100"></div>
+		<p><label><?php _e('Certificate Title:', 'namaste')?></label> <input type="text" name="title" value="<?php if(!empty($certificate->title)) echo $certificate->title?>" size="100"></p>
 		
-		<div><label><?php _e('Certificate Contents:', 'namaste')?></label> <?php echo wp_editor(stripslashes(@$certificate->content), 'content')?></div>
+		<p><label><?php _e('Certificate Contents:', 'namaste')?></label> <?php echo wp_editor(stripslashes(@$certificate->content), 'content')?></p>
 		
 		<p><?php _e('You can use the following variables in the certificate contents:', 'namaste')?></p>
 		
@@ -12,7 +12,7 @@
 		<strong>{{courses}}</strong> <?php _e('- The names of the course which were completed to acquire this certificate', 'namaste')?><br>
 		<strong>{{date}}</strong> <?php _e('- Date when the certificate was acquired', 'namaste')?><br></p>
 		
-		<div><p><strong><?php _e('Assign this certificate upon completing all of the following courses:', 'namaste')?></strong></p>
+		<p><strong><?php _e('Assign this certificate upon completing all of the following courses:', 'namaste')?></strong>
 		
 		<?php if(!sizeof($courses)): _e('You have not created any courses yet!', 'namaste');
 		else:?>
