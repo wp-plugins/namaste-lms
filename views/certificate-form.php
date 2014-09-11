@@ -9,8 +9,10 @@
 		<p><?php _e('You can use the following variables in the certificate contents:', 'namaste')?></p>
 		
 		<p><strong>{{name}}</strong> <?php _e('- The user full name or login name (whatever is available)', 'namaste')?><br>
-		<strong>{{courses}}</strong> <?php _e('- The names of the course which were completed to acquire this certificate', 'namaste')?><br>
+		<strong>{{courses}}</strong> <?php _e('- The names of the courses which were completed to acquire this certificate', 'namaste')?><br>
+		<strong>{{courses-extended}}</strong> <?php _e('- The names and descriptions of the courses which were completed to acquire this certificate. The post "excerpt" will be used as course description.', 'namaste')?><br>
 		<strong>{{date}}</strong> <?php _e('- Date when the certificate was acquired', 'namaste')?><br></p>
+		<strong>{{id}}</strong> <?php _e('- Unique ID of this certificate', 'namaste')?><br></p>
 		
 		<p><strong><?php _e('Assign this certificate upon completing all of the following courses:', 'namaste')?></strong>
 		

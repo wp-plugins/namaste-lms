@@ -80,11 +80,11 @@ class NamasteLMSCertificatesController {
 		if(!current_user_can('namaste_manage') and $_GET['student_id']!=$user_ID) wp_die(__('You are not allowed to access this certificate', 'namaste'));
 		
 		// select certificate
-		$certificate = $wpdb -> get_row($wpdb->prepare("SELECT tC.*, tS.date as date FROM ".NAMASTE_CERTIFICATES." tC 
-			JOIN ".NAMASTE_STUDENT_CERTIFICATES." tS On tC.id = tS.certificate_id 
+		$certificate = $wpdb -> get_row($wpdb->prepare("SELECT tC.*, tS.date as date, tS.id as stid 
+			FROM ".NAMASTE_CERTIFICATES." tC JOIN ".NAMASTE_STUDENT_CERTIFICATES." tS On tC.id = tS.certificate_id 
 			WHERE tS.student_id = %d AND tC.id=%d", $_GET['student_id'], $_GET['id']));
 			
-		$output = stripslashes($certificate -> content);	
+		$output = wpautop(stripslashes($certificate -> content));	
 			
 		$user_info=get_userdata($_GET['student_id']);
 		$name=(empty($user_info->first_name) or empty($user_info->last_name)) ? 
@@ -93,20 +93,25 @@ class NamasteLMSCertificatesController {
 		if(empty($name)) $name = $user_info->user_login;	
 			
 		$output = str_replace("{{name}}", $name, $output);			
+		$output = str_replace("{{id}}", sprintf('%08d', $certificate->stid), $output);
 		
-		if(strstr($output, "{{courses}}")) {
+		if(strstr($output, "{{courses}}") or strstr($output, "{{courses-extended}}")) {
 			$_course = new NamasteLMSCourseModel();
 			$courses = $_course->select();
 			$c_courses = array();
 			
 			foreach($courses as $course) {
 				if(strstr($certificate -> course_ids, "|".$course->ID."|")) {
-					$c_courses[] = $course->post_title;
+					if(strstr($output, "{{courses-extended}}")) {
+						$c_courses[] = "<h2>".stripslashes($course->post_title)."</h2>".wpautop(stripslashes($course->post_excerpt));
+					}
+					else $c_courses[] = stripslashes($course->post_title);
 				}
 			}	
 			
 			$courses_str = implode(", ", $c_courses);
 			$output = str_replace("{{courses}}", $courses_str, $output);
+			$output = str_replace("{{courses-extended}}", $courses_str, $output);
 		}					
 	
 		$date = date(get_option('date_format'), strtotime($certificate->date));

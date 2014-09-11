@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.4.3\n"
+"Project-Id-Version: Namaste! LMS 1.4.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2014-09-09 13:06:26+00:00\n"
+"POT-Creation-Date: 2014-09-11 13:04:58+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -169,10 +169,6 @@ msgstr ""
 msgid "Add New Course"
 msgstr ""
 
-#: models/course-model.php:18
-msgid "namaste-course"
-msgstr ""
-
 #: models/course-model.php:19
 msgid "This will create a new course in your Namaste! LMS."
 msgstr ""
@@ -278,10 +274,6 @@ msgstr ""
 msgid "Add New Lesson"
 msgstr ""
 
-#: models/lesson-model.php:16
-msgid "namaste-lesson"
-msgstr ""
-
 #: models/lesson-model.php:17
 msgid "This will create a new lesson in your Namaste! LMS."
 msgstr ""
@@ -333,7 +325,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4.3)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4.4)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:206
 msgid "Namaste! LMS"
@@ -493,35 +485,45 @@ msgstr ""
 
 #: views/certificate-form.php:12
 msgid ""
-"- The names of the course which were completed to acquire this certificate"
+"- The names of the courses which were completed to acquire this certificate"
 msgstr ""
 
 #: views/certificate-form.php:13
+msgid ""
+"- The names and descriptions of the courses which were completed to acquire "
+"this certificate. The post \"excerpt\" will be used as course description."
+msgstr ""
+
+#: views/certificate-form.php:14
 msgid "- Date when the certificate was acquired"
 msgstr ""
 
 #: views/certificate-form.php:15
-msgid "Assign this certificate upon completing all of the following courses:"
+msgid "- Unique ID of this certificate"
 msgstr ""
 
 #: views/certificate-form.php:17
+msgid "Assign this certificate upon completing all of the following courses:"
+msgstr ""
+
+#: views/certificate-form.php:19
 msgid "You have not created any courses yet!"
 msgstr ""
 
-#: views/certificate-form.php:27
+#: views/certificate-form.php:29
 msgid "Save Certificate"
 msgstr ""
 
-#: views/certificate-form.php:29
+#: views/certificate-form.php:31
 msgid "Delete"
 msgstr ""
 
-#: views/certificate-form.php:38 views/homework.php:20
+#: views/certificate-form.php:40 views/homework.php:20
 #: views/manage-students.php:82
 msgid "Are you sure?"
 msgstr ""
 
-#: views/certificate-form.php:46
+#: views/certificate-form.php:48
 msgid "Please enter certificate title"
 msgstr ""
 

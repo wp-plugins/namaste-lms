@@ -55,11 +55,12 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.4.3 =
+= Version 1.4.4 =
 - Added "custom currency" option in the payment settings page
 - Submitting solutions to assignments on a lesson is not allowed if the lesson access requirements are not satisfied.
 - Added option to un-enroll student from a course
 - Now you can generate PDF certificates using the free PDF bridge plugin
+- Added variables for course description and certificate ID in the certificates. Improved the certificate displaying.
 
 = Version 1.4 =
 - Advanced users only: You can now create your own versions of all Namaste views for high-level of customization
