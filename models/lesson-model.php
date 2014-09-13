@@ -202,8 +202,7 @@ class NamasteLMSLessonModel {
 				if($required_exam) {
 					$exam = $wpdb->get_row("SELECT tE.*, tP.id as post_id FROM $exams_table tE, {$wpdb->posts} tP
 						WHERE tE.ID = $required_exam AND tP.post_content LIKE CONCAT('%[$shortcode ', tE.ID, ']%')
-						AND (tP.post_type='post' OR tP.post_type='page') AND tP.post_status='publish' 
-						AND post_title!=''");
+						AND tP.post_status='publish' AND post_title!=''");
 						
 					$lessons[$cnt]->exam = $exam;
 				}					
@@ -567,6 +566,7 @@ class NamasteLMSLessonModel {
 			if(!is_array($required_grade)) $required_grade = array($required_grade);
 			
 			if(!empty($required_exam)) {
+				
 				// see if there is taking record at all
 				if($use_exams == 'watu') {
 					$takings = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}watu_takings 
@@ -590,8 +590,10 @@ class NamasteLMSLessonModel {
 				$achieved_grade = false;
 				
 				foreach($takings as $taking) {
-					foreach($required_grade as $rgrade) {
-						if(preg_match("/^".$rgrade."<p/", $taking->result) or (trim($rgrade) == trim($taking->result))) {
+					foreach($required_grade as $rgrade) {											
+						if(preg_match("/^".$rgrade."<p/", $taking->result) 
+							or (trim($rgrade) == trim($taking->result))
+							or (trim(strip_tags($rgrade)) == trim(strip_tags($taking->result)))) {
 							$achieved_grade = true;
 							break;
 						}
@@ -599,6 +601,7 @@ class NamasteLMSLessonModel {
 				}
 				
 				if(!$achieved_grade) {
+					
 					if($mode == 'boolean') return false;
 					
 					$todo_exam = $required_exam;
@@ -635,6 +638,7 @@ class NamasteLMSLessonModel {
 		// if is_ready complete the lesson
 		foreach($lessons as $lesson) {
 			if(!in_array($lesson->ID, $my_todo_lesson_ids)) continue;
+			
 			if(self::is_ready($lesson->ID, $user_ID)) self::complete($lesson->ID, $user_ID);		
 		}
 	}	
