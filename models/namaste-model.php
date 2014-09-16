@@ -342,7 +342,7 @@ class NamasteLMS {
 			
 	// manage general options
 	static function options() {
-		global $wp_roles;		
+		global $wp_roles, $wp_rewrite;				
 		
 		$is_admin = current_user_can('administrator');		
 		
@@ -370,6 +370,11 @@ class NamasteLMS {
 			} // end foreach role 
 			
 			update_option('namaste_show_courses_in_blog', @$_POST['show_courses_in_blog']);
+			$_POST['course_slug'] = preg_replace('/[^\w\-]/', '', $_POST['course_slug']);
+			$_POST['lesson_slug'] = preg_replace('/[^\w\-]/', '', $_POST['lesson_slug']);
+			update_option('namaste_course_slug', $_POST['course_slug']);
+			update_option('namaste_lesson_slug', $_POST['lesson_slug']);
+			$wp_rewrite->flush_rules();  
 		}
 		
 		if(!empty($_POST['namaste_exam_options']) and check_admin_referer('save_exam_options', 'nonce_exam_options')) {
@@ -430,6 +435,11 @@ class NamasteLMS {
 	   $payment_errors = get_option('namaste_errorlog');
 	   // strip to reasonable length
 	   $payment_errors = substr($payment_errors, 0, 10000);
+	   
+	   $course_slug = get_option('namaste_course_slug');
+	   if(empty($course_slug)) $course_slug = 'namaste-course';
+	   $lesson_slug = get_option('namaste_lesson_slug');
+	   if(empty($lesson_slug)) $lesson_slug = 'namaste-lesson';
 		
 		if(@file_exists(get_stylesheet_directory().'/namaste/options.php')) require get_stylesheet_directory().'/namaste/options.php';
 		else require(NAMASTE_PATH."/views/options.php");

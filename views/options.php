@@ -22,6 +22,15 @@
 					$role = get_role($key);?>
 					<input type="checkbox" name="manage_roles[]" value="<?php echo $key?>" <?php if($role->has_cap('namaste_manage')) echo 'checked';?>> <?php _e($role->name, 'namaste')?> &nbsp;
 				<?php endforeach;?></p>
+				
+				<h2><?php _e('URL identificators for Namaste courses and lessons', 'namaste')?></h2>
+				
+				<p><?php _e('These are the parts of the URLs that identify a post as Namaste! LMS lesson or course. These URL slugs are shown at the browser address bar and are parts of all links to courses and lessons. By default they are "namaste-course" and "namaste-lesson". You can change them here.', 'namaste')?></p>
+				
+				<p><label><?php _e('Course URL slug:', 'namaste')?></label> <input type="text" name="course_slug" value="<?php echo $course_slug?>"</p>
+				<p><label><?php _e('Lesson URL slug:', 'namaste')?></label> <input type="text" name="lesson_slug" value="<?php echo $lesson_slug?>"</p>
+				
+				<p><?php _e('These slugs can contain only numbers, letters, dashes, and underscores. It is your responsibility to ensure they do not overlap with the URL identificators of another custom post type.', 'namaste')?></p>
 			<?php endif;?>
 				
 			<h2><?php _e('Blog / Archive Pages Behavior', 'namaste')?></h2>

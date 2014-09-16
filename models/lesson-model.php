@@ -1,7 +1,10 @@
 <?php
 class NamasteLMSLessonModel {
 	// custom post type Lesson	
-	static function register_lesson_type() {
+	static function register_lesson_type() {		
+		$lesson_slug = get_option('namaste_lesson_slug');
+	   if(empty($lesson_slug)) $lesson_slug = 'namaste-lesson';
+	   
 		$args=array(
 			"label" => __("Namaste! Lessons", 'namaste'),
 			"labels" => array
@@ -13,7 +16,7 @@ class NamasteLMSLessonModel {
 			"public"=> true,
 			"show_ui"=>true,
 			"has_archive"=>true,
-			"rewrite"=> array("slug"=>"namaste-lesson", "with_front"=>false),
+			"rewrite"=> array("slug"=>$lesson_slug, "with_front"=>false),
 			"description"=>__("This will create a new lesson in your Namaste! LMS.",'namaste'),
 			"supports"=>array("title", 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'post-formats'),
 			"taxonomies"=>array("category"),
@@ -383,7 +386,7 @@ class NamasteLMSLessonModel {
 		$hids = array(0);
 		foreach($homeworks as $homework) $hids[] = $homework->id; 
 		
-		if(!empty($required_homeworks)) {
+		if(!empty($required_homeworks)) {			
 			// select all completed homeworks of this student and see if all required are satisfied
 			$completed_homeworks = $wpdb->get_results($wpdb->prepare("SELECT DISTINCT(homework_id) FROM ".
 				NAMASTE_STUDENT_HOMEWORKS." WHERE student_id=%d AND status='approved'", $student_id));
@@ -628,6 +631,7 @@ class NamasteLMSLessonModel {
 		// select all my todo lessons
 		$my_todo_lessons = $wpdb -> get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_LESSONS." WHERE student_id=%d AND status=0", $user_ID));
 		if(!sizeof($my_todo_lessons)) return false;
+		
 		$my_todo_lesson_ids = array();
 		foreach($my_todo_lessons as $my) $my_todo_lesson_ids[] = $my->lesson_id;
 				
@@ -637,7 +641,7 @@ class NamasteLMSLessonModel {
 						
 		// if is_ready complete the lesson
 		foreach($lessons as $lesson) {
-			if(!in_array($lesson->ID, $my_todo_lesson_ids)) continue;
+			if(!in_array($lesson->ID, $my_todo_lesson_ids)) continue;			
 			
 			if(self::is_ready($lesson->ID, $user_ID)) self::complete($lesson->ID, $user_ID);		
 		}

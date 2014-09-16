@@ -4,6 +4,10 @@ class NamasteLMSCourseModel {
 	
 	// custom post type Course	
 	static function register_course_type() {
+		
+		$course_slug = get_option('namaste_course_slug');
+	   if(empty($course_slug)) $course_slug = 'namaste-course';
+	  	   
 		$args=array(
 			"label" => __("Namaste! Courses", 'namaste'),
 			"labels" => array
@@ -15,7 +19,7 @@ class NamasteLMSCourseModel {
 			"public"=> true,
 			"show_ui"=>true,
 			"has_archive"=>true,
-			"rewrite"=> array("slug"=>"namaste-course", "with_front"=>false),
+			"rewrite"=> array("slug"=>$course_slug, "with_front"=>false),
 			"description"=>__("This will create a new course in your Namaste! LMS.",'namaste'),
 			"supports"=>array("title", 'editor', 'thumbnail', 'excerpt'),
 			"taxonomies"=>array("category"),

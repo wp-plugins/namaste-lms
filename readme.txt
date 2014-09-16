@@ -55,7 +55,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.4.4 =
+= Version 1.4.5 =
+- Added option to change the course and lesson URL slugs from "namaste-course" and "namaste-lesson" to your custom slugs
 - Added "custom currency" option in the payment settings page
 - Submitting solutions to assignments on a lesson is not allowed if the lesson access requirements are not satisfied.
 - Added option to un-enroll student from a course
