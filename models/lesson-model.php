@@ -593,10 +593,12 @@ class NamasteLMSLessonModel {
 				$achieved_grade = false;
 				
 				foreach($takings as $taking) {
-					foreach($required_grade as $rgrade) {											
+					foreach($required_grade as $rgrade) {		
+						// used to be grade title, now it's grade ID so we have to handle both									
 						if(preg_match("/^".$rgrade."<p/", $taking->result) 
 							or (trim($rgrade) == trim($taking->result))
-							or (trim(strip_tags($rgrade)) == trim(strip_tags($taking->result)))) {
+							or (trim(strip_tags($rgrade)) == trim(strip_tags($taking->result)))
+							or ($rgrade == $taking->grade_id)) {
 							$achieved_grade = true;
 							break;
 						}

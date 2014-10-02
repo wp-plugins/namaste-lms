@@ -49,7 +49,7 @@ endif;?>
 				<select name="namaste_required_grade[]" size="4" multiple="true">
 					<option value=""><?php _e('- Any grade -')?></option>
 					<?php foreach($required_grades as $grade):?>
-						<option value="<?php echo $grade->gtitle?>" <?php if(in_array($grade->gtitle, $required_grade)) echo 'selected'?>><?php echo $grade->gtitle?></option>
+						<option value="<?php echo $grade->ID?>" <?php if(in_array($grade->gtitle, $required_grade) or in_array($grade->ID, $required_grade)) echo 'selected'?>><?php echo $grade->gtitle?></option>
 					<?php endforeach;?>
 				</select>
 			<?php endif;?>
@@ -69,7 +69,7 @@ endif;?>
 			return false;
 		}	
 		
-		html = '<select name="namaste_required_grade"> <option value=""><?php _e('- Any grade -')?></option>';
+		html = '<select name="namaste_required_grade[]" size="4" multiple="true"> <option value=""><?php _e('- Any grade -')?></option>';
 		if(!exams[examID]) return false;		
 		exam = exams[examID];
 		
