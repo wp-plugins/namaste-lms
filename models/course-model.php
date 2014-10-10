@@ -40,16 +40,16 @@ class NamasteLMSCourseModel {
 		
 		if ( (is_home() or is_archive()) and $query->is_main_query() ) {
 			$post_types = @$query->query_vars['post_type'];
-
+			
 			// empty, so we'll have to create post_type setting			
 			if(empty($post_types)) {
-				if(is_home()) $post_types = array('post', 'nav_menu_item', 'namaste_course');
-				else $post_types = array('post', 'nav_menu_item', 'namaste_course');
+				if(is_home()) $post_types = array('post', 'namaste_course');
+				else $post_types = array('post', 'namaste_course');
 			}
 			
 			// not empty, so let's just add
-			if(!empty($post_types) and is_array($post_types)) {				
-				$post_types[] = 'namaste_course';
+			if(!empty($post_types) and is_array($post_types)) {
+				$post_types[] = 'namaste_course';				
 				$query->set( 'post_type', $post_types );
 			}
 		}		
