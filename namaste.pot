@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.4.5\n"
+"Project-Id-Version: Namaste! LMS 1.4.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2014-09-16 12:59:20+00:00\n"
+"POT-Creation-Date: 2014-10-16 15:19:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,7 +16,7 @@ msgstr ""
 msgid "You are not allowed to view this"
 msgstr ""
 
-#: controllers/ajax.php:70
+#: controllers/ajax.php:74
 msgid "You are not allowed to grade"
 msgstr ""
 
@@ -161,7 +161,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:16 models/lesson-model.php:676
+#: models/course-model.php:16 models/lesson-model.php:678
 msgid "Course"
 msgstr ""
 
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:328 models/lesson-model.php:677
+#: models/course-model.php:328 models/lesson-model.php:679
 msgid "Visits (unique/total)"
 msgstr ""
 
@@ -325,7 +325,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4.5)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4.6)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:206
 msgid "Namaste! LMS"
@@ -1380,7 +1380,7 @@ msgid "Blog / Archive Pages Behavior"
 msgstr ""
 
 #: views/options.php:38
-msgid "Show courses as blog post in home and archive pages"
+msgid "Show courses as blog posts in home and archive pages"
 msgstr ""
 
 #: views/options.php:41
@@ -1497,86 +1497,96 @@ msgstr ""
 msgid "Your Paypal ID:"
 msgstr ""
 
-#: views/options.php:107
+#: views/options.php:105
+msgid "After payment go to:"
+msgstr ""
+
+#: views/options.php:106
+msgid ""
+"When left blank it goes to your \"My Courses\". If you enter specific full "
+"URL, the user will be returned to that URL."
+msgstr ""
+
+#: views/options.php:109
 msgid "Accept Stripe"
 msgstr ""
 
-#: views/options.php:110
+#: views/options.php:112
 msgid "Your Public Key:"
 msgstr ""
 
-#: views/options.php:111
+#: views/options.php:113
 msgid "Your Secret Key:"
 msgstr ""
 
-#: views/options.php:114
+#: views/options.php:116
 msgid "Accept other payment methods"
 msgstr ""
 
-#: views/options.php:115
+#: views/options.php:117
 msgid ""
 "This option lets you paste your own button HTML code or other manual "
 "instructions, for example bank wire. These payments will have to be "
 "processed manually unless you can build your own script to verify them."
 msgstr ""
 
-#: views/options.php:118
+#: views/options.php:120
 msgid ""
 "Enter text or HTML code for payment button(s). You can use the following "
 "variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
 msgstr ""
 
-#: views/options.php:122
+#: views/options.php:124
 msgid "Save payment settings"
 msgstr ""
 
-#: views/options.php:125
+#: views/options.php:127
 msgid "View payments errorlog"
 msgstr ""
 
-#: views/options.php:135
+#: views/options.php:137
 msgid "Exam/Test Related Settings"
 msgstr ""
 
-#: views/options.php:137
+#: views/options.php:139
 msgid ""
 "Namaste LMS utilizes the power of existing Wordpress plugins to handle "
 "exams, tests and quizzes. At this moment it can connect with two plugins:"
 msgstr ""
 
-#: views/options.php:137
+#: views/options.php:139
 msgid "(Free) and "
 msgstr ""
 
-#: views/options.php:137
+#: views/options.php:139
 msgid "(Premium)"
 msgstr ""
 
-#: views/options.php:139
+#: views/options.php:141
 msgid ""
 "If you have any of these plugins installed and activated, please choose "
 "which one to use for handling tests below:"
 msgstr ""
 
-#: views/options.php:141
+#: views/options.php:143
 msgid "I don not need to create any exams or tests."
 msgstr ""
 
-#: views/options.php:144
+#: views/options.php:146
 msgid "I will create exams with Watu."
 msgstr ""
 
-#: views/options.php:148
+#: views/options.php:150
 msgid "I will create exams with WatuPRO."
 msgstr ""
 
-#: views/options.php:152
+#: views/options.php:154
 msgid ""
 "When I cleanup student course data from the \"Manage Students\" page I want "
 "any related exam data for this student also to be REMOVED."
 msgstr ""
 
-#: views/options.php:155
+#: views/options.php:157
 msgid "Save Exam Options"
 msgstr ""
 

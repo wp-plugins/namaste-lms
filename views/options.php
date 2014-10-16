@@ -102,6 +102,8 @@
 			
 			<div id="paypalDiv" style="display:<?php echo $accept_paypal?'block':'none'?>;">
 				<p><label><?php _e('Your Paypal ID:', 'namaste')?></label> <input type="text" name="paypal_id" value="<?php echo get_option('namaste_paypal_id')?>"></p>
+				<p><label><?php _e('After payment go to:', 'namaste')?></label> <input type="text" name="paypal_return" value="<?php echo get_option('namaste_paypal_return');?>" size="40"> <br />
+				<?php _e('When left blank it goes to your "My Courses". If you enter specific full URL, the user will be returned to that URL.', 'namaste')?> </p>
 			</div>
 			
 			<p><input type="checkbox" name="accept_stripe" value="1" <?php if($accept_stripe) echo 'checked'?> onclick="this.checked?jQuery('#stripeDiv').show():jQuery('#stripeDiv').hide()"> <?php _e('Accept Stripe', 'namaste')?></p>

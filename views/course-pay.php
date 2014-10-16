@@ -11,7 +11,7 @@
 		<input type="hidden" name="item_name" value="<?php echo __('Subscribe for', 'namaste').' '.$course->post_title?>">
 		<input type="hidden" name="item_number" value="<?php echo $course->ID?>">
 		<input type="hidden" name="amount" value="<?php echo number_format($fee,2,".","")?>">
-		<input type="hidden" name="return" value="<?php echo admin_url('admin.php?page=namaste_my_courses');?>">
+		<input type="hidden" name="return" value="<?php echo trim($paypal_return);?>">
 		<input type="hidden" name="notify_url" value="<?php echo site_url('?namaste=paypal&course_id='.$course->ID.'&user_id='.$user_ID);?>">
 		<input type="hidden" name="no_shipping" value="1">
 		<input type="hidden" name="no_note" value="1">

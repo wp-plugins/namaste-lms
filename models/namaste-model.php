@@ -389,6 +389,7 @@ class NamasteLMS {
 			update_option('namaste_currency', $_POST['currency']);
 			update_option('namaste_accept_paypal', $_POST['accept_paypal']);
 			update_option('namaste_paypal_id', $_POST['paypal_id']);
+			update_option('namaste_paypal_return', $_POST['paypal_return']);
 			
 			update_option('namaste_accept_stripe', $_POST['accept_stripe']);
 			update_option('namaste_stripe_public', $_POST['stripe_public']);

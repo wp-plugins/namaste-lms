@@ -61,6 +61,10 @@ function namaste_ajax() {
 				$other_payment_methods = str_replace('{{amount}}', @$_GET['fee'], $other_payment_methods);
 			}
 			
+			// return URL
+			$paypal_return = get_option('namaste_paypal_return');			
+			if(empty($paypal_return)) $paypal_return =  admin_url('admin.php?page=namaste_my_courses');
+			
 			if(@file_exists(get_stylesheet_directory().'/namaste/course-pay.php')) require get_stylesheet_directory().'/namaste/course-pay.php';
 		else require(NAMASTE_PATH."/views/course-pay.php");	
 		break;
