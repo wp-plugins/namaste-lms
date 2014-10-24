@@ -63,7 +63,7 @@ class NamasteLMSCoursesController {
 		
 		// enroll in course
 		$course = $_course->select($_POST['course_id']);
-		
+				
 		// course fee? 
 		$fee = get_post_meta($course->ID, 'namaste_fee', true);
 		
@@ -71,9 +71,9 @@ class NamasteLMSCoursesController {
 		if($fee > 0 and !$is_manager) wp_die("You can't enroll yourself in a course when there is a fee"); 			
 		
 		$enroll_mode = get_post_meta($course->ID, 'namaste_enroll_mode', true);
-				
+			
 		// if already enrolled, just skip this altogether
-		if(!NamasteLMSStudentModel :: is_enrolled($user_ID, $course->ID)) {
+		if(!NamasteLMSStudentModel :: is_enrolled($user_ID, $course->ID)) {			
 			// depending on mode, status will be either 'pending' or 'enrolled'
 			$status = ($enroll_mode == 'free') ? 'enrolled' : 'pending';
 			

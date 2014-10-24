@@ -13,6 +13,8 @@ class NamastePoint {
 			user_id=%d, date=CURDATE(), datetime=NOW(), action='awarded_points', value=%s, num_value=%d",
 			$user_id, $explanation, $award_points));
 			
+		do_action('namaste_earned_points', $user_id, $award_points);	
+			
 		return true;	
 	}
 }

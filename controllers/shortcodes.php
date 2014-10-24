@@ -43,11 +43,16 @@ class NamasteLMSShortcodesController {
    } // end todo
    
    // display enroll button
-   static function enroll() {
+   static function enroll($atts) {
    	global $wpdb, $user_ID, $user_email, $post;
    	
    	if(!is_user_logged_in()) {
    		return __('You need to be logged in to enroll in this course', 'namaste');
+   	}
+   	
+   	// passed course id?
+   	if(!empty($atts['course_id'])) {
+   		$post = get_post($atts['course_id']);
    	}
    	
    	$enrolled = $wpdb -> get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_COURSES.
@@ -66,12 +71,15 @@ class NamasteLMSShortcodesController {
 			
 			if(!empty($_POST['stripe_pay'])) {
 				 NamasteStripe::pay($currency);			
-				 namaste_redirect($_SERVER['REQUEST_URI']);
+				 namaste_redirect(get_permalink($post->ID));
 			}	
 		
 			if(!empty($_POST['enroll'])) {
-				$mesage = NamasteLMSCoursesController::enroll($is_manager);
-				namaste_redirect($_SERVER['REQUEST_URI']);
+				// in case we use several shortcodes on the page make sure only the right course action is executed
+				if(empty($atts['course_id']) or $atts['course_id'] == $_POST['course_id']) {
+					$mesage = NamasteLMSCoursesController::enroll($is_manager);				
+					namaste_redirect(get_permalink($post->ID));
+				}	
 			}	
 			
 			$_course->currency = $currency;

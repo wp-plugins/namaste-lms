@@ -16,3 +16,5 @@ endif;?>
 		<?php endforeach;?>
 	</table>
 </div>
+
+<?php echo do_action('namaste-my-certificates-bottom');?>

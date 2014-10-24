@@ -343,7 +343,6 @@ class NamasteLMS {
 	// manage general options
 	static function options() {
 		global $wp_roles, $wp_rewrite;				
-		
 		$is_admin = current_user_can('administrator');		
 		
 		if(!empty($_POST['namaste_options']) and check_admin_referer('save_options', 'nonce_options')) {

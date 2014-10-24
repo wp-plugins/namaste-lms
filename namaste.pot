@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.4.6\n"
+"Project-Id-Version: Namaste! LMS 1.4.7\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2014-10-16 15:19:33+00:00\n"
+"POT-Creation-Date: 2014-10-24 09:02:12+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -109,47 +109,47 @@ msgstr ""
 msgid "You need to be logged in to enroll in this course"
 msgstr ""
 
-#: controllers/shortcodes.php:90
+#: controllers/shortcodes.php:98
 msgid "You are enrolled in this course."
 msgstr ""
 
-#: controllers/shortcodes.php:91
+#: controllers/shortcodes.php:99
 msgid "Your enroll request is received. Waiting for manager approval."
 msgstr ""
 
-#: controllers/shortcodes.php:92
+#: controllers/shortcodes.php:100
 msgid "You have completed this course."
 msgstr ""
 
-#: controllers/shortcodes.php:93
+#: controllers/shortcodes.php:101
 msgid "Your enrollment request is rejected."
 msgstr ""
 
-#: controllers/shortcodes.php:129
+#: controllers/shortcodes.php:137
 msgid "User"
 msgstr ""
 
-#: controllers/shortcodes.php:129
+#: controllers/shortcodes.php:137
 msgid "Points"
 msgstr ""
 
-#: controllers/shortcodes.php:178
+#: controllers/shortcodes.php:186
 msgid "This content is for logged in users."
 msgstr ""
 
-#: controllers/shortcodes.php:192
+#: controllers/shortcodes.php:200
 msgid "next lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:211
+#: controllers/shortcodes.php:219
 msgid "previous lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:278
+#: controllers/shortcodes.php:286
 msgid "Lesson completed!"
 msgstr ""
 
-#: controllers/shortcodes.php:282
+#: controllers/shortcodes.php:290
 msgid "Mark as completed"
 msgstr ""
 
@@ -325,7 +325,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4.6)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4.7)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:206
 msgid "Namaste! LMS"
@@ -567,7 +567,7 @@ msgstr ""
 msgid "Enrollment mode:"
 msgstr ""
 
-#: views/course-meta-box.php:3 views/course-meta-box.php:43
+#: views/course-meta-box.php:3 views/course-meta-box.php:45
 #: views/lesson-meta-box.php:95
 msgid "You can use the shortcode"
 msgstr ""
@@ -578,99 +578,106 @@ msgid ""
 "content"
 msgstr ""
 
+#: views/course-meta-box.php:5 views/course-meta-box.php:46
+#: views/lesson-meta-box.php:97
+msgid "The shortcode"
+msgstr ""
+
 #: views/course-meta-box.php:5
-msgid "Logged in users can enroll this course themselves."
+msgid ""
+"needs to be used if you want to display enroll button for this course on a "
+"different page."
 msgstr ""
 
 #: views/course-meta-box.php:7
+msgid "Logged in users can enroll this course themselves."
+msgstr ""
+
+#: views/course-meta-box.php:9
 msgid "Admin manually approves/enrolls students in courses"
 msgstr ""
 
-#: views/course-meta-box.php:10
+#: views/course-meta-box.php:12
 msgid "Students need to pay a fee of"
 msgstr ""
 
-#: views/course-meta-box.php:10
+#: views/course-meta-box.php:12
 msgid "to enroll this course. (Leave it 0 for no fee.)"
 msgstr ""
 
-#: views/course-meta-box.php:13
+#: views/course-meta-box.php:15
 msgid "Course Access / Pre-requisites"
 msgstr ""
 
-#: views/course-meta-box.php:16
+#: views/course-meta-box.php:18
 msgid "There are no other courses so every student can enroll in this course."
 msgstr ""
 
-#: views/course-meta-box.php:18
+#: views/course-meta-box.php:20
 msgid ""
 "This course will be accessible only after the following courses are "
 "completed:"
 msgstr ""
 
-#: views/course-meta-box.php:24
+#: views/course-meta-box.php:26
 msgid "Course completeness"
 msgstr ""
 
-#: views/course-meta-box.php:27
+#: views/course-meta-box.php:29
 msgid ""
 "This course has no lessons assigned so it can never be completed. Please "
 "create and assign some lessons to this course."
 msgstr ""
 
-#: views/course-meta-box.php:29
+#: views/course-meta-box.php:31
 msgid ""
 "The following lessons must be completed in order to complete this course. "
 "Please select at least one."
 msgstr ""
 
-#: views/course-meta-box.php:38 views/homework.php:11
+#: views/course-meta-box.php:40 views/homework.php:11
 #: views/lesson-meta-box.php:89 views/options.php:66 views/options.php:68
 #: views/options.php:70
 msgid "Reward"
 msgstr ""
 
-#: views/course-meta-box.php:38
+#: views/course-meta-box.php:40
 msgid "points for completing this course."
 msgstr ""
 
-#: views/course-meta-box.php:41 views/lesson-meta-box.php:93
+#: views/course-meta-box.php:43 views/lesson-meta-box.php:93
 msgid "Shortcodes"
 msgstr ""
 
-#: views/course-meta-box.php:43
+#: views/course-meta-box.php:45
 msgid ""
 "inside the course content to display what the student needs to do to "
 "complete the course."
 msgstr ""
 
-#: views/course-meta-box.php:44 views/lesson-meta-box.php:97
-msgid "The shortcode"
-msgstr ""
-
-#: views/course-meta-box.php:44
+#: views/course-meta-box.php:46
 msgid "will display the lessons in the course."
 msgstr ""
 
-#: views/course-meta-box.php:44
+#: views/course-meta-box.php:46
 msgid "It allows more advanced configurations explained on the "
 msgstr ""
 
-#: views/course-meta-box.php:44
+#: views/course-meta-box.php:46
 msgid "help page."
 msgstr ""
 
-#: views/course-meta-box.php:46 views/lesson-meta-box.php:99
+#: views/course-meta-box.php:48 views/lesson-meta-box.php:99
 msgid "Did you know?"
 msgstr ""
 
-#: views/course-meta-box.php:49
+#: views/course-meta-box.php:51
 msgid ""
 "You can limit the access to this course also by <a href=\"%s\" target="
 "\"_blank\">class / group</a>."
 msgstr ""
 
-#: views/course-meta-box.php:51
+#: views/course-meta-box.php:53
 msgid ""
 "If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able "
 "to assign courses to classes and restrict access based on class, have "
@@ -1503,8 +1510,8 @@ msgstr ""
 
 #: views/options.php:106
 msgid ""
-"When left blank it goes to your \"My Courses\". If you enter specific full "
-"URL, the user will be returned to that URL."
+"When left blank it goes to the course page. If you enter specific full URL, "
+"the user will be returned to that URL."
 msgstr ""
 
 #: views/options.php:109

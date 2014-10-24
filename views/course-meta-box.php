@@ -1,6 +1,8 @@
 <h4><?php _e('Enrollment mode:', 'namaste')?></h4>
 
 <p><b><?php _e('You can use the shortcode', 'namaste')?></b> <input type="text" value="[namaste-enroll]" onclick="this.select();" readonly size="14"> <b><?php _e('to display enrollment button (or enrolled/pending message) in the course content', 'namaste')?></b></p>
+
+<p><b><?php _e('The shortcode', 'namaste')?></b> <input type="text" value="[namaste-enroll course_id=<?php echo $post->ID?>]" onclick="this.select();" readonly size="24"> <b><?php _e('needs to be used if you want to display enroll button for this course on a different page.', 'namaste')?></b></p>
  
 <p><input type="radio" name="namaste_enroll_mode" value="free" <?php if(empty($enroll_mode) or $enroll_mode == 'free') echo 'checked'?>> <?php _e('Logged in users can enroll this course themselves.', 'namaste')?></p>
 

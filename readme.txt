@@ -55,7 +55,7 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.4.6 =
+= Version 1.4.7 =
 - Added option to change the course and lesson URL slugs from "namaste-course" and "namaste-lesson" to your custom slugs
 - Added "custom currency" option in the payment settings page
 - Submitting solutions to assignments on a lesson is not allowed if the lesson access requirements are not satisfied.
@@ -63,6 +63,8 @@ None yet, please ask in the forum
 - Now you can generate PDF certificates using the free PDF bridge plugin
 - Added variables for course description and certificate ID in the certificates. Improved the certificate displaying.
 - Added option to redirect to specific URL after Paypal payment
+- Added option to include "enroll" shortcodes outside of course page
+- Improved the redirect URL after course enrollment (now defaults to the course page)
 
 = Version 1.4 =
 - Advanced users only: You can now create your own versions of all Namaste views for high-level of customization
