@@ -46,7 +46,7 @@ class NamasteLMSCoursesController {
 		$_course->accept_other_payment_methods = $accept_other_payment_methods;
 		$_course->accept_paypal = $accept_paypal;
 		$_course->accept_stripe = $accept_stripe;		
-		$_course->stripe = $stripe;		
+		$_course->stripe = @$stripe;		
 		wp_enqueue_script('thickbox',null,array('jquery'));
 		wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');	 
 			 

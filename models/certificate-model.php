@@ -58,16 +58,9 @@ class NamasteLMSCertificateModel {
 		global $wpdb;
 		
 		$_course = new NamasteLMSCourseModel();
-		
-		// select my already achieved certificates to avoid unnecessary queries
-		$my_certificates = $wpdb->get_results($wpdb->prepare("SELECT certificate_id FROM ".NAMASTE_STUDENT_CERTIFICATES."
-			WHERE student_id=%d", $student_id));
-		$my_ids = array(0);
-		foreach($my_certificates as $c) $my_ids[] = $c->certificate_id;	
-		
-		
+			
 		$certificates = $wpdb->get_results("SELECT * FROM ".NAMASTE_CERTIFICATES." 
-			WHERE course_ids LIKE '%|$course_id|%' AND id NOT IN (".implode(",", $my_ids).")");
+			WHERE course_ids LIKE '%|$course_id|%' ");
 			
 		foreach($certificates as $certificate) {
 			// see if the other courses are completed

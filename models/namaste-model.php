@@ -6,7 +6,7 @@ class NamasteLMS {
    	$wpdb -> show_errors();
    	
    	$old_version = get_option('namaste_version');
-   	update_option( 'namaste_version', "1.27");
+   	update_option( 'namaste_version', "1.29");
    	if(!$update) self::init();
 	  
 	  // enrollments to courses
@@ -100,12 +100,6 @@ class NamasteLMS {
 				) DEFAULT CHARSET=utf8;";
 			
 			$wpdb->query($sql);
-			
-			$sql= "ALTER TABLE  `" . NAMASTE_STUDENT_CERTIFICATES . "` ADD UNIQUE (
-			 `certificate_id` ,
-			 `student_id`
-			)";
-			$wpdb->query($sql);
 	  }  
 	 
 	  // payment records	  
@@ -171,7 +165,7 @@ class NamasteLMS {
 	  namaste_add_db_fields(array(
 		  array("name"=>"award_points", "type"=>"INT UNSIGNED NOT NULL DEFAULT 0")	  
 	  ), NAMASTE_HOMEWORKS);
-	 
+	  
 	  // add student role if not exists
     $res = add_role('student', 'Student', array(
           'read' => true, // True allows that capability
@@ -186,9 +180,15 @@ class NamasteLMS {
     $role = get_role('administrator');
     if(!$role->has_cap('namaste_manage')) $role->add_cap('namaste_manage');
     
-    // update fileblog
+    // update fileblob
     if($old_version < 1.27) {
     	$wpdb->query("ALTER TABLE ".NAMASTE_STUDENT_HOMEWORKS." CHANGE fileblob fileblob LONGBLOB");
+    }
+ 
+    if($old_version < 1.29) {
+    	 // drop student-certificate uniqueness, no longer used
+		  $sql = "ALTER TABLE ".NAMASTE_STUDENT_CERTIFICATES." DROP INDEX certificate_id";
+		  $wpdb->query($sql);
     }
     
     // fush rewrite rules
@@ -313,7 +313,7 @@ class NamasteLMS {
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
 		
 		$version = get_option('namaste_version');
-		if($version != '1.27') self::install(true);
+		if($version != '1.29') self::install(true);
 		
 		// purge history log older than 180 days
 		// in the next version this period should be configurable
