@@ -82,7 +82,8 @@ class NamasteLMSCertificatesController {
 		// select certificate
 		$certificate = $wpdb -> get_row($wpdb->prepare("SELECT tC.*, tS.date as date, tS.id as stid 
 			FROM ".NAMASTE_CERTIFICATES." tC JOIN ".NAMASTE_STUDENT_CERTIFICATES." tS On tC.id = tS.certificate_id 
-			WHERE tS.student_id = %d AND tC.id=%d", $_GET['student_id'], $_GET['id']));
+			WHERE tS.student_id = %d AND tC.id=%d
+			AND tS.id=%d", $_GET['student_id'], $_GET['id'], $_GET['my_id']));
 			
 		$output = wpautop(stripslashes($certificate -> content));	
 			

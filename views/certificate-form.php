@@ -23,7 +23,7 @@
 					<li><input type="checkbox" name="course_ids[]" value="<?php echo $course->ID?>" <?php if(!empty($certificate->id) and strstr($certificate->course_ids, '|'.$course->ID.'|')) echo "checked"?>> <?php echo $course->post_title?></li>
 				<?php endforeach;?>
 			</ul>
-		<?php endif;?></div>
+		<?php endif;?>
 		
 		<div align="center">
 			<input type="submit" name="ok" value="<?php _e('Save Certificate', 'namaste')?>">
