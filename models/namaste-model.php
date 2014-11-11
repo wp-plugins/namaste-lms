@@ -6,7 +6,7 @@ class NamasteLMS {
    	$wpdb -> show_errors();
    	
    	$old_version = get_option('namaste_version');
-   	update_option( 'namaste_version', "1.29");
+   	update_option( 'namaste_version', "1.31");
    	if(!$update) self::init();
 	  
 	  // enrollments to courses
@@ -163,8 +163,13 @@ class NamasteLMS {
 	  ), NAMASTE_STUDENT_LESSONS);
 	  
 	  namaste_add_db_fields(array(
-		  array("name"=>"award_points", "type"=>"INT UNSIGNED NOT NULL DEFAULT 0")	  
+		  array("name"=>"award_points", "type"=>"INT UNSIGNED NOT NULL DEFAULT 0"), 
+		  array("name"=>"editor_id", "type"=>"INT UNSIGNED NOT NULL DEFAULT 0")
 	  ), NAMASTE_HOMEWORKS);
+	  
+	  namaste_add_db_fields(array(		   
+		  array("name"=>"editor_id", "type"=>"INT UNSIGNED NOT NULL DEFAULT 0")
+	  ), NAMASTE_CERTIFICATES);
 	  
 	  // add student role if not exists
     $res = add_role('student', 'Student', array(
@@ -202,14 +207,36 @@ class NamasteLMS {
    static function menu() {
 		$namaste_cap = current_user_can('namaste_manage') ? 'namaste_manage' : 'namaste';   	
 		$use_grading_system = get_option('namaste_use_grading_system');
+		$homework_menu = $students_menu = $certificates_menu = $gradebook_menu = $settings_menu = true;
+		if(!current_user_can('administrator') and current_user_can('namaste_manage')) {
+			// perform these checks only for managers that are not admins, otherwise it's pointless use of resourses
+			global $user_ID, $wp_roles;
+			$role_settings = unserialize(get_option('namaste_role_settings'));
+			$roles = $wp_roles->roles;
+			// get all the currently enabled roles
+			$enabled_roles = array();
+			foreach($roles as $key => $role) {
+				$r=get_role($key);
+				if(!empty($r->capabilities['namaste_manage'])) $enabled_roles[] = $key;
+			}
+					
+			// admin can do everything					
+			$user = new WP_User( $user_ID );
+			$homework_menu = NamasteLMSMultiUser :: item_access('homework_access', $role_settings, $user, $enabled_roles); 
+			$students_menu = NamasteLMSMultiUser :: item_access('students_access', $role_settings, $user, $enabled_roles);
+			$certificates_menu = NamasteLMSMultiUser :: item_access('certificates_access', $role_settings, $user, $enabled_roles);
+			$gradebook_menu = NamasteLMSMultiUser :: item_access('gradebook_access', $role_settings, $user, $enabled_roles);
+			$settings_menu = NamasteLMSMultiUser :: item_access('settings_access', $role_settings, $user, $enabled_roles);			
+		}
+		
    	
    	$menu=add_menu_page(__('Namaste! LMS', 'namaste'), __('Namaste! LMS', 'namaste'), "namaste_manage", "namaste_options", 
    		array(__CLASS__, "options"));
-		add_submenu_page('namaste_options', __("Assignments", 'namaste'), __("Assignments", 'namaste'), 'namaste_manage', 'namaste_homeworks', array('NamasteLMSHomeworkModel', "manage"));
-		add_submenu_page('namaste_options', __("Students", 'namaste'), __("Students", 'namaste'), 'namaste_manage', 'namaste_students', array('NamasteLMSStudentModel', "manage"));		
-		add_submenu_page('namaste_options', __("Certificates", 'namaste'), __("Certificates", 'namaste'), 'namaste_manage', 'namaste_certificates', array('NamasteLMSCertificatesController', "manage"));
-		if(!empty($use_grading_system)) add_submenu_page('namaste_options', __("Gradebook", 'namaste'), __("Gradebook", 'namaste'), 'namaste_manage', 'namaste_gradebook', array('NamasteLMSGradebookController', "manage"));
-		add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));     
+		if($homework_menu) add_submenu_page('namaste_options', __("Assignments", 'namaste'), __("Assignments", 'namaste'), 'namaste_manage', 'namaste_homeworks', array('NamasteLMSHomeworkModel', "manage"));
+		if($students_menu) add_submenu_page('namaste_options', __("Students", 'namaste'), __("Students", 'namaste'), 'namaste_manage', 'namaste_students', array('NamasteLMSStudentModel', "manage"));		
+		if($certificates_menu) add_submenu_page('namaste_options', __("Certificates", 'namaste'), __("Certificates", 'namaste'), 'namaste_manage', 'namaste_certificates', array('NamasteLMSCertificatesController', "manage"));
+		if($gradebook_menu and !empty($use_grading_system)) add_submenu_page('namaste_options', __("Gradebook", 'namaste'), __("Gradebook", 'namaste'), 'namaste_manage', 'namaste_gradebook', array('NamasteLMSGradebookController', "manage"));
+		if($settings_menu) add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));     
 		add_submenu_page('namaste_options', __("Help", 'namaste'), __("Help", 'namaste'), 'namaste_manage', 'namaste_help', array(__CLASS__, "help"));        
 		add_submenu_page('namaste_options', __("Namaste! Plugins &amp; API", 'namaste'), __("Plugins &amp; API", 'namaste'), 'namaste_manage', 'namaste_plugins', array(__CLASS__, "plugins"));
    		
@@ -222,6 +249,7 @@ class NamasteLMS {
 		add_submenu_page( NULL, __("View all solutions", 'namaste'), __("View all solutions", 'namaste'), 'namaste_manage', 'namaste_view_all_solutions', array('NamasteLMSHomeworkController', "view_all"));
 		add_submenu_page( NULL, __("View Certificate", 'namaste'), __("View Certificate", 'namaste'), $namaste_cap, 'namaste_view_certificate', array('NamasteLMSCertificatesController', "view_certificate"));
 		add_submenu_page( NULL, __("Download solution", 'namaste'), __("Download solution", 'namaste'), $namaste_cap, 'namaste_download_solution', array('NamasteLMSHomeworkController', "download_solution"));
+		add_submenu_page( NULL, __("Multi user configuration", 'namaste'), __("Multi user configuration", 'namaste'), 'manage_options', 'namaste_multiuser', array('NamasteLMSMultiUser', "manage"));
 		
 		do_action('namaste_lms_admin_menu');
 		
@@ -313,7 +341,7 @@ class NamasteLMS {
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
 		
 		$version = get_option('namaste_version');
-		if($version != '1.29') self::install(true);
+		if($version != '1.31') self::install(true);
 		
 		// purge history log older than 180 days
 		// in the next version this period should be configurable
@@ -344,6 +372,8 @@ class NamasteLMS {
 	static function options() {
 		global $wp_roles, $wp_rewrite;				
 		$is_admin = current_user_can('administrator');		
+		$multiuser_access = 'all';
+		$multiuser_access = NamasteLMSMultiUser :: check_access('settings_access');
 		
 		if(!empty($_POST['namaste_options']) and check_admin_referer('save_options', 'nonce_options')) {
 			$roles = $wp_roles->roles;			

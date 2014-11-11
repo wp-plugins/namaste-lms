@@ -2,7 +2,9 @@
 class NamasteLMSCertificatesController {
 	// manage certificates
 	static function manage() {
-		global $wpdb;
+		global $wpdb, $user_ID;
+		$multiuser_access = 'all';
+		$multiuser_access = NamasteLMSMultiUser :: check_access('certificates_access');
 		
 		$_cert = new NamasteLMSCertificateModel();
 		
@@ -21,7 +23,12 @@ class NamasteLMSCertificatesController {
 				else require(NAMASTE_PATH."/views/certificate-form.php");		
 			break;	
 			
-			case 'edit':
+			case 'edit':			
+				if($multiuser_access == 'own') {
+					$certificate = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_CERTIFICATES." WHERE id=%d", $_GET['id']));	
+					if($certificate->editor_id != $user_ID) wp_die(__('You are not allowed to do this.', 'namaste'));
+				}
+
 				if(!empty($_POST['del'])) {
 					$wpdb->query($wpdb->prepare("DELETE FROM ".NAMASTE_CERTIFICATES." WHERE id=%d", $_GET['id']));						
 					namaste_redirect("admin.php?page=namaste_certificates&msg=deleted");
@@ -39,7 +46,9 @@ class NamasteLMSCertificatesController {
 			break;	
 			
 			default:
-				$certificates = $wpdb->get_results("SELECT * FROM ".NAMASTE_CERTIFICATES." ORDER BY title");			
+				$own_sql = '';
+				if($multiuser_access == 'own') $own_sql = $wpdb->prepare("WHERE editor_id=%d", $user_ID); 
+				$certificates = $wpdb->get_results("SELECT * FROM ".NAMASTE_CERTIFICATES." $own_sql ORDER BY title");			
 				
 				if(!empty($_GET['msg'])) {
 					switch($_GET['msg']) {

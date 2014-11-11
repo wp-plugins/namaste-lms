@@ -169,6 +169,9 @@ class NamasteLMSLessonModel {
 		
 		// change student-lesson status?
 		if(!empty($_POST['change_status'])) {
+			$multiuser_access = 'all';
+			$multiuser_access = NamasteLMSMultiUser :: check_access('students_access');
+			if($multiuser_access == 'view') wp_die(__('You are not allowed to do this.', 'namaste'));
 				$result = NamasteLMSStudentModel :: lesson_status($student->ID, $_POST['lesson_id'], $_POST['status']);
 				if(!$result) $error = __('The lesson cannot be completed because there are unsatisfied requirements', 'namaste');
 		}

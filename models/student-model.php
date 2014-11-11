@@ -8,6 +8,9 @@ class NamasteLMSStudentModel {
 		 global $wpdb;
 		 $_course = new NamasteLMSCourseModel();
 		 
+		 	$multiuser_access = 'all';
+			$multiuser_access = NamasteLMSMultiUser :: check_access('students_access');
+		 
 		 // select all courses
 		 $courses = $_course -> select();
 		 $courses = apply_filters('namaste-homeworks-select-courses', $courses);
@@ -18,6 +21,7 @@ class NamasteLMSStudentModel {
 		 	
 				// cleanup student record
 				if(!empty($_GET['cleanup'])) {
+					 if($multiuser_access  == 'view') wp_die(__('You are not allowed to do this.', 'namaste'));
 					 $wpdb->query( $wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_COURSES." 
 					 	WHERE course_id = %d AND user_id=%d", $_GET['course_id'], $_GET['student_id']) );
 					 	
@@ -26,7 +30,6 @@ class NamasteLMSStudentModel {
 					// delete solutions
 					$wpdb->query($wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE student_id=%d
 						AND homework_id IN (SELECT id FROM ".NAMASTE_HOMEWORKS." WHERE course_id=%d)", $_GET['student_id'], $_GET['course_id'])); 					 
-					 
 					// cleanup exams data? 
 					$use_exams = get_option('namaste_use_exams');
 					if($use_exams and get_option('namaste_cleanup_exams') == 'yes') {
@@ -55,6 +58,8 @@ class NamasteLMSStudentModel {
 		 	
 				// enroll student
 				if(!empty($_GET['enroll'])) {
+					 if($multiuser_access  == 'view') wp_die(__('You are not allowed to do this.', 'namaste'));
+					 	
 					 // find the user
 					 $error = false;
 					 if(strstr($_GET['email'], '@')) $student = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->users} WHERE user_email=%s", $_GET['email']));
@@ -95,6 +100,8 @@ class NamasteLMSStudentModel {
 				
 				// change student status
 				if(!empty($_GET['change_status'])) {
+					if($multiuser_access  == 'view') wp_die(__('You are not allowed to do this.', 'namaste'));
+					
 					 $wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_COURSES." SET
 					 			status=%s, completion_date=CURDATE() 
 					 			WHERE user_id=%d AND course_id=%d", $_GET['status'], $_GET['student_id'], $_GET['course_id']));
@@ -165,8 +172,12 @@ class NamasteLMSStudentModel {
 		global $wpdb, $user_ID;
 		
 		// security check
-		if(!current_user_can('namaste_manage') and $user_ID != $student_id) 
+		$multiuser_access = 'all';
+		$multiuser_access = NamasteLMSMultiUser :: check_access('students_access');
+		if( (!current_user_can('namaste_manage') or $multiuser_access == 'view') 
+				and $user_ID != $student_id) {
 			wp_die(__("You cannot change someone else's status", 'namaste'));
+		}
 			
 		// if status == -1 we have to remove the existing record if any
 		if($status == -1) {

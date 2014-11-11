@@ -44,7 +44,7 @@
 	<?php else: echo '<p>'.__('You have to select course and lesson before you can create assignments', 'namaste').'</p>'; endif;?>
 	</div>
 	<div id="namaste-sidebar">
-				<?php if(!is_plugin_active('namaste-pro/namaste-pro.php')): include(NAMASTE_PATH."/views/sidebar.html.php"); endif;?>
+				<?php include(NAMASTE_PATH."/views/sidebar.html.php"); ?>
 	</div>	  
 </div>	
 

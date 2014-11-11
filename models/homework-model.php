@@ -5,6 +5,9 @@ class NamasteLMSHomeworkModel {
 		$_course = new NamasteLMSCourseModel();
 		$_lesson = new NamasteLMSLessonModel();
 		
+		$multiuser_access = 'all';
+		$multiuser_access = NamasteLMSMultiUser :: check_access('homework_access');
+				
 		// select courses
 		$courses = $_course -> select();
 		$courses = apply_filters('namaste-homeworks-select-courses', $courses);
@@ -19,9 +22,10 @@ class NamasteLMSHomeworkModel {
 				do_action('namaste-check-permissions', 'course', $_GET['course_id']);
 				if(!empty($_POST['ok'])) {
 						$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HOMEWORKS." SET
-						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d, award_points=%d",
+						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d, 
+						award_points=%d, editor_id=%d",
 						$_GET['course_id'], $_GET['lesson_id'], $_POST['title'], 
-						$_POST['description'], @$_POST['accept_files'], @$_POST['award_points']));	
+						$_POST['description'], @$_POST['accept_files'], @$_POST['award_points'], $user_ID));	
 						
 						$id = $wpdb->insert_id;		
 						
@@ -38,6 +42,13 @@ class NamasteLMSHomeworkModel {
 			case 'edit':
 				// apply permissions from other plugins 
 				do_action('namaste-check-permissions', 'homework', $_GET['id']);
+				
+				if($multiuser_access == 'own') {
+					$homework = self::select($wpdb->prepare(' WHERE id=%d ', $_GET['id']));
+					$homework = $homework[0];
+					if($homework->editor_id != $user_ID) wp_die(__('You are not allowed to edit or delete this assignment', 'namaste'));
+				}				
+				
 				if(!empty($_POST['del'])) {
 					 self::delete($_GET['id']);
 					 
@@ -77,9 +88,13 @@ class NamasteLMSHomeworkModel {
 					// apply permissions from other plugins - this allows other plugins to die here if user can't access the course
 					do_action('namaste-check-permissions', 'course', $_GET['course_id']);
 					
+					$own_sql = '';
+					if($multiuser_access == 'own') $own_sql = $wpdb->prepare(" AND tH.editor_id=%d ", $user_ID);
+					
 					$homeworks = $wpdb->get_results($wpdb->prepare("SELECT tH.*, COUNT(tS.id) as solutions 
-					FROM ".NAMASTE_HOMEWORKS." tH LEFT JOIN ".NAMASTE_STUDENT_HOMEWORKS." tS ON tS.homework_id = tH.id
-					WHERE tH.course_id=%d AND tH.lesson_id=%d GROUP BY tH.id ORDER BY tH.title", 
+						FROM ".NAMASTE_HOMEWORKS." tH LEFT JOIN ".NAMASTE_STUDENT_HOMEWORKS." tS ON tS.homework_id = tH.id
+						WHERE tH.course_id=%d AND tH.lesson_id=%d	$own_sql 
+						GROUP BY tH.id ORDER BY tH.title", 
 						$_GET['course_id'], $_GET['lesson_id']));
 				} 
 				

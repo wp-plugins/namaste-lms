@@ -1,12 +1,13 @@
 <?php
 class NamasteLMSCertificateModel {
 	function add($vars) {
-		global $wpdb;
+		global $wpdb, $user_ID;
 		
 		if(!is_array($vars['course_ids']) or empty($vars['course_ids'])) $vars['course_ids'] = array(0);
 		
 		$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_CERTIFICATES." SET
-			course_ids=%s, title=%s, content=%s", '|'.implode("|", $vars['course_ids']).'|', $vars['title'], $vars['content']));
+			course_ids=%s, title=%s, content=%s, editor_id=%d", 
+			'|'.implode("|", $vars['course_ids']).'|', $vars['title'], $vars['content'], $user_ID));
 	}
 	
 	function edit($vars, $id) {

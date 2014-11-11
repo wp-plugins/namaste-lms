@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.4.7\n"
+"Project-Id-Version: Namaste! LMS 1.4.9\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2014-10-24 09:02:12+00:00\n"
+"POT-Creation-Date: 2014-11-11 16:52:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,23 +16,29 @@ msgstr ""
 msgid "You are not allowed to view this"
 msgstr ""
 
-#: controllers/ajax.php:74
+#: controllers/ajax.php:75
 msgid "You are not allowed to grade"
 msgstr ""
 
-#: controllers/certificates.php:46
+#: controllers/certificates.php:29 controllers/multiuser.php:57
+#: models/lesson-model.php:174 models/student-model.php:24
+#: models/student-model.php:61 models/student-model.php:103
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: controllers/certificates.php:55
 msgid "Certificate added"
 msgstr ""
 
-#: controllers/certificates.php:47
+#: controllers/certificates.php:56
 msgid "Certificate saved"
 msgstr ""
 
-#: controllers/certificates.php:48
+#: controllers/certificates.php:57
 msgid "Certificate deleted"
 msgstr ""
 
-#: controllers/certificates.php:80
+#: controllers/certificates.php:89
 msgid "You are not allowed to access this certificate"
 msgstr ""
 
@@ -68,27 +74,28 @@ msgstr ""
 msgid "Submitted solution to assignment \"%s\""
 msgstr ""
 
-#: controllers/homeworks.php:73
+#: controllers/homeworks.php:73 controllers/homeworks.php:79
+#: controllers/homeworks.php:108 controllers/homeworks.php:137
 msgid "You are not allowed to see these solutions"
 msgstr ""
 
-#: controllers/homeworks.php:122
+#: controllers/homeworks.php:129
 msgid "You are not allowed to do this"
 msgstr ""
 
-#: controllers/homeworks.php:136
+#: controllers/homeworks.php:147
 msgid "Solution to assignment %s was %s"
 msgstr ""
 
-#: controllers/homeworks.php:141
+#: controllers/homeworks.php:152
 msgid "Received %d points for completing assignment \"%s\"."
 msgstr ""
 
-#: controllers/homeworks.php:158
+#: controllers/homeworks.php:169
 msgid "There is nothing to download."
 msgstr ""
 
-#: controllers/homeworks.php:160
+#: controllers/homeworks.php:171
 msgid "You can download only your own solutions."
 msgstr ""
 
@@ -161,7 +168,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:16 models/lesson-model.php:678
+#: models/course-model.php:16 models/lesson-model.php:681
 msgid "Course"
 msgstr ""
 
@@ -174,7 +181,7 @@ msgid "This will create a new course in your Namaste! LMS."
 msgstr ""
 
 #: models/course-model.php:60 models/lesson-model.php:31
-#: models/namaste-model.php:212
+#: models/namaste-model.php:239
 msgid "Namaste! Settings"
 msgstr ""
 
@@ -217,7 +224,7 @@ msgid ""
 "You cannot enroll this course - other courses have to be completed first."
 msgstr ""
 
-#: models/course-model.php:271 models/student-model.php:90
+#: models/course-model.php:271 models/student-model.php:95
 msgid "Enrolled in course %s. Status: %s"
 msgstr ""
 
@@ -233,7 +240,7 @@ msgstr ""
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:328 models/lesson-model.php:679
+#: models/course-model.php:328 models/lesson-model.php:682
 msgid "Visits (unique/total)"
 msgstr ""
 
@@ -241,19 +248,23 @@ msgstr ""
 msgid "These courses should be completed before you can enroll:"
 msgstr ""
 
-#: models/homework-model.php:30
+#: models/homework-model.php:34
 msgid "Homework added"
 msgstr ""
 
-#: models/homework-model.php:44
+#: models/homework-model.php:49
+msgid "You are not allowed to edit or delete this assignment"
+msgstr ""
+
+#: models/homework-model.php:55
 msgid "Homework deleted"
 msgstr ""
 
-#: models/homework-model.php:57
+#: models/homework-model.php:68
 msgid "Homework saved"
 msgstr ""
 
-#: models/homework-model.php:99
+#: models/homework-model.php:114
 msgid "You are not allowed to see this page"
 msgstr ""
 
@@ -282,160 +293,164 @@ msgstr ""
 msgid "You must enroll in the course first before you can see the lessons"
 msgstr ""
 
-#: models/lesson-model.php:173
+#: models/lesson-model.php:176
 msgid ""
 "The lesson cannot be completed because there are unsatisfied requirements"
 msgstr ""
 
-#: models/lesson-model.php:221 views/manage-students.php:61
+#: models/lesson-model.php:224 views/manage-students.php:61
 #: views/student-lessons.php:45
 msgid "Not started"
 msgstr ""
 
-#: models/lesson-model.php:226
+#: models/lesson-model.php:229
 msgid "Completed on"
 msgstr ""
 
-#: models/lesson-model.php:232 views/manage-students.php:60
+#: models/lesson-model.php:235 views/manage-students.php:60
 #: views/student-lessons.php:46
 msgid "In progress"
 msgstr ""
 
-#: models/lesson-model.php:254
+#: models/lesson-model.php:257
 msgid "You need to be logged in to access this lesson."
 msgstr ""
 
-#: models/lesson-model.php:268
+#: models/lesson-model.php:271
 msgid "In order to see this lesson you first have to be enrolled in the course"
 msgstr ""
 
-#: models/lesson-model.php:286
+#: models/lesson-model.php:289
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#: models/lesson-model.php:347
+#: models/lesson-model.php:350
 msgid "Started reading lesson \"%s\""
 msgstr ""
 
-#: models/lesson-model.php:445
+#: models/lesson-model.php:448
 msgid "Received %d points for completing lesson \"%s\"."
 msgstr ""
 
-#: models/lesson-model.php:454
+#: models/lesson-model.php:457
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4.7)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4.9)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: models/namaste-model.php:206
+#: models/namaste-model.php:233
 msgid "Namaste! LMS"
 msgstr ""
 
-#: models/namaste-model.php:208 views/student-lessons.php:19
+#: models/namaste-model.php:235 views/student-lessons.php:19
 msgid "Assignments"
 msgstr ""
 
-#: models/namaste-model.php:209
+#: models/namaste-model.php:236
 msgid "Students"
 msgstr ""
 
-#: models/namaste-model.php:210
+#: models/namaste-model.php:237
 msgid "Certificates"
 msgstr ""
 
-#: models/namaste-model.php:211 views/gradebook.html.php:2
+#: models/namaste-model.php:238 views/gradebook.html.php:2
 msgid "Gradebook"
 msgstr ""
 
-#: models/namaste-model.php:212
+#: models/namaste-model.php:239
 msgid "Settings"
 msgstr ""
 
-#: models/namaste-model.php:213
+#: models/namaste-model.php:240
 msgid "Help"
 msgstr ""
 
-#: models/namaste-model.php:214
+#: models/namaste-model.php:241
 msgid "Namaste! Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:214
+#: models/namaste-model.php:241
 msgid "Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:217
+#: models/namaste-model.php:244
 msgid "Student Lessons"
 msgstr ""
 
-#: models/namaste-model.php:218
+#: models/namaste-model.php:245
 msgid "Homeworks"
 msgstr ""
 
-#: models/namaste-model.php:219 views/add-note.php:15
+#: models/namaste-model.php:246 views/add-note.php:15
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:220 views/lesson-homeworks.php:42
+#: models/namaste-model.php:247 views/lesson-homeworks.php:42
 #: views/lesson-homeworks.php:44
 msgid "Submit solution"
 msgstr ""
 
-#: models/namaste-model.php:221 views/homeworks.php:29
+#: models/namaste-model.php:248 views/homeworks.php:29
 msgid "View solutions"
 msgstr ""
 
-#: models/namaste-model.php:222
+#: models/namaste-model.php:249
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:223
+#: models/namaste-model.php:250
 msgid "View Certificate"
 msgstr ""
 
-#: models/namaste-model.php:224
+#: models/namaste-model.php:251
 msgid "Download solution"
 msgstr ""
 
-#: models/namaste-model.php:230 views/my_courses.php:1
+#: models/namaste-model.php:252
+msgid "Multi user configuration"
+msgstr ""
+
+#: models/namaste-model.php:258 views/my_courses.php:1
 msgid "My Courses"
 msgstr ""
 
-#: models/namaste-model.php:231 views/my-certificates.php:1
+#: models/namaste-model.php:259 views/my-certificates.php:1
 msgid "My Certificates"
 msgstr ""
 
-#: models/namaste-model.php:232 views/my-gradebook.html.php:2
+#: models/namaste-model.php:260 views/my-gradebook.html.php:2
 msgid "My Gradebook"
 msgstr ""
 
-#: models/student-model.php:64
+#: models/student-model.php:69
 msgid "Sorry, I cannot find user with this email or user handle."
 msgstr ""
 
-#: models/student-model.php:68
+#: models/student-model.php:73
 msgid ""
 "This user's role does not allow them to use Namaste! LMS. You'll have either "
 "to change their role or allow the role work with the LMS from the Settings "
 "page"
 msgstr ""
 
-#: models/student-model.php:75
+#: models/student-model.php:80
 msgid "This user is already enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:84
+#: models/student-model.php:89
 msgid "User successfully enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:106
+#: models/student-model.php:113
 msgid "Enrollment in %s has been approved."
 msgstr ""
 
-#: models/student-model.php:110
+#: models/student-model.php:117
 msgid "Enrollment in %s has been rejected."
 msgstr ""
 
-#: models/student-model.php:169
+#: models/student-model.php:179
 msgid "You cannot change someone else's status"
 msgstr ""
 
@@ -636,8 +651,8 @@ msgid ""
 msgstr ""
 
 #: views/course-meta-box.php:40 views/homework.php:11
-#: views/lesson-meta-box.php:89 views/options.php:66 views/options.php:68
-#: views/options.php:70
+#: views/lesson-meta-box.php:89 views/options.php:69 views/options.php:71
+#: views/options.php:73
 msgid "Reward"
 msgstr ""
 
@@ -1231,6 +1246,113 @@ msgid ""
 "history and the user will be able to enroll or request enrollment again"
 msgstr ""
 
+#: views/multiuser.html.php:2
+msgid "Manage multi-user configurations in Namaste! LMS"
+msgstr ""
+
+#: views/multiuser.html.php:5
+msgid ""
+"To edit this page you need to enable some roles to manage LMS on the <a href="
+"\"%s\" target=_blank\">Namaste Settings page</a>."
+msgstr ""
+
+#: views/multiuser.html.php:12
+msgid "Please select role to configure:"
+msgstr ""
+
+#: views/multiuser.html.php:13
+msgid "- Please select role -"
+msgstr ""
+
+#: views/multiuser.html.php:21
+msgid ""
+"Note: courses and lesson access depend on the selected role \"post\" "
+"settings. For example the Editor role can create and edit courses while the "
+"Contributor role can not."
+msgstr ""
+
+#: views/multiuser.html.php:23
+msgid "Assignments access:"
+msgstr ""
+
+#: views/multiuser.html.php:24
+msgid "Manage all assignments"
+msgstr ""
+
+#: views/multiuser.html.php:25
+msgid "Manage only assignments created by the user"
+msgstr ""
+
+#: views/multiuser.html.php:26
+msgid "No access to manage assignments"
+msgstr ""
+
+#: views/multiuser.html.php:29
+msgid "Students page access:"
+msgstr ""
+
+#: views/multiuser.html.php:30
+msgid "Manage students"
+msgstr ""
+
+#: views/multiuser.html.php:31
+msgid "View only"
+msgstr ""
+
+#: views/multiuser.html.php:32
+msgid "No access to students page"
+msgstr ""
+
+#: views/multiuser.html.php:35
+msgid "Certificates access:"
+msgstr ""
+
+#: views/multiuser.html.php:36
+msgid "Manage all certificates"
+msgstr ""
+
+#: views/multiuser.html.php:37
+msgid "Manage only certificates created by the user"
+msgstr ""
+
+#: views/multiuser.html.php:38
+msgid "No access to manage certificates"
+msgstr ""
+
+#: views/multiuser.html.php:41
+msgid "Gradebook access:"
+msgstr ""
+
+#: views/multiuser.html.php:42
+msgid "Access gradebook"
+msgstr ""
+
+#: views/multiuser.html.php:43
+msgid "No access to gradebook"
+msgstr ""
+
+#: views/multiuser.html.php:46
+msgid "Settings page access:"
+msgstr ""
+
+#: views/multiuser.html.php:47
+msgid "Manage settings"
+msgstr ""
+
+#: views/multiuser.html.php:48
+msgid "No access to manage settings"
+msgstr ""
+
+#: views/multiuser.html.php:51
+msgid ""
+"If you have <a href=\"%s\" target=\"_blank\">Namaste! PRO</a> all the above "
+"settings will also comply with any class (user group) limitations."
+msgstr ""
+
+#: views/multiuser.html.php:53
+msgid "Save configuration for this role"
+msgstr ""
+
 #: views/my-certificates.php:4
 msgid "You have not achieved any certificates yet."
 msgstr ""
@@ -1356,10 +1478,14 @@ msgid ""
 msgstr ""
 
 #: views/options.php:26
+msgid "Fine-tune these settings."
+msgstr ""
+
+#: views/options.php:29
 msgid "URL identificators for Namaste courses and lessons"
 msgstr ""
 
-#: views/options.php:28
+#: views/options.php:31
 msgid ""
 "These are the parts of the URLs that identify a post as Namaste! LMS lesson "
 "or course. These URL slugs are shown at the browser address bar and are "
@@ -1367,59 +1493,59 @@ msgid ""
 "course\" and \"namaste-lesson\". You can change them here."
 msgstr ""
 
-#: views/options.php:30
+#: views/options.php:33
 msgid "Course URL slug:"
 msgstr ""
 
-#: views/options.php:31
+#: views/options.php:34
 msgid "Lesson URL slug:"
 msgstr ""
 
-#: views/options.php:33
+#: views/options.php:36
 msgid ""
 "These slugs can contain only numbers, letters, dashes, and underscores. It "
 "is your responsibility to ensure they do not overlap with the URL "
 "identificators of another custom post type."
 msgstr ""
 
-#: views/options.php:36
+#: views/options.php:39
 msgid "Blog / Archive Pages Behavior"
 msgstr ""
 
-#: views/options.php:38
+#: views/options.php:41
 msgid "Show courses as blog posts in home and archive pages"
 msgstr ""
 
-#: views/options.php:41
+#: views/options.php:44
 msgid "Save Options"
 msgstr ""
 
-#: views/options.php:48
+#: views/options.php:51
 msgid "Grade and Point Systems"
 msgstr ""
 
-#: views/options.php:50
+#: views/options.php:53
 msgid "Use grading system*"
 msgstr ""
 
-#: views/options.php:51
+#: views/options.php:54
 msgid ""
 "* Using a grading system allows you to rate student performance in courses, "
 "lessons, and assignments, and keeping a gradebook. Grading individual "
 "lessons is optional."
 msgstr ""
 
-#: views/options.php:54
+#: views/options.php:57
 msgid ""
 "Enter your grades in the box, separated by comma. Start with the best "
 "possible grade and go right to the worst:"
 msgstr ""
 
-#: views/options.php:60
+#: views/options.php:63
 msgid "Use points system*"
 msgstr ""
 
-#: views/options.php:61
+#: views/options.php:64
 msgid ""
 "* Points system can be used alone or together with a grading system. It lets "
 "you reward your students with points for completing lessons, courses, or "
@@ -1427,44 +1553,44 @@ msgid ""
 "additional plugins) used to create leaderboards, redeem rewards, etc."
 msgstr ""
 
-#: views/options.php:64
+#: views/options.php:67
 msgid ""
 "Default reward values. They can be overridden for every individual course, "
 "lesson, or assignment."
 msgstr ""
 
-#: views/options.php:66
+#: views/options.php:69
 msgid "points for completing a course"
 msgstr ""
 
-#: views/options.php:68
+#: views/options.php:71
 msgid "points for completing a lesson"
 msgstr ""
 
-#: views/options.php:70
+#: views/options.php:73
 msgid "points for successfully completing a homework / assignment"
 msgstr ""
 
-#: views/options.php:72
+#: views/options.php:75
 msgid "Shortcodes enabled by using a points system"
 msgstr ""
 
-#: views/options.php:73
+#: views/options.php:76
 msgid ""
 "If you activate a points system the following shortcodes become available:"
 msgstr ""
 
-#: views/options.php:76 views/options.php:77
+#: views/options.php:79 views/options.php:80
 msgid "and"
 msgstr ""
 
-#: views/options.php:76
+#: views/options.php:79
 msgid ""
 "(where \"x\" is given user ID) outputs the total number of points the user "
 "has earned."
 msgstr ""
 
-#: views/options.php:77
+#: views/options.php:80
 msgid ""
 "displays a leaderboard based on collected points. Replace \"x\" with the "
 "number of users you want to show. When you use the second shortcode the "
@@ -1472,23 +1598,23 @@ msgid ""
 "them."
 msgstr ""
 
-#: views/options.php:81
+#: views/options.php:84
 msgid "Save grade and points settings"
 msgstr ""
 
-#: views/options.php:87
+#: views/options.php:90
 msgid "Payment Settings"
 msgstr ""
 
-#: views/options.php:89
+#: views/options.php:92
 msgid "Payment currency:"
 msgstr ""
 
-#: views/options.php:95
+#: views/options.php:98
 msgid "Custom"
 msgstr ""
 
-#: views/options.php:99
+#: views/options.php:102
 msgid ""
 "Here you can specify payment methods that you will accept to give access to "
 "courses. When a course requires payment, the enrollment (pending or active - "
@@ -1496,104 +1622,104 @@ msgid ""
 "completed."
 msgstr ""
 
-#: views/options.php:101
+#: views/options.php:104
 msgid "Accept PayPal"
 msgstr ""
 
-#: views/options.php:104
+#: views/options.php:107
 msgid "Your Paypal ID:"
 msgstr ""
 
-#: views/options.php:105
+#: views/options.php:108
 msgid "After payment go to:"
 msgstr ""
 
-#: views/options.php:106
+#: views/options.php:109
 msgid ""
 "When left blank it goes to the course page. If you enter specific full URL, "
 "the user will be returned to that URL."
 msgstr ""
 
-#: views/options.php:109
+#: views/options.php:112
 msgid "Accept Stripe"
 msgstr ""
 
-#: views/options.php:112
+#: views/options.php:115
 msgid "Your Public Key:"
 msgstr ""
 
-#: views/options.php:113
+#: views/options.php:116
 msgid "Your Secret Key:"
 msgstr ""
 
-#: views/options.php:116
+#: views/options.php:119
 msgid "Accept other payment methods"
 msgstr ""
 
-#: views/options.php:117
+#: views/options.php:120
 msgid ""
 "This option lets you paste your own button HTML code or other manual "
 "instructions, for example bank wire. These payments will have to be "
 "processed manually unless you can build your own script to verify them."
 msgstr ""
 
-#: views/options.php:120
+#: views/options.php:123
 msgid ""
 "Enter text or HTML code for payment button(s). You can use the following "
 "variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
 msgstr ""
 
-#: views/options.php:124
+#: views/options.php:127
 msgid "Save payment settings"
 msgstr ""
 
-#: views/options.php:127
+#: views/options.php:130
 msgid "View payments errorlog"
 msgstr ""
 
-#: views/options.php:137
+#: views/options.php:140
 msgid "Exam/Test Related Settings"
 msgstr ""
 
-#: views/options.php:139
+#: views/options.php:142
 msgid ""
 "Namaste LMS utilizes the power of existing Wordpress plugins to handle "
 "exams, tests and quizzes. At this moment it can connect with two plugins:"
 msgstr ""
 
-#: views/options.php:139
+#: views/options.php:142
 msgid "(Free) and "
 msgstr ""
 
-#: views/options.php:139
+#: views/options.php:142
 msgid "(Premium)"
 msgstr ""
 
-#: views/options.php:141
+#: views/options.php:144
 msgid ""
 "If you have any of these plugins installed and activated, please choose "
 "which one to use for handling tests below:"
 msgstr ""
 
-#: views/options.php:143
+#: views/options.php:146
 msgid "I don not need to create any exams or tests."
 msgstr ""
 
-#: views/options.php:146
+#: views/options.php:149
 msgid "I will create exams with Watu."
 msgstr ""
 
-#: views/options.php:150
+#: views/options.php:153
 msgid "I will create exams with WatuPRO."
 msgstr ""
 
-#: views/options.php:154
+#: views/options.php:157
 msgid ""
 "When I cleanup student course data from the \"Manage Students\" page I want "
 "any related exam data for this student also to be REMOVED."
 msgstr ""
 
-#: views/options.php:157
+#: views/options.php:160
 msgid "Save Exam Options"
 msgstr ""
 

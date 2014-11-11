@@ -72,8 +72,11 @@ class NamasteLMSHomeworkController {
 		$student_id = empty($_GET['student_id'])?$user_ID : $_GET['student_id'];
 		if(!current_user_can('namaste_manage') and $student_id!=$user_ID) wp_die(__('You are not allowed to see these solutions', 'namaste'));
 		$student = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->users} WHERE ID=%d", $student_id));
-		
+				
 		list($homework, $course, $lesson) = NamasteLMSHomeworkModel::full_select($_GET['id']);
+		$multiuser_access = 'all';
+		$multiuser_access = NamasteLMSMultiUser :: check_access('homework_access');
+		if($multiuser_access == 'own' and $homework->editor_id != $user_ID) wp_die(__('You are not allowed to see these solutions', 'namaste'));
 		
 		// approve or reject solution
 		if(!empty($_POST['change_status'])) self::change_solution_status($lesson, $student_id);
@@ -94,11 +97,15 @@ class NamasteLMSHomeworkController {
 		else require(NAMASTE_PATH."/views/view-solutions.php");
 	}
 	
-	// view everyone's solutions ion a homework
+	// view everyone's solutions on a homework
 	static function view_all() {
-		global $wpdb;
+		global $wpdb, $user_ID;
 		
 		list($homework, $course, $lesson) = NamasteLMSHomeworkModel::full_select($_GET['id']);
+		
+		$multiuser_access = 'all';
+		$multiuser_access = NamasteLMSMultiUser :: check_access('homework_access');
+		if($multiuser_access == 'own' and $homework->editor_id != $user_ID) wp_die(__('You are not allowed to see these solutions', 'namaste'));
 		
 		$use_grading_system = get_option('namaste_use_grading_system');
 		
@@ -117,13 +124,17 @@ class NamasteLMSHomeworkController {
 	
 	// approve or reject a homework solution
 	static function change_solution_status($lesson, $student_id = NULL) {
-		global $wpdb;
+		global $wpdb, $user_ID;
 		
 		if(!current_user_can('namaste_manage')) wp_die(__('You are not allowed to do this', 'namaste'));
 		
 		$solution = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE id=%d", $_POST['solution_id']));
 		if(!$student_id)  $student_id = $solution->student_id;
 		$homework = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORKS." WHERE id=%d", $solution->homework_id));
+		
+		$multiuser_access = 'all';
+		$multiuser_access = NamasteLMSMultiUser :: check_access('homework_access');
+		if($multiuser_access == 'own' and $homework->editor_id != $user_ID) wp_die(__('You are not allowed to see these solutions', 'namaste'));
 			
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_HOMEWORKS." SET
 			status=%s WHERE id=%d", $_POST['status'], $_POST['solution_id']));

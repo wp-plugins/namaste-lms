@@ -22,6 +22,9 @@
 					$role = get_role($key);?>
 					<input type="checkbox" name="manage_roles[]" value="<?php echo $key?>" <?php if($role->has_cap('namaste_manage')) echo 'checked';?>> <?php _e($role->name, 'namaste')?> &nbsp;
 				<?php endforeach;?></p>
+				<?php if(current_user_can('manage_options')):?>
+					<p><a href="admin.php?page=namaste_multiuser" target="_blank"><?php _e('Fine-tune these settings.', 'namaste')?></a></p>
+				<?php endif;?>
 				
 				<h2><?php _e('URL identificators for Namaste courses and lessons', 'namaste')?></h2>
 				

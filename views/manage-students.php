@@ -1,6 +1,7 @@
 <div class="wrap">
 	<h1><?php _e('Student Enrollments', 'namaste')?></h1>
 	
+	<div class="postbox-container" style="width:73%;margin-right:2%;">
 	<?php if(!sizeof($courses)):?>
 	<p><?php _e('Nothing to do here as you have not created any courses yet!')?></p>
 	<?php return true;
@@ -61,10 +62,10 @@
 					else: _e('Not started', 'namaste'); endif;?></td>
 				<?php endforeach;?>		
 				<td><?php echo $student->namaste_status;
-				if($student->namaste_status=='pending'):?>
+				if($multiuser_access != 'view' and $student->namaste_status=='pending'):?>
 					(<a href="#" onclick="namasteConfirmStatus('enrolled',<?php echo $student->ID?>);return false;"><?php _e('approve', 'namaste')?></a> | <a href="#" onclick="namasteConfirmStatus('rejected',<?php echo $student->ID?>);return false;"><?php _e('reject')?></a>)
 				<?php endif;
-				if($student->namaste_status == 'completed' or $student->namaste_status == 'rejected' or $student->namaste_status == 'enrolled'):?>
+				if($multiuser_access != 'view' and ($student->namaste_status == 'completed' or $student->namaste_status == 'rejected' or $student->namaste_status == 'enrolled')):?>
 				(<a href="#" onclick="namasteConfirmCleanup('<?php echo $student->ID?>');return false;"><?php _e('Cleanup', 'namaste')?></a>)
 				<?php endif;?></td></tr>
 			<?php endforeach;?>
@@ -76,6 +77,10 @@
 	<?php else:?>
 		<p><?php printf(__("You can get advanced reports and ranking shortcodes with the <a href='%s' target='_blank'>Namaste! Reports</a> plugin.", 'namaste'), "http://namaste-lms.org/reports.php")?></p>
 	<?php endif;?>
+	</div>
+	<div id="namaste-sidebar">
+				<?php include(NAMASTE_PATH."/views/sidebar.html.php"); ?>
+	</div>
 </div>
 <script type="text/javascript" >
 function namasteConfirmStatus(status, id) {	
