@@ -317,6 +317,7 @@ class NamasteLMS {
 		add_shortcode('namaste-points', array("NamasteLMSShortcodesController", 'points'));
 		add_shortcode('namaste-leaderboard', array("NamasteLMSShortcodesController", 'leaderboard'));
 		add_shortcode('namaste-mycourses', array("NamasteLMSShortcodesController", 'my_courses'));
+		add_shortcode('namaste-mycertificates', array("NamasteLMSShortcodesController", 'my_certificates'));
 		add_shortcode('namaste-course-lessons', array("NamasteLMSShortcodesController", 'lessons'));
 		add_shortcode('namaste-next-lesson', array("NamasteLMSShortcodesController", 'next_lesson'));
 		add_shortcode('namaste-prev-lesson', array("NamasteLMSShortcodesController", 'prev_lesson'));
@@ -339,6 +340,9 @@ class NamasteLMS {
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSLessonModel','custom_columns'), 10, 2 );
 		add_filter('manage_namaste_course_posts_columns', array('NamasteLMSCourseModel','manage_post_columns'));
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
+		
+		// certificates
+		add_action('template_redirect', array('NamasteLMSCertificatesController', 'certificate_redirect'));
 		
 		$version = get_option('namaste_version');
 		if($version != '1.31') self::install(true);

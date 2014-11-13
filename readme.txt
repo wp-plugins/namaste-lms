@@ -55,7 +55,7 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 1.4.9 =
+= Version 1.5 =
 - Added elaborated access options for the roles that can manage the LMS
 - Certificates will now be earned each time when the course is completed even if the same certificate was earned previously
 - Added option to change the course and lesson URL slugs from "namaste-course" and "namaste-lesson" to your custom slugs
@@ -67,6 +67,7 @@ None yet, please ask in the forum
 - Added option to redirect to specific URL after Paypal payment
 - Added option to include "enroll" shortcodes outside of course page
 - Improved the redirect URL after course enrollment (now defaults to the course page)
+- Added [namaste-mycertificates] shortcode and made the certificate display accessible outside of wp-admin
 
 = Version 1.4 =
 - Advanced users only: You can now create your own versions of all Namaste views for high-level of customization

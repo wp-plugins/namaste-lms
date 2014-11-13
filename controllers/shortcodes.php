@@ -192,6 +192,17 @@ class NamasteLMSShortcodesController {
 		return $content;
 	}
 	
+	// displays simplified version of "My Certificates" page
+	static function my_certificates() {
+		if(!is_user_logged_in()) return __('This content is for logged in users.', 'namaste');
+		// call the simplified version
+		ob_start();
+		NamasteLMSCertificatesController::my_certificates(true);
+		$content = ob_get_contents();
+		ob_end_clean();
+		return $content;
+	}
+	
 	// selects the next lesson in the course if any
 	static function next_lesson($atts) {
 		global $post, $wpdb;

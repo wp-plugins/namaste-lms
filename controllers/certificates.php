@@ -70,7 +70,7 @@ class NamasteLMSCertificatesController {
 	}
 	
 	// display my achieved certificates
-	static function my_certificates() {
+	static function my_certificates($in_shortcode = false) {
 		global $wpdb, $user_ID;
 		$_cert = new NamasteLMSCertificateModel();
 		
@@ -146,5 +146,10 @@ class NamasteLMSCertificatesController {
 		<body><?php echo apply_filters('the_content', $output);?></body>
 		</html>
 		<?php exit;
+	}
+	
+	static function certificate_redirect() {
+		if(empty($_GET['namaste_view_certificate'])) return true;
+		self :: view_certificate();
 	}
 }

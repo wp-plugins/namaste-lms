@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.4.9\n"
+"Project-Id-Version: Namaste! LMS 1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2014-11-11 16:52:41+00:00\n"
+"POT-Creation-Date: 2014-11-13 16:36:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -103,8 +103,8 @@ msgstr ""
 msgid "This lesson has been completed."
 msgstr ""
 
-#: controllers/shortcodes.php:33 views/manage-students.php:36
-#: views/manage-students.php:59 views/student-lessons.php:47
+#: controllers/shortcodes.php:33 views/manage-students.php:37
+#: views/manage-students.php:60 views/student-lessons.php:47
 msgid "Completed"
 msgstr ""
 
@@ -140,23 +140,23 @@ msgstr ""
 msgid "Points"
 msgstr ""
 
-#: controllers/shortcodes.php:186
+#: controllers/shortcodes.php:186 controllers/shortcodes.php:197
 msgid "This content is for logged in users."
 msgstr ""
 
-#: controllers/shortcodes.php:200
+#: controllers/shortcodes.php:211
 msgid "next lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:219
+#: controllers/shortcodes.php:230
 msgid "previous lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:286
+#: controllers/shortcodes.php:297
 msgid "Lesson completed!"
 msgstr ""
 
-#: controllers/shortcodes.php:290
+#: controllers/shortcodes.php:301
 msgid "Mark as completed"
 msgstr ""
 
@@ -298,7 +298,7 @@ msgid ""
 "The lesson cannot be completed because there are unsatisfied requirements"
 msgstr ""
 
-#: models/lesson-model.php:224 views/manage-students.php:61
+#: models/lesson-model.php:224 views/manage-students.php:62
 #: views/student-lessons.php:45
 msgid "Not started"
 msgstr ""
@@ -307,7 +307,7 @@ msgstr ""
 msgid "Completed on"
 msgstr ""
 
-#: models/lesson-model.php:235 views/manage-students.php:60
+#: models/lesson-model.php:235 views/manage-students.php:61
 #: views/student-lessons.php:46
 msgid "In progress"
 msgstr ""
@@ -336,7 +336,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.4.9)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:233
 msgid "Namaste! LMS"
@@ -534,7 +534,7 @@ msgid "Delete"
 msgstr ""
 
 #: views/certificate-form.php:40 views/homework.php:20
-#: views/manage-students.php:82
+#: views/manage-students.php:87
 msgid "Are you sure?"
 msgstr ""
 
@@ -714,7 +714,7 @@ msgid "Subscribe for"
 msgstr ""
 
 #: views/gradebook.html.php:6 views/homeworks.php:6
-#: views/lesson-meta-box.php:4 views/manage-students.php:16
+#: views/lesson-meta-box.php:4 views/manage-students.php:17
 #: views/my-gradebook.html.php:7
 msgid "Select course:"
 msgstr ""
@@ -728,7 +728,7 @@ msgstr ""
 msgid "Grades of the students in %s"
 msgstr ""
 
-#: views/gradebook.html.php:19 views/manage-students.php:47
+#: views/gradebook.html.php:19 views/manage-students.php:48
 msgid "Student"
 msgstr ""
 
@@ -808,12 +808,16 @@ msgid ""
 "below) in the course page itself."
 msgstr ""
 
-#: views/help.html.php:18 views/help.html.php:20 views/help.html.php:23
-#: views/help.html.php:26
+#: views/help.html.php:18
+msgid "Displays the \"My certificates\" page."
+msgstr ""
+
+#: views/help.html.php:20 views/help.html.php:22 views/help.html.php:25
+#: views/help.html.php:28
 msgid "or"
 msgstr ""
 
-#: views/help.html.php:18
+#: views/help.html.php:20
 msgid ""
 "will display all the lessons in a course along with links to them. If you "
 "use the second format and pass \"status\" as first argument, the shortcode "
@@ -830,31 +834,31 @@ msgid ""
 "be shown on top)."
 msgstr ""
 
-#: views/help.html.php:18
+#: views/help.html.php:20
 msgid "Note that status column will be shown only for logged in users."
 msgstr ""
 
-#: views/help.html.php:21
+#: views/help.html.php:23
 msgid ""
 "can be used only in a course page and will display the first lesson from the "
 "course. You can replace \"hyperlinked text\" with your own text. If you omit "
 "the parameter the link will say \"first lesson\"."
 msgstr ""
 
-#: views/help.html.php:24
+#: views/help.html.php:26
 msgid ""
 "can be used only in a lesson and will display the next lesson from the "
 "course. You can replace \"hyperlinked text\" with your own text. If you omit "
 "the parameter the link will use the lesson title as hyperlinked text."
 msgstr ""
 
-#: views/help.html.php:27
+#: views/help.html.php:29
 msgid ""
 "Similar to the above, used to display a link for the previous lesson in this "
 "course. Note that lessons are ordered in the order of creation."
 msgstr ""
 
-#: views/help.html.php:29
+#: views/help.html.php:31
 msgid ""
 "(where X is lesson ID) will output the assignments to the lesson on the "
 "front-end. The links to submit and view solutions will also work. You can "
@@ -863,15 +867,15 @@ msgid ""
 "links to assignments from it."
 msgstr ""
 
-#: views/help.html.php:31
+#: views/help.html.php:33
 msgid "Redesigning and Customizing the Views / Templates"
 msgstr ""
 
-#: views/help.html.php:33
+#: views/help.html.php:35
 msgid "Only for advanced users!"
 msgstr ""
 
-#: views/help.html.php:35
+#: views/help.html.php:37
 msgid ""
 "You can safely customize all files from the \"views\" folders by placing "
 "their copies in your theme folder. Simply create folder \"namaste\" <b>in "
@@ -879,11 +883,11 @@ msgid ""
 "\" folder directly there."
 msgstr ""
 
-#: views/help.html.php:37
+#: views/help.html.php:39
 msgid "For example:"
 msgstr ""
 
-#: views/help.html.php:40
+#: views/help.html.php:42
 msgid ""
 "If you are using the Twenty Fourteen theme, you should create folder "
 "\"namaste\" under it so the structure will now be something like <b>wp-"
@@ -891,7 +895,7 @@ msgid ""
 "\"namaste\" folder should remain where they are)"
 msgstr ""
 
-#: views/help.html.php:41
+#: views/help.html.php:43
 msgid ""
 "Then if you want to modify the \"Manage Certificates\" page copy the file "
 "certificates.php from the plugin \"views\" folder and place it in the new "
@@ -899,14 +903,14 @@ msgid ""
 "namaste/certificates.php</b>"
 msgstr ""
 
-#: views/help.html.php:44
+#: views/help.html.php:46
 msgid ""
 "Don't worry if you use modified WordPress directory structure and don't have "
 "'wp-content' folder. The trick will work with any structure as long as you "
 "follow the same logic."
 msgstr ""
 
-#: views/help.html.php:46
+#: views/help.html.php:48
 msgid ""
 "Then feel free to modify the code, but of course be careful not to mess with "
 "the PHP or Javascript inside. This will let you change the design and even "
@@ -1161,86 +1165,86 @@ msgstr ""
 msgid "Student Enrollments"
 msgstr ""
 
-#: views/manage-students.php:5
+#: views/manage-students.php:6
 msgid "Nothing to do here as you have not created any courses yet!"
 msgstr ""
 
-#: views/manage-students.php:24
+#: views/manage-students.php:25
 msgid "Enroll student in the course:"
 msgstr ""
 
-#: views/manage-students.php:25
+#: views/manage-students.php:26
 msgid "Enter email or user login"
 msgstr ""
 
-#: views/manage-students.php:26
+#: views/manage-students.php:27
 msgid "Enroll"
 msgstr ""
 
-#: views/manage-students.php:31
+#: views/manage-students.php:32
 msgid "Filter by student/course status:"
 msgstr ""
 
-#: views/manage-students.php:32
+#: views/manage-students.php:33
 msgid "Any status"
 msgstr ""
 
-#: views/manage-students.php:33 views/view-solutions.php:50
+#: views/manage-students.php:34 views/view-solutions.php:50
 msgid "Pending"
 msgstr ""
 
-#: views/manage-students.php:34
+#: views/manage-students.php:35
 msgid "Enrolled"
 msgstr ""
 
-#: views/manage-students.php:35 views/view-solutions.php:52
+#: views/manage-students.php:36 views/view-solutions.php:52
 msgid "Rejected"
 msgstr ""
 
-#: views/manage-students.php:41
+#: views/manage-students.php:42
 msgid "There are no students enrolled in this course yet."
 msgstr ""
 
-#: views/manage-students.php:45
+#: views/manage-students.php:46
 msgid ""
 "The below table shows all students enrolled in this course allong with the "
 "status for every lesson in it"
 msgstr ""
 
-#: views/manage-students.php:51 views/my_courses.php:16
+#: views/manage-students.php:52 views/my_courses.php:16
 #: views/student-lessons.php:24 views/view-solutions.php:39
 msgid "Status"
 msgstr ""
 
-#: views/manage-students.php:65
+#: views/manage-students.php:66
 msgid "approve"
 msgstr ""
 
-#: views/manage-students.php:65
+#: views/manage-students.php:66
 msgid "reject"
 msgstr ""
 
-#: views/manage-students.php:68
+#: views/manage-students.php:69
 msgid "Cleanup"
 msgstr ""
 
-#: views/manage-students.php:75
+#: views/manage-students.php:76
 msgid ""
 "Don't forget that you can get <a href='%s'>Advanced Reports</a> for your "
 "students performance."
 msgstr ""
 
-#: views/manage-students.php:77
+#: views/manage-students.php:78
 msgid ""
 "You can get advanced reports and ranking shortcodes with the <a href='%s' "
 "target='_blank'>Namaste! Reports</a> plugin."
 msgstr ""
 
-#: views/manage-students.php:89 views/student-lessons.php:64
+#: views/manage-students.php:94 views/student-lessons.php:64
 msgid "Lesson progress"
 msgstr ""
 
-#: views/manage-students.php:95
+#: views/manage-students.php:100
 msgid ""
 "Are you sure to cleanup this record? It will be removed from the system and "
 "history and the user will be able to enroll or request enrollment again"
