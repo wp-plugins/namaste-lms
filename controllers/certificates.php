@@ -152,4 +152,28 @@ class NamasteLMSCertificatesController {
 		if(empty($_GET['namaste_view_certificate'])) return true;
 		self :: view_certificate();
 	}
+	
+	// displays links to certificates earned in a course
+	static function my_course_certificates($course_id, $student_id, $text) {
+		global $wpdb;
+		
+		$student_id_sql = $wpdb->prepare("tSC.student_id=%d", $student_id);
+		$my_certificates = $wpdb->get_results("SELECT tC.id as id, tC.title as title, 
+			tSC.date as date, tSC.id as my_id 
+			FROM ".NAMASTE_CERTIFICATES." tC JOIN ".NAMASTE_STUDENT_CERTIFICATES." tSC
+			ON tSC.certificate_id = tC.id 
+			WHERE $student_id_sql AND tC.course_ids LIKE '%|".$course_id."|%'
+			ORDER BY tSC.date");
+			
+		if(sizeof($my_certificates)) {
+			$output = '';
+			if(!empty($text)) $output .= "<p class='namaste-earned-certificates-text'>".$text."</p>";
+			$output .= "<p class='namaste-earned-certificates-links'>";
+			foreach($my_certificates as $certificate) $output .= '<a href="'.site_url("?namaste_view_certificate=1&id=".$certificate->id."&student_id=".$student_id."&noheader=1&my_id=".$certificate->my_id).'" target="_blank">'.stripslashes($certificate->title).'</a><br>';
+			$output .= "</p>";
+			return $output;
+		}
+		
+		return '';	
+	}
 }

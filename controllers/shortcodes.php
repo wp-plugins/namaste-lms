@@ -333,4 +333,17 @@ class NamasteLMSShortcodesController {
 		$content = ob_get_clean();
 		return $content;		
 	}
+	
+	// shows the certificates earned in a course, if any
+	static function earned_certificates($atts) {
+		global $post, $user_ID;
+		if(!is_user_logged_in()) return '';
+		
+		$course_id = empty($atts['course_id']) ? @$post->ID : intval($atts['course_id']);
+		if(empty($course_id)) return '';
+		
+		$text = @$atts['text'];
+		
+		return NamasteLMSCertificatesController :: my_course_certificates($course_id, $user_ID, $text);
+	}
 }

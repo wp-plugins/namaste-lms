@@ -41,7 +41,13 @@ For quick tour and more detailed help go to <a href="http://namaste-lms.org" tar
 
 == Frequently Asked Questions ==
 
-None yet, please ask in the forum
+= Do you have any documentation? =
+
+Yes, check the Help page under the Namaste! LMS menu (once the plugin is intalled). You will find links to the online documentation, list of all shortcodes, and more.
+
+= Can I rename the URL slugs from "namaste-course" and "namaste-lesson" to something else? =
+
+Yes, you can set your custom URL slugs in the Namaste Settings page
 
 == Screenshots ==
 
@@ -54,6 +60,9 @@ None yet, please ask in the forum
 7. Submitting a solution for assignment
 
 == Changelog ==
+
+= Version 1.5.1 =
+- Added [namaste-earned-certificates] shortcode to display certificates earned by the user on a given course. Can be used on course page or elsewhere by passing course_id.
 
 = Version 1.5 =
 - Added elaborated access options for the roles that can manage the LMS

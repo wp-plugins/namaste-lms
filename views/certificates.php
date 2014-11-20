@@ -19,6 +19,8 @@
 				<?php endforeach;?>	
 			</table>
 			
+			<p><?php printf(__('You can use the shortcode %s to display links to the certificates earned by the currently logged user in the course. The shortcode also accepts arguments "course_id" and "text" to conditionally display some text before the links, when certificates are earned. Check the <a href="%s">Help page</a> for more details.', 'namaste'), '[namaste-earned-certificates]', 'admin.php?page=namaste_help')?></p>
+			
 			<form method="post">
 				<p><input type="checkbox" name="generate_pdf_certificates" value="1" <?php if(get_option('namaste_generate_pdf_certificates') == '1') echo 'checked'?>> <?php printf(__('I have installed the free <a href="%s" target="_blank">PDF Bridge</a> plugin and I want the certificates to be generated as PDF', 'namaste'), 'http://blog.calendarscripts.info/using-the-free-pdf-bridge-plugin-in-watupro/')?> <input type="submit" value="<?php _e('Save', 'namaste')?>" name="save_pdf_settings"></p>
 			</form>
