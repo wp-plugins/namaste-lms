@@ -55,7 +55,7 @@ function namasteSelectCourse(id) {
 		return false;
 	}	
 	data = {'action' : 'namaste_ajax', 'type': 'lessons_for_course', 'course_id' : id};
-	jQuery.post("<?php echo admin_url('admin-ajax.php?')?>", data, function(msg){
+	jQuery.post(ajaxurl, data, function(msg){
 		results = jQuery.parseJSON(msg);	
 		html = "<?php _e('Select lesson:','namaste')?> <select name='lesson_id' onchange='this.form.submit();'>";
 		html += '<option value=""><?php _e('- please select -')?></option>';
