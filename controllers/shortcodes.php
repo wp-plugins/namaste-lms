@@ -68,6 +68,7 @@ class NamasteLMSShortcodesController {
 			$accept_paypal = get_option('namaste_accept_paypal');
 			$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
 			if($accept_stripe) $stripe = NamasteStripe::load();
+			else $stripe = '';
 			
 			if(!empty($_POST['stripe_pay'])) {
 				 NamasteStripe::pay($currency);			
