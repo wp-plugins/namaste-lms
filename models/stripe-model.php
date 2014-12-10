@@ -41,7 +41,7 @@ class NamasteStripe {
 		// !!!!in the next version avoid this copy-paste
 		// almost the same code is in models/payment.php for the paypal payments
 		$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_PAYMENTS." SET 
-						course_id=%d, user_id=%s, date=CURDATE(), amount=%s, status='completed', paycode=%s, paytype='paypal'", 
+						course_id=%d, user_id=%s, date=CURDATE(), amount=%s, status='completed', paycode=%s, paytype='stripe'", 
 						$_POST['course_id'], $user_ID, $fee, $token));
 						
 		// enroll accordingly to course settings - this will be placed in a method once we 

@@ -422,6 +422,7 @@ class NamasteLMS {
 			if(empty($_POST['currency'])) $_POST['currency'] = $_POST['custom_currency'];
 			update_option('namaste_currency', $_POST['currency']);
 			update_option('namaste_accept_paypal', $_POST['accept_paypal']);
+			update_option('namaste_paypal_sandbox', @$_POST['paypal_sandbox']);
 			update_option('namaste_paypal_id', $_POST['paypal_id']);
 			update_option('namaste_paypal_return', $_POST['paypal_return']);
 			

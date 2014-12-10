@@ -104,6 +104,7 @@
 			<p><input type="checkbox" name="accept_paypal" value="1" <?php if($accept_paypal) echo 'checked'?> onclick="this.checked?jQuery('#paypalDiv').show():jQuery('#paypalDiv').hide()"> <?php _e('Accept PayPal', 'namaste')?></p>
 			
 			<div id="paypalDiv" style="display:<?php echo $accept_paypal?'block':'none'?>;">
+				<p><input type="checkbox" name="paypal_sandbox" value="1" <?php if(get_option('namaste_paypal_sandbox')=='1') echo 'checked'?>> <?php _e('Use Paypal in sandbox mode', 'watupro')?></p>
 				<p><label><?php _e('Your Paypal ID:', 'namaste')?></label> <input type="text" name="paypal_id" value="<?php echo get_option('namaste_paypal_id')?>"></p>
 				<p><label><?php _e('After payment go to:', 'namaste')?></label> <input type="text" name="paypal_return" value="<?php echo get_option('namaste_paypal_return');?>" size="40"> <br />
 				<?php _e('When left blank it goes to the course page. If you enter specific full URL, the user will be returned to that URL.', 'namaste')?> </p>

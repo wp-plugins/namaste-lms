@@ -23,21 +23,26 @@ class NamastePayment {
 		  $req .= "&$key=$value";
 		}		
 		
+		$paypal_host = 'www.paypal.com';
+		$paypal_sandbox = get_option('namaste_paypal_sandbox');
+		if($paypal_sandbox == '1') $paypal_host = 'www.sandbox.paypal.com';
+		
 		// post back to PayPal system to validate
 		$header="";
 		$header .= "POST /cgi-bin/webscr HTTP/1.0\r\n";
 		$header .= "Content-Type: application/x-www-form-urlencoded\r\n";
-		$header .="Host: www.paypal.com\r\n";
+		$header .="Host: ".$paypal_host."\r\n";
 		$header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
-		$fp = fsockopen ('www.paypal.com', 80, $errno, $errstr, 30);
+		$fp = fsockopen ($paypal_host, 80, $errno, $errstr, 30);
 		
-		
-		if($fp) {			
+		if($fp) {						
 			fputs ($fp, $header . $req);
-		   while (!feof($fp)) {
+			$pp_response = '';
+		   while (!feof($fp)) {		   	
 		      $res = fgets ($fp, 1024);
-		     
-		      if (strstr ($res, "200 OK")) {
+		      
+		      $pp_response .= $res;
+		      if (strstr ($res, "VERIFIED") or $paypal_sandbox == '1') {
 		      	// check the payment_status is Completed
 			      // check that txn_id has not been previously processed
 			      // check that receiver_email is your Primary PayPal email
@@ -80,7 +85,7 @@ class NamastePayment {
 					
 					// everything OK, insert payment and enroll
 					if($payment_completed and $txn_id_okay and $receiver_okay and $payment_currency_okay 
-							and $payment_amount_okay) {						
+							and $payment_amount_okay) {
 						$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_PAYMENTS." SET 
 							course_id=%d, user_id=%s, date=CURDATE(), amount=%s, status='completed', paycode=%s, paytype='paypal'", 
 							$_GET['course_id'], $_GET['user_id'], $fee, $_POST['txn_id']));
@@ -95,10 +100,10 @@ class NamastePayment {
 						}	
 						exit;
 					}
-		     	}
-		     	else self::log_and_exit("Paypal result is not 200 OK: $res");
+		     	}		     	
 		   }  
 		   fclose($fp);  
+		   self::log_and_exit("Paypal result is not VERIFIED: $pp_response");
 		} 
 		else self::log_and_exit("Can't connect to Paypal");
 		
