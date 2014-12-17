@@ -1,7 +1,7 @@
 <div class="wrap">
 	<h1><?php _e('Student Enrollments', 'namaste')?></h1>
 	
-	<div class="postbox-container" style="width:73%;margin-right:2%;">
+	<div class="postbox-container">
 	<?php if(!sizeof($courses)):?>
 	<p><?php _e('Nothing to do here as you have not created any courses yet!')?></p>
 	<?php return true;
@@ -77,9 +77,7 @@
 	<?php else:?>
 		<p><?php printf(__("You can get advanced reports and ranking shortcodes with the <a href='%s' target='_blank'>Namaste! Reports</a> plugin.", 'namaste'), "http://namaste-lms.org/reports.php")?></p>
 	<?php endif;?>
-	</div>
-	<div id="namaste-sidebar">
-				<?php include(NAMASTE_PATH."/views/sidebar.html.php"); ?>
+	
 	</div>
 </div>
 <script type="text/javascript" >

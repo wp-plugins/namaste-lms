@@ -98,7 +98,7 @@ endif;?>
 
 <h4><?php _e('Did you know?', 'namaste')?></h4>
 <?php if(is_plugin_active('namaste-pro/namaste-pro.php')):?>
-	<p><?php printf(__('You can set <a href="%s" target="_blank">delayed access</a> to this lesson.', 'namaste'), 'admin.php?page=namastepro_delayed_access')?></p>
+	<p><?php printf(__('You can set <a href="%s" target="_blank">delayed access</a> to this lesson.', 'namaste'), 'admin.php?page=namastepro_delayed')?></p>
 <?php else:?>
 	<p><?php printf(__('If you <a href="%s" target="_blank">upgrade to PRO</a> you will be able to set delayed access to this lesson, namage classes and teachers, and a lot more.', 'namaste'),'http://namaste-lms.org/pro.php')?></p>
 <?php endif;?>
