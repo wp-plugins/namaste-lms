@@ -126,7 +126,7 @@ class NamasteLMSLessonModel {
 	// select lessons in course ID
 	function select($course_id, $format = 'array', $id = null, $ob = 'post_title', $dir = 'ASC') {
 		global $wpdb;
-		
+				
 		$id_sql = '';
 		if(!empty($id)) $id_sql = $wpdb->prepare(' AND tP.ID = %d ', $id);
 		
@@ -145,7 +145,7 @@ class NamasteLMSLessonModel {
 	
 	// students lessons in a selected course
 	// @param $simplified boolean - when true doesn't assignment and text/exam  
-	static function student_lessons($simplified = false) {
+	static function student_lessons($simplified = false, $ob = null, $dir = null) {
 		global $wpdb, $user_ID; 
 		
 		// student_id
@@ -178,7 +178,8 @@ class NamasteLMSLessonModel {
 		
 		// select lessons
 		$_lesson = new NamasteLMSLessonModel();
-		$lessons = $_lesson->select($course->ID);
+		
+		$lessons = $_lesson->select($course->ID, 'array', null, $ob, $dir);
 		$ids = array(0);
 		foreach($lessons as $lesson) $ids[] = $lesson->ID;
 		$id_sql = implode(",", $ids);
@@ -239,7 +240,7 @@ class NamasteLMSLessonModel {
 		}
 		
 		// external reorder?
-		$lessons = apply_filters('namaste-reorder-lessons', $lessons);
+		if(empty($ob)) $lessons = apply_filters('namaste-reorder-lessons', $lessons);
 		
 		// enqueue thickbox
 		wp_enqueue_script('thickbox',null,array('jquery'));
