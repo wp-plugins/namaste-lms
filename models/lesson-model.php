@@ -130,6 +130,8 @@ class NamasteLMSLessonModel {
 		$id_sql = '';
 		if(!empty($id)) $id_sql = $wpdb->prepare(' AND tP.ID = %d ', $id);
 		
+		if(empty($ob)) $ob = 'post_title';
+		
 		$lessons = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->posts} tP
 			JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course'
 			AND tM.meta_value = %d
