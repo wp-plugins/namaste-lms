@@ -181,6 +181,7 @@ class NamasteLMSLessonModel {
 		// select lessons
 		$_lesson = new NamasteLMSLessonModel();
 		
+		$select_ob = empty($ob) ? 'post_title' : $ob;
 		$lessons = $_lesson->select($course->ID, 'array', null, $ob, $dir);
 		$ids = array(0);
 		foreach($lessons as $lesson) $ids[] = $lesson->ID;

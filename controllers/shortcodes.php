@@ -150,7 +150,7 @@ class NamasteLMSShortcodesController {
 		
 		$status = @$atts[0];
 		$course_id = empty($atts[1]) ? $post->ID : $atts[1];
-		$ob = empty($atts[2]) ? 'post_title' : "tP.".$atts[2];
+		$ob = empty($atts[2]) ? '' : "tP.".$atts[2];
 		$dir = empty($atts[3]) ? 'ASC' : $atts[3];
 				
 		// are we in the course desc page or in a lesson of this course?
@@ -217,7 +217,7 @@ class NamasteLMSShortcodesController {
 		$next_lesson = $wpdb->get_row($wpdb->prepare("SELECT tP.* FROM {$wpdb->posts} tP
 			JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course'
 			WHERE tP.post_type = 'namaste_lesson' AND tM.meta_value = %d AND tP.ID > %d
-			AND tP.post_status = 'publish' ORDER BY tP.ID", $course_id, $post->ID));
+			AND tP.post_status = 'publish' ORDER BY tP.post_date, tP.ID", $course_id, $post->ID));
 			
 		if(empty($next_lesson->ID)) return "";
 		
