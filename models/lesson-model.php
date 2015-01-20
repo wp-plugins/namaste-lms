@@ -704,5 +704,22 @@ class NamasteLMSLessonModel {
 			break;
 		}
 	}
+	
+	static function restrict_visible_comments($comments) {
+		global $post, $wpdb, $user_ID;
+		
+		if ( !is_singular() or is_admin() or $post->post_type != 'namaste_lesson' or current_user_can('namaste_manage')) return $comments;
+			
+		 if(!is_user_logged_in()) return null;
+		 
+		 // logged in, but is he enrolled in the course?
+		 $_course = new NamasteLMSCourseModel();
+		 $course_id = get_post_meta($post->ID, 'namaste_course', true);
+		 $course = $_course -> select($course_id);
+		 $enrolled = $wpdb -> get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES.
+			" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $course_id));	
+		 if(!$enrolled) return null;
+		 
+		 return $comments;	
+	} // end restrict_visible_comments()
 }
-	// @param $simplified boolean - when true doesn't assignment, text/exam a

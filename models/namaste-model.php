@@ -345,6 +345,9 @@ class NamasteLMS {
 		// certificates
 		add_action('template_redirect', array('NamasteLMSCertificatesController', 'certificate_redirect'));
 		
+		// comments on lessons shouldn't be visible for unenrolled
+		add_filter('comments_array', array('NamasteLMSLessonModel','restrict_visible_comments'));
+		
 		$version = get_option('namaste_version');
 		if($version != '1.31') self::install(true);
 		
