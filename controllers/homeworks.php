@@ -76,7 +76,7 @@ class NamasteLMSHomeworkController {
 		list($homework, $course, $lesson) = NamasteLMSHomeworkModel::full_select($_GET['id']);
 		$multiuser_access = 'all';
 		$multiuser_access = NamasteLMSMultiUser :: check_access('homework_access');
-		if($multiuser_access == 'own' and $homework->editor_id != $user_ID) wp_die(__('You are not allowed to see these solutions', 'namaste'));
+		if($multiuser_access == 'own' and $homework->editor_id != $user_ID and $student_id != $user_ID) wp_die(__('You are not allowed to see these solutions', 'namaste'));
 		
 		// approve or reject solution
 		if(!empty($_POST['change_status'])) self::change_solution_status($lesson, $student_id);
