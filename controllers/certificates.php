@@ -176,4 +176,38 @@ class NamasteLMSCertificatesController {
 		
 		return '';	
 	}
+	
+	// view and manage users who earned certificates
+	static function student_certificates() {
+		global $wpdb, $user_ID;
+		
+		$certificate = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_CERTIFICATES." WHERE id=%d", $_GET['id']));
+		
+		$multiuser_access = 'all';
+		$multiuser_access = NamasteLMSMultiUser :: check_access('certificates_access');
+		
+		$_cert = new NamasteLMSCertificateModel();
+		
+		if(!empty($_GET['approve'])) {
+			// NYI, no such feature yet
+		}
+		
+		if(!empty($_GET['delete'])) {
+			$wpdb->query($wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_CERTIFICATES." WHERE id=%d", $_GET['student_certificate_id']));
+		}
+		
+		// select users
+		$users = $wpdb->get_results($wpdb->prepare("SELECT tSC.id as student_certificate_id, tU.user_nicename as user_nicename, 
+		tU.user_email as user_email, tSC.date as date, tU.id as student_id
+		FROM ".NAMASTE_STUDENT_CERTIFICATES." tSC JOIN {$wpdb->users} tU ON tSC.student_id = tU.ID 		
+		WHERE tSC.certificate_id=%d
+		ORDER BY tSC.id DESC", $certificate->id));
+		
+		$dateformat = get_option('date_format');
+		
+		$is_admin = true;
+		
+		if(@file_exists(get_stylesheet_directory().'/namaste/students-earned-certificate.html.php')) require get_stylesheet_directory().'/namaste/students-earned-certificate.html.php';
+		else require NAMASTE_PATH."/views/students-earned-certificate.html.php";
+	}
 }

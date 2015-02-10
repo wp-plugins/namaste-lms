@@ -234,7 +234,10 @@ class NamasteLMS {
    		array(__CLASS__, "options"));
 		if($homework_menu) add_submenu_page('namaste_options', __("Assignments", 'namaste'), __("Assignments", 'namaste'), 'namaste_manage', 'namaste_homeworks', array('NamasteLMSHomeworkModel', "manage"));
 		if($students_menu) add_submenu_page('namaste_options', __("Students", 'namaste'), __("Students", 'namaste'), 'namaste_manage', 'namaste_students', array('NamasteLMSStudentModel', "manage"));		
-		if($certificates_menu) add_submenu_page('namaste_options', __("Certificates", 'namaste'), __("Certificates", 'namaste'), 'namaste_manage', 'namaste_certificates', array('NamasteLMSCertificatesController', "manage"));
+		if($certificates_menu) {
+			add_submenu_page('namaste_options', __("Certificates", 'namaste'), __("Certificates", 'namaste'), 'namaste_manage', 'namaste_certificates', array('NamasteLMSCertificatesController', "manage"));
+			add_submenu_page(NULL, __("Students Earned Certificate", 'namaste'), __("Students Earned Certificate", 'namaste'), 'namaste_manage', 'namaste_student_certificates', array('NamasteLMSCertificatesController', "student_certificates"));			
+		}
 		if($gradebook_menu and !empty($use_grading_system)) add_submenu_page('namaste_options', __("Gradebook", 'namaste'), __("Gradebook", 'namaste'), 'namaste_manage', 'namaste_gradebook', array('NamasteLMSGradebookController', "manage"));
 		if($settings_menu) add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));     
 		add_submenu_page('namaste_options', __("Help", 'namaste'), __("Help", 'namaste'), 'namaste_manage', 'namaste_help', array(__CLASS__, "help"));        

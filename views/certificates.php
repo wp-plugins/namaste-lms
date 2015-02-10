@@ -12,10 +12,13 @@
 		
 		<?php if(sizeof($certificates)):?>
 			<table class="widefat">
-				<tr><th><?php _e('Certificate title', 'namaste')?></th><th><?php _e('Edit', 'namaste')?></th></tr>
+				<tr><th><?php _e('Certificate title', 'namaste')?></th>
+				<th><?php _e('Students earned it', 'namaste')?></th><th><?php _e('Edit', 'namaste')?></th></tr>
 				<?php foreach($certificates as $certificate):
 					$class = ('alternate' == @$class) ? '' : 'alternate';?>
-					<tr class="<?php echo $class?>"><td><?php echo stripslashes($certificate->title)?></td><td><a href="admin.php?page=namaste_certificates&action=edit&id=<?php echo $certificate->id?>"><?php _e('Edit', 'namaste')?></a></td></tr>
+					<tr class="<?php echo $class?>"><td><?php echo stripslashes($certificate->title)?></td>
+					<td><a href="admin.php?page=namaste_student_certificates&id=<?php echo $certificate->id?>"><?php _e('View students', 'namaste');?></a></td>					
+					<td><a href="admin.php?page=namaste_certificates&action=edit&id=<?php echo $certificate->id?>"><?php _e('Edit', 'namaste')?></a></td></tr>
 				<?php endforeach;?>	
 			</table>
 			
