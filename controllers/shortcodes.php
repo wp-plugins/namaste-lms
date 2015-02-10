@@ -135,7 +135,7 @@ class NamasteLMSShortcodesController {
 			$html .= "</ol>";
 		}
 		else {
-			$html .= "<table class='namaste-leaderboard'><tr><th>".__('User', 'namaste')."</th><th>".__('Points')."</th></tr>";
+			$html .= "<table class='namaste-leaderboard'><tr><th>".__('User', 'namaste')."</th><th>".__('Points', 'namaste')."</th></tr>";
 			foreach($users as $user) $html.="<tr><td>".$user->user_nicename."</td><td>".$user->namaste_points."</td></tr>";
 			$html .="</table>";
 		}
@@ -210,7 +210,7 @@ class NamasteLMSShortcodesController {
 		global $post, $wpdb;
 		if(empty($post->ID) or $post->post_type != 'namaste_lesson') return "";
 		
-		$text = empty($atts[0]) ? __('next lesson') : $atts[0];
+		$text = empty($atts[0]) ? __('next lesson', 'namaste') : $atts[0];
 		
 		// select next lesson
 		$course_id = get_post_meta($post->ID, 'namaste_course', true);
@@ -229,7 +229,7 @@ class NamasteLMSShortcodesController {
 		global $post, $wpdb;
 		if(empty($post->ID) or $post->post_type != 'namaste_lesson') return "";
 		
-		$text = empty($atts[0]) ? __('previous lesson') : $atts[0];
+		$text = empty($atts[0]) ? __('previous lesson', 'namaste') : $atts[0];
 		
 		// select next lesson
 		$course_id = get_post_meta($post->ID, 'namaste_course', true);
