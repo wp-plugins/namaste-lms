@@ -190,11 +190,12 @@ class NamasteLMS {
     	$wpdb->query("ALTER TABLE ".NAMASTE_STUDENT_HOMEWORKS." CHANGE fileblob fileblob LONGBLOB");
     }
  
+    /* This was needed only for a while but now is generated "unexpected output" during activation
     if($old_version < 1.29) {
-    	 // drop student-certificate uniqueness, no longer used
+    	  // drop student-certificate uniqueness, no longer used    	
 		  $sql = "ALTER TABLE ".NAMASTE_STUDENT_CERTIFICATES." DROP INDEX certificate_id";
 		  $wpdb->query($sql);
-    }
+    }*/
     
     // fush rewrite rules
     NamasteLMSCourseModel::register_course_type();
