@@ -722,4 +722,26 @@ class NamasteLMSLessonModel {
 		 
 		 return $comments;	
 	} // end restrict_visible_comments()
+	
+	// add courses to the homepage and archive listings
+	static function query_post_type($query) {
+		if(!get_option('namaste_show_lessons_in_blog')) return $query;
+		
+		if ( (is_home() or is_archive()) and $query->is_main_query() ) {
+			$post_types = @$query->query_vars['post_type'];
+			
+			// empty, so we'll have to create post_type setting			
+			if(empty($post_types)) {
+				if(is_home()) $post_types = array('post', 'namaste_lesson');
+				else $post_types = array('post', 'namaste_lesson');
+			}
+			
+			// not empty, so let's just add
+			if(!empty($post_types) and is_array($post_types)) {
+				$post_types[] = 'namaste_lesson';				
+				$query->set( 'post_type', $post_types );
+			}
+		}		
+		return $query;
+	}
 }

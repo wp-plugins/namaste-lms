@@ -39,6 +39,7 @@
 			<h2><?php _e('Blog / Archive Pages Behavior', 'namaste')?></h2>
 			
 			<p><input type="checkbox" name="show_courses_in_blog" value="1" <?php if(get_option('namaste_show_courses_in_blog')) echo 'checked'?>> <?php _e('Show courses as blog posts in home and archive pages', 'namaste')?></p>		
+			<p><input type="checkbox" name="show_lessons_in_blog" value="1" <?php if(get_option('namaste_show_lessons_in_blog')) echo 'checked'?>> <?php _e('Show lessons as blog posts in home and archive pages', 'namaste')?></p>		
 			
 			<p></p>
 			<p><input type="submit" value="<?php _e('Save Options', 'namaste')?>" name="namaste_options"></p>

@@ -411,6 +411,7 @@ class NamasteLMS {
 			} // end foreach role 
 			
 			update_option('namaste_show_courses_in_blog', @$_POST['show_courses_in_blog']);
+			update_option('namaste_show_lessons_in_blog', @$_POST['show_lessons_in_blog']);
 			$_POST['course_slug'] = preg_replace('/[^\w\-]/', '', $_POST['course_slug']);
 			$_POST['lesson_slug'] = preg_replace('/[^\w\-]/', '', $_POST['lesson_slug']);
 			update_option('namaste_course_slug', $_POST['course_slug']);
