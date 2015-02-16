@@ -324,7 +324,7 @@ class NamasteLMSLessonModel {
 		if(sizeof($lesson_access)) {
 			$not_completed_ids = array();
 			foreach($lesson_access as $access) {
-				if(!in_array($access, $completed_ids)) $not_completed_ids[] = $access;
+				if(!in_array($access, $completed_ids) and 'publish' === get_post_status( $access )) $not_completed_ids[] = $access;
 			}
 		}
 		
