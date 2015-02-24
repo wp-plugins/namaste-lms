@@ -48,7 +48,7 @@ class NamasteLMSLessonModel {
 			JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course'
 			AND tM.meta_value = %d
 			WHERE post_type = 'namaste_lesson'  AND (post_status='publish' OR post_status='draft') 
-			AND ID!=%d ORDER BY post_title",  $course_id, $post->ID));
+			AND ID!=%d ORDER BY ID ASC",  $course_id, $post->ID));
 			
 		$lesson_access = get_post_meta($post->ID, 'namaste_access', true);	
 		if(!is_array($lesson_access)) $lesson_access = array();
@@ -528,7 +528,6 @@ class NamasteLMSLessonModel {
 			}			
 		}
 		
-		
 		// todo exam
 		$use_exams = get_option('namaste_use_exams');
 		$todo_exam = NamasteLMSLessonModel::todo_exam($lesson_id, $student_id, 'id');
@@ -555,12 +554,17 @@ class NamasteLMSLessonModel {
 		$lesson_completion = get_post_meta($lesson_id, 'namaste_completion', true);	
 		if(is_array($lesson_completion) and in_array('admin_approval', $lesson_completion)) $todo_admin_approval = true;
 		
+		// namaste-mark button?
+		$todo_mark = false;
+		$lesson = get_post($lesson_id);
+		if(strstr($lesson->post_content, '[namaste-mark')) $todo_mark = true;
+		
 		$nothing = false;
-		if(empty($todo_homeworks) and empty($todo_exam) and empty($todo_admin_approval)) $nothing = true;
+		if(empty($todo_homeworks) and empty($todo_exam) and empty($todo_admin_approval) and empty($todo_mark)) $nothing = true;
 		
 		// return todo
 		return array("todo_homeworks" => $todo_homeworks, "todo_exam" => $todo_exam, 
-			"todo_admin_approval" => $todo_admin_approval, "todo_nothing"=>$nothing);
+			"todo_admin_approval" => $todo_admin_approval, "todo_mark"=>$todo_mark, "todo_nothing"=>$nothing);
 	}
 	
 	// small helper that returns either todo exams or just boolean whether there are any

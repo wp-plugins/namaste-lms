@@ -61,12 +61,14 @@ Yes, you can set your custom URL slugs in the Namaste Settings page
 
 == Changelog ==
 
-= Version 1.5.5 =
+= Version 1.5.6 =
 - Added [namaste-earned-certificates] shortcode to display certificates earned by the user on a given course. Can be used on course page or elsewhere by passing course_id.
 - Added Sandbox mode for testing paypal payments
 - Added filter to make sure unenrolled user does not see comments on a lesson
 - Added page that shows all users who earned a certificate along with a link to see / print their certificate
 - Added option to show lessons in blog and archive pages
+- Added information about the "mark completed" button in the lesson to-do popup box
+- Switched the lesson order to ID (order of creating) rather than title based in couple of places
 
 = Version 1.5 =
 - Added elaborated access options for the roles that can manage the LMS

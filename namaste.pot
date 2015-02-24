@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.5.5\n"
+"Project-Id-Version: Namaste! LMS 1.5.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2015-02-16 16:53:40+00:00\n"
+"POT-Creation-Date: 2015-02-24 13:54:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -168,7 +168,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:16 models/lesson-model.php:685
+#: models/course-model.php:16 models/lesson-model.php:689
 msgid "Course"
 msgstr ""
 
@@ -240,7 +240,7 @@ msgstr ""
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:328 models/lesson-model.php:686
+#: models/course-model.php:328 models/lesson-model.php:690
 msgid "Visits (unique/total)"
 msgstr ""
 
@@ -336,7 +336,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.5.5)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.5.6)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:234
 msgid "Namaste! LMS"
@@ -403,7 +403,7 @@ msgstr ""
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:254 views/students-earned-certificate.html.php:14
+#: models/namaste-model.php:254
 msgid "View Certificate"
 msgstr ""
 
@@ -787,41 +787,46 @@ msgstr ""
 
 #: views/help.html.php:4
 msgid ""
-"We are just starting to add some helpful information so please bear with us "
-"until it is extended. For now you can learn about the available shortcodes. "
-"Do not forget also to check the <a href=\"http://namaste-lms.org/help.php\" "
-"target=\"_blank\">quick help guide on our site</a>."
+"For a quick overview of how to get started check the <a href=\"http://"
+"namaste-lms.org/help.php\" target=\"_blank\">quick help guide on our site</"
+"a>."
 msgstr ""
 
 #: views/help.html.php:6
-msgid "Please Rate Us!"
+msgid ""
+"More detailed documentation is available at the <a href=\"%s\" target="
+"\"_blank\">new documentation site</a>."
 msgstr ""
 
 #: views/help.html.php:8
+msgid "Please Rate Us!"
+msgstr ""
+
+#: views/help.html.php:10
 msgid ""
 "Several hundred hours of development have been invested into the development "
 "of this free plugin. Now we need <a href=\"%s\" target=\"_blank\">five "
 "minutes of your time and five stars</a> to help the core plugin stay free!"
 msgstr ""
 
-#: views/help.html.php:10
+#: views/help.html.php:12
 msgid "Available Shortcodes"
 msgstr ""
 
-#: views/help.html.php:12
+#: views/help.html.php:14
 msgid ""
 "This is flexible shortcode that can be placed inside a lesson or course "
 "content. It will display what the logged in student still needs to do to "
 "complete the given lesson or course."
 msgstr ""
 
-#: views/help.html.php:14
+#: views/help.html.php:16
 msgid ""
 "displays enroll button or \"enrolled/pending enrollment\" message in the "
 "course."
 msgstr ""
 
-#: views/help.html.php:16
+#: views/help.html.php:18
 msgid ""
 "Displays simplified version of the student dashboard - the same table with "
 "all the available courses but without the \"view lessons\" link. Instead of "
@@ -829,11 +834,11 @@ msgid ""
 "below) in the course page itself."
 msgstr ""
 
-#: views/help.html.php:18
+#: views/help.html.php:20
 msgid "Displays the \"My certificates\" page."
 msgstr ""
 
-#: views/help.html.php:20
+#: views/help.html.php:22
 msgid ""
 "Displays links to the certificates earned by the currently logged user in "
 "the course. This works for the current course when placed in a course page. "
@@ -844,12 +849,12 @@ msgid ""
 "certificates for completing this course:\"]"
 msgstr ""
 
-#: views/help.html.php:22 views/help.html.php:24 views/help.html.php:27
-#: views/help.html.php:30
+#: views/help.html.php:24 views/help.html.php:26 views/help.html.php:29
+#: views/help.html.php:32
 msgid "or"
 msgstr ""
 
-#: views/help.html.php:22
+#: views/help.html.php:24
 msgid ""
 "will display all the lessons in a course along with links to them. If you "
 "use the second format and pass \"status\" as first argument, the shortcode "
@@ -866,31 +871,31 @@ msgid ""
 "be shown on top)."
 msgstr ""
 
-#: views/help.html.php:22
+#: views/help.html.php:24
 msgid "Note that status column will be shown only for logged in users."
 msgstr ""
 
-#: views/help.html.php:25
+#: views/help.html.php:27
 msgid ""
 "can be used only in a course page and will display the first lesson from the "
 "course. You can replace \"hyperlinked text\" with your own text. If you omit "
 "the parameter the link will say \"first lesson\"."
 msgstr ""
 
-#: views/help.html.php:28
+#: views/help.html.php:30
 msgid ""
 "can be used only in a lesson and will display the next lesson from the "
 "course. You can replace \"hyperlinked text\" with your own text. If you omit "
 "the parameter the link will use the lesson title as hyperlinked text."
 msgstr ""
 
-#: views/help.html.php:31
+#: views/help.html.php:33
 msgid ""
 "Similar to the above, used to display a link for the previous lesson in this "
 "course. Note that lessons are ordered in the order of creation."
 msgstr ""
 
-#: views/help.html.php:33
+#: views/help.html.php:35
 msgid ""
 "(where X is lesson ID) will output the assignments to the lesson on the "
 "front-end. The links to submit and view solutions will also work. You can "
@@ -899,15 +904,15 @@ msgid ""
 "links to assignments from it."
 msgstr ""
 
-#: views/help.html.php:35
+#: views/help.html.php:37
 msgid "Redesigning and Customizing the Views / Templates"
 msgstr ""
 
-#: views/help.html.php:37
+#: views/help.html.php:39
 msgid "Only for advanced users!"
 msgstr ""
 
-#: views/help.html.php:39
+#: views/help.html.php:41
 msgid ""
 "You can safely customize all files from the \"views\" folders by placing "
 "their copies in your theme folder. Simply create folder \"namaste\" <b>in "
@@ -915,11 +920,11 @@ msgid ""
 "\" folder directly there."
 msgstr ""
 
-#: views/help.html.php:41
+#: views/help.html.php:43
 msgid "For example:"
 msgstr ""
 
-#: views/help.html.php:44
+#: views/help.html.php:46
 msgid ""
 "If you are using the Twenty Fourteen theme, you should create folder "
 "\"namaste\" under it so the structure will now be something like <b>wp-"
@@ -927,7 +932,7 @@ msgid ""
 "\"namaste\" folder should remain where they are)"
 msgstr ""
 
-#: views/help.html.php:45
+#: views/help.html.php:47
 msgid ""
 "Then if you want to modify the \"Manage Certificates\" page copy the file "
 "certificates.php from the plugin \"views\" folder and place it in the new "
@@ -935,14 +940,14 @@ msgid ""
 "namaste/certificates.php</b>"
 msgstr ""
 
-#: views/help.html.php:48
+#: views/help.html.php:50
 msgid ""
 "Don't worry if you use modified WordPress directory structure and don't have "
 "'wp-content' folder. The trick will work with any structure as long as you "
 "follow the same logic."
 msgstr ""
 
-#: views/help.html.php:50
+#: views/help.html.php:52
 msgid ""
 "Then feel free to modify the code, but of course be careful not to mess with "
 "the PHP or Javascript inside. This will let you change the design and even "
@@ -1188,6 +1193,10 @@ msgid "Manual manager approval is also required to complete this lesson."
 msgstr ""
 
 #: views/lesson-todo.php:24
+msgid "Student needs to manually mark this lesson as completed."
+msgstr ""
+
+#: views/lesson-todo.php:26
 msgid ""
 "All the requirements are completed. Maybe a manager has set this \"In "
 "progress\" status manually."
@@ -1939,39 +1948,6 @@ msgstr ""
 
 #: views/student-lessons.php:49
 msgid "[todo]"
-msgstr ""
-
-#: views/students-earned-certificate.html.php:2
-msgid "Students Who Earned Certificate %s"
-msgstr ""
-
-#: views/students-earned-certificate.html.php:4
-msgid "Back to all certificates"
-msgstr ""
-
-#: views/students-earned-certificate.html.php:7
-msgid "No student has earned this certificate yet."
-msgstr ""
-
-#: views/students-earned-certificate.html.php:13
-msgid "User name and email"
-msgstr ""
-
-#: views/students-earned-certificate.html.php:13
-msgid "Date earned"
-msgstr ""
-
-#: views/students-earned-certificate.html.php:15
-#: views/students-earned-certificate.html.php:22
-msgid "Remove"
-msgstr ""
-
-#: views/students-earned-certificate.html.php:21
-msgid "View / print"
-msgstr ""
-
-#: views/students-earned-certificate.html.php:29
-msgid "Are you sure? The user will not be able to print this certificate."
 msgstr ""
 
 #: views/submit-solution.php:1

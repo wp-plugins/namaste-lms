@@ -1,7 +1,9 @@
 <div class="wrap">
 	<h1><?php _e('Namaste! LMS Help', 'namaste');?></h1>
 	
-	<p><?php _e('We are just starting to add some helpful information so please bear with us until it is extended. For now you can learn about the available shortcodes. Do not forget also to check the <a href="http://namaste-lms.org/help.php" target="_blank">quick help guide on our site</a>.', 'namaste');?>
+	<p><?php _e('For a quick overview of how to get started check the <a href="http://namaste-lms.org/help.php" target="_blank">quick help guide on our site</a>.', 'namaste');?>
+	
+	<p><?php printf(__('More detailed documentation is available at the <a href="%s" target="_blank">new documentation site</a>.', 'namaste'), 'http://demo.namaste-lms.org');?></p>
 	
 	<h2><?php _e('Please Rate Us!', 'namaste')?></h2>
 	

@@ -8,7 +8,7 @@ function namaste_ajax() {
 	switch($type) {
 		case 'lessons_for_course':
 			$_lesson = new NamasteLMSLessonModel();
-			echo $_lesson->select($_POST['course_id'], 'json');
+			echo $_lesson->select($_POST['course_id'], 'json', null, 'ID');
 		break;
 		
 		// load notes for student homework

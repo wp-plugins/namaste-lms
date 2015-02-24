@@ -21,6 +21,8 @@
 	
 	<?php if($todo['todo_admin_approval']) echo "<li>".__('Manual manager approval is also required to complete this lesson.', 'namaste')."</li>";?>
 	
+	<?php if($todo['todo_mark']) echo "<li>".__('Student needs to manually mark this lesson as completed.', 'namaste')."</li>";?>
+	
 	<?php if(!empty($todo['nothing'])) echo "<li>".__('All the requirements are completed. Maybe a manager has set this "In progress" status manually.', 'namaste')."</li>"; ?>
 	</ol>
 </div>
