@@ -298,7 +298,7 @@ class NamasteLMS {
 	static function init() {
 		global $wpdb;		
 		load_plugin_textdomain( 'namaste', false, NAMASTE_RELATIVE_PATH."/languages/" );
-		if (!session_id()) @session_start();
+		// if (!session_id()) @session_start(); Not used now
 		
 		// define table names 
 		define( 'NAMASTE_STUDENT_COURSES', $wpdb->prefix. "namaste_student_courses");

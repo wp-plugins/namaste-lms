@@ -31,7 +31,7 @@ class NamasteLMSHomeworkModel {
 						
 						do_action('namaste_add_homework', $id);		
 					
-						$_SESSION['namaste_flash'] = __('Homework added', 'namaste');
+						//$_SESSION['namaste_flash'] = __('Homework added', 'namaste');
 						namaste_redirect("admin.php?page=namaste_homeworks&course_id=$_GET[course_id]&lesson_id=$_GET[lesson_id]");
 				}			
 			
@@ -52,7 +52,7 @@ class NamasteLMSHomeworkModel {
 				if(!empty($_POST['del'])) {
 					 self::delete($_GET['id']);
 					 
-					 $_SESSION['namaste_flash'] = __('Homework deleted', 'namaste');
+					 //$_SESSION['namaste_flash'] = __('Homework deleted', 'namaste');
 					 namaste_redirect("admin.php?page=namaste_homeworks&course_id=$_GET[course_id]&lesson_id=$_GET[lesson_id]");
 				}			
 			
@@ -65,7 +65,7 @@ class NamasteLMSHomeworkModel {
 						
 						do_action('namaste_save_homework', $_GET['id']);					
 					
-						$_SESSION['namaste_flash'] = __('Homework saved', 'namaste');
+						//$_SESSION['namaste_flash'] = __('Homework saved', 'namaste');
 						namaste_redirect("admin.php?page=namaste_homeworks&course_id=$_GET[course_id]&lesson_id=$_GET[lesson_id]");
 				}			
 				
