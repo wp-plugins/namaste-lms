@@ -10,9 +10,13 @@
 		
 <h4><?php _e('Lesson Access', 'namaste')?></h4>
 
-<?php if(!sizeof($other_lessons)):?>
-	<p><?php _e('There are no other lessons in this course. So this lesson will be accessible to anyone who enrolled the course.', 'namaste')?></p>
-<?php else: 
+<?php if(!sizeof($other_lessons)):
+	if(empty($post->post_title)):?>
+		<p><?php _e('You will be able to set lesson access after you create the lesson.', 'namaste')?></p>
+	<?php else:?>
+		<p><?php _e('There are no other lessons in this course. So this lesson will be accessible to anyone who enrolled the course.', 'namaste')?></p>
+	<?php endif;
+   else: 
 echo '<p>'.__('This lesson will be accessible only after the following lessons are completed:','namaste').'</p>'; 
 foreach($other_lessons as $lesson):?>
 	<p><input type="checkbox" name="namaste_access[]" value="<?php echo $lesson->ID?>" <?php if(in_array($lesson->ID, $lesson_access)) echo "checked"?>> <?php echo $lesson->post_title?></p>

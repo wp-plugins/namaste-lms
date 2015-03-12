@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.5.6\n"
+"Project-Id-Version: Namaste! LMS 1.5.7\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2015-02-24 13:54:32+00:00\n"
+"POT-Creation-Date: 2015-03-12 14:56:22+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -248,20 +248,8 @@ msgstr ""
 msgid "These courses should be completed before you can enroll:"
 msgstr ""
 
-#: models/homework-model.php:34
-msgid "Homework added"
-msgstr ""
-
 #: models/homework-model.php:49
 msgid "You are not allowed to edit or delete this assignment"
-msgstr ""
-
-#: models/homework-model.php:55
-msgid "Homework deleted"
-msgstr ""
-
-#: models/homework-model.php:68
-msgid "Homework saved"
 msgstr ""
 
 #: models/homework-model.php:114
@@ -336,7 +324,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.5.6)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.5.7)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:234
 msgid "Namaste! LMS"
@@ -403,7 +391,7 @@ msgstr ""
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:254
+#: models/namaste-model.php:254 views/students-earned-certificate.html.php:14
 msgid "View Certificate"
 msgstr ""
 
@@ -425,6 +413,14 @@ msgstr ""
 
 #: models/namaste-model.php:264 views/my-gradebook.html.php:2
 msgid "My Gradebook"
+msgstr ""
+
+#: models/point.php:23
+msgid "LMS Points"
+msgstr ""
+
+#: models/point.php:35
+msgid "(Cleanup)"
 msgstr ""
 
 #: models/student-model.php:69
@@ -604,7 +600,7 @@ msgid "Enrollment mode:"
 msgstr ""
 
 #: views/course-meta-box.php:3 views/course-meta-box.php:45
-#: views/lesson-meta-box.php:95
+#: views/lesson-meta-box.php:99
 msgid "You can use the shortcode"
 msgstr ""
 
@@ -615,7 +611,7 @@ msgid ""
 msgstr ""
 
 #: views/course-meta-box.php:5 views/course-meta-box.php:46
-#: views/lesson-meta-box.php:97
+#: views/lesson-meta-box.php:101
 msgid "The shortcode"
 msgstr ""
 
@@ -672,7 +668,7 @@ msgid ""
 msgstr ""
 
 #: views/course-meta-box.php:40 views/homework.php:11
-#: views/lesson-meta-box.php:89 views/options.php:70 views/options.php:72
+#: views/lesson-meta-box.php:93 views/options.php:70 views/options.php:72
 #: views/options.php:74
 msgid "Reward"
 msgstr ""
@@ -681,7 +677,7 @@ msgstr ""
 msgid "points for completing this course."
 msgstr ""
 
-#: views/course-meta-box.php:43 views/lesson-meta-box.php:93
+#: views/course-meta-box.php:43 views/lesson-meta-box.php:97
 msgid "Shortcodes"
 msgstr ""
 
@@ -703,7 +699,7 @@ msgstr ""
 msgid "help page."
 msgstr ""
 
-#: views/course-meta-box.php:48 views/lesson-meta-box.php:99
+#: views/course-meta-box.php:48 views/lesson-meta-box.php:103
 msgid "Did you know?"
 msgstr ""
 
@@ -1088,73 +1084,77 @@ msgstr ""
 msgid "Lesson Access"
 msgstr ""
 
-#: views/lesson-meta-box.php:14
+#: views/lesson-meta-box.php:15
+msgid "You will be able to set lesson access after you create the lesson."
+msgstr ""
+
+#: views/lesson-meta-box.php:17
 msgid ""
 "There are no other lessons in this course. So this lesson will be accessible "
 "to anyone who enrolled the course."
 msgstr ""
 
-#: views/lesson-meta-box.php:16
+#: views/lesson-meta-box.php:20
 msgid ""
 "This lesson will be accessible only after the following lessons are "
 "completed:"
 msgstr ""
 
-#: views/lesson-meta-box.php:22
+#: views/lesson-meta-box.php:26
 msgid "Lesson Completeness"
 msgstr ""
 
-#: views/lesson-meta-box.php:24
+#: views/lesson-meta-box.php:28
 msgid ""
 "The minimum requirement for a lesson to be completed is to be visited by the "
 "student. However you can add some extra requirements here:"
 msgstr ""
 
-#: views/lesson-meta-box.php:26
+#: views/lesson-meta-box.php:30
 msgid ""
 "Lesson completion will be manually verified and approved by the admin for "
 "every student."
 msgstr ""
 
-#: views/lesson-meta-box.php:29
+#: views/lesson-meta-box.php:33
 msgid "The following assignments/homework must be completed:"
 msgstr ""
 
-#: views/lesson-meta-box.php:38
+#: views/lesson-meta-box.php:42
 msgid ""
 "The following quiz must be completed (will take effect only if the quiz is "
 "published):"
 msgstr ""
 
-#: views/lesson-meta-box.php:40
+#: views/lesson-meta-box.php:44
 msgid "- No quiz required -"
 msgstr ""
 
-#: views/lesson-meta-box.php:46
+#: views/lesson-meta-box.php:50
 msgid "with any of the following grade(s) achieved:"
 msgstr ""
 
-#: views/lesson-meta-box.php:50 views/lesson-meta-box.php:72
+#: views/lesson-meta-box.php:54 views/lesson-meta-box.php:76
 msgid "- Any grade -"
 msgstr ""
 
-#: views/lesson-meta-box.php:84
+#: views/lesson-meta-box.php:88
 msgid ""
 "If you install %s or %s you can also require certain tests and quizzes to be "
 "completed."
 msgstr ""
 
-#: views/lesson-meta-box.php:89
+#: views/lesson-meta-box.php:93
 msgid "points for completing this lesson."
 msgstr ""
 
-#: views/lesson-meta-box.php:95
+#: views/lesson-meta-box.php:99
 msgid ""
 "inside the lesson content to display what the student needs to do to "
 "complete the lesson."
 msgstr ""
 
-#: views/lesson-meta-box.php:97
+#: views/lesson-meta-box.php:101
 msgid ""
 "will display a \"Mark Completed\" button so the student can mark the lesson "
 "completed themselves. <b>If such button is included in the lesson it will "
@@ -1163,13 +1163,13 @@ msgid ""
 "</b>"
 msgstr ""
 
-#: views/lesson-meta-box.php:101
+#: views/lesson-meta-box.php:105
 msgid ""
 "You can set <a href=\"%s\" target=\"_blank\">delayed access</a> to this "
 "lesson."
 msgstr ""
 
-#: views/lesson-meta-box.php:103
+#: views/lesson-meta-box.php:107
 msgid ""
 "If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able "
 "to set delayed access to this lesson, namage classes and teachers, and a lot "
@@ -1948,6 +1948,39 @@ msgstr ""
 
 #: views/student-lessons.php:49
 msgid "[todo]"
+msgstr ""
+
+#: views/students-earned-certificate.html.php:2
+msgid "Students Who Earned Certificate %s"
+msgstr ""
+
+#: views/students-earned-certificate.html.php:4
+msgid "Back to all certificates"
+msgstr ""
+
+#: views/students-earned-certificate.html.php:7
+msgid "No student has earned this certificate yet."
+msgstr ""
+
+#: views/students-earned-certificate.html.php:13
+msgid "User name and email"
+msgstr ""
+
+#: views/students-earned-certificate.html.php:13
+msgid "Date earned"
+msgstr ""
+
+#: views/students-earned-certificate.html.php:15
+#: views/students-earned-certificate.html.php:22
+msgid "Remove"
+msgstr ""
+
+#: views/students-earned-certificate.html.php:21
+msgid "View / print"
+msgstr ""
+
+#: views/students-earned-certificate.html.php:29
+msgid "Are you sure? The user will not be able to print this certificate."
 msgstr ""
 
 #: views/submit-solution.php:1

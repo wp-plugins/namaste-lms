@@ -352,6 +352,12 @@ class NamasteLMS {
 		// comments on lessons shouldn't be visible for unenrolled
 		add_filter('comments_array', array('NamasteLMSLessonModel','restrict_visible_comments'));
 		
+		// add points in custom column on the users page
+		if(get_option('namaste_use_points_system') != '') {				
+			add_filter('manage_users_columns', array('NamastePoint', 'add_custom_column'));
+			add_action('manage_users_custom_column', array('NamastePoint','manage_custom_column'), 10, 3);
+		} 
+		
 		$version = get_option('namaste_version');
 		if($version != '1.31') self::install(true);
 		
