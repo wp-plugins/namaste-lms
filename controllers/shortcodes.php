@@ -177,7 +177,7 @@ class NamasteLMSShortcodesController {
 		$_GET['course_id'] = $course_id;
 		$simplified = empty($status) ? 2 : 1; // simplified is always at least 1 when called as shortcode. But will be 2 if status column is not requested
 		
-		NamasteLMSLessonModel :: student_lessons($simplified, $ob, $dir);
+		NamasteLMSLessonModel :: student_lessons($simplified, $ob, $dir, true);
 		$content = ob_get_contents();
 		ob_end_clean();
 		return $content;

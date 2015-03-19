@@ -147,7 +147,7 @@ class NamasteLMSLessonModel {
 	
 	// students lessons in a selected course
 	// @param $simplified boolean - when true doesn't assignment and text/exam  
-	static function student_lessons($simplified = false, $ob = null, $dir = null) {
+	static function student_lessons($simplified = false, $ob = null, $dir = null, $in_shortcode=false) {
 		global $wpdb, $user_ID; 
 		
 		// student_id
@@ -160,7 +160,7 @@ class NamasteLMSLessonModel {
 		$course = $wpdb -> get_row($wpdb->prepare("SELECT * FROM {$wpdb->posts} WHERE id=%d", $_GET['course_id']));
 		
 		// am I enrolled?
-		if(!current_user_can('namaste_manage')) {
+		if(!current_user_can('namaste_manage') and !$in_shortcode) {
 			$enrolled = $wpdb -> get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES.
 				" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status = 'completed')", $student_id, $course->ID));
 			if(!$enrolled) {
