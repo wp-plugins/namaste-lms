@@ -47,7 +47,7 @@ class NamasteLMSShortcodesController {
    	global $wpdb, $user_ID, $user_email, $post;
    	
    	if(!is_user_logged_in()) {
-   		return __('You need to be logged in to enroll in this course', 'namaste');
+   		return sprintf(__('You need to be <a href="%s">logged in</a> to enroll in this course', 'namaste'), wp_login_url(get_permalink( $post->ID )));
    	}
    	
    	// passed course id?
