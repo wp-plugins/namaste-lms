@@ -344,14 +344,15 @@ class NamasteLMSLessonModel {
 			
 		if(empty($exists->id)) {
 			  $wpdb -> query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_LESSONS." SET
-			  	lesson_id=%d, student_id=%d, status=%d, completion_date = CURDATE()", 
-			  	$post->ID, $user_ID, 0));
+			  	lesson_id=%d, student_id=%d, status=%d, completion_date = %s, start_time=%s", 
+			  	$post->ID, $user_ID, 0, date("Y-m-d", current_time('timestamp')), current_time('mysql')));
 			  do_action('namaste_started_lesson', $user_ID, $post->ID);
 			  
 			  // insert in history
 			  $wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
-					user_id=%d, date=CURDATE(), datetime=NOW(), action='started_lesson', value=%s, num_value=%d",
-					$user_ID, sprintf(__('Started reading lesson "%s"', 'namaste'), $post->post_title), $post->ID));
+					user_id=%d, date=%s, datetime=%s, action='started_lesson', value=%s, num_value=%d",
+					$user_ID, date("Y-m-d", current_time('timestamp')), current_time('mysql'), 
+					sprintf(__('Started reading lesson "%s"', 'namaste'), $post->post_title), $post->ID));
 		} 
 		
 		// if ready, complete lesson
@@ -440,8 +441,8 @@ class NamasteLMSLessonModel {
 		if($student_lesson->status == 1) return false;
 		
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_LESSONS." 
-		SET status = '1', completion_date = CURDATE() 
-		WHERE id=%d", $student_lesson->id));
+		SET status = '1', completion_date = %s, completion_time=%s
+		WHERE id=%d", date("Y-m-d", current_time('timestamp')), current_time('mysql'), $student_lesson->id));
 		
 		// award points?
 		$use_points_system = get_option('namaste_use_points_system');

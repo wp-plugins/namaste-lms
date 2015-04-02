@@ -6,7 +6,7 @@ class NamasteLMS {
    	$wpdb -> show_errors();
    	
    	$old_version = get_option('namaste_version');
-   	update_option( 'namaste_version', "1.31");
+   	update_option( 'namaste_version', "1.32");
    	if(!$update) self::init();
 	  
 	  // enrollments to courses
@@ -155,11 +155,15 @@ class NamasteLMS {
 	  ), NAMASTE_STUDENT_HOMEWORKS);
 	  
 	   namaste_add_db_fields(array(
-		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''")	  
+		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''"),	  
+		  array("name"=>"enrollment_time", "type"=>"DATETIME"),
+		  array("name"=>"completion_time", "type"=>"DATETIME"),
 	  ), NAMASTE_STUDENT_COURSES);
 	  
 	   namaste_add_db_fields(array(
-		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''")	  
+		  array("name"=>"grade", "type"=>"VARCHAR(100) NOT NULL DEFAULT ''"),
+		  array("name"=>"start_time", "type"=>"DATETIME"),
+		  array("name"=>"completion_time", "type"=>"DATETIME"),	  
 	  ), NAMASTE_STUDENT_LESSONS);
 	  
 	  namaste_add_db_fields(array(
@@ -359,7 +363,7 @@ class NamasteLMS {
 		} 
 		
 		$version = get_option('namaste_version');
-		if($version != '1.31') self::install(true);
+		if($version != '1.32') self::install(true);
 		
 		// purge history log older than 180 days
 		// in the next version this period should be configurable

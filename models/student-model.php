@@ -84,8 +84,8 @@ class NamasteLMSStudentModel {
 					 if(empty($error)) {
 					 		$wpdb -> query($wpdb -> prepare("INSERT INTO ".NAMASTE_STUDENT_COURSES." SET
 					 			course_id = %d, user_id = %d, status = 'enrolled', 
-					 			enrollment_date = CURDATE(), completion_date = '1900-01-01', comments=''",
-					 			$_GET['course_id'], $student->ID));
+					 			enrollment_date = %s, completion_date = '1900-01-01', enrollment_time=%s, comments=''",
+					 			$_GET['course_id'], $student->ID, date("Y-m-d", current_time('timestamp')), current_time('mysql') ));
 					 		$success = __('User successfully enrolled in the course', 'namaste');	
 					 		
 					 		// insert in history
@@ -103,8 +103,9 @@ class NamasteLMSStudentModel {
 					if($multiuser_access  == 'view') wp_die(__('You are not allowed to do this.', 'namaste'));
 					
 					 $wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_COURSES." SET
-					 			status=%s, completion_date=CURDATE() 
-					 			WHERE user_id=%d AND course_id=%d", $_GET['status'], $_GET['student_id'], $_GET['course_id']));
+					 			status=%s, completion_date=%s, completion_time=%s 
+					 			WHERE user_id=%d AND course_id=%d", $_GET['status'], 
+					 			date("Y-m-d", current_time('timestamp')), current_time('mysql'), $_GET['student_id'], $_GET['course_id']));
 					 			
 					 $course = get_post($_GET['course_id']);
 					 			
@@ -200,12 +201,13 @@ class NamasteLMSStudentModel {
 			 
 			 if($exists) {
 			 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_LESSONS." 
-			 			SET status=%d, completion_date = CURDATE() WHERE id=%d", $status, $exists));
+			 			SET status=%d, completion_date = %s, completion_time=%s WHERE id=%d", 
+			 			$status, date("Y-m-d", current_time('timestamp')), current_time('mysql'), $exists));
 			 } 
 			 else {
 			 		$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_LESSONS." SET
-			 			lesson_id = %d, student_id = %d, status = %d, completion_date = CURDATE()",
-			 			$lesson_id, $student_id, $status));
+			 			lesson_id = %d, student_id = %d, status = %d, completion_date = %s, completin_time=%s",
+			 			$lesson_id, $student_id, $status, date("Y-m-d", current_time('timestamp')), current_time('mysql')));
 			 }	
 		}	
 		

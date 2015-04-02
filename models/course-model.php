@@ -193,7 +193,8 @@ class NamasteLMSCourseModel {
 		$course = get_post($course_id);
 		
 		$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_STUDENT_COURSES." SET status = 'completed',
-			completion_date = CURDATE() WHERE id=%d", $student_course->id));
+			completion_date = %s, completion_time=%s WHERE id=%d", 
+			date("Y-m-d", current_time('timestamp')), current_time('mysql'), $student_course->id));
 			
 		// should we assign certificates?
 		$_cert = new NamasteLMSCertificateModel();
@@ -258,9 +259,9 @@ class NamasteLMSCourseModel {
 		}
 		
 		$result = $wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_COURSES." SET
-					course_id = %d, user_id = %d, status = %s, enrollment_date = CURDATE(),
+					course_id = %d, user_id = %d, status = %s, enrollment_date = %s, enrollment_time=%s,
 					completion_date='1900-01-01', comments=''",
-					$course_id, $student_id, $status));
+					$course_id, $student_id, $status, date("Y-m-d", current_time('timestamp')), current_time('mysql') ) );
 		if($result !== false) {                        					
 			do_action('namaste_enrolled_course', $student_id, $course_id, $status);
 			
