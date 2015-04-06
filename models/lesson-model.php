@@ -130,13 +130,19 @@ class NamasteLMSLessonModel {
 		$id_sql = '';
 		if(!empty($id)) $id_sql = $wpdb->prepare(' AND tP.ID = %d ', $id);
 		
-		if(empty($ob)) $ob = 'post_title';
+		if(empty($ob)) {
+			$ob = 'post_title';
+			$reorder = true;
+		}
 		
 		$lessons = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->posts} tP
 			JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course'
 			AND tM.meta_value = %d
 			WHERE post_type = 'namaste_lesson'  AND (post_status='publish' OR post_status='draft') $id_sql
 			ORDER BY $ob $dir",  $course_id));
+			
+		// external reorder?
+		if(!empty($reorder)) $lessons = apply_filters('namaste-reorder-lessons', $lessons);	
 			
 		if($format == 'array') return $lessons;
 		
