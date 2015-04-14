@@ -2,7 +2,7 @@
 // various Namaste shortcodes
 class NamasteLMSShortcodesController {
 	// what's todo in a lesson or course
-   static function todo() {
+   static function todo($atts) {
    	global $post, $user_ID;
    	
    	if(!is_user_logged_in()) return "";
@@ -25,9 +25,16 @@ class NamasteLMSShortcodesController {
    		$required_lessons = $_course->required_lessons($post->ID, $user_ID);
    		
    		$content = "";
+   		// accept ordered or unordered list as argument
+   		$list_tag = empty($atts[0]) ? 'ul' : $atts[0];
+   	
+	   	//validate the user input
+	   	if($list_tag !='ul' && $list_tag != 'ol') {
+	   		$list_tag = 'ul';
+	   	}
    		
    		if(!empty($required_lessons)) {
-   			$content .= "<ul>\n";
+   			$content .= "<".$list_tag.">\n";
    			foreach($required_lessons as $lesson) {
    				$content .= "<li".($lesson->namaste_completed?' class="namaste-completed" ':' class="namaste-incomplete" ')."><a href='".get_permalink($lesson->ID)."'>".$lesson->post_title."</a> - ";
 					if($lesson->namaste_completed) $content .= __('Completed', 'namaste');
@@ -35,7 +42,7 @@ class NamasteLMSShortcodesController {
    				
    				$content .= "</li>\n";
    			}   			
-   			$content .= "</ul>";
+   			$content .= "</".$list_tag.">";
    		}
    		
    		return $content;
@@ -152,6 +159,12 @@ class NamasteLMSShortcodesController {
 		$course_id = empty($atts[1]) ? $post->ID : $atts[1];
 		$ob = empty($atts[2]) ? '' : "tP.".$atts[2];
 		$dir = empty($atts[3]) ? 'ASC' : $atts[3];
+		$list_tag = empty($atts[4]) ? 'ul' : $atts[4];
+		
+		// validate the user input
+		if($list_tag !='ul' && $list_tag != 'ol') {
+			$list_tag = 'ul';
+		}
 				
 		// are we in the course desc page or in a lesson of this course?
 		$post = get_post($course_id);
@@ -164,11 +177,11 @@ class NamasteLMSShortcodesController {
 
 			$lessons = $_lesson->select($course_id, 'array', null, $ob, $dir);
 			
-			$content = "<ul>";
+			$content = "<".$list_tag.">";
 			foreach($lessons as $lesson) {
 				$content .= "<li><a href='".get_permalink($lesson->ID)."'>".$lesson->post_title."</a></li>";
 			}
-			$content .= "</ul>";
+			$content .= "</".$list_tag.">";
 			return $content;
 		}	
 		

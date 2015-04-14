@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.5.7.2\n"
+"Project-Id-Version: Namaste! LMS 1.5.8.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2015-03-26 16:23:44+00:00\n"
+"POT-Creation-Date: 2015-04-14 12:40:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +21,7 @@ msgid "You are not allowed to grade"
 msgstr ""
 
 #: controllers/certificates.php:29 controllers/multiuser.php:57
-#: models/lesson-model.php:176 models/student-model.php:24
+#: models/lesson-model.php:182 models/student-model.php:24
 #: models/student-model.php:61 models/student-model.php:103
 msgid "You are not allowed to do this."
 msgstr ""
@@ -103,60 +103,60 @@ msgstr ""
 msgid "This lesson has been completed."
 msgstr ""
 
-#: controllers/shortcodes.php:33 views/manage-students.php:37
+#: controllers/shortcodes.php:40 views/manage-students.php:37
 #: views/manage-students.php:60 views/student-lessons.php:47
 msgid "Completed"
 msgstr ""
 
-#: controllers/shortcodes.php:34
+#: controllers/shortcodes.php:41
 msgid "Not completed"
 msgstr ""
 
-#: controllers/shortcodes.php:50
+#: controllers/shortcodes.php:57
 msgid "You need to be <a href=\"%s\">logged in</a> to enroll in this course"
 msgstr ""
 
-#: controllers/shortcodes.php:99
+#: controllers/shortcodes.php:106
 msgid "You are enrolled in this course."
 msgstr ""
 
-#: controllers/shortcodes.php:100
+#: controllers/shortcodes.php:107
 msgid "Your enroll request is received. Waiting for manager approval."
 msgstr ""
 
-#: controllers/shortcodes.php:101
+#: controllers/shortcodes.php:108
 msgid "You have completed this course."
 msgstr ""
 
-#: controllers/shortcodes.php:102
+#: controllers/shortcodes.php:109
 msgid "Your enrollment request is rejected."
 msgstr ""
 
-#: controllers/shortcodes.php:138
+#: controllers/shortcodes.php:145
 msgid "User"
 msgstr ""
 
-#: controllers/shortcodes.php:138
+#: controllers/shortcodes.php:145
 msgid "Points"
 msgstr ""
 
-#: controllers/shortcodes.php:188 controllers/shortcodes.php:199
+#: controllers/shortcodes.php:201 controllers/shortcodes.php:212
 msgid "This content is for logged in users."
 msgstr ""
 
-#: controllers/shortcodes.php:213
+#: controllers/shortcodes.php:226
 msgid "next lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:232
+#: controllers/shortcodes.php:245
 msgid "previous lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:299
+#: controllers/shortcodes.php:312
 msgid "Lesson completed!"
 msgstr ""
 
-#: controllers/shortcodes.php:303
+#: controllers/shortcodes.php:316
 msgid "Mark as completed"
 msgstr ""
 
@@ -168,7 +168,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:16 models/lesson-model.php:689
+#: models/course-model.php:16 models/lesson-model.php:696
 msgid "Course"
 msgstr ""
 
@@ -181,7 +181,7 @@ msgid "This will create a new course in your Namaste! LMS."
 msgstr ""
 
 #: models/course-model.php:60 models/lesson-model.php:31
-#: models/namaste-model.php:243
+#: models/namaste-model.php:247
 msgid "Namaste! Settings"
 msgstr ""
 
@@ -211,40 +211,40 @@ msgid ""
 "logged in."
 msgstr ""
 
-#: models/course-model.php:208
+#: models/course-model.php:209
 msgid "Received %d points for completing course \"%s\"."
 msgstr ""
 
-#: models/course-model.php:218
+#: models/course-model.php:219
 msgid "Completed course \"%s\""
 msgstr ""
 
-#: models/course-model.php:256
+#: models/course-model.php:257
 msgid ""
 "You cannot enroll this course - other courses have to be completed first."
 msgstr ""
 
-#: models/course-model.php:271 models/student-model.php:95
+#: models/course-model.php:272 models/student-model.php:95
 msgid "Enrolled in course %s. Status: %s"
 msgstr ""
 
-#: models/course-model.php:297
+#: models/course-model.php:298
 msgid "Payment for course"
 msgstr ""
 
-#: models/course-model.php:298
+#: models/course-model.php:299
 msgid "Enroll for"
 msgstr ""
 
-#: models/course-model.php:312
+#: models/course-model.php:313
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:328 models/lesson-model.php:690
+#: models/course-model.php:329 models/lesson-model.php:697
 msgid "Visits (unique/total)"
 msgstr ""
 
-#: models/course-model.php:355
+#: models/course-model.php:356
 msgid "These courses should be completed before you can enroll:"
 msgstr ""
 
@@ -277,141 +277,141 @@ msgstr ""
 msgid "This will create a new lesson in your Namaste! LMS."
 msgstr ""
 
-#: models/lesson-model.php:167
+#: models/lesson-model.php:173
 msgid "You must enroll in the course first before you can see the lessons"
 msgstr ""
 
-#: models/lesson-model.php:178
+#: models/lesson-model.php:184
 msgid ""
 "The lesson cannot be completed because there are unsatisfied requirements"
 msgstr ""
 
-#: models/lesson-model.php:228 views/manage-students.php:62
+#: models/lesson-model.php:234 views/manage-students.php:62
 #: views/student-lessons.php:45
 msgid "Not started"
 msgstr ""
 
-#: models/lesson-model.php:233
+#: models/lesson-model.php:239
 msgid "Completed on"
 msgstr ""
 
-#: models/lesson-model.php:239 views/manage-students.php:61
+#: models/lesson-model.php:245 views/manage-students.php:61
 #: views/student-lessons.php:46
 msgid "In progress"
 msgstr ""
 
-#: models/lesson-model.php:261
+#: models/lesson-model.php:267
 msgid "You need to be logged in to access this lesson."
 msgstr ""
 
-#: models/lesson-model.php:275
+#: models/lesson-model.php:281
 msgid "In order to see this lesson you first have to be enrolled in the course"
 msgstr ""
 
-#: models/lesson-model.php:293
+#: models/lesson-model.php:299
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#: models/lesson-model.php:354
+#: models/lesson-model.php:361
 msgid "Started reading lesson \"%s\""
 msgstr ""
 
-#: models/lesson-model.php:452
+#: models/lesson-model.php:459
 msgid "Received %d points for completing lesson \"%s\"."
 msgstr ""
 
-#: models/lesson-model.php:461
+#: models/lesson-model.php:468
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.5.7.2)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.5.8.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: models/namaste-model.php:234
+#: models/namaste-model.php:238
 msgid "Namaste! LMS"
 msgstr ""
 
-#: models/namaste-model.php:236 views/student-lessons.php:19
+#: models/namaste-model.php:240 views/student-lessons.php:19
 msgid "Assignments"
 msgstr ""
 
-#: models/namaste-model.php:237
+#: models/namaste-model.php:241
 msgid "Students"
 msgstr ""
 
-#: models/namaste-model.php:239
+#: models/namaste-model.php:243
 msgid "Certificates"
 msgstr ""
 
-#: models/namaste-model.php:240
+#: models/namaste-model.php:244
 msgid "Students Earned Certificate"
 msgstr ""
 
-#: models/namaste-model.php:242 views/gradebook.html.php:2
+#: models/namaste-model.php:246 views/gradebook.html.php:2
 msgid "Gradebook"
 msgstr ""
 
-#: models/namaste-model.php:243
+#: models/namaste-model.php:247
 msgid "Settings"
 msgstr ""
 
-#: models/namaste-model.php:244
+#: models/namaste-model.php:248
 msgid "Help"
 msgstr ""
 
-#: models/namaste-model.php:245
+#: models/namaste-model.php:249
 msgid "Namaste! Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:245
+#: models/namaste-model.php:249
 msgid "Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:248
+#: models/namaste-model.php:252
 msgid "Student Lessons"
 msgstr ""
 
-#: models/namaste-model.php:249
+#: models/namaste-model.php:253
 msgid "Homeworks"
 msgstr ""
 
-#: models/namaste-model.php:250 views/add-note.php:15
+#: models/namaste-model.php:254 views/add-note.php:15
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:251 views/lesson-homeworks.php:42
+#: models/namaste-model.php:255 views/lesson-homeworks.php:42
 #: views/lesson-homeworks.php:44
 msgid "Submit solution"
 msgstr ""
 
-#: models/namaste-model.php:252 views/homeworks.php:29
+#: models/namaste-model.php:256 views/homeworks.php:29
 msgid "View solutions"
 msgstr ""
 
-#: models/namaste-model.php:253
+#: models/namaste-model.php:257
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:254 views/students-earned-certificate.html.php:14
+#: models/namaste-model.php:258 views/students-earned-certificate.html.php:14
 msgid "View Certificate"
 msgstr ""
 
-#: models/namaste-model.php:255
+#: models/namaste-model.php:259
 msgid "Download solution"
 msgstr ""
 
-#: models/namaste-model.php:256
+#: models/namaste-model.php:260
 msgid "Multi user configuration"
 msgstr ""
 
-#: models/namaste-model.php:262 views/my_courses.php:1
+#: models/namaste-model.php:266 views/my_courses.php:1
 msgid "My Courses"
 msgstr ""
 
-#: models/namaste-model.php:263 views/my-certificates.php:1
+#: models/namaste-model.php:267 views/my-certificates.php:1
 msgid "My Certificates"
 msgstr ""
 
-#: models/namaste-model.php:264 views/my-gradebook.html.php:2
+#: models/namaste-model.php:268 views/my-gradebook.html.php:2
 msgid "My Gradebook"
 msgstr ""
 
@@ -442,15 +442,15 @@ msgstr ""
 msgid "User successfully enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:113
+#: models/student-model.php:114
 msgid "Enrollment in %s has been approved."
 msgstr ""
 
-#: models/student-model.php:117
+#: models/student-model.php:118
 msgid "Enrollment in %s has been rejected."
 msgstr ""
 
-#: models/student-model.php:179
+#: models/student-model.php:180
 msgid "You cannot change someone else's status"
 msgstr ""
 
@@ -813,7 +813,8 @@ msgstr ""
 msgid ""
 "This is flexible shortcode that can be placed inside a lesson or course "
 "content. It will display what the logged in student still needs to do to "
-"complete the given lesson or course."
+"complete the given lesson or course. You can pass \"ul\" or \"ol\" as first "
+"argument to define ordered or unordered list."
 msgstr ""
 
 #: views/help.html.php:16
@@ -864,7 +865,8 @@ msgid ""
 "format lets you specify ordering using SQL field names from the posts table. "
 "For example [namaste-course-lessons 0 0 post_date DESC] will return the "
 "lessons displayed by the order of publishing, descending (latest lesson will "
-"be shown on top)."
+"be shown on top). In place of \"list_tag\" you can pass \"ul\" or \"ol\". If "
+"empty, defaults to \"ul\"."
 msgstr ""
 
 #: views/help.html.php:24
