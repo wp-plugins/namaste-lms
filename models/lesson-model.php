@@ -88,6 +88,7 @@ class NamasteLMSLessonModel {
 			foreach($exams as $cnt=>$exam) {
 					$exam_grades = array();
 					foreach($grades as $grade) {
+							if(!empty($exam->reuse_default_grades) and empty($grade->exam_id)) $exam_grades[] = $grade;
 							if($grade->exam_id == $exam->ID) $exam_grades[] = $grade;
 					}
 					
