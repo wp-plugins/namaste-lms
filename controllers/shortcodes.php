@@ -361,4 +361,15 @@ class NamasteLMSShortcodesController {
 		
 		return NamasteLMSCertificatesController :: my_course_certificates($course_id, $user_ID, $text);
 	}
+	
+	// link to the course that lesson belongs to
+	static function course_link($atts) {
+		global $post;
+		$lesson_id = empty($atts['lesson_id']) ? $post->ID : intval($atts['lesson_id']);
+		$course_id = get_post_meta($lesson_id, 'namaste_course', true);
+		$course = get_post($course_id);
+		$text = empty($atts['text']) ? stripslashes($course->post_title) : $atts['text'];
+		
+		return '<a href="'.get_permalink($course_id).'">' . $text . '</a>';
+	}
 }

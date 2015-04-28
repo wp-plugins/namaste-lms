@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: LMS, learning, courses, lessons, ILE, wpmu, multisite
 Requires at least: 3.3
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: trunk
 License: GPL2
 
@@ -61,13 +61,14 @@ Yes, you can set your custom URL slugs in the Namaste Settings page
 
 == Changelog ==
 
-= Version 1.5.8 =
+= Version 1.5.9 =
 - Added [namaste-earned-certificates] shortcode to display certificates earned by the user on a given course. Can be used on course page or elsewhere by passing course_id.
 - Added Sandbox mode for testing paypal payments
 - Added filter to make sure unenrolled user does not see comments on a lesson
 - Added page that shows all users who earned a certificate along with a link to see / print their certificate
 - Added option to show lessons in blog and archive pages
 - Added information about the "mark completed" button in the lesson to-do popup box
+- Added shortcode [namaste-course-link] that creates a link to the course a lesson belongs to
 - Switched the lesson order to ID (order of creating) rather than title based in couple of places
 - Added custom column with LMS points in the "Users" page of your administration. The column appears if you choose to use points system. There is also a link to cleanup the points earned of every user.
 - Made start / end dates of course and lesson use the timezone settings. Added also start / end times.

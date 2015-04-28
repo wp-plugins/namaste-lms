@@ -33,7 +33,7 @@ endif;?>
 <p><b><?php _e('The following assignments/homework must be completed:', 'namaste')?></b></p>
 <ul>
 	<?php foreach($homeworks as $homework):?>
-		<li><input type="checkbox" name="namaste_required_homeworks[]" value="<?php echo $homework->id?>"<?php if(in_array($homework->id, $required_homeworks)) echo 'checked'?>> <?php echo $homework->title?></li>
+		<li><input type="checkbox" name="namaste_required_homeworks[]" value="<?php echo $homework->id?>"<?php if(in_array($homework->id, $required_homeworks)) echo 'checked'?>> <?php echo stripslashes($homework->title)?></li>
 	<?php endforeach;?>
 </ul>
 <?php endif;?>
@@ -99,6 +99,8 @@ endif;?>
 <p><?php _e('You can use the shortcode', 'namaste')?> <input type="text" value="[namaste-todo]" readonly="readonly" onclick="this.select();"> <?php _e('inside the lesson content to display what the student needs to do to complete the lesson.', 'namaste')?></p>
 
 <p><?php _e('The shortcode', 'namaste')?> <input type="text" value="[namaste-mark]" readonly="readonly" onclick="this.select();"> <?php _e('will display a "Mark Completed" button so the student can mark the lesson completed themselves. <b>If such button is included in the lesson it will not be marked as completed until the student does it!</b> The button will appear <b>only after the "Lesson Completeness" requirements are satisfied.</b>', 'namaste')?></p>
+
+<p><?php _e('The shortcode', 'namaste')?> <input type="text" value="[namaste-course-link]" readonly="readonly" onclick="this.select();"> <?php _e('will display a link to the course that this lesson belongs to. You can pass attribute "text" to set a clickable text for the link. Otherwise the course title will be used.', 'namaste')?></p>
 
 <h4><?php _e('Did you know?', 'namaste')?></h4>
 <?php if(is_plugin_active('namaste-pro/namaste-pro.php')):?>
