@@ -58,7 +58,7 @@ function namaste_ajax() {
 				$other_payment_methods = str_replace('{{course-id}}', $course->ID, $other_payment_methods);
 				$other_payment_methods = str_replace('{{course-name}}', $course->post_title, $other_payment_methods);
 				$other_payment_methods = str_replace('{{user-id}}', $_GET['student_id'], $other_payment_methods);
-				$other_payment_methods = str_replace('{{amount}}', @$_GET['fee'], $other_payment_methods);
+				$other_payment_methods = str_replace('{{amount}}', $fee, $other_payment_methods);
 			}
 			
 			// return URL
