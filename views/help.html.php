@@ -34,6 +34,10 @@
 		
 	<p><input type="text" value='[namaste-assignments lesson_id="X"]' onclick="this.select();" readonly="readonly" size="30"> <?php _e('(where X is lesson ID) will output the assignments to the lesson on the front-end. The links to submit and view solutions will also work. You can omit the "lesson_id" parameter and pass it as URL variable. This could be useful if you are manually building a page with lessons and want to give links to assignments from it.', 'namaste')?></p>	
 	
+	<h2><?php _e('Customizing the Look of Course and Lesson Pages', 'namaste');?> </h2>
+	
+	<p><?php printf(__('Courses and lessons in Namaste! LMS are custom post types. How to create your custom post type templates is explained <a href="%s" target="_blank">on this page</a>. In short, here are the templates you may want to create are:<b>%s</b>.', 'namaste'), 'https://codex.wordpress.org/Post_Type_Templates', 'archive-namaste_course.php, single-namaste_course.php, archive-namaste_lesson.php, single-namaste_lesson.php');?></p>
+		
 	<h2><?php _e('Redesigning and Customizing the Views / Templates', 'namaste');?></h2>
 	
 	<p style="color:red;"><b><?php _e('Only for advanced users!', 'namaste')?></b></p>
