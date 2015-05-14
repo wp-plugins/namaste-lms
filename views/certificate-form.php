@@ -25,6 +25,8 @@
 			</ul>
 		<?php endif;?>
 		
+		<?php do_action('namaste-certificate-pdf-settings', @$certificate->id);?>
+		
 		<div align="center">
 			<input type="submit" name="ok" value="<?php _e('Save Certificate', 'namaste')?>">
 			<?php if(!empty($certificate->id)):?>

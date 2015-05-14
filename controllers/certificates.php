@@ -15,7 +15,8 @@ class NamasteLMSCertificatesController {
 		switch(@$_GET['action']) {
 			case 'add':
 				if(!empty($_POST['ok'])) {
-					$_cert->add($_POST);
+					$cid = $_cert->add($_POST);
+					do_action('namaste-certificate-saved', $cid);	
 					namaste_redirect("admin.php?page=namaste_certificates&msg=added");
 				}
 				
@@ -36,6 +37,7 @@ class NamasteLMSCertificatesController {
 			
 				if(!empty($_POST['ok'])) {
 					$_cert->edit($_POST, $_GET['id']);
+					do_action('namaste-certificate-saved', $_GET['id']);	
 					namaste_redirect("admin.php?page=namaste_certificates&msg=edited");
 				}
 				
@@ -131,7 +133,7 @@ class NamasteLMSCertificatesController {
 	 		$output = '<html>
 			<head><title>'.$certificate->title.'</title>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></head>
-			<body>'.$output.'</body>
+			<body><!--namaste-certificate-id-'.$certificate->id.'-namaste-certificate-id-->'.$output.'</body>
 			</html>';
 			//	die($output);
 			$content = apply_filters('pdf-bridge-convert', $output);		

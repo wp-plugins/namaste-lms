@@ -8,6 +8,8 @@ class NamasteLMSCertificateModel {
 		$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_CERTIFICATES." SET
 			course_ids=%s, title=%s, content=%s, editor_id=%d", 
 			'|'.implode("|", $vars['course_ids']).'|', $vars['title'], $vars['content'], $user_ID));
+			
+		return $wpdb->insert_id;	
 	}
 	
 	function edit($vars, $id) {

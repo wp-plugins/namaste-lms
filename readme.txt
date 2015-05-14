@@ -61,7 +61,7 @@ Yes, you can set your custom URL slugs in the Namaste Settings page
 
 == Changelog ==
 
-= Version 1.5.9 =
+= Version 1.6 =
 - Added [namaste-earned-certificates] shortcode to display certificates earned by the user on a given course. Can be used on course page or elsewhere by passing course_id.
 - Added Sandbox mode for testing paypal payments
 - Added filter to make sure unenrolled user does not see comments on a lesson
@@ -72,6 +72,7 @@ Yes, you can set your custom URL slugs in the Namaste Settings page
 - Switched the lesson order to ID (order of creating) rather than title based in couple of places
 - Added custom column with LMS points in the "Users" page of your administration. The column appears if you choose to use points system. There is also a link to cleanup the points earned of every user.
 - Made start / end dates of course and lesson use the timezone settings. Added also start / end times.
+- You can now set desired paper size and orientation when creating certificates with the PDF bridge. Requires PDF Bridge version 0.7 or newer.
 
 = Version 1.5 =
 - Added elaborated access options for the roles that can manage the LMS
