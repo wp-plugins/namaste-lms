@@ -3,8 +3,11 @@
 
 	<p><?php printf(__('This is a premium course. There is a fee of <strong>%s %s</strong> to enroll it.', 'namaste'), $currency, $fee)?></p>
 	
-	<?php if($accept_paypal and $paypal_id): // generate Paypal button ?>
-	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	<?php if($accept_paypal and $paypal_id): 
+		$paypal_host = "www.paypal.com";
+		$paypal_sandbox = get_option('namaste_paypal_sandbox');
+		if($paypal_sandbox == '1') $paypal_host = 'www.sandbox.paypal.com';// generate Paypal button ?>
+	<form action="https://<?php echo $paypal_host?>/cgi-bin/webscr" method="post">
 	<p align="center">
 		<input type="hidden" name="cmd" value="_xclick">
 		<input type="hidden" name="business" value="<?php echo $paypal_id?>">
