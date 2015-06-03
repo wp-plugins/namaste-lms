@@ -92,7 +92,24 @@ class NamasteLMSHomeworkController {
 		// select submitted solutions
 		$solutions = $wpdb -> get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_HOMEWORKS."
 			WHERE student_id=%d AND homework_id=%d ORDER BY id DESC", $student_id, $homework->id));
+			
+		// select & match notes for each homework
+		$notes = $wpdb -> get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORK_NOTES." 
+		 	WHERE homework_id=%d ORDER BY id", $homework->id));
+		 	
+		// match notes to solutions. Currently all notes go to all solutions of a given homework, as long as it's from the same student
+		foreach($solutions as $cnt=>$solution) {
+			$s_notes = array();
+			foreach($notes as $note) {
+				if($note->homework_id == $solution->homework_id and $note->student_id == $solution->student_id) $s_notes[] = $note;
+			}
+			
+			$solutions[$cnt]->notes = $s_notes;
+		} 				
+		$manager_mode = true;
 		
+		 wp_enqueue_script('thickbox',null,array('jquery'));
+		 wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');
 		if(@file_exists(get_stylesheet_directory().'/namaste/view-solutions.php')) require get_stylesheet_directory().'/namaste/view-solutions.php';
 		else require(NAMASTE_PATH."/views/view-solutions.php");
 	}
@@ -117,7 +134,24 @@ class NamasteLMSHomeworkController {
 			FROM ".NAMASTE_STUDENT_HOMEWORKS." tH JOIN {$wpdb->users} tU ON tH.student_id = tU.ID
 			WHERE homework_id=%d ORDER BY id DESC", $homework->id));
 			
+		// select & match notes for each homework
+		$notes = $wpdb -> get_results($wpdb->prepare("SELECT * FROM ".NAMASTE_HOMEWORK_NOTES." 
+		 	WHERE homework_id=%d ORDER BY id", $homework->id));
+		 	
+		// match notes to solutions. Currently all notes go to all solutions of a given homework, as long as it's from the same student
+		foreach($solutions as $cnt=>$solution) {
+			$s_notes = array();
+			foreach($notes as $note) {
+				if($note->homework_id == $solution->homework_id and $note->student_id == $solution->student_id) $s_notes[] = $note;
+			}
+			
+			$solutions[$cnt]->notes = $s_notes;
+		} 			
+			
+		$manager_mode = true;	
 		$show_everyone = true;
+		 wp_enqueue_script('thickbox',null,array('jquery'));
+		 wp_enqueue_style('thickbox.css', '/'.WPINC.'/js/thickbox/thickbox.css', null, '1.0');
 		if(@file_exists(get_stylesheet_directory().'/namaste/view-solutions.php')) require get_stylesheet_directory().'/namaste/view-solutions.php';
 		else require(NAMASTE_PATH."/views/view-solutions.php");
 	}

@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.5.9\n"
+"Project-Id-Version: Namaste! LMS 1.6.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2015-04-28 15:27:30+00:00\n"
+"POT-Creation-Date: 2015-06-03 14:03:40+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,25 +20,25 @@ msgstr ""
 msgid "You are not allowed to grade"
 msgstr ""
 
-#: controllers/certificates.php:29 controllers/multiuser.php:57
+#: controllers/certificates.php:30 controllers/multiuser.php:57
 #: models/lesson-model.php:183 models/student-model.php:24
 #: models/student-model.php:61 models/student-model.php:103
 msgid "You are not allowed to do this."
 msgstr ""
 
-#: controllers/certificates.php:55
+#: controllers/certificates.php:57
 msgid "Certificate added"
 msgstr ""
 
-#: controllers/certificates.php:56
+#: controllers/certificates.php:58
 msgid "Certificate saved"
 msgstr ""
 
-#: controllers/certificates.php:57
+#: controllers/certificates.php:59
 msgid "Certificate deleted"
 msgstr ""
 
-#: controllers/certificates.php:89
+#: controllers/certificates.php:91
 msgid "You are not allowed to access this certificate"
 msgstr ""
 
@@ -75,27 +75,27 @@ msgid "Submitted solution to assignment \"%s\""
 msgstr ""
 
 #: controllers/homeworks.php:73 controllers/homeworks.php:79
-#: controllers/homeworks.php:108 controllers/homeworks.php:137
+#: controllers/homeworks.php:125 controllers/homeworks.php:171
 msgid "You are not allowed to see these solutions"
 msgstr ""
 
-#: controllers/homeworks.php:129
+#: controllers/homeworks.php:163
 msgid "You are not allowed to do this"
 msgstr ""
 
-#: controllers/homeworks.php:147
+#: controllers/homeworks.php:181
 msgid "Solution to assignment %s was %s"
 msgstr ""
 
-#: controllers/homeworks.php:152
+#: controllers/homeworks.php:186
 msgid "Received %d points for completing assignment \"%s\"."
 msgstr ""
 
-#: controllers/homeworks.php:169
+#: controllers/homeworks.php:203
 msgid "There is nothing to download."
 msgstr ""
 
-#: controllers/homeworks.php:171
+#: controllers/homeworks.php:205
 msgid "You can download only your own solutions."
 msgstr ""
 
@@ -324,7 +324,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.5.9)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.6.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:238
 msgid "Namaste! LMS"
@@ -374,12 +374,12 @@ msgstr ""
 msgid "Homeworks"
 msgstr ""
 
-#: models/namaste-model.php:254 views/add-note.php:15
+#: models/namaste-model.php:254 views/add-note.php:16
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:255 views/lesson-homeworks.php:42
-#: views/lesson-homeworks.php:44
+#: models/namaste-model.php:255 views/lesson-homeworks.php:43
+#: views/lesson-homeworks.php:45
 msgid "Submit solution"
 msgstr ""
 
@@ -466,15 +466,22 @@ msgstr ""
 msgid "for student"
 msgstr ""
 
-#: views/add-note.php:7 views/view-solutions.php:5
+#: views/add-note.php:6
+msgid ""
+"Note that same feedback and notes are valid for the whole assignment for "
+"that student and will be shown for every submitted solution by the student "
+"for this homework."
+msgstr ""
+
+#: views/add-note.php:8 views/view-solutions.php:5
 msgid "Course:"
 msgstr ""
 
-#: views/add-note.php:8 views/view-solutions.php:4
+#: views/add-note.php:9 views/view-solutions.php:4
 msgid "Lesson:"
 msgstr ""
 
-#: views/add-note.php:10
+#: views/add-note.php:11
 msgid "Back to assignments for the student on this lesson"
 msgstr ""
 
@@ -525,20 +532,20 @@ msgstr ""
 msgid "You have not created any courses yet!"
 msgstr ""
 
-#: views/certificate-form.php:29
+#: views/certificate-form.php:31
 msgid "Save Certificate"
 msgstr ""
 
-#: views/certificate-form.php:31
+#: views/certificate-form.php:33
 msgid "Delete"
 msgstr ""
 
-#: views/certificate-form.php:40 views/homework.php:20
+#: views/certificate-form.php:42 views/homework.php:20
 #: views/manage-students.php:85
 msgid "Are you sure?"
 msgstr ""
 
-#: views/certificate-form.php:48
+#: views/certificate-form.php:50
 msgid "Please enter certificate title"
 msgstr ""
 
@@ -726,7 +733,7 @@ msgid ""
 "it."
 msgstr ""
 
-#: views/course-pay.php:11
+#: views/course-pay.php:14
 msgid "Subscribe for"
 msgstr ""
 
@@ -903,14 +910,26 @@ msgid ""
 msgstr ""
 
 #: views/help.html.php:37
-msgid "Redesigning and Customizing the Views / Templates"
+msgid "Customizing the Look of Course and Lesson Pages"
 msgstr ""
 
 #: views/help.html.php:39
-msgid "Only for advanced users!"
+msgid ""
+"Courses and lessons in Namaste! LMS are custom post types. How to create "
+"your custom post type templates is explained <a href=\"%s\" target=\"_blank"
+"\">on this page</a>. In short, here are the templates you may want to create "
+"are:<b>%s</b>."
 msgstr ""
 
 #: views/help.html.php:41
+msgid "Redesigning and Customizing the Views / Templates"
+msgstr ""
+
+#: views/help.html.php:43
+msgid "Only for advanced users!"
+msgstr ""
+
+#: views/help.html.php:45
 msgid ""
 "You can safely customize all files from the \"views\" folders by placing "
 "their copies in your theme folder. Simply create folder \"namaste\" <b>in "
@@ -918,11 +937,11 @@ msgid ""
 "\" folder directly there."
 msgstr ""
 
-#: views/help.html.php:43
+#: views/help.html.php:47
 msgid "For example:"
 msgstr ""
 
-#: views/help.html.php:46
+#: views/help.html.php:50
 msgid ""
 "If you are using the Twenty Fourteen theme, you should create folder "
 "\"namaste\" under it so the structure will now be something like <b>wp-"
@@ -930,7 +949,7 @@ msgid ""
 "\"namaste\" folder should remain where they are)"
 msgstr ""
 
-#: views/help.html.php:47
+#: views/help.html.php:51
 msgid ""
 "Then if you want to modify the \"Manage Certificates\" page copy the file "
 "certificates.php from the plugin \"views\" folder and place it in the new "
@@ -938,14 +957,14 @@ msgid ""
 "namaste/certificates.php</b>"
 msgstr ""
 
-#: views/help.html.php:50
+#: views/help.html.php:54
 msgid ""
 "Don't worry if you use modified WordPress directory structure and don't have "
 "'wp-content' folder. The trick will work with any structure as long as you "
 "follow the same logic."
 msgstr ""
 
-#: views/help.html.php:52
+#: views/help.html.php:56
 msgid ""
 "Then feel free to modify the code, but of course be careful not to mess with "
 "the PHP or Javascript inside. This will let you change the design and even "
@@ -1054,24 +1073,29 @@ msgstr ""
 msgid "Solutions"
 msgstr ""
 
-#: views/lesson-homeworks.php:18 views/lesson-homeworks.php:61
-msgid "Notes"
+#: views/lesson-homeworks.php:18 views/view-solutions.php:40
+msgid "Notes / Feedback"
 msgstr ""
 
-#: views/lesson-homeworks.php:24 views/lesson-homeworks.php:49
+#: views/lesson-homeworks.php:25 views/lesson-homeworks.php:50
+#: views/view-solutions.php:60
 msgid "None yet."
 msgstr ""
 
-#: views/lesson-homeworks.php:30 views/lesson-homeworks.php:31
+#: views/lesson-homeworks.php:31 views/lesson-homeworks.php:32
 msgid "%d solutions"
 msgstr ""
 
-#: views/lesson-homeworks.php:36
+#: views/lesson-homeworks.php:37
 msgid "A solution has been accepted and the assignment is completed."
 msgstr ""
 
-#: views/lesson-homeworks.php:53
-msgid "Add note"
+#: views/lesson-homeworks.php:54 views/view-solutions.php:64
+msgid "Add note / feedback"
+msgstr ""
+
+#: views/lesson-homeworks.php:62 views/view-solutions.php:89
+msgid "Notes"
 msgstr ""
 
 #: views/lesson-meta-box.php:1
@@ -1239,7 +1263,7 @@ msgstr ""
 msgid "Any status"
 msgstr ""
 
-#: views/manage-students.php:34 views/view-solutions.php:50
+#: views/manage-students.php:34 views/view-solutions.php:51
 msgid "Pending"
 msgstr ""
 
@@ -1247,7 +1271,7 @@ msgstr ""
 msgid "Enrolled"
 msgstr ""
 
-#: views/manage-students.php:36 views/view-solutions.php:52
+#: views/manage-students.php:36 views/view-solutions.php:53
 msgid "Rejected"
 msgstr ""
 
@@ -1451,7 +1475,7 @@ msgstr ""
 msgid "Solution"
 msgstr ""
 
-#: views/my-gradebook.html.php:32 views/view-solutions.php:41
+#: views/my-gradebook.html.php:32 views/view-solutions.php:42
 msgid "Grade"
 msgstr ""
 
@@ -1460,7 +1484,7 @@ msgid "Solution submitted at %s"
 msgstr ""
 
 #: views/my-gradebook.html.php:35 views/my-gradebook.html.php:42
-#: views/view-solutions.php:72
+#: views/view-solutions.php:79
 msgid "Not graded"
 msgstr ""
 
@@ -2044,10 +2068,10 @@ msgstr ""
 msgid "by"
 msgstr ""
 
-#: views/view-solutions.php:45
+#: views/view-solutions.php:46
 msgid "Attachment:"
 msgstr ""
 
-#: views/view-solutions.php:51
+#: views/view-solutions.php:52
 msgid "Approved"
 msgstr ""

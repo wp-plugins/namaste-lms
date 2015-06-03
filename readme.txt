@@ -61,6 +61,9 @@ Yes, you can set your custom URL slugs in the Namaste Settings page
 
 == Changelog ==
 
+= Version 1.6.1 =
+- Made some improvements to notes / feedback on assignments and their navigation
+
 = Version 1.6 =
 - Added [namaste-earned-certificates] shortcode to display certificates earned by the user on a given course. Can be used on course page or elsewhere by passing course_id.
 - Added Sandbox mode for testing paypal payments

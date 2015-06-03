@@ -3,6 +3,7 @@
 <div class="wrap">
 	<p><?php _e('Use this page to send a note about assignments', 'namaste')?> "<strong><?php echo $homework->title?></strong>" <?php _e('for student', 'namaste')?> <strong><?php echo $student->user_login?></strong>
 	</p>
+	<p><b><?php _e('Note that same feedback and notes are valid for the whole assignment for that student and will be shown for every submitted solution by the student for this homework.', 'namaste');?></b></p>
 	
 	<p><?php _e('Course:', 'namaste')?> <strong><?php echo $course->post_title?></strong></p>
 	<p><?php _e('Lesson:', 'namaste')?> <strong><?php echo $lesson->post_title?></strong></p>

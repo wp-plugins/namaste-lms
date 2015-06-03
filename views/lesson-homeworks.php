@@ -15,11 +15,12 @@ endif;?>
 
 <table class="widefat">
 	<tr><th><?php _e('Assignment title and description', 'namaste')?></th><th><?php _e('Solutions', 'namaste')?></th>		
-		<th><?php _e('Notes', 'namaste')?></th>
+		<th><?php _e('Notes / Feedback', 'namaste')?></th>
 		<?php do_action('namaste_extra_th', 'lesson_homeworks');?>	
 		</tr>
-	<?php foreach($homeworks as $homework):?>
-		<tr><td><h2><?php echo $homework->title?></h2>
+	<?php foreach($homeworks as $homework):
+		$class = ('alternate' == @$class) ? '' : 'alternate';?>
+		<tr class="<?php echo $class?>"><td><h2><?php echo $homework->title?></h2>
 		<?php echo apply_filters('the_content', stripslashes($homework->description))?></td>
 		<td><p><?php if(!sizeof($homework->solutions)): _e('None yet.', 'namaste');
 		else: 
@@ -50,7 +51,7 @@ endif;?>
 		else:?> <a href="#" onclick="Namaste.loadNotes('<?php echo $homework->id?>', '<?php echo $student->ID?>');return false;"><?php _e(sprintf('%d notes', sizeof($homework->notes)), 'namaste')?></a>
 		<?php endif;?></p>		
 		<?php if($manager_mode):?>
-			<p><a href="admin.php?page=namaste_add_note&lesson_id=<?php echo $lesson->ID?>&student_id=<?php echo $_GET['student_id']?>&homework_id=<?php echo $homework->id?>"><?php _e('Add note', 'namaste')?></a></p>
+			<p><a href="admin.php?page=namaste_add_note&lesson_id=<?php echo $lesson->ID?>&student_id=<?php echo $_GET['student_id']?>&homework_id=<?php echo $homework->id?>"><?php _e('Add note / feedback', 'namaste')?></a></p>
 		<?php endif;?></td>
 		<?php do_action('namaste_extra_td', 'lesson_homeworks', $homework);?></tr>
 	<?php endforeach;?>

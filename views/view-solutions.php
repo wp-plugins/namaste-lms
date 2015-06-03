@@ -36,11 +36,12 @@
 		<?php if(!empty($show_everyone)):
 		 echo __('by','namaste')." <a href='admin.php?page=namaste_lesson_homeworks&lesson_id=".$lesson->ID."&student_id=".$solution->student_id."' target='_blank'>".$solution->user_login."</a>";
 		endif;?></th>
-		<th><?php _e('Status');?></th>
+		<th><?php _e('Status', 'namaste');?></th>
+		<th><?php _e('Notes / Feedback', 'namaste');?></th>
 		<?php if($use_grading_system):?>
 			<th><?php _e('Grade', 'namaste')?></th>
 		<?php endif;?></tr>
-		<tr><td><?php echo apply_filters('the_content', $solution->content);?>
+		<tr class="<?php echo $class?>"><td><?php echo apply_filters('the_content', $solution->content);?>
 		<?php if(!empty($solution->file)):?>
 			<p><?php _e('Attachment:', 'namaste')?> <a href="admin.php?page=namaste_download_solution&id=<?php echo $solution->id?>&noheader=1"><?php echo $solution->file?></a></p>
 		<?php endif;?></td>
@@ -56,6 +57,12 @@
 		</form>
 		<?php else: echo $solution->status;
 		endif;?></td>
+		<td><p><?php if(!sizeof($solution->notes)): _e('None yet.', 'namaste');
+		else:?> <a href="#" onclick="Namaste.loadNotes('<?php echo $homework->id?>', '<?php echo $solution->student_id?>');return false;"><?php _e(sprintf('%d notes', sizeof($solution->notes)), 'namaste')?></a>
+		<?php endif;?></p>		
+		<?php if($manager_mode):?>
+			<p><a href="admin.php?page=namaste_add_note&lesson_id=<?php echo $lesson->ID?>&student_id=<?php echo $solution->student_id?>&homework_id=<?php echo $homework->id?>"><?php _e('Add note / feedback', 'namaste')?></a></p>
+		<?php endif;?></td>
 		<?php if($use_grading_system):?>
 			<td><?php if(current_user_can('namaste_manage') and empty($show_everyone)): ?>
 				<form method="post">
@@ -76,3 +83,11 @@
 	<?php endforeach;?>
 	</table>
 </div>
+
+<script type="text/javascript" >
+Namaste.loadNotes = function(homeworkID, studentID) {
+	tb_show("<?php _e('Notes', 'namaste')?>", 
+		'<?php echo admin_url("admin-ajax.php?action=namaste_ajax&type=load_notes")?>&homework_id=' + homeworkID + 
+		'&student_id=' + studentID);
+}
+</script>
