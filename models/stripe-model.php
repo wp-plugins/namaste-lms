@@ -21,6 +21,7 @@ class NamasteStripe {
 		$token  = $_POST['stripeToken'];
 		$course = get_post($_POST['course_id']);
 		$fee = get_post_meta($course->ID, 'namaste_fee', true);
+		$fee = apply_filters('namaste-coupon-applied', $fee);	// coupon code from other plugin?	
 		 
 		try {
 			 $customer = Stripe_Customer::create(array(
@@ -43,6 +44,8 @@ class NamasteStripe {
 		$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_PAYMENTS." SET 
 						course_id=%d, user_id=%s, date=CURDATE(), amount=%s, status='completed', paycode=%s, paytype='stripe'", 
 						$_POST['course_id'], $user_ID, $fee, $token));
+						
+		do_action('namaste-paid', $user_ID, $fee, "course", $_POST['course_id']);				
 						
 		// enroll accordingly to course settings - this will be placed in a method once we 
 		// have more payment options

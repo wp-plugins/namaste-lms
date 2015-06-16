@@ -48,6 +48,7 @@ function namaste_ajax() {
 			// select course
 			$course = $wpdb -> get_row( $wpdb->prepare("SELECT * FROM {$wpdb->posts} WHERE ID=%d", $_GET['course_id']));
 			$fee = get_post_meta($course->ID, 'namaste_fee', true);
+			$fee = apply_filters('namaste-coupon-applied', $fee);	
 			$currency = get_option('namaste_currency');
 			$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
 			$accept_paypal = get_option('namaste_accept_paypal');

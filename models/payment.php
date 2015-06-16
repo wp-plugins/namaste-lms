@@ -78,6 +78,7 @@ class NamastePayment {
 					
 					// check amount
 					$fee = get_post_meta($_GET['course_id'], 'namaste_fee', true);
+					$fee = apply_filters('namaste-coupon-applied', $fee);	// coupon code from other plugin?	
 					if($_POST['mc_gross']>=$fee) {
 						$payment_amount_okay = true;
 					}
@@ -89,6 +90,8 @@ class NamastePayment {
 						$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_PAYMENTS." SET 
 							course_id=%d, user_id=%s, date=CURDATE(), amount=%s, status='completed', paycode=%s, paytype='paypal'", 
 							$_GET['course_id'], $_GET['user_id'], $fee, $_POST['txn_id']));
+						
+						do_action('namaste-paid', $_GET['user_id'], $fee, "course", $_GET['course_id']);	
 							
 						// enroll accordingly to course settings - this will be placed in a method once we 
 						// have more payment options
