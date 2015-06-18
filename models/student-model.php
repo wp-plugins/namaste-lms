@@ -206,7 +206,7 @@ class NamasteLMSStudentModel {
 			 } 
 			 else {
 			 		$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_LESSONS." SET
-			 			lesson_id = %d, student_id = %d, status = %d, completion_date = %s, completin_time=%s",
+			 			lesson_id = %d, student_id = %d, status = %d, completion_date = %s, completion_time=%s",
 			 			$lesson_id, $student_id, $status, date("Y-m-d", current_time('timestamp')), current_time('mysql')));
 			 }	
 		}	
