@@ -61,7 +61,9 @@ Yes, you can set your custom URL slugs in the Namaste Settings page
 
 == Changelog ==
 
-= Version 1.6.1 =
+= Version 1.6.3 =
+- Added option to unenroll from a course. This is configurable per course level from the Edit Course page.
+- Added compatibility with the new free Instamojo integration plugin (see the Namaste Settings -> Other payment options section for a link)
 - Made some improvements to notes / feedback on assignments and their navigation
 
 = Version 1.6 =

@@ -8,6 +8,8 @@
 
 <p><input type="radio" name="namaste_enroll_mode" value="manual" <?php if(!empty($enroll_mode) and $enroll_mode == 'manual') echo 'checked'?>> <?php _e('Admin manually approves/enrolls students in courses', 'namaste')?></p>
 
+<p><input type="checkbox" id="namasteUnEnrollChk" name="namaste_unenroll" value="1" <?php if($unenroll_allowed) echo 'checked'?>> <?php _e('Allow students to unenroll from this course (this will cleanup any stats)', 'namaste');?></p>
+
 <?php if(!empty($currency)):?>
 	<p><?php _e('Students need to pay a fee of', 'namaste')?> <?php echo $currency?> <input type="text" size="6" name="namaste_fee" value="<?php echo $fee?>"> <?php _e('to enroll this course. (Leave it 0 for no fee.)', 'namaste')?></p>
 <?php endif;?>

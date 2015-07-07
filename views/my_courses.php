@@ -15,6 +15,7 @@ endif;?>
 		<?php if(!$simplified):?><th><?php _e('Lessons', 'namaste')?></th><?php endif;?>		
 		<th><?php _e('Status', 'namaste')?></th></tr>
 		<?php foreach($courses as $course):
+			$unenroll_allowed = get_post_meta($course->post_id, 'namaste_unenroll', true);
 			$class = ('alternate' == @$class) ? '' : 'alternate';?>
 			<tr class="<?php echo $class?>"><td><a href="<?php echo get_permalink($course->post_id)?>" target="_blank"><?php echo $course->post_title?></a>
 			<?php if(!empty($course->post_excerpt)): echo apply_filters('the_content', stripslashes($course->post_excerpt)); endif;?></td>
@@ -33,6 +34,9 @@ endif;?>
 				if($course->status == 'rejected'): _e('Application rejected', 'namaste'); endif;
 				if($course->status == 'enrolled'): 
 					printf(__('Enrolled on %s', 'namaste'), date(get_option('date_format'), strtotime($course->enrollment_date)));
+					if($unenroll_allowed):?>
+						<p><a href="#" onclick="namasteUnenrollCourse(<?php echo $course->post_id?>);return false;"><?php _e('Un-enroll from this course', 'namaste');?></a></p>
+					<?php endif;
 					do_action('namaste-course-status', $course->post_id, $user_ID); 
 				endif;
 				if($course->status == 'completed'): printf(__('Completed on %s', 'namaste'), 
@@ -42,3 +46,11 @@ endif;?>
 		<?php endforeach;?>
 	</table>
 </div>
+
+<script type="text/javascript" >
+function namasteUnenrollCourse(id) {
+	if(confirm("<?php _e('Are you sure? This will blank out all your progress in this course', 'namaste')?>")) {
+		window.location='admin.php?page=namaste_my_courses&unenroll=' + id;
+	}
+}
+</script>

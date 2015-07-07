@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.6.1\n"
+"Project-Id-Version: Namaste! LMS 1.6.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2015-06-03 14:03:40+00:00\n"
+"POT-Creation-Date: 2015-07-07 10:58:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,13 +16,13 @@ msgstr ""
 msgid "You are not allowed to view this"
 msgstr ""
 
-#: controllers/ajax.php:75
+#: controllers/ajax.php:78
 msgid "You are not allowed to grade"
 msgstr ""
 
 #: controllers/certificates.php:30 controllers/multiuser.php:57
 #: models/lesson-model.php:183 models/student-model.php:24
-#: models/student-model.php:61 models/student-model.php:103
+#: models/student-model.php:32 models/student-model.php:74
 msgid "You are not allowed to do this."
 msgstr ""
 
@@ -42,17 +42,17 @@ msgstr ""
 msgid "You are not allowed to access this certificate"
 msgstr ""
 
-#: controllers/courses.php:82
+#: controllers/courses.php:88
 msgid "You enrolled in \"%s\""
 msgstr ""
 
-#: controllers/courses.php:83
+#: controllers/courses.php:89
 msgid ""
 "Thank you for your interest in enrolling this course. A manager will review "
 "your application."
 msgstr ""
 
-#: controllers/courses.php:85
+#: controllers/courses.php:91
 msgid "You have already enrolled in this course"
 msgstr ""
 
@@ -189,62 +189,62 @@ msgstr ""
 msgid "Advanced Reports"
 msgstr ""
 
-#: models/course-model.php:107
+#: models/course-model.php:109
 msgid "For advanced reports on this course, <a href=\"%s\">click here</a>."
 msgstr ""
 
-#: models/course-model.php:109
+#: models/course-model.php:111
 msgid ""
 "You can get <b>advanced reports</b> on this course if you install the <a "
 "href=\"%s\" target=\"_blank\">Namaste! Reports</a> plugin."
 msgstr ""
 
-#: models/course-model.php:162
+#: models/course-model.php:165
 msgid ""
 "You are enrolled in this course. Check \"My courses\" link in your dashboard "
 "to see the lessons and to-do list"
 msgstr ""
 
-#: models/course-model.php:163
+#: models/course-model.php:166
 msgid ""
 "You can enroll in this course from your student dashboard. You need to be "
 "logged in."
 msgstr ""
 
-#: models/course-model.php:209
+#: models/course-model.php:212
 msgid "Received %d points for completing course \"%s\"."
 msgstr ""
 
-#: models/course-model.php:219
+#: models/course-model.php:222
 msgid "Completed course \"%s\""
 msgstr ""
 
-#: models/course-model.php:257
+#: models/course-model.php:260
 msgid ""
 "You cannot enroll this course - other courses have to be completed first."
 msgstr ""
 
-#: models/course-model.php:272 models/student-model.php:95
+#: models/course-model.php:275 models/student-model.php:66
 msgid "Enrolled in course %s. Status: %s"
 msgstr ""
 
-#: models/course-model.php:298
+#: models/course-model.php:305
 msgid "Payment for course"
 msgstr ""
 
-#: models/course-model.php:299
+#: models/course-model.php:306
 msgid "Enroll for"
 msgstr ""
 
-#: models/course-model.php:313
+#: models/course-model.php:320
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:329 models/lesson-model.php:698
+#: models/course-model.php:336 models/lesson-model.php:698
 msgid "Visits (unique/total)"
 msgstr ""
 
-#: models/course-model.php:356
+#: models/course-model.php:363
 msgid "These courses should be completed before you can enroll:"
 msgstr ""
 
@@ -324,7 +324,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.6.1)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.6.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:238
 msgid "Namaste! LMS"
@@ -423,34 +423,34 @@ msgstr ""
 msgid "(Cleanup)"
 msgstr ""
 
-#: models/student-model.php:69
+#: models/student-model.php:40
 msgid "Sorry, I cannot find user with this email or user handle."
 msgstr ""
 
-#: models/student-model.php:73
+#: models/student-model.php:44
 msgid ""
 "This user's role does not allow them to use Namaste! LMS. You'll have either "
 "to change their role or allow the role work with the LMS from the Settings "
 "page"
 msgstr ""
 
-#: models/student-model.php:80
+#: models/student-model.php:51
 msgid "This user is already enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:89
+#: models/student-model.php:60
 msgid "User successfully enrolled in the course"
 msgstr ""
 
-#: models/student-model.php:114
+#: models/student-model.php:85
 msgid "Enrollment in %s has been approved."
 msgstr ""
 
-#: models/student-model.php:118
+#: models/student-model.php:89
 msgid "Enrollment in %s has been rejected."
 msgstr ""
 
-#: models/student-model.php:180
+#: models/student-model.php:151
 msgid "You cannot change someone else's status"
 msgstr ""
 
@@ -606,7 +606,7 @@ msgstr ""
 msgid "Enrollment mode:"
 msgstr ""
 
-#: views/course-meta-box.php:3 views/course-meta-box.php:45
+#: views/course-meta-box.php:3 views/course-meta-box.php:47
 #: views/lesson-meta-box.php:99
 msgid "You can use the shortcode"
 msgstr ""
@@ -617,7 +617,7 @@ msgid ""
 "content"
 msgstr ""
 
-#: views/course-meta-box.php:5 views/course-meta-box.php:46
+#: views/course-meta-box.php:5 views/course-meta-box.php:48
 #: views/lesson-meta-box.php:101 views/lesson-meta-box.php:103
 msgid "The shortcode"
 msgstr ""
@@ -636,87 +636,92 @@ msgstr ""
 msgid "Admin manually approves/enrolls students in courses"
 msgstr ""
 
-#: views/course-meta-box.php:12
+#: views/course-meta-box.php:11
+msgid ""
+"Allow students to unenroll from this course (this will cleanup any stats)"
+msgstr ""
+
+#: views/course-meta-box.php:14
 msgid "Students need to pay a fee of"
 msgstr ""
 
-#: views/course-meta-box.php:12
+#: views/course-meta-box.php:14
 msgid "to enroll this course. (Leave it 0 for no fee.)"
 msgstr ""
 
-#: views/course-meta-box.php:15
+#: views/course-meta-box.php:17
 msgid "Course Access / Pre-requisites"
 msgstr ""
 
-#: views/course-meta-box.php:18
+#: views/course-meta-box.php:20
 msgid "There are no other courses so every student can enroll in this course."
 msgstr ""
 
-#: views/course-meta-box.php:20
+#: views/course-meta-box.php:22
 msgid ""
 "This course will be accessible only after the following courses are "
 "completed:"
 msgstr ""
 
-#: views/course-meta-box.php:26
+#: views/course-meta-box.php:28
 msgid "Course completeness"
 msgstr ""
 
-#: views/course-meta-box.php:29
+#: views/course-meta-box.php:31
 msgid ""
 "This course has no lessons assigned so it can never be completed. Please "
 "create and assign some lessons to this course."
 msgstr ""
 
-#: views/course-meta-box.php:31
+#: views/course-meta-box.php:33
 msgid ""
 "The following lessons must be completed in order to complete this course. "
 "Please select at least one."
 msgstr ""
 
-#: views/course-meta-box.php:40 views/homework.php:11
+#: views/course-meta-box.php:42 views/homework.php:11
 #: views/lesson-meta-box.php:93 views/options.php:70 views/options.php:72
 #: views/options.php:74
 msgid "Reward"
 msgstr ""
 
-#: views/course-meta-box.php:40
+#: views/course-meta-box.php:42
 msgid "points for completing this course."
 msgstr ""
 
-#: views/course-meta-box.php:43 views/lesson-meta-box.php:97
+#: views/course-meta-box.php:45 views/lesson-meta-box.php:97
 msgid "Shortcodes"
 msgstr ""
 
-#: views/course-meta-box.php:45
+#: views/course-meta-box.php:47
 msgid ""
 "inside the course content to display what the student needs to do to "
 "complete the course."
 msgstr ""
 
-#: views/course-meta-box.php:46
+#: views/course-meta-box.php:48
 msgid "will display the lessons in the course."
 msgstr ""
 
-#: views/course-meta-box.php:46
+#: views/course-meta-box.php:48
 msgid "It allows more advanced configurations explained on the "
 msgstr ""
 
-#: views/course-meta-box.php:46
+#: views/course-meta-box.php:48
 msgid "help page."
 msgstr ""
 
-#: views/course-meta-box.php:48 views/lesson-meta-box.php:105
+#: views/course-meta-box.php:50 views/lesson-meta-box.php:105
 msgid "Did you know?"
 msgstr ""
 
-#: views/course-meta-box.php:51
+#: views/course-meta-box.php:53
 msgid ""
 "You can limit the access to this course also by <a href=\"%s\" target="
 "\"_blank\">class / group</a>."
 msgstr ""
 
-#: views/course-meta-box.php:53
+#: views/course-meta-box.php:55
 msgid ""
 "If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able "
 "to assign courses to classes and restrict access based on class, have "
@@ -1504,28 +1509,36 @@ msgstr ""
 msgid "Course title &amp; description"
 msgstr ""
 
-#: views/my_courses.php:23
+#: views/my_courses.php:24
 msgid "Enroll to get access to the lessons"
 msgstr ""
 
-#: views/my_courses.php:25
+#: views/my_courses.php:26
 msgid "View lessons"
 msgstr ""
 
-#: views/my_courses.php:32
+#: views/my_courses.php:33
 msgid "Pending enrollment"
 msgstr ""
 
-#: views/my_courses.php:33
+#: views/my_courses.php:34
 msgid "Application rejected"
 msgstr ""
 
-#: views/my_courses.php:35
+#: views/my_courses.php:36
 msgid "Enrolled on %s"
 msgstr ""
 
 #: views/my_courses.php:38
+msgid "Un-enroll from this course"
+msgstr ""
+
+#: views/my_courses.php:42
 msgid "Completed on %s"
+msgstr ""
+
+#: views/my_courses.php:52
+msgid "Are you sure? This will blank out all your progress in this course"
 msgstr ""
 
 #: views/options.php:2
@@ -1755,57 +1768,63 @@ msgid ""
 "variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
 msgstr ""
 
-#: views/options.php:129
+#: views/options.php:127
+msgid ""
+"If you want to use Instamojo we have a <a href=\"%s\" target=\"_blank\">free "
+"plugin</a> for integration with the service."
+msgstr ""
+
+#: views/options.php:130
 msgid "Save payment settings"
 msgstr ""
 
-#: views/options.php:132
+#: views/options.php:133
 msgid "View payments errorlog"
 msgstr ""
 
-#: views/options.php:142
+#: views/options.php:143
 msgid "Exam/Test Related Settings"
 msgstr ""
 
-#: views/options.php:144
+#: views/options.php:145
 msgid ""
 "Namaste LMS utilizes the power of existing Wordpress plugins to handle "
 "exams, tests and quizzes. At this moment it can connect with two plugins:"
 msgstr ""
 
-#: views/options.php:144
+#: views/options.php:145
 msgid "(Free) and "
 msgstr ""
 
-#: views/options.php:144
+#: views/options.php:145
 msgid "(Premium)"
 msgstr ""
 
-#: views/options.php:146
+#: views/options.php:147
 msgid ""
 "If you have any of these plugins installed and activated, please choose "
 "which one to use for handling tests below:"
 msgstr ""
 
-#: views/options.php:148
+#: views/options.php:149
 msgid "I don not need to create any exams or tests."
 msgstr ""
 
-#: views/options.php:151
+#: views/options.php:152
 msgid "I will create exams with Watu."
 msgstr ""
 
-#: views/options.php:155
+#: views/options.php:156
 msgid "I will create exams with WatuPRO."
 msgstr ""
 
-#: views/options.php:159
+#: views/options.php:160
 msgid ""
 "When I cleanup student course data from the \"Manage Students\" page I want "
 "any related exam data for this student also to be REMOVED."
 msgstr ""
 
-#: views/options.php:162
+#: views/options.php:163
 msgid "Save Exam Options"
 msgstr ""
 

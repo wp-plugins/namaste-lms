@@ -123,7 +123,8 @@
 				
 			<div id="otherPayments" style="display:<?php echo $accept_other_payment_methods?'block':'none'?>;">
 				<p><?php _e('Enter text or HTML code for payment button(s). You can use the following variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}.', 'namaste')?></p>
-				<textarea name="other_payment_methods" rows="8" cols="80"><?php echo stripslashes(get_option('namaste_other_payment_methods'))?></textarea>			
+				<textarea name="other_payment_methods" rows="8" cols="80"><?php echo stripslashes(get_option('namaste_other_payment_methods'))?></textarea>
+				<p><?php printf(__('If you want to use Instamojo we have a <a href="%s" target="_blank">free plugin</a> for integration with the service.', 'namaste'), 'http://blog.calendarscripts.info/instamojo-integration-for-namaste-lms/');?></p>			
 			</div>	
 			
 			<p><input type="submit" value="<?php _e('Save payment settings', 'namaste')?>"></p>

@@ -21,6 +21,12 @@ class NamasteLMSCoursesController {
 		}	
 		
 		if(!empty($_POST['enroll'])) $mesage = self::enroll($is_manager);
+		
+		// unenroll?
+		if(!empty($_GET['unenroll'])) {
+			NamasteLMSStudentModel :: cleanup($_GET['unenroll'], $user_ID);
+			namaste_redirect("admin.php?page=namaste_my_courses");
+		}
 
 		// filters from other plugins like Namaste! PRO		
 		$filter_sql = '';

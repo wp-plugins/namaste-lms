@@ -93,6 +93,8 @@ class NamasteLMSCourseModel {
 			$course_access = get_post_meta($post->ID, 'namaste_access', true);	
 			if(!is_array($course_access)) $course_access = array();
 			
+			$unenroll_allowed = get_post_meta($post->ID, 'namaste_unenroll', true);
+			
 			wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );			  
 			if(@file_exists(get_stylesheet_directory().'/namaste/course-meta-box.php')) require get_stylesheet_directory().'/namaste/course-meta-box.php';
 			else require(NAMASTE_PATH."/views/course-meta-box.php");
@@ -122,6 +124,7 @@ class NamasteLMSCourseModel {
 			update_post_meta($post_id, "namaste_required_lessons", $_POST['namaste_required_lessons']);			
 			update_post_meta($post_id, "namaste_fee", $_POST['namaste_fee']);
 			update_post_meta($post_id, "namaste_access", $_POST['namaste_access']);
+			update_post_meta($post_id, "namaste_unenroll", @$_POST['namaste_unenroll']);
 			if(isset($_POST['namaste_award_points'])) update_post_meta($post_id, "namaste_award_points", $_POST['namaste_award_points']);
 	}	
 	

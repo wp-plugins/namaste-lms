@@ -22,36 +22,7 @@ class NamasteLMSStudentModel {
 				// cleanup student record
 				if(!empty($_GET['cleanup'])) {
 					 if($multiuser_access  == 'view') wp_die(__('You are not allowed to do this.', 'namaste'));
-					 $wpdb->query( $wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_COURSES." 
-					 	WHERE course_id = %d AND user_id=%d", $_GET['course_id'], $_GET['student_id']) );
-					 	
-					 $wpdb->query( $wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_LESSONS." WHERE student_id= %d AND lesson_id IN (SELECT ID FROM {$wpdb->posts} tP JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course' AND tM.meta_value = %d WHERE post_type = 'namaste_lesson');", $_GET['student_id'], $_GET['course_id']) );					
-					 
-					// delete solutions
-					$wpdb->query($wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE student_id=%d
-						AND homework_id IN (SELECT id FROM ".NAMASTE_HOMEWORKS." WHERE course_id=%d)", $_GET['student_id'], $_GET['course_id'])); 					 
-					// cleanup exams data? 
-					$use_exams = get_option('namaste_use_exams');
-					if($use_exams and get_option('namaste_cleanup_exams') == 'yes') {
-						// select all exam IDs of related lessons
-						$_lesson = new NamasteLMSLessonModel();
-						$lessons = $_lesson->select($_GET['course_id']);
-						$exam_ids = array(0);
-						foreach($lessons as $lesson) {
-							$exam_id = get_post_meta($lesson->ID, 'namaste_required_exam', true);
-							if(!empty($exam_id)) $exam_ids[] = $exam_id;
-						}
-						
-						// now delete
-						if($use_exams == 'watu') {
-							$wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}watu_takings WHERE user_id=%d AND exam_id IN (".implode(',', $exam_ids).")", $_GET['student_id']));
-						}
-						
-						if($use_exams == 'watupro') {
-							$wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}watupro_taken_exams WHERE user_id=%d AND exam_id IN (".implode(',', $exam_ids).")", $_GET['student_id']));
-							$wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}watupro_student_answers WHERE user_id=%d AND exam_id IN (".implode(',', $exam_ids).")", $_GET['student_id']));
-						}
-					}  	
+                self :: cleanup($_GET['course_id'], $_GET['student_id']); 
 					 	
 					//namaste_redirect("admin.php?page=namaste_students&course_id=$_GET[course_id]&status=$_GET[status]");		
 				}		 	
@@ -223,4 +194,41 @@ class NamasteLMSStudentModel {
 			
 		return $is_enrolled;	
 	}
+	
+	// cleanup data about student - course relation
+	
+	static function cleanup($course_id, $student_id) {
+		global $wpdb;
+		
+		$wpdb->query( $wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_COURSES." 
+		 	WHERE course_id = %d AND user_id=%d", $course_id, $student_id) );
+		 	
+		 $wpdb->query( $wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_LESSONS." WHERE student_id= %d AND lesson_id IN (SELECT ID FROM {$wpdb->posts} tP JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course' AND tM.meta_value = %d WHERE post_type = 'namaste_lesson');", $student_id, $course_id) );					
+		 
+		// delete solutions
+		$wpdb->query($wpdb->prepare("DELETE FROM ".NAMASTE_STUDENT_HOMEWORKS." WHERE student_id=%d
+			AND homework_id IN (SELECT id FROM ".NAMASTE_HOMEWORKS." WHERE course_id=%d)", $student_id, $course_id)); 					 
+		// cleanup exams data? 
+		$use_exams = get_option('namaste_use_exams');
+		if($use_exams and get_option('namaste_cleanup_exams') == 'yes') {
+			// select all exam IDs of related lessons
+			$_lesson = new NamasteLMSLessonModel();
+			$lessons = $_lesson->select($course_id);
+			$exam_ids = array(0);
+			foreach($lessons as $lesson) {
+				$exam_id = get_post_meta($lesson->ID, 'namaste_required_exam', true);
+				if(!empty($exam_id)) $exam_ids[] = $exam_id;
+			}
+			
+			// now delete
+			if($use_exams == 'watu') {
+				$wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}watu_takings WHERE user_id=%d AND exam_id IN (".implode(',', $exam_ids).")", $student_id));
+			}
+			
+			if($use_exams == 'watupro') {
+				$wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}watupro_taken_exams WHERE user_id=%d AND exam_id IN (".implode(',', $exam_ids).")", $student_id));
+				$wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}watupro_student_answers WHERE user_id=%d AND exam_id IN (".implode(',', $exam_ids).")", $student_id));
+			}
+		}  	
+	} // end cleanup()  
 }
