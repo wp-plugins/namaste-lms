@@ -65,7 +65,8 @@
 				if($multiuser_access != 'view' and $student->namaste_status=='pending'):?>
 					(<a href="#" onclick="namasteConfirmStatus('enrolled',<?php echo $student->ID?>);return false;"><?php _e('approve', 'namaste')?></a> | <a href="#" onclick="namasteConfirmStatus('rejected',<?php echo $student->ID?>);return false;"><?php _e('reject')?></a>)
 				<?php endif;
-				if($multiuser_access != 'view' and ($student->namaste_status == 'completed' or $student->namaste_status == 'rejected' or $student->namaste_status == 'enrolled')):?>
+				if($multiuser_access != 'view' and ($student->namaste_status == 'completed' or $student->namaste_status == 'rejected' 
+					or $student->namaste_status == 'enrolled' or $student->namaste_status == 'frozen')):?>
 				(<a href="#" onclick="namasteConfirmCleanup('<?php echo $student->ID?>');return false;"><?php _e('Cleanup', 'namaste')?></a>)
 				<?php endif;?></td></tr>
 			<?php endforeach;?>

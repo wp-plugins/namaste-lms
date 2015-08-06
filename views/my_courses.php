@@ -32,6 +32,7 @@ endif;?>
 			else: // enrolled
 				if($course->status == 'pending'): _e('Pending enrollment', 'namaste'); endif;
 				if($course->status == 'rejected'): _e('Application rejected', 'namaste'); endif;
+				if($course->status == 'frozen'): _e('Frozen / no access', 'namaste'); endif;
 				if($course->status == 'enrolled'): 
 					printf(__('Enrolled on %s', 'namaste'), date(get_option('date_format'), strtotime($course->enrollment_date)));
 					if($unenroll_allowed):?>

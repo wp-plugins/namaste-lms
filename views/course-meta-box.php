@@ -42,6 +42,8 @@ endif;?>
 	<p><?php _e('Reward', 'namaste')?> <input type="text" size="4" name="namaste_award_points" value="<?php echo $award_points?>"> <?php _e('points for completing this course.', 'namaste')?></p>
 <?php endif;?>
 
+<?php do_action('namaste-course-meta-box', $post);?>
+
 <h4><?php _e('Shortcodes', 'namaste')?></h4>
 
 <p><?php _e('You can use the shortcode', 'namaste')?> <b>[namaste-todo]</b> <?php _e('inside the course content to display what the student needs to do to complete the course.', 'namaste')?></p>
