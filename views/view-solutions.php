@@ -1,8 +1,8 @@
 <h1><?php _e('Viewing Solutions for ', 'namaste')?> "<?php echo $homework->title?>"</h1>
 
 <div class="wrap">
-	<p><?php _e('Lesson:', 'namaste')?> <strong><?php echo $lesson->post_title?></strong></p>	
-	<p><?php _e('Course:', 'namaste')?> <strong><?php echo $course->post_title?></strong></p>
+	<p><?php _e('Lesson:', 'namaste')?> <strong><?php echo stripslashes($lesson->post_title)?></strong></p>	
+	<p><?php _e('Course:', 'namaste')?> <strong><?php echo stripslashes($course->post_title)?></strong></p>
 
 	<?php if(!empty($show_everyone)):?>
 		<p><a href="admin.php?page=namaste_homeworks&lesson_id=<?php echo $lesson->ID?>&course_id=<?php echo $course->ID?>"><?php printf(__('Back to assignments for "%s"', 'namaste'), $lesson->post_title);?></a></p>
@@ -58,7 +58,7 @@
 		<?php else: echo $solution->status;
 		endif;?></td>
 		<td><p><?php if(!sizeof($solution->notes)): _e('None yet.', 'namaste');
-		else:?> <a href="#" onclick="Namaste.loadNotes('<?php echo $homework->id?>', '<?php echo $solution->student_id?>');return false;"><?php _e(sprintf('%d notes', sizeof($solution->notes)), 'namaste')?></a>
+		else:?> <a href="#" onclick="Namaste.loadNotes('<?php echo $homework->id?>', '<?php echo $solution->student_id?>');return false;"><?php printf(__('%d notes', 'namaste'), sizeof($solution->notes))?></a>
 		<?php endif;?></p>		
 		<?php if($manager_mode):?>
 			<p><a href="admin.php?page=namaste_add_note&lesson_id=<?php echo $lesson->ID?>&student_id=<?php echo $solution->student_id?>&homework_id=<?php echo $homework->id?>"><?php _e('Add note / feedback', 'namaste')?></a></p>

@@ -3,7 +3,7 @@
 <div class="postbox-container" style="width:73%;margin-right:2%;">
 	<form method="get" action="admin.php">
 		<input type="hidden" name="page" value="namaste_homeworks">
-		<p><?php _e('Select course:', 'namaste')?> <select name="course_id" onchange="namasteSelectCourse(this.value);">
+		<p><?php _e('Select course:', 'namaste')?> <select name="course_id" onchange="amasteSelectCourse(this.value);">
 		<option value=""><?php _e('- please select -', 'namaste')?></option>
 		<?php foreach($courses as $course):?>
 			<option value="<?php echo $course->ID?>" <?php if(!empty($_GET['course_id']) and $_GET['course_id']==$course->ID) echo 'selected'?>><?php echo $course->post_title?></option>
@@ -58,7 +58,7 @@ function namasteSelectCourse(id) {
 	jQuery.post(ajaxurl, data, function(msg){
 		results = jQuery.parseJSON(msg);	
 		html = "<?php _e('Select lesson:','namaste')?> <select name='lesson_id' onchange='this.form.submit();'>";
-		html += '<option value=""><?php _e('- please select -')?></option>';
+		html += '<option value=""><?php _e('- please select -', 'namaste')?></option>';
 		for(i=0; i<results.length; i++) {
 			html += '<option value="' + results[i].ID + '">' + results[i].post_title + '</option>';
 		} 

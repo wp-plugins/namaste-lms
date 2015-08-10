@@ -140,7 +140,7 @@
 	
 	<form method="post" class="namaste-form">
 		<div class="postbox wp-admin namaste-box">
-			<h2><?php _e('Exam/Test Related Settings')?></h2>
+			<h2><?php _e('Exam/Test Related Settings', 'namaste')?></h2>
 			
 			<p><?php _e('Namaste LMS utilizes the power of existing Wordpress plugins to handle exams, tests and quizzes. At this moment it can connect with two plugins:', 'namaste')?> <a href="http://wordpress.org/extend/plugins/watu/">Watu</a> <?php _e('(Free) and ', 'namaste')?> <a href="http://calendarscripts.info/watupro/?r=namaste">WatuPRO</a> <?php _e('(Premium)', 'namaste')?></p>
 			

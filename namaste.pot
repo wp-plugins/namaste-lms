@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.6.3\n"
+"Project-Id-Version: Namaste! LMS 1.6.3.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2015-07-07 10:58:15+00:00\n"
+"POT-Creation-Date: 2015-08-10 15:54:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -104,7 +104,8 @@ msgid "This lesson has been completed."
 msgstr ""
 
 #: controllers/shortcodes.php:40 views/manage-students.php:37
-#: views/manage-students.php:60 views/student-lessons.php:47
+#: views/manage-students.php:60 views/manage-students.php:68
+#: views/student-lessons.php:47
 msgid "Completed"
 msgstr ""
 
@@ -324,7 +325,7 @@ msgstr ""
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.6.3)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.6.3.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/namaste-model.php:238
 msgid "Namaste! LMS"
@@ -541,7 +542,7 @@ msgid "Delete"
 msgstr ""
 
 #: views/certificate-form.php:42 views/homework.php:20
-#: views/manage-students.php:85
+#: views/manage-students.php:92
 msgid "Are you sure?"
 msgstr ""
 
@@ -606,7 +607,7 @@ msgstr ""
 msgid "Enrollment mode:"
 msgstr ""
 
-#: views/course-meta-box.php:3 views/course-meta-box.php:47
+#: views/course-meta-box.php:3 views/course-meta-box.php:49
 #: views/lesson-meta-box.php:99
 msgid "You can use the shortcode"
 msgstr ""
@@ -617,7 +618,7 @@ msgid ""
 "content"
 msgstr ""
 
-#: views/course-meta-box.php:5 views/course-meta-box.php:48
+#: views/course-meta-box.php:5 views/course-meta-box.php:50
 #: views/lesson-meta-box.php:101 views/lesson-meta-box.php:103
 msgid "The shortcode"
 msgstr ""
@@ -689,39 +690,39 @@ msgstr ""
 msgid "points for completing this course."
 msgstr ""
 
-#: views/course-meta-box.php:45 views/lesson-meta-box.php:97
+#: views/course-meta-box.php:47 views/lesson-meta-box.php:97
 msgid "Shortcodes"
 msgstr ""
 
-#: views/course-meta-box.php:47
+#: views/course-meta-box.php:49
 msgid ""
 "inside the course content to display what the student needs to do to "
 "complete the course."
 msgstr ""
 
-#: views/course-meta-box.php:48
+#: views/course-meta-box.php:50
 msgid "will display the lessons in the course."
 msgstr ""
 
-#: views/course-meta-box.php:48
+#: views/course-meta-box.php:50
 msgid "It allows more advanced configurations explained on the "
 msgstr ""
 
-#: views/course-meta-box.php:48
+#: views/course-meta-box.php:50
 msgid "help page."
 msgstr ""
 
-#: views/course-meta-box.php:50 views/lesson-meta-box.php:105
+#: views/course-meta-box.php:52 views/lesson-meta-box.php:105
 msgid "Did you know?"
 msgstr ""
 
-#: views/course-meta-box.php:53
+#: views/course-meta-box.php:55
 msgid ""
 "You can limit the access to this course also by <a href=\"%s\" target="
 "\"_blank\">class / group</a>."
 msgstr ""
 
-#: views/course-meta-box.php:55
+#: views/course-meta-box.php:57
 msgid ""
 "If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able "
 "to assign courses to classes and restrict access based on class, have "
@@ -984,6 +985,10 @@ msgstr ""
 
 #: views/homework-notes.php:3
 msgid "There aren't any notes yet."
+msgstr ""
+
+#: views/homework-notes.php:7
+msgid "Note by %s posted on %s"
 msgstr ""
 
 #: views/homework.php:1
@@ -1268,15 +1273,17 @@ msgstr ""
 msgid "Any status"
 msgstr ""
 
-#: views/manage-students.php:34 views/view-solutions.php:51
+#: views/manage-students.php:34 views/manage-students.php:65
+#: views/view-solutions.php:51
 msgid "Pending"
 msgstr ""
 
-#: views/manage-students.php:35
+#: views/manage-students.php:35 views/manage-students.php:66
 msgid "Enrolled"
 msgstr ""
 
-#: views/manage-students.php:36 views/view-solutions.php:53
+#: views/manage-students.php:36 views/manage-students.php:67
+#: views/view-solutions.php:53
 msgid "Rejected"
 msgstr ""
 
@@ -1295,35 +1302,39 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: views/manage-students.php:66
+#: views/manage-students.php:69
+msgid "Frozen"
+msgstr ""
+
+#: views/manage-students.php:72
 msgid "approve"
 msgstr ""
 
-#: views/manage-students.php:66
+#: views/manage-students.php:72
 msgid "reject"
 msgstr ""
 
-#: views/manage-students.php:69
+#: views/manage-students.php:76
 msgid "Cleanup"
 msgstr ""
 
-#: views/manage-students.php:76
+#: views/manage-students.php:83
 msgid ""
 "Don't forget that you can get <a href='%s'>Advanced Reports</a> for your "
 "students performance."
 msgstr ""
 
-#: views/manage-students.php:78
+#: views/manage-students.php:85
 msgid ""
 "You can get advanced reports and ranking shortcodes with the <a href='%s' "
 "target='_blank'>Namaste! Reports</a> plugin."
 msgstr ""
 
-#: views/manage-students.php:92 views/student-lessons.php:64
+#: views/manage-students.php:99 views/student-lessons.php:64
 msgid "Lesson progress"
 msgstr ""
 
-#: views/manage-students.php:98
+#: views/manage-students.php:105
 msgid ""
 "Are you sure to cleanup this record? It will be removed from the system and "
 "history and the user will be able to enroll or request enrollment again"
@@ -1525,19 +1536,23 @@ msgstr ""
 msgid "Application rejected"
 msgstr ""
 
-#: views/my_courses.php:36
+#: views/my_courses.php:35
+msgid "Frozen / no access"
+msgstr ""
+
+#: views/my_courses.php:37
 msgid "Enrolled on %s"
 msgstr ""
 
-#: views/my_courses.php:38
+#: views/my_courses.php:39
 msgid "Un-enroll from this course"
 msgstr ""
 
-#: views/my_courses.php:42
+#: views/my_courses.php:43
 msgid "Completed on %s"
 msgstr ""
 
-#: views/my_courses.php:52
+#: views/my_courses.php:53
 msgid "Are you sure? This will blank out all your progress in this course"
 msgstr ""
 
@@ -2093,4 +2108,8 @@ msgstr ""
 
 #: views/view-solutions.php:52
 msgid "Approved"
+msgstr ""
+
+#: views/view-solutions.php:61
+msgid "%d notes"
 msgstr ""

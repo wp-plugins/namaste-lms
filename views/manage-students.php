@@ -61,7 +61,13 @@
 					elseif(in_array($lesson->ID, $student->incomplete_lessons)): echo "<a href='#' onclick='namasteInProgress(".$lesson->ID.", ".$student->ID."); return false;'>".__('In progress', 'namaste')."</a>";
 					else: _e('Not started', 'namaste'); endif;?></td>
 				<?php endforeach;?>		
-				<td><?php echo $student->namaste_status;
+				<td><?php switch($student->namaste_status):
+					case 'pending': _e('Pending', 'namaste'); break;
+					case 'enrolled': _e('Enrolled', 'namaste'); break;
+					case 'rejected': _e('Rejected', 'namaste'); break;
+					case 'completed': _e('Completed', 'namaste'); break;
+					case 'frozen': _e('Frozen', 'namaste'); break;
+				endswitch;
 				if($multiuser_access != 'view' and $student->namaste_status=='pending'):?>
 					(<a href="#" onclick="namasteConfirmStatus('enrolled',<?php echo $student->ID?>);return false;"><?php _e('approve', 'namaste')?></a> | <a href="#" onclick="namasteConfirmStatus('rejected',<?php echo $student->ID?>);return false;"><?php _e('reject')?></a>)
 				<?php endif;

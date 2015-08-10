@@ -2,7 +2,7 @@
 	<h1><?php _e('Course Progress:', 'namaste')?> <?php echo $course->post_title?></h1>
 	
 	<?php if(current_user_can('namaste_manage')):?>
-		<p><a href="admin.php?page=namaste_students&course_id=<?php echo $course->ID?>"><?php _e('Back to students in this course')?></a></p>
+		<p><a href="admin.php?page=namaste_students&course_id=<?php echo $course->ID?>"><?php _e('Back to students in this course', 'namaste')?></a></p>
 	<?php endif;?>
 	
 	<?php if(!empty($error)):?>
