@@ -296,10 +296,11 @@ class NamasteLMSCourseModel {
 		}			
 		
 		$output = '';	
+		if(!empty($course->fee)) $course->fee = apply_filters('namaste-coupon-applied', $course->fee); // coupon code from other plugin?
+				
 		if(!empty($course->fee) and !$is_manager) {	
 			// coupon codes and discount filters from other plugins
-			$output = apply_filters('namaste-coupon-form', $output);
-			$course->fee = apply_filters('namaste-coupon-applied', $course->fee); // coupon code from other plugin?		
+			$output = apply_filters('namaste-coupon-form', $output);			
 				
 			if($accept_paypal or $accept_other_payment_methods) { 
 				$url = admin_url("admin-ajax.php?action=namaste_ajax&type=course_payment");

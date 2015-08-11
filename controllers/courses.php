@@ -74,6 +74,7 @@ class NamasteLMSCoursesController {
 		$fee = get_post_meta($course->ID, 'namaste_fee', true);
 		
 		// When fee is paid, enrollment is automatic so this is just fine here
+		if(!empty($fee)) $fee = apply_filters('namaste-coupon-applied', $fee); // coupon code from other plugin?
 		if($fee > 0 and !$is_manager) wp_die("You can't enroll yourself in a course when there is a fee"); 			
 		
 		$enroll_mode = get_post_meta($course->ID, 'namaste_enroll_mode', true);
