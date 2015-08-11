@@ -289,7 +289,7 @@ class NamasteLMSShortcodesController {
 		$grade = $wpdb->get_var($wpdb->prepare("SELECT grade FROM ".NAMASTE_STUDENT_COURSES."
 			WHERE course_id = %d AND user_id = %d", $course_id, $user_id));
 			
-		if($grade !== '') return $grade;
+		if($grade != '') return $grade;
 		else return @$atts['whenempty'];	
 	}
 	

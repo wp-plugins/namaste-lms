@@ -6,7 +6,7 @@ class NamasteLMS {
    	$wpdb -> show_errors();
    	
    	$old_version = get_option('namaste_version');
-   	update_option( 'namaste_version', "1.32");
+   	update_option( 'namaste_version', "1.34");
    	if(!$update) self::init();
 	  
 	  // enrollments to courses
@@ -174,6 +174,11 @@ class NamasteLMS {
 	  namaste_add_db_fields(array(		   
 		  array("name"=>"editor_id", "type"=>"INT UNSIGNED NOT NULL DEFAULT 0")
 	  ), NAMASTE_CERTIFICATES);
+	  
+	  namaste_add_db_fields(array(		   
+		  array("name"=>"for_item_type", "type"=>"VARCHAR(100) NOT NULL DEFAULT '' "), /* when awarding points etc to know is it course or lesson etc */
+		  array("name"=>"for_item_id", "type"=>"INT UNSIGNED NOT NULL DEFAULT 0"), /* when awarding points etc to know the id of the course or lesson etc */
+	  ), NAMASTE_HISTORY);
 	  
 	  // add student role if not exists
     $res = add_role('student', 'Student', array(
@@ -364,7 +369,7 @@ class NamasteLMS {
 		} 
 		
 		$version = get_option('namaste_version');
-		if($version != '1.32') self::install(true);
+		if($version != '1.34') self::install(true);
 		
 		// purge history log older than 180 days
 		// in the next version this period should be configurable

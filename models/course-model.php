@@ -209,7 +209,8 @@ class NamasteLMSCourseModel {
 			$award_points = get_post_meta($course_id, 'namaste_award_points', true);
 			if($award_points === '') $award_points = get_option('namaste_points_course');
 			if($award_points) {				
-				NamastePoint :: award($student_id, $award_points, sprintf(__('Received %d points for completing course "%s".', 'namaste'), $award_points, $course->post_title));
+				NamastePoint :: award($student_id, $award_points, sprintf(__('Received %d points for completing course "%s".', 'namaste'), 
+					$award_points, $course->post_title, 'course', $course_id));
 			}
 		}
 		

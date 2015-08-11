@@ -184,7 +184,7 @@ class NamasteLMSHomeworkController {
 		if($_POST['status']=='approved' and get_option('namaste_use_points_system')) {			
 			if($homework->award_points) {
 				NamastePoint :: award($student_id, $homework->award_points, sprintf(__('Received %d points for completing assignment "%s".', 'namaste'), 
-					$homework->award_points, $homework->title));
+					$homework->award_points, $homework->title, 'homework', $homework->id));
 			}
 		}
 		

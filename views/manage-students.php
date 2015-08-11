@@ -77,6 +77,14 @@
 				<?php endif;?></td></tr>
 			<?php endforeach;?>
 		</table>
+		
+		<p align="center"><?php if($offset > 0):?>
+			<a href="admin.php?page=namaste_students&course_id=<?php echo $_GET['course_id']?>&status=<?php echo @$_GET['status']?>&offset=<?php echo $offset - $page_limit?>"><?php _e('[previous page]', 'namaste')?></a>
+		<?php endif;?> 
+		<?php if($count > ($page_limit + $offset)):?>
+			<a href="admin.php?page=namaste_students&course_id=<?php echo $_GET['course_id']?>&status=<?php echo @$_GET['status']?>&offset=<?php echo $offset + $page_limit?>"><?php _e('[next page]', 'namaste')?></a>
+		<?php endif;?>	
+		</p>
 	<?php endif;?>
 	
 	<?php if(is_plugin_active('namaste-reports/namaste-reports.php')):?>

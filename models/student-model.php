@@ -104,14 +104,17 @@ class NamasteLMSStudentModel {
 		 		foreach($lessons as $lesson) $lids[] = $lesson->ID;
 		 				 		
 		 		// select students
+		 		$page_limit = 20;
+		 		$offset = empty($_GET['offset']) ? 0 : intval($_GET['offset']);
 		 		$status_sql = '';
 		 		if(!empty($_GET['status']) and $_GET['status']!='any') { 
 		 			$status_sql = $wpdb->prepare(" AND tS.status=%s", $_GET['status']);
 		 		}
-		 		$students = $wpdb->get_results($wpdb->prepare("SELECT tU.*, tS.status as namaste_status 
-		 		FROM {$wpdb->users} tU JOIN ".NAMASTE_STUDENT_COURSES." tS 
-		 		ON tS.user_id = tU.ID AND tS.course_id=%d $status_sql
-		 		ORDER BY user_nicename", $_GET['course_id']));		 		
+		 		$students = $wpdb->get_results($wpdb->prepare("SELECT SQL_CALC_FOUND_ROWS tU.*, tS.status as namaste_status 
+			 		FROM {$wpdb->users} tU JOIN ".NAMASTE_STUDENT_COURSES." tS 
+			 		ON tS.user_id = tU.ID AND tS.course_id=%d $status_sql
+			 		ORDER BY user_nicename LIMIT %d, %d", $_GET['course_id'], $offset, $page_limit));	
+		 		$count = $wpdb->get_var("SELECT FOUND_ROWS()");	 		
 		 		
 		 		// select student - to - lesson relations
 		 		$completed_lessons = $wpdb->get_results("SELECT * FROM ".NAMASTE_STUDENT_LESSONS."

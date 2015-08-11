@@ -61,10 +61,11 @@ Yes, you can set your custom URL slugs in the Namaste Settings page
 
 == Changelog ==
 
-= Version 1.6.3 =
+= Version 1.6.4 =
 - Added option to unenroll from a course. This is configurable per course level from the Edit Course page.
 - Added compatibility with the new free Instamojo integration plugin (see the Namaste Settings -> Other payment options section for a link)
 - Made some improvements to notes / feedback on assignments and their navigation
+- Added pagination on the Manage Students page
 
 = Version 1.6 =
 - Added [namaste-earned-certificates] shortcode to display certificates earned by the user on a given course. Can be used on course page or elsewhere by passing course_id.

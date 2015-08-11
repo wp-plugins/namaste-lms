@@ -1,7 +1,7 @@
 <?php
 // handles point awarding, spending, and so on
 class NamastePoint {
-	static function award($user_id, $award_points, $explanation) {
+	static function award($user_id, $award_points, $explanation, $for_item_type = '', $for_item_id = 0) {
 		global $wpdb;
 		
 		$points = get_user_meta($user_id, 'namaste_points', true);
@@ -10,8 +10,9 @@ class NamastePoint {
 		
 		// insert in history
 		$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
-			user_id=%d, date=CURDATE(), datetime=NOW(), action='awarded_points', value=%s, num_value=%d",
-			$user_id, $explanation, $award_points));
+			user_id=%d, date=CURDATE(), datetime=NOW(), action='awarded_points',
+			value=%s, num_value=%d, for_item_type=%s, for_item_id=%d",
+			$user_id, $explanation, $award_points, $for_item_type, $for_item_id));
 			
 		do_action('namaste_earned_points', $user_id, $award_points);	
 			

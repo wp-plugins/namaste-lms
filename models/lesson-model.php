@@ -457,7 +457,9 @@ class NamasteLMSLessonModel {
 			$award_points = get_post_meta($lesson_id, 'namaste_award_points', true);
 			if($award_points === '') $award_points = get_option('namaste_points_lesson');
 			if($award_points) {				
-				NamastePoint :: award($student_id, $award_points, sprintf(__('Received %d points for completing lesson "%s".', 'namaste'), $award_points, $lesson->post_title));
+				NamastePoint :: award($student_id, $award_points, 
+					sprintf(__('Received %d points for completing lesson "%s".', 'namaste'), $award_points, $lesson->post_title),
+					'lesson', $lesson_id);
 			}
 		}
 		
