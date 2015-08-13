@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Namaste! LMS package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Namaste! LMS 1.6.3.2\n"
+"Project-Id-Version: Namaste! LMS 1.6.4.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
-"POT-Creation-Date: 2015-08-10 15:54:50+00:00\n"
+"POT-Creation-Date: 2015-08-13 08:04:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,17 +42,17 @@ msgstr ""
 msgid "You are not allowed to access this certificate"
 msgstr ""
 
-#: controllers/courses.php:88
+#: controllers/courses.php:89
 msgid "You enrolled in \"%s\""
 msgstr ""
 
-#: controllers/courses.php:89
+#: controllers/courses.php:90
 msgid ""
 "Thank you for your interest in enrolling this course. A manager will review "
 "your application."
 msgstr ""
 
-#: controllers/courses.php:91
+#: controllers/courses.php:92
 msgid "You have already enrolled in this course"
 msgstr ""
 
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:16 models/lesson-model.php:697
+#: models/course-model.php:16 models/lesson-model.php:699
 msgid "Course"
 msgstr ""
 
@@ -182,7 +182,7 @@ msgid "This will create a new course in your Namaste! LMS."
 msgstr ""
 
 #: models/course-model.php:60 models/lesson-model.php:31
-#: models/namaste-model.php:247
+#: models/namaste-model.php:252
 msgid "Namaste! Settings"
 msgstr ""
 
@@ -216,36 +216,36 @@ msgstr ""
 msgid "Received %d points for completing course \"%s\"."
 msgstr ""
 
-#: models/course-model.php:222
+#: models/course-model.php:223
 msgid "Completed course \"%s\""
 msgstr ""
 
-#: models/course-model.php:260
+#: models/course-model.php:261
 msgid ""
 "You cannot enroll this course - other courses have to be completed first."
 msgstr ""
 
-#: models/course-model.php:275 models/student-model.php:66
+#: models/course-model.php:276 models/student-model.php:66
 msgid "Enrolled in course %s. Status: %s"
 msgstr ""
 
-#: models/course-model.php:305
+#: models/course-model.php:307
 msgid "Payment for course"
 msgstr ""
 
-#: models/course-model.php:306
+#: models/course-model.php:308
 msgid "Enroll for"
 msgstr ""
 
-#: models/course-model.php:320
+#: models/course-model.php:322
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:336 models/lesson-model.php:698
+#: models/course-model.php:338 models/lesson-model.php:700
 msgid "Visits (unique/total)"
 msgstr ""
 
-#: models/course-model.php:363
+#: models/course-model.php:365
 msgid "These courses should be completed before you can enroll:"
 msgstr ""
 
@@ -317,110 +317,110 @@ msgstr ""
 msgid "Started reading lesson \"%s\""
 msgstr ""
 
-#: models/lesson-model.php:460
+#: models/lesson-model.php:461
 msgid "Received %d points for completing lesson \"%s\"."
 msgstr ""
 
-#: models/lesson-model.php:469
+#: models/lesson-model.php:471
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.6.3.2)  #-#-#-#-#
+#. #-#-#-#-#  namaste.pot (Namaste! LMS 1.6.4.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: models/namaste-model.php:238
+#: models/namaste-model.php:243
 msgid "Namaste! LMS"
 msgstr ""
 
-#: models/namaste-model.php:240 views/student-lessons.php:19
+#: models/namaste-model.php:245 views/student-lessons.php:19
 msgid "Assignments"
 msgstr ""
 
-#: models/namaste-model.php:241
+#: models/namaste-model.php:246
 msgid "Students"
 msgstr ""
 
-#: models/namaste-model.php:243
+#: models/namaste-model.php:248
 msgid "Certificates"
 msgstr ""
 
-#: models/namaste-model.php:244
+#: models/namaste-model.php:249
 msgid "Students Earned Certificate"
 msgstr ""
 
-#: models/namaste-model.php:246 views/gradebook.html.php:2
+#: models/namaste-model.php:251 views/gradebook.html.php:2
 msgid "Gradebook"
 msgstr ""
 
-#: models/namaste-model.php:247
+#: models/namaste-model.php:252
 msgid "Settings"
 msgstr ""
 
-#: models/namaste-model.php:248
+#: models/namaste-model.php:253
 msgid "Help"
 msgstr ""
 
-#: models/namaste-model.php:249
+#: models/namaste-model.php:254
 msgid "Namaste! Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:249
+#: models/namaste-model.php:254
 msgid "Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:252
+#: models/namaste-model.php:257
 msgid "Student Lessons"
 msgstr ""
 
-#: models/namaste-model.php:253
+#: models/namaste-model.php:258
 msgid "Homeworks"
 msgstr ""
 
-#: models/namaste-model.php:254 views/add-note.php:16
+#: models/namaste-model.php:259 views/add-note.php:16
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:255 views/lesson-homeworks.php:43
+#: models/namaste-model.php:260 views/lesson-homeworks.php:43
 #: views/lesson-homeworks.php:45
 msgid "Submit solution"
 msgstr ""
 
-#: models/namaste-model.php:256 views/homeworks.php:29
+#: models/namaste-model.php:261 views/homeworks.php:29
 msgid "View solutions"
 msgstr ""
 
-#: models/namaste-model.php:257
+#: models/namaste-model.php:262
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:258 views/students-earned-certificate.html.php:14
+#: models/namaste-model.php:263 views/students-earned-certificate.html.php:14
 msgid "View Certificate"
 msgstr ""
 
-#: models/namaste-model.php:259
+#: models/namaste-model.php:264
 msgid "Download solution"
 msgstr ""
 
-#: models/namaste-model.php:260
+#: models/namaste-model.php:265
 msgid "Multi user configuration"
 msgstr ""
 
-#: models/namaste-model.php:266 views/my_courses.php:1
+#: models/namaste-model.php:271 views/my_courses.php:1
 msgid "My Courses"
 msgstr ""
 
-#: models/namaste-model.php:267 views/my-certificates.php:1
+#: models/namaste-model.php:272 views/my-certificates.php:1
 msgid "My Certificates"
 msgstr ""
 
-#: models/namaste-model.php:268 views/my-gradebook.html.php:2
+#: models/namaste-model.php:273 views/my-gradebook.html.php:2
 msgid "My Gradebook"
 msgstr ""
 
-#: models/point.php:23
+#: models/point.php:24
 msgid "LMS Points"
 msgstr ""
 
-#: models/point.php:35
+#: models/point.php:36
 msgid "(Cleanup)"
 msgstr ""
 
@@ -451,7 +451,7 @@ msgstr ""
 msgid "Enrollment in %s has been rejected."
 msgstr ""
 
-#: models/student-model.php:151
+#: models/student-model.php:154
 msgid "You cannot change someone else's status"
 msgstr ""
 
@@ -542,7 +542,7 @@ msgid "Delete"
 msgstr ""
 
 #: views/certificate-form.php:42 views/homework.php:20
-#: views/manage-students.php:92
+#: views/manage-students.php:100
 msgid "Are you sure?"
 msgstr ""
 
@@ -1318,23 +1318,31 @@ msgstr ""
 msgid "Cleanup"
 msgstr ""
 
-#: views/manage-students.php:83
+#: views/manage-students.php:82
+msgid "[previous page]"
+msgstr ""
+
+#: views/manage-students.php:85
+msgid "[next page]"
+msgstr ""
+
+#: views/manage-students.php:91
 msgid ""
 "Don't forget that you can get <a href='%s'>Advanced Reports</a> for your "
 "students performance."
 msgstr ""
 
-#: views/manage-students.php:85
+#: views/manage-students.php:93
 msgid ""
 "You can get advanced reports and ranking shortcodes with the <a href='%s' "
 "target='_blank'>Namaste! Reports</a> plugin."
 msgstr ""
 
-#: views/manage-students.php:99 views/student-lessons.php:64
+#: views/manage-students.php:107 views/student-lessons.php:64
 msgid "Lesson progress"
 msgstr ""
 
-#: views/manage-students.php:105
+#: views/manage-students.php:113
 msgid ""
 "Are you sure to cleanup this record? It will be removed from the system and "
 "history and the user will be able to enroll or request enrollment again"

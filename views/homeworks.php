@@ -3,7 +3,7 @@
 <div class="postbox-container" style="width:73%;margin-right:2%;">
 	<form method="get" action="admin.php">
 		<input type="hidden" name="page" value="namaste_homeworks">
-		<p><?php _e('Select course:', 'namaste')?> <select name="course_id" onchange="amasteSelectCourse(this.value);">
+		<p><?php _e('Select course:', 'namaste')?> <select name="course_id" onchange="namasteSelectCourse(this.value);">
 		<option value=""><?php _e('- please select -', 'namaste')?></option>
 		<?php foreach($courses as $course):?>
 			<option value="<?php echo $course->ID?>" <?php if(!empty($_GET['course_id']) and $_GET['course_id']==$course->ID) echo 'selected'?>><?php echo $course->post_title?></option>
